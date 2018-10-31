@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16563AEF-8276-4868-B749-71AC6C2AD0C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FindANameFarm</RootNamespace>
+    <AssemblyName>FindANameFarm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audit.cs" />
+    <Compile Include="Forms\HarvestTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HarvestTaskForm.Designer.cs">
+      <DependentUpon>HarvestTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HarvestTimeTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HarvestTimeTableForm.Designer.cs">
+      <DependentUpon>HarvestTimeTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportAvailableStorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportAvailableStorageForm.Designer.cs">
+      <DependentUpon>ReportAvailableStorageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportCropsInCultivationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportCropsInCultivationForm.Designer.cs">
+      <DependentUpon>ReportCropsInCultivationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportLabourRequirementsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportLabourRequirementsForm.Designer.cs">
+      <DependentUpon>ReportLabourRequirementsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportStockLevelsForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportStockLevelsForms.Designer.cs">
+      <DependentUpon>ReportStockLevelsForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TreatmentTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TreatmentTaskForm.Designer.cs">
+      <DependentUpon>TreatmentTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CropForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CropForm.Designer.cs">
+      <DependentUpon>CropForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FertiliserAndTreatmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FertiliserAndTreatmentForm.Designer.cs">
+      <DependentUpon>FertiliserAndTreatmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FieldsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FieldsForm.Designer.cs">
+      <DependentUpon>FieldsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SowingTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SowingTaskForm.Designer.cs">
+      <DependentUpon>SowingTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StorageForm.Designer.cs">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crops.cs" />
+    <Compile Include="Storage.cs" />
+    <Compile Include="VehicleBank.cs" />
+    <Compile Include="Forms\VehicleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VehicleForm.Designer.cs">
+      <DependentUpon>VehicleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleCreator.cs" />
+    <Compile Include="Vehicles.cs" />
+    <Compile Include="MetaLayer\BusinessMetaLayer.cs" />
+    <Compile Include="MetaLayer\DBException.cs" />
+    <Compile Include="MetaLayer\DbFactory.cs" />
+    <Compile Include="MetaLayer\IIDbConnection.cs" />
+    <Compile Include="MetaLayer\OledbConnection.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="StaffBank.cs" />
+    <Compile Include="StaffCreator.cs" />
+    <Compile Include="WorkTaskBank.cs" />
+    <Compile Include="WorkTaskCreator.cs" />
+    <Compile Include="WorkTaskFactory.cs" />
+    <EmbeddedResource Include="Forms\HarvestTaskForm.resx">
+      <DependentUpon>HarvestTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HarvestTimeTableForm.resx">
+      <DependentUpon>HarvestTimeTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportAvailableStorageForm.resx">
+      <DependentUpon>ReportAvailableStorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportCropsInCultivationForm.resx">
+      <DependentUpon>ReportCropsInCultivationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TreatmentTaskForm.resx">
+      <DependentUpon>TreatmentTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CropForm.resx">
+      <DependentUpon>CropForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FertiliserAndTreatmentForm.resx">
+      <DependentUpon>FertiliserAndTreatmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FieldsForm.resx">
+      <DependentUpon>FieldsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SowingTaskForm.resx">
+      <DependentUpon>SowingTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StorageForm.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VehicleForm.resx">
+      <DependentUpon>VehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\DataSources\StaffAndCategory.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetaLayer\FindANameFarm.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
