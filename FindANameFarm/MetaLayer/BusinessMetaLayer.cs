@@ -19,7 +19,12 @@ namespace FindANameFarm.MetaLayer
         {
             return _instance ?? (_instance = new BusinessMetaLayer());
         }
-
+        /// <summary>
+        /// Ian 27/10/18
+        /// selects current staff member by id
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public int GetLogin(Staff login)
         {
             List<Staff> staffLogin = new List<Staff>();
@@ -367,7 +372,7 @@ namespace FindANameFarm.MetaLayer
             String query = "UPDATE staff SET firstName = '" + updateStaffMember.FirstName + "', surname='" +
                            updateStaffMember.SurName + "', gender= '" + updateStaffMember.Gender + "', email= '" +
                            updateStaffMember.Email + "', role= '" + updateStaffMember.Role + "', contactNumber='" +
-                           updateStaffMember.Contact + "' WHERE staffId=" + updateStaffMember.StaffId;
+                           updateStaffMember.Contact + "', imageLocation= '" + updateStaffMember.ImageFile +"' WHERE staffId=" + updateStaffMember.StaffId;
             
 
             _con.Update(query);

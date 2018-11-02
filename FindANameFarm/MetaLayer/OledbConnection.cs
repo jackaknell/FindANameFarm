@@ -135,7 +135,7 @@ namespace FindANameFarm.MetaLayer
         {
             OleDbCommand cmd = _connection.CreateCommand();
             cmd.CommandText = query;
-
+            Debug.WriteLine(query);
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
@@ -148,9 +148,11 @@ namespace FindANameFarm.MetaLayer
 
                 // create the object dataAdapter to manipulate a table from the database StudentDissertations specified by connectionToDB
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(sqlStatement, _connection);
+
                 // create the dataset
                 dataSet = new DataSet();
                 dataAdapter.Fill(dataSet);
+
                 //return the dataSet
                 return dataSet;
             }

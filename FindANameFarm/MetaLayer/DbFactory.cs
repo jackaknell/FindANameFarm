@@ -5,7 +5,7 @@ using System.IO;
 
 namespace FindANameFarm.MetaLayer
 {
-    class DbFactory
+    public class DbFactory
     {
         private static IIDbConnection _instance;
 

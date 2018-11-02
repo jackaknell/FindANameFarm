@@ -20,7 +20,7 @@ namespace FindANameFarm
         public string CategoryName { get; set; }
     }
 
-    class VehicleBank
+    public class VehicleBank
     {
         private BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
 
@@ -31,11 +31,13 @@ namespace FindANameFarm
         public List<VehicleAndCategory> VehicleAndCategoryLists { get; private set; }
 
         public static VehicleBank UniqueInst;
+
+        public static int InstanceCount { get; set; }
         public VehicleBank()
         {
             RefreshConnection();
             Categories = new List<Cat>();
-           
+            InstanceCount++;
         }
 
         public bool GetConnectionState { get; private set; }

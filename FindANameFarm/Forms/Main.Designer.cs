@@ -47,7 +47,7 @@
             this.viewAvailableStorageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCurrentHarvestRequirementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHarvestTimeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageAssetsToolStripMenuItem,
             this.createWorkTasksToolStripMenuItem,
-            this.viewReportsToolStripMenuItem});
+            this.viewReportsToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -203,22 +204,17 @@
             this.viewHarvestTimeTableToolStripMenuItem.Text = "View Harvest Time Table";
             this.viewHarvestTimeTableToolStripMenuItem.Click += new System.EventHandler(this.viewHarvestTimeTableToolStripMenuItem_Click);
             // 
-            // btnLogout
+            // logoutToolStripMenuItem
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(632, 383);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(124, 42);
-            this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -253,6 +249,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewAvailableStorageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewCurrentHarvestRequirementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewHarvestTimeTableToolStripMenuItem;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }

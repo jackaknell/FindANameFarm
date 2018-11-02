@@ -18,10 +18,13 @@ namespace FindANameFarm
         public bool GetConnectionState { get; private set; }
         public static StaffBank UniqueInst;
 
+        //fot use with unit test
+        public static int InstanceCount { get; set; }
         public StaffBank()
         {
             refreshConnection();
-           
+            //show how many times the constructor has been called (for unit test)
+            InstanceCount++;
         }
 
 
@@ -32,12 +35,12 @@ namespace FindANameFarm
         {
            
             StaffList.Add(staff);
-            _metalayer.AddStaffToDataBase(staff);
+           _metalayer.AddStaffToDataBase(staff);
         }
 
-        public void AddCompetency(StaffAndCategory addcompetency)
+        public void AddCompetency(StaffAndCategory addCompetency)
         {
-            _metalayer.AddStaffCompetencyToDataBase(addcompetency);
+            _metalayer.AddStaffCompetencyToDataBase(addCompetency);
         }
         public void updateStaff(Staff editStaffMember)
         {
@@ -54,8 +57,7 @@ namespace FindANameFarm
         }
         public void GetCompetencies(int staffid)
         {
-           Debug.WriteLine("competencylist"+ staffid);
-            
+ 
             CompetencyList= _metalayer.GetCompetencies(staffid);
         }
         public void deleteStaff(int staffMember)
