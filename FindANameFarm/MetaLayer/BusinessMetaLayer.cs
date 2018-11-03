@@ -5,13 +5,13 @@ using System.Diagnostics;
 
 namespace FindANameFarm.MetaLayer
 {
-    
+    /// <summary>
+    /// Ian 25/10/2018
+    /// sql queries
+    /// </summary>
     class BusinessMetaLayer
     {
-      
-        
-        //Categories[] categoryList = new Categories[50];
-        
+
         private static BusinessMetaLayer _instance;
         IIDbConnection _con = DbFactory.Instance();
         
@@ -31,7 +31,7 @@ namespace FindANameFarm.MetaLayer
 
             if (_con.OpenConnection())
             {
-                DbDataReader dr = _con.Select("SELECT staffID, password from staff where staffId=" + login.StaffId + " and password = '" +
+                DbDataReader dr = _con.Select("SELECT staffID, staffpassword from staff where staffId=" + login.StaffId + " and staffpassword = '" +
                 login.Password + "'");
                 // DbDataReader dr = _con.Select("SELECT staffID, firstName, surname, gender, email, role, contactNumber, imageLocation, password FROM Staff;");
 
@@ -53,6 +53,11 @@ namespace FindANameFarm.MetaLayer
             return staffLogin.Count;
         }
 
+        /// <summary>
+        /// Ian 27/10/2018
+        /// selects all staff members and puts them in a list
+        /// </summary>
+        /// <returns></returns>
         public List<Staff> GetStaff()
         {
             List<Staff> staff = new List<Staff>();
@@ -61,7 +66,7 @@ namespace FindANameFarm.MetaLayer
             if (_con.OpenConnection())
             {
                 
-              DbDataReader dr = _con.Select("SELECT staffID, firstName, surname, gender, email, role, contactNumber, imageLocation, password FROM Staff;");
+              DbDataReader dr = _con.Select("SELECT staffID, firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword FROM Staff;");
 
                 
                 //Read the data and store them in the list
@@ -96,24 +101,35 @@ namespace FindANameFarm.MetaLayer
             return staff;
         }
 
-        public List<StaffAndCategory> GetCompetencies(int staffId)
+        /// <summary>
+        /// Ian 3/11/2018
+        /// selects all competencies for a given staff member
+        /// </summary>
+        /// <param name="staffId"></param>
+        /// <returns></returns>
+        public List<CatIdAndName> GetCompetencies(int staffId)
         {
-            List<StaffAndCategory> competencies = new List<StaffAndCategory>();
+            List<CatIdAndName> competencies = new List<CatIdAndName>();
             if (_con.OpenConnection())
             {
-               
-                //SQL query
-                DbDataReader dr = _con.Select("SELECT * FROM Staff_category where staffId="+staffId+";");
+
+
+                DbDataReader dr =
+                    _con.Select(
+                        "SELECT Staff_category.categoryId, Category.categoryName FROM Category INNER JOIN Staff_category ON Category.categoryId = Staff_category.categoryId WHERE staffId = " +
+                        staffId + "; ");
+
+              
 
                 while (dr.Read())
                 {
-                    StaffAndCategory competency = new StaffAndCategory()
+                    CatIdAndName staffCompetency = new CatIdAndName()
                     {
-                        StaffId = dr.GetInt32(0),
-                        CatId = dr.GetInt32(1),
+                        CategoryId = dr.GetInt32(0),
+                        CategoryName = dr.GetString(1),
                     };
 
-                    competencies.Add(competency);
+                    competencies.Add(staffCompetency);
                 }
 
 
@@ -123,6 +139,12 @@ namespace FindANameFarm.MetaLayer
 
             return competencies;
         }
+
+        /// <summary>
+        /// ian 30/10/2018
+        /// selects and returns a list of vehicle categories
+        /// </summary>
+        /// <returns></returns>
         public List<Cat> GetCategories()
         {
 
@@ -152,6 +174,11 @@ namespace FindANameFarm.MetaLayer
             return categoriesList;
         }
 
+        /// <summary>
+        /// ian 26/10/2018
+        /// selects and returns a list of stored vehicles
+        /// </summary>
+        /// <returns></returns>
         public List<Vehicles> GetVehicle()
         {
             List<Vehicles> vehicles = new List<Vehicles>();
@@ -190,6 +217,11 @@ namespace FindANameFarm.MetaLayer
             return vehicles;
         }
 
+        /// <summary>
+        /// Ian 29/10/2018
+        /// selects and returns a list of vehicles and there category
+        /// </summary>
+        /// <returns></returns>
         public List<VehicleAndCategory> GetVehicleAndCategories()
         {
             List<VehicleAndCategory> vehicleCat = new List<VehicleAndCategory>();
@@ -315,13 +347,11 @@ namespace FindANameFarm.MetaLayer
         }
 
 
-        public int AuditId { get; set; }
-        public DateTime Date { get; set; }
-        public string Name { get; set; }
-        public int Amount { get; set; }
-        public string Decription { get; set; }
-
-
+        /// <summary>
+        /// ian 28/10/2018
+        /// inserts a new staff member to the database
+        /// </summary>
+        /// <param name="newStaff"></param>
         public void AddStaffToDataBase(Staff newStaff)
         {
           
@@ -332,15 +362,23 @@ namespace FindANameFarm.MetaLayer
                 string email = newStaff.Email;
                 string role = newStaff.Role;
                 string contactNumber = newStaff.Contact;
+                string filepath = newStaff.ImageFile;
+            string password = newStaff.Password;
                 
-                string query = "Insert into staff(firstName, surname, gender, email, role, contactNumber) Values('" +
+                string query = "Insert into staff(firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword) Values('" +
                                firstName + "','" + surname + "','" + gender + "','" + email + "','" + role + "','" +
-                               contactNumber + "');";
+                               contactNumber + "','" + filepath + "','" + password + "');";
                
 
             _con.Insert(query);
             
         }
+
+        /// <summary>
+        /// ian 28/10/2018
+        /// inserts a new vehicle into the database
+        /// </summary>
+        /// <param name="newVehicle"></param>
         public void AddVehicleToDataBase(Vehicles newVehicle)
         {
 
@@ -352,6 +390,11 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
+        /// <summary>
+        /// ian 31/10/2018
+        /// inserts a new competency for a staff member into the database
+        /// </summary>
+        /// <param name="competency"></param>
         public void AddStaffCompetencyToDataBase(StaffAndCategory competency)
         {
             string query = "INSERT into Staff_category(staffId,categoryId)Values(" + competency.StaffId + "," +
@@ -360,11 +403,23 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
             _con.CloseConnection();
         }
+
+        /// <summary>
+        /// ian 28/10/2018
+        /// inserts a new category into the database
+        /// </summary>
+        /// <param name="category"></param>
         public void AddCategoryToDataBase(string category)
         {
             string query = "Insert into Category(categoryName)VALUES('" + category + "');";
             _con.Insert(query);
         }
+
+        /// <summary>
+        /// ian 28/10/2018
+        /// updates the selected staff member
+        /// </summary>
+        /// <param name="updateStaffMember"></param>
         public void UpdateStaffMember(Staff updateStaffMember)
         {
            
@@ -379,6 +434,11 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
+        /// <summary>
+        /// ian 28/10/2018
+        /// updates the selected vehicle
+        /// </summary>
+        /// <param name="updateVehicle"></param>
         public void UpdateVehicle(Vehicles updateVehicle)
         {
             String query = "UPDATE Vehicles SET vehicleName = '" + updateVehicle.VehicleName +
@@ -391,6 +451,11 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
+        /// <summary>
+        /// ian 28/10/2018
+        /// deletes the selected staff member
+        /// </summary>
+        /// <param name="staffMember"></param>
         public void DeleteStaffMember(int staffMember)
         {
             
@@ -400,6 +465,11 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
+        /// <summary>
+        /// ian 28/10/2018
+        /// deletes the selected vehicle
+        /// </summary>
+        /// <param name="vehicleId"></param>
         public void DeleteVehicle(int vehicleId)
         {
             string query = "DELETE FROM vehicles where vehicleId= " + vehicleId;
@@ -407,6 +477,17 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
-
+        /// <summary>
+        /// ian 3/11/2018
+        /// deletes the selected staff competency
+        /// </summary>
+        /// <param name="staffId"></param>
+        /// <param name="catId"></param>
+        public void DeleteStaffCompetency(int staffId, int catId)
+        {
+            string query = "DELETE FROM staff_category where categoryId= " + catId + "and staffId=" + staffId;
+            _con.Delete(query);
+            _con.CloseConnection();
+        }
     }
 }

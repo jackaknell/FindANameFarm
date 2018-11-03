@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnClose = new System.Windows.Forms.Button();
+            this.btnVehicleFormClose = new System.Windows.Forms.Button();
             this.btnDeleteVehicle = new System.Windows.Forms.Button();
             this.btnUpdateVehicle = new System.Windows.Forms.Button();
             this.btnCreateVehicle = new System.Windows.Forms.Button();
@@ -49,15 +49,15 @@
             this.gbCategories.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnClose
+            // btnVehicleFormClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(693, 418);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 22;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnVehicleFormClose.Location = new System.Drawing.Point(693, 418);
+            this.btnVehicleFormClose.Name = "btnVehicleFormClose";
+            this.btnVehicleFormClose.Size = new System.Drawing.Size(75, 23);
+            this.btnVehicleFormClose.TabIndex = 22;
+            this.btnVehicleFormClose.Text = "Close";
+            this.btnVehicleFormClose.UseVisualStyleBackColor = true;
+            this.btnVehicleFormClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDeleteVehicle
             // 
@@ -226,7 +226,7 @@
             this.ClientSize = new System.Drawing.Size(800, 470);
             this.Controls.Add(this.cbVehicleCategoryList);
             this.Controls.Add(this.lblCategorySelection);
-            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnVehicleFormClose);
             this.Controls.Add(this.btnDeleteVehicle);
             this.Controls.Add(this.btnUpdateVehicle);
             this.Controls.Add(this.btnCreateVehicle);
@@ -248,7 +248,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnVehicleFormClose;
         private System.Windows.Forms.Button btnDeleteVehicle;
         private System.Windows.Forms.Button btnUpdateVehicle;
         private System.Windows.Forms.Button btnCreateVehicle;

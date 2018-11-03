@@ -1,6 +1,9 @@
 ﻿namespace FindANameFarm
 {
-   
+   /// <summary>
+   /// Ian 25/10/2018
+   /// staff class defines a staff member
+   /// </summary>
     public class Staff
     {
         public int StaffId { get; set; }
@@ -13,7 +16,7 @@
         public string Password { get; set; }
         
         private string _imageFile;
-        private const string DefaultImage = "";
+        private const string DefaultImage = "defaultImage.png";
 
         public string ImageFile
         {

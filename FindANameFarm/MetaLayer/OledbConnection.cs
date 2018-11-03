@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.OleDb;
 using System.Data.Common;
 using System.Diagnostics;
+using Microsoft.SqlServer.Server;
 
 namespace FindANameFarm.MetaLayer
 {
@@ -78,7 +79,12 @@ namespace FindANameFarm.MetaLayer
 
             return true;
         }
-
+        /// <summary>
+        /// ian 26/10/2018
+        /// based on in class example
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public DbDataReader Select(string query)
         {
             DbDataReader reader;
@@ -103,6 +109,11 @@ namespace FindANameFarm.MetaLayer
 
             return reader;
         }
+
+        /// <summary>
+        /// ian 26/10/2018
+        /// </summary>
+        /// <param name="queryString"></param>
         public void Insert(string queryString)
         {
             try
@@ -122,6 +133,10 @@ namespace FindANameFarm.MetaLayer
             
         }
 
+        /// <summary>
+        /// Ian 26/10/2018
+        /// </summary>
+        /// <param name="query"></param>
         public void Update(string query)
         {
             OleDbCommand cmd = _connection.CreateCommand();
@@ -130,7 +145,10 @@ namespace FindANameFarm.MetaLayer
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// Ian 26/10/2018
+        /// </summary>
+        /// <param name="query"></param>
         public void Delete(string query)
         {
             OleDbCommand cmd = _connection.CreateCommand();
@@ -139,7 +157,7 @@ namespace FindANameFarm.MetaLayer
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
-
+       
         public DataSet GetDataSet(string sqlStatement)
         {
             try

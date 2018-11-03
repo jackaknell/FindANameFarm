@@ -10,6 +10,12 @@ namespace FindANameFarm
         public int StaffId { get; set; }
         public int CatId { get; set; }
     }
+
+    public struct CatIdAndName
+    {
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+    }
     public class StaffBank
     {
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
@@ -17,7 +23,7 @@ namespace FindANameFarm
         public List<StaffAndCategory>CompetencyList { get; private set; }
         public bool GetConnectionState { get; private set; }
         public static StaffBank UniqueInst;
-
+        public List<CatIdAndName> StaffCompetenciesList { get; private set; }
         //fot use with unit test
         public static int InstanceCount { get; set; }
         public StaffBank()
@@ -57,8 +63,8 @@ namespace FindANameFarm
         }
         public void GetCompetencies(int staffid)
         {
- 
-            CompetencyList= _metalayer.GetCompetencies(staffid);
+
+            StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
         }
         public void deleteStaff(int staffMember)
         {
@@ -71,6 +77,14 @@ namespace FindANameFarm
                     refreshConnection();
                 }
             }
+        }
+
+        public void deleteStaffCompetency(int staffId, int catId)
+        {
+           
+                    _metalayer.DeleteStaffCompetency(staffId,catId);
+                    refreshConnection();
+          
         }
 
         public void refreshConnection()

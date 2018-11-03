@@ -35,11 +35,12 @@ namespace FindANameFarm
             listCompetencies.View = View.Details;
             listCompetencies.FullRowSelect = true;
             listCompetencies.Columns.Add("ID", 75);
+            listCompetencies.Columns.Add("Competency", 100);
         }
 
         public void ShowStaff(List<Staff> staffList)
         {
-            this.listStaff.Items.Clear();
+            listStaff.Items.Clear();
 
             foreach (Staff staff in staffList)
             {
@@ -50,40 +51,45 @@ namespace FindANameFarm
                 lvItem.SubItems.Add(staff.Email);
                 lvItem.SubItems.Add(staff.Role);
                 lvItem.SubItems.Add(staff.Contact);
-                //lvItem.SubItems.Add(personel.age.ToString());
+                lvItem.SubItems.Add(staff.ImageFile);
+                lvItem.SubItems.Add(staff.Password);
 
-                this.listStaff.Items.Add(lvItem);
+                listStaff.Items.Add(lvItem);
 
             }
         }
-        public void showCopetencies(List<StaffAndCategory> competencies)
-        {
-            listCompetencies.Items.Clear();
-
-            foreach (StaffAndCategory competency in competencies)
-            {
-                ListViewItem lvItem = new ListViewItem(competency.CatId.ToString());
-                Debug.WriteLine(competency.CatId);
-
-                this.listCompetencies.Items.Add(lvItem);
-            }
-            
-        }
+       
 
         private void ShowCategories()
         {
             if (cbCompetencies != null)
             {
-                Debug.WriteLine("getting list");
+                
                 cbCompetencies.DataSource = _vehicleBank.Categories;
             }
-            Debug.WriteLine("getting list");
+            
             if (cbCompetencies == null) return;
             cbCompetencies.DisplayMember = "CatName";
             cbCompetencies.ValueMember = "CatId";
         }
 
+        public void showCompetencies()
+        {
+            _staffBank.GetCompetencies(Convert.ToInt32(txtId.Text));
 
+
+            listCompetencies.Items.Clear();
+
+            foreach (CatIdAndName competency in _staffBank.StaffCompetenciesList)
+            {
+                ListViewItem lvItem = new ListViewItem(competency.CategoryId.ToString());
+                lvItem.SubItems.Add(competency.CategoryName);
+
+
+                this.listCompetencies.Items.Add(lvItem);
+            }
+
+        }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -94,6 +100,8 @@ namespace FindANameFarm
             string email = listStaff.SelectedItems[0].SubItems[4].Text;
             string role = listStaff.SelectedItems[0].SubItems[5].Text;
             string contact = listStaff.SelectedItems[0].SubItems[6].Text;
+            string filePath = listStaff.SelectedItems[0].SubItems[7].Text;
+            string password = listStaff.SelectedItems[0].SubItems[8].Text;
             
             txtId.Text = ID;
             txtfName.Text = fName;
@@ -102,6 +110,9 @@ namespace FindANameFarm
             txtemail.Text = email;
             cbPosition.SelectedItem = role;
             txtContact.Text = contact;
+            txtImagePath.Text = filePath;
+            txtStaffPassword.Text = password;
+            showCompetencies();
         }
 
        
@@ -118,6 +129,7 @@ namespace FindANameFarm
             txtemail.Text = "";
             cbCompetencies.SelectedIndex = -1;
             txtContact.Text = "";
+            pbStaffImage.Image = Properties.Resources.defaultImage;
         }
 
         private void refresh()
@@ -126,7 +138,7 @@ namespace FindANameFarm
             _staffBank.refreshConnection();
             ShowStaff(_staffBank.StaffList);
             ShowCategories();
-          
+            
 
             resetForm();
 
@@ -171,6 +183,7 @@ namespace FindANameFarm
             _staffBank.updateStaff(editstaff);
 
             refresh();
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -182,6 +195,8 @@ namespace FindANameFarm
             addstaff.Email = txtemail.Text;
             addstaff.Role = cbPosition.SelectedItem.ToString();
             addstaff.Contact = txtContact.Text;
+            addstaff.ImageFile = txtImagePath.Text;
+            addstaff.Password = txtStaffPassword.Text;
 
             _staffBank.AddStaffToList(addstaff);
            
@@ -194,9 +209,29 @@ namespace FindANameFarm
             competency.CatId = Convert.ToInt32(cbCompetencies.SelectedValue);
             competency.StaffId = Convert.ToInt32(txtId.Text);
             _staffBank.AddCompetency(competency);
-            _staffBank.GetCompetencies(Convert.ToInt32(txtId.Text));
+            
+            showCompetencies();
+        }
 
-            showCopetencies(_staffBank.CompetencyList);
+     
+       
+        private void btnCloseStaffForm_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showCompetencies();
+        }
+
+        private void btnRemoveCompetency_Click(object sender, EventArgs e)
+        {
+            int staffMember = Convert.ToInt32(txtId.Text);
+            int catId = Convert.ToInt32(listCompetencies.SelectedItems[0].SubItems[0].Text);
+            
+           _staffBank.deleteStaffCompetency(staffMember,catId);
+            showCompetencies();
         }
     }
 }

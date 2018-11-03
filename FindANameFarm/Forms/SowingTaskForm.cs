@@ -16,5 +16,10 @@ namespace FindANameFarm.Forms
         {
             InitializeComponent();
         }
+
+        private void btnCloseSowingTask_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

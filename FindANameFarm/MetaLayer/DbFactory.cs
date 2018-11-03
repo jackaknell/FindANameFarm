@@ -5,6 +5,10 @@ using System.IO;
 
 namespace FindANameFarm.MetaLayer
 {
+    /// <summary>
+    /// ian 25/10/2018
+    /// based off in class example
+    /// </summary>
     public class DbFactory
     {
         private static IIDbConnection _instance;

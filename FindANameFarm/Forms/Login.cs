@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FindANameFarm.Forms;
+using FindANameFarm.MetaLayer;
+using FindANameFarm.Properties;
 
-namespace FindANameFarm.MetaLayer
+namespace FindANameFarm.Forms
 {
     public partial class Login : Form
     
@@ -27,26 +21,40 @@ namespace FindANameFarm.MetaLayer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Staff login = new Staff();
+            try
             {
-                login.StaffId = Convert.ToInt32(txtLoginId.Text);
-                login.Password = txtLoginPassword.Text;
+                Staff login = new Staff();
+                {
+                    login.StaffId = Convert.ToInt32(txtLoginId.Text);
+                    login.Password = txtLoginPassword.Text;
+                }
+
+                int validLogin = _metaLayer.GetLogin(login);
+
+                if (validLogin == 0)
+                {
+                    MessageBox.Show(Resources.Login_btnLogin_Click_Your_employee_number_and_password_don_t_match__please_try_again);
+                }
+                else
+                {
+                    Hide();
+                    Main main = new Main();
+                    main.Show();
+                }
             }
+            catch (Exception )
+            {
+                MessageBox.Show(Resources.Login_btnLogin_Click_Please_enter_both_your_employee_number_and_your_password);
+
+                
+            }
+           
             
      
 
-           int valiLogin= _metaLayer.GetLogin(login);
-
-            if (valiLogin == 0)
-            {
-                MessageBox.Show("There is something wrong with this username and password please try again");
-            }
-            else
-            {
-                this.Hide();
-                Main main = new Main();
-                main.Show();
-            }
+          
         }
+
+       
     }
 }

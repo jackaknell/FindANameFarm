@@ -113,16 +113,16 @@ namespace FindaANameFarm.UnitTests
         public void GetCompetencies_WhenCalled_GetStaffMembersCompetencies()
         {
             //Arrange
-            List<StaffAndCategory> competency;
-            competency = new List<StaffAndCategory>();
-            competency.Add(new StaffAndCategory {StaffId = 1, CatId = 3});
-            competency.Add(new StaffAndCategory {StaffId = 1, CatId = 4});
+            List<CatIdAndName> competency;
+            competency = new List<CatIdAndName>();
+            competency.Add(new CatIdAndName {CategoryId = 3, CategoryName = "harvestor" });
+            competency.Add(new CatIdAndName {CategoryId = 4, CategoryName = "tracktor" });
            
             //Act
-            Staff.GetCompetencies(competency[0].StaffId);
+            Staff.GetCompetencies(1);
            
             //Assert
-            CollectionAssert.AreEqual(Staff.CompetencyList,competency);
+            CollectionAssert.AreEqual(Staff.StaffCompetenciesList,competency);
             
         }
 

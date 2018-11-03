@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using FindANameFarm;
+using FindANameFarm.MetaLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FindaANameFarm.UnitTests
@@ -9,6 +10,7 @@ namespace FindaANameFarm.UnitTests
     [TestClass]
     public class VehicleBankTests
     {
+       
         VehicleBank Vehicle = VehicleBank.GetInst();
 
         /// <summary>
@@ -18,6 +20,7 @@ namespace FindaANameFarm.UnitTests
         [TestMethod]
         public void GetInst_IsSingleton()
         {
+           
             //Arrange
             var instance1 = VehicleBank.GetInst();
             var instance2 = VehicleBank.GetInst();
@@ -103,7 +106,7 @@ namespace FindaANameFarm.UnitTests
             //Act
             string category = "TestCategoryName";
 
-            Vehicle.AddCatagoryToDb(category);
+            Vehicle.AddCategoryToDb(category);
             Vehicle.RefreshConnection();
             //Assert
             Assert.AreEqual(Vehicle.Categories.Count, listCount+1);

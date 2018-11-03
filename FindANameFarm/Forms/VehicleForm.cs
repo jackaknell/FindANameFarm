@@ -108,7 +108,7 @@ namespace FindANameFarm.Forms
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            _vehicleBank?.AddCatagoryToDb(txtAddCategory.Text);
+            _vehicleBank?.AddCategoryToDb(txtAddCategory.Text);
 
             refresh();
         }

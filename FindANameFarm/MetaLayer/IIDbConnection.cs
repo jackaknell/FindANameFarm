@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// ian 25/10/2018
+/// interface for db
+/// </summary>
 namespace FindANameFarm.MetaLayer
 {
  
