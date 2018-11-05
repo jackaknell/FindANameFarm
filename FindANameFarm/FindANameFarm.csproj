@@ -213,6 +213,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MetaLayer\properties.dat" />
     <None Include="Properties\DataSources\StaffAndCategory.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -232,6 +233,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\defaultImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetaLayer\FindANameFarm.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

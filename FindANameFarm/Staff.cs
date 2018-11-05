@@ -16,13 +16,29 @@
         public string Password { get; set; }
         
         private string _imageFile;
-        private const string DefaultImage = "defaultImage.png";
+        public const string DefaultImage = "defaultImage.png";
+
+        //public string ImageFile
+        //{
+        //    get => _imageFile;
+
+        //    set => _imageFile = value ?? DefaultImage;
+        //}
 
         public string ImageFile
         {
-            get => _imageFile;
-
-            set => _imageFile = value ?? DefaultImage;
+            get { return _imageFile; }
+            set
+            {
+                if (null == value)
+                {
+                    _imageFile = DefaultImage;
+                }
+                else
+                {
+                    _imageFile = value;
+                }
+            }
         }
     }
 

@@ -14,7 +14,7 @@ namespace FindANameFarm.MetaLayer
         private static IIDbConnection _instance;
 
         Dictionary<string, string> _properties;
-        private static string propfile = "properties.dat";
+        private static string propfile = Environment.CurrentDirectory + "/MetaLayer/" + "properties.dat";
 
         private DbFactory()
         {
