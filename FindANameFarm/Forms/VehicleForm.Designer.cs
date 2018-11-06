@@ -194,7 +194,7 @@
             // listVehicles
             // 
             this.listVehicles.GridLines = true;
-            this.listVehicles.Location = new System.Drawing.Point(467, -1);
+            this.listVehicles.Location = new System.Drawing.Point(467, 12);
             this.listVehicles.Name = "listVehicles";
             this.listVehicles.Size = new System.Drawing.Size(301, 378);
             this.listVehicles.TabIndex = 13;

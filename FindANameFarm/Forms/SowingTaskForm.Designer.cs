@@ -72,10 +72,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnUpdateSowingTask = new System.Windows.Forms.Button();
             this.btnDeleteSowingTask = new System.Windows.Forms.Button();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -85,7 +88,7 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Location = new System.Drawing.Point(698, 51);
+            this.groupBox2.Location = new System.Drawing.Point(826, 51);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(266, 513);
             this.groupBox2.TabIndex = 12;
@@ -93,7 +96,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(25, 227);
+            this.pictureBox1.Location = new System.Drawing.Point(56, 227);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(145, 182);
             this.pictureBox1.TabIndex = 4;
@@ -137,7 +140,7 @@
             // 
             // btnCloseSowingTask
             // 
-            this.btnCloseSowingTask.Location = new System.Drawing.Point(853, 581);
+            this.btnCloseSowingTask.Location = new System.Drawing.Point(967, 581);
             this.btnCloseSowingTask.Name = "btnCloseSowingTask";
             this.btnCloseSowingTask.Size = new System.Drawing.Size(125, 45);
             this.btnCloseSowingTask.TabIndex = 11;
@@ -164,6 +167,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.dateTimePicker3);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label18);
@@ -197,7 +202,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(17, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(656, 513);
+            this.groupBox1.Size = new System.Drawing.Size(747, 513);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -245,7 +250,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(405, 438);
+            this.button4.Location = new System.Drawing.Point(486, 449);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(164, 23);
             this.button4.TabIndex = 27;
@@ -254,7 +259,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(407, 217);
+            this.button1.Location = new System.Drawing.Point(488, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 23);
             this.button1.TabIndex = 26;
@@ -264,7 +269,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(236, 364);
+            this.label12.Location = new System.Drawing.Point(297, 364);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 25;
@@ -272,14 +277,14 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(110, 361);
+            this.numericUpDown1.Location = new System.Drawing.Point(171, 361);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 24;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(252, 305);
+            this.button5.Location = new System.Drawing.Point(313, 305);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(91, 23);
             this.button5.TabIndex = 23;
@@ -289,7 +294,7 @@
             // comboBox6
             // 
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(110, 307);
+            this.comboBox6.Location = new System.Drawing.Point(171, 307);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 22;
@@ -306,7 +311,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(402, 48);
+            this.label10.Location = new System.Drawing.Point(483, 59);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 13);
             this.label10.TabIndex = 19;
@@ -315,7 +320,7 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(405, 64);
+            this.listBox2.Location = new System.Drawing.Point(486, 75);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(226, 147);
             this.listBox2.TabIndex = 18;
@@ -323,7 +328,7 @@
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(110, 253);
+            this.comboBox5.Location = new System.Drawing.Point(171, 253);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 21);
             this.comboBox5.TabIndex = 17;
@@ -331,7 +336,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(402, 269);
+            this.label9.Location = new System.Drawing.Point(483, 280);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(131, 13);
             this.label9.TabIndex = 16;
@@ -340,14 +345,14 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(405, 285);
+            this.listBox1.Location = new System.Drawing.Point(486, 296);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(226, 147);
             this.listBox1.TabIndex = 15;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(252, 197);
+            this.button3.Location = new System.Drawing.Point(313, 197);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 23);
             this.button3.TabIndex = 14;
@@ -357,7 +362,7 @@
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(110, 199);
+            this.comboBox4.Location = new System.Drawing.Point(171, 199);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 13;
@@ -408,14 +413,14 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(110, 145);
+            this.comboBox3.Location = new System.Drawing.Point(171, 145);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(252, 143);
+            this.button2.Location = new System.Drawing.Point(313, 143);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 23);
             this.button2.TabIndex = 6;
@@ -425,7 +430,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(110, 91);
+            this.comboBox2.Location = new System.Drawing.Point(171, 91);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 4;
@@ -491,11 +496,27 @@
             this.btnDeleteSowingTask.Text = "Delete sowing task";
             this.btnDeleteSowingTask.UseVisualStyleBackColor = true;
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(172, 171);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.TabIndex = 34;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(23, 173);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(87, 13);
+            this.label20.TabIndex = 33;
+            this.label20.Text = "Quantity Needed";
+            // 
             // SowingTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 651);
+            this.ClientSize = new System.Drawing.Size(1104, 651);
             this.Controls.Add(this.btnDeleteSowingTask);
             this.Controls.Add(this.btnUpdateSowingTask);
             this.Controls.Add(this.groupBox2);
@@ -512,6 +533,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,5 +585,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnUpdateSowingTask;
         private System.Windows.Forms.Button btnDeleteSowingTask;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label20;
     }
 }

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace FindANameFarm.Forms
 {
-    public partial class ReportStockLevelsForms : Form
+    public partial class StaffWorkSheet : Form
     {
-        public ReportStockLevelsForms()
+        public StaffWorkSheet()
         {
             InitializeComponent();
         }
+
+        
     }
 }
