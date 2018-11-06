@@ -86,8 +86,8 @@ namespace FindANameFarm.Forms
 
         private void viewStockLevelsAndPlannedUsageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportStockLevelsForms viewStockLevels = new ReportStockLevelsForms();
-            formAllreadyOpen(viewStockLevels);
+           // ReportStockLevelsForms viewStockLevels = new ReportStockLevelsForms();
+           // formAllreadyOpen(viewStockLevels);
         }
 
         private void viewAvailableStorageToolStripMenuItem_Click(object sender, EventArgs e)

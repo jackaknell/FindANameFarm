@@ -42,7 +42,6 @@
             this.fertiliserTreatmentTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCropsCurrentlyInCultivationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLabourRequirmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAvailableStorageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCurrentHarvestRequirementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -154,7 +153,6 @@
             // 
             this.viewReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewCropsCurrentlyInCultivationToolStripMenuItem,
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem,
             this.viewLabourRequirmentsToolStripMenuItem,
             this.viewAvailableStorageToolStripMenuItem,
             this.viewCurrentHarvestRequirementsToolStripMenuItem,
@@ -166,41 +164,34 @@
             // viewCropsCurrentlyInCultivationToolStripMenuItem
             // 
             this.viewCropsCurrentlyInCultivationToolStripMenuItem.Name = "viewCropsCurrentlyInCultivationToolStripMenuItem";
-            this.viewCropsCurrentlyInCultivationToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.viewCropsCurrentlyInCultivationToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewCropsCurrentlyInCultivationToolStripMenuItem.Text = "View Crops currently in cultivation";
             this.viewCropsCurrentlyInCultivationToolStripMenuItem.Click += new System.EventHandler(this.viewCropsCurrentlyInCultivationToolStripMenuItem_Click);
-            // 
-            // viewStockLevelsAndPlannedUsageToolStripMenuItem
-            // 
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem.Name = "viewStockLevelsAndPlannedUsageToolStripMenuItem";
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem.Text = "View stock levels and planned usage";
-            this.viewStockLevelsAndPlannedUsageToolStripMenuItem.Click += new System.EventHandler(this.viewStockLevelsAndPlannedUsageToolStripMenuItem_Click);
             // 
             // viewLabourRequirmentsToolStripMenuItem
             // 
             this.viewLabourRequirmentsToolStripMenuItem.Name = "viewLabourRequirmentsToolStripMenuItem";
-            this.viewLabourRequirmentsToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.viewLabourRequirmentsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewLabourRequirmentsToolStripMenuItem.Text = "View labour requirements";
             this.viewLabourRequirmentsToolStripMenuItem.Click += new System.EventHandler(this.viewLabourRequirmentsToolStripMenuItem_Click);
             // 
             // viewAvailableStorageToolStripMenuItem
             // 
             this.viewAvailableStorageToolStripMenuItem.Name = "viewAvailableStorageToolStripMenuItem";
-            this.viewAvailableStorageToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.viewAvailableStorageToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewAvailableStorageToolStripMenuItem.Text = "View available storage";
             this.viewAvailableStorageToolStripMenuItem.Click += new System.EventHandler(this.viewAvailableStorageToolStripMenuItem_Click);
             // 
             // viewCurrentHarvestRequirementsToolStripMenuItem
             // 
             this.viewCurrentHarvestRequirementsToolStripMenuItem.Name = "viewCurrentHarvestRequirementsToolStripMenuItem";
-            this.viewCurrentHarvestRequirementsToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.viewCurrentHarvestRequirementsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewCurrentHarvestRequirementsToolStripMenuItem.Text = "View Current harvest requirements";
             // 
             // viewHarvestTimeTableToolStripMenuItem
             // 
             this.viewHarvestTimeTableToolStripMenuItem.Name = "viewHarvestTimeTableToolStripMenuItem";
-            this.viewHarvestTimeTableToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.viewHarvestTimeTableToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewHarvestTimeTableToolStripMenuItem.Text = "View Harvest Time Table";
             this.viewHarvestTimeTableToolStripMenuItem.Click += new System.EventHandler(this.viewHarvestTimeTableToolStripMenuItem_Click);
             // 
@@ -244,7 +235,6 @@
         private System.Windows.Forms.ToolStripMenuItem fertiliserTreatmentTaskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewReportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewCropsCurrentlyInCultivationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewStockLevelsAndPlannedUsageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewLabourRequirmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewAvailableStorageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewCurrentHarvestRequirementsToolStripMenuItem;

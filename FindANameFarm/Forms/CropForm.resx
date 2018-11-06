@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login_btnLogin_Click_Your_employee_number_and_password_don_t_match__please_try_again" xml:space="preserve">
-    <value>Your employee number and password don't match, please try again</value>
-  </data>
 </root>
