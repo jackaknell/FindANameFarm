@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
+using FindANameFarm.BasicClasses;
 
 namespace FindANameFarm.MetaLayer
 {
@@ -254,6 +255,35 @@ namespace FindANameFarm.MetaLayer
             return vehicleCat;
         }
 
+        /// <summary>
+        /// ian 06/11/2018
+        /// Gets the list of fields and add them to the Field list
+        /// </summary>
+        /// <returns></returns>
+        public List<Fields> GetFields()
+        {
+            List<Fields> fields = new List<Fields>();
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr = _con.Select("SELECT * FROM Fields;");
+
+                while (dr.Read())
+                {
+                    Fields field = new Fields()
+                    {
+                        FieldId = dr.GetInt32(0),
+                        FieldName = dr.GetString(1),
+                        FieldSize = dr.GetInt32(2),
+                        FieldSuitability = dr.GetString(3),
+                    };
+                    fields.Add(field);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return fields;
+        }
        public List<Crops> GetCrop()
         {
 
@@ -373,7 +403,24 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
             
         }
+        /// <summary>
+        /// ian 06/11/2018
+        /// adds a field to the database
+        /// </summary>
+        /// <param name="newField"></param>
+        public void AddFieldToDataBase(Fields newField)
+        {
+            string fieldName = newField.FieldName;
+            Int32 fieldSize = newField.FieldSize;
+            string fieldSuitability = newField.FieldSuitability;
 
+
+            string query = "Insert into fields(FieldName, FieldSize, FieldSuitability) Values('" + fieldName + "','" +
+                           fieldSize + "','" + fieldSuitability + "');";
+
+            _con.Insert(query);
+
+        }
         /// <summary>
         /// ian 28/10/2018
         /// inserts a new vehicle into the database
@@ -442,7 +489,7 @@ namespace FindANameFarm.MetaLayer
         public void UpdateVehicle(Vehicles updateVehicle)
         {
             String query = "UPDATE Vehicles SET vehicleName = '" + updateVehicle.VehicleName +
-                           "', vehicleCategory = '" + updateVehicle.Category + "'Where VehicleId =" +
+                           "', vehicleCategory = '" + updateVehicle.Category + "' Where VehicleId =" +
                            updateVehicle.VehicleId;
 
          
@@ -450,7 +497,19 @@ namespace FindANameFarm.MetaLayer
             _con.Update(query);
             _con.CloseConnection();
         }
+        /// <summary>
+        /// ian 06/11/2018
+        /// Update the selected field
+        /// </summary>
+        /// <param name="updateField"></param>
+        public void UpdateField(Fields updateField)
+        {
+            String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize + "" +
+                           ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
 
+            _con.Update(query);
+            _con.CloseConnection();
+        }
         /// <summary>
         /// ian 28/10/2018
         /// deletes the selected staff member

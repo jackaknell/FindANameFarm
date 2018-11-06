@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banks\FieldBank.cs" />
     <Compile Include="BasicClasses\Audit.cs" />
+    <Compile Include="BasicClasses\Fields.cs" />
     <Compile Include="Forms\HarvestTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,9 +6,6 @@ namespace FindaANameFarm.UnitTests
     [TestClass]
     public class BusinessMetaLayerTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+       
     }
 }

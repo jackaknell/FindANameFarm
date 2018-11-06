@@ -33,7 +33,7 @@ namespace FindANameFarm
             InstanceCount++;
         }
 
-
+        //singleton
         public static StaffBank GetInst() => UniqueInst ?? (UniqueInst = new StaffBank());
 
         

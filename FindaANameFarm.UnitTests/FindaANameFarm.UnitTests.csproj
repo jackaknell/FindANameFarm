@@ -52,6 +52,7 @@
     <Compile Include="StaffBankTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusinessMetaLayerTests.cs" />
+    <Compile Include="FieldBankTests.cs" />
     <Compile Include="VehicleBankTests.cs" />
   </ItemGroup>
   <ItemGroup>
