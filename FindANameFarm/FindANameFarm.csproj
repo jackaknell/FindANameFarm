@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banks\CropBank.cs" />
+    <Compile Include="Banks\FertTreatBank.cs" />
+    <Compile Include="BasicClasses\FertiliserAndTreatment.cs" />
     <Compile Include="Banks\FieldBank.cs" />
     <Compile Include="BasicClasses\Audit.cs" />
     <Compile Include="BasicClasses\Fields.cs" />

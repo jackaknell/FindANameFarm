@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
+using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 
 namespace FindANameFarm.MetaLayer
@@ -141,36 +142,6 @@ namespace FindANameFarm.MetaLayer
             return competencies;
         }
 
-        public List<Crops> GetCrops()
-        {
-            List<Crops> crops = new List<Crops>();
-            if (_con.OpenConnection())
-            {
-
-
-                DbDataReader dr =_con.Select("select * from crop");
-
-
-
-                while (dr.Read())
-                {
-                    Crops crop = new Crops()
-                    {
-                        CropId = dr.GetInt32(0),
-                        CropName = dr.GetString(1),
-                        CropStock = dr.GetInt32(2)
-                    };
-
-                    crops.Add(crop);
-                }
-
-
-                dr.Close();
-                _con.CloseConnection();
-            }
-
-            return crops;
-        }
         /// <summary>
         /// ian 30/10/2018
         /// selects and returns a list of vehicle categories
@@ -246,6 +217,30 @@ namespace FindANameFarm.MetaLayer
 
             }
             return vehicles;
+        }
+
+        public List<FertiliserAndTreatment> GetFertiliserAndTreatment()
+        {
+            List<FertiliserAndTreatment> fertTreat = new List<FertiliserAndTreatment>();
+
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr = _con.Select("SELECT * FROM FertiliserAndTreatment;");
+
+                while (dr.Read())
+                {
+                    FertiliserAndTreatment fertTreatType = new FertiliserAndTreatment
+                    {
+                        FertTreatId = dr.GetInt32(0),
+                        FertTreatName = dr.GetString(1),
+                        FertTreatQuantity = dr.GetInt32(2)
+                    };
+                    fertTreat.Add(fertTreatType);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+            return fertTreat;
         }
 
         /// <summary>
@@ -451,19 +446,6 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
 
         }
-        public void AddCropToDataBase(Crops crop)
-        {
-            string cropName = crop.CropName;
-            Int32 cropStock = crop.CropStock;
-            
-
-
-            string query = "Insert into fields(cropName, cropStock) Values('" + cropName + "'," +
-                           cropStock + ");";
-
-            _con.Insert(query);
-
-        }
         /// <summary>
         /// ian 28/10/2018
         /// inserts a new vehicle into the database
@@ -489,6 +471,14 @@ namespace FindANameFarm.MetaLayer
         {
             string query = "INSERT into Staff_category(staffId,categoryId)Values(" + competency.StaffId + "," +
                            competency.CatId + ");";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+        }
+        public void AddFertTreatToDataBase(FertiliserAndTreatment newFertTreat)
+        {
+            string query = "Insert into FertiliserAndTreatment(fertTreatName,fertTreatQuantity) Values('" +
+                newFertTreat.FertTreatName + "', '" + newFertTreat.FertTreatQuantity + "');";
 
             _con.Insert(query);
             _con.CloseConnection();
@@ -554,10 +544,11 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
-        public void UpdateCrop(Crops updateCrop)
+        public void UpdateFertTreat(FertiliserAndTreatment updateFertTreat)
         {
-            String query = "UPDATE Crops SET cropName = '" + updateCrop.CropName + "', CropStock = " +
-                           updateCrop.CropStock + " Where FieldId =" + updateCrop.CropId;
+            String query = "UPDATE FertiliserAndTreatment SET fertTreatName = '" + updateFertTreat.FertTreatName +
+                "', fertTreatQuantity = " + updateFertTreat.FertTreatQuantity +
+                " Where fertTreatId =" + updateFertTreat.FertTreatId;
 
             _con.Update(query);
             _con.CloseConnection();
