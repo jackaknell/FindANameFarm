@@ -141,6 +141,36 @@ namespace FindANameFarm.MetaLayer
             return competencies;
         }
 
+        public List<Crops> GetCrops()
+        {
+            List<Crops> crops = new List<Crops>();
+            if (_con.OpenConnection())
+            {
+
+
+                DbDataReader dr =_con.Select("select * from crop");
+
+
+
+                while (dr.Read())
+                {
+                    Crops crop = new Crops()
+                    {
+                        CropId = dr.GetInt32(0),
+                        CropName = dr.GetString(1),
+                        CropStock = dr.GetInt32(2)
+                    };
+
+                    crops.Add(crop);
+                }
+
+
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return crops;
+        }
         /// <summary>
         /// ian 30/10/2018
         /// selects and returns a list of vehicle categories
@@ -421,6 +451,19 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
 
         }
+        public void AddCropToDataBase(Crops crop)
+        {
+            string cropName = crop.CropName;
+            Int32 cropStock = crop.CropStock;
+            
+
+
+            string query = "Insert into fields(cropName, cropStock) Values('" + cropName + "'," +
+                           cropStock + ");";
+
+            _con.Insert(query);
+
+        }
         /// <summary>
         /// ian 28/10/2018
         /// inserts a new vehicle into the database
@@ -506,6 +549,15 @@ namespace FindANameFarm.MetaLayer
         {
             String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize + "" +
                            ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
+
+            _con.Update(query);
+            _con.CloseConnection();
+        }
+
+        public void UpdateCrop(Crops updateCrop)
+        {
+            String query = "UPDATE Crops SET cropName = '" + updateCrop.CropName + "', CropStock = " +
+                           updateCrop.CropStock + " Where FieldId =" + updateCrop.CropId;
 
             _con.Update(query);
             _con.CloseConnection();

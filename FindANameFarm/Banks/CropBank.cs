@@ -8,51 +8,53 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
 {
-    public class FieldBank
+    class CropBank
     {
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
-        public List<Fields> FieldList { get; private set; }
-        public static FieldBank UniqueInst;
+
+        public List<Crops> CropList { get; private set; }
+        public static CropBank UniqueInst;
+
         public bool GetConnectionState { get; private set; }
+
         //for unit testing
         public static int InstanceCount { get; set; }
 
-        public FieldBank()
+
+        public CropBank()
         {
             RefreshConnection();
             InstanceCount++;
         }
-
-        //singleton
-        public static FieldBank GetInst() => UniqueInst ?? (UniqueInst = new FieldBank());
-
-        public void AddFieldToList(Fields field)
+        public void AddCropToList(Crops crop)
         {
-            FieldList.Add(field);
-            _metalayer.AddFieldToDataBase(field);
-            
+            CropList.Add(crop);
+            _metalayer.AddCropToDataBase(crop);
+
         }
 
-        public void UpdateField(Fields editField)
+        public void UpdateCrop(Crops editcrop)
         {
-            for (int i = 0; i < FieldList.Count; i++)
+            for (int i = 0; i < CropList.Count; i++)
             {
-                Fields staff = FieldList[i];
-                if (staff.FieldId == editField.FieldId)
+                Crops crop = CropList[i];
+                if (crop.CropId == editcrop.CropId)
                 {
 
-                    _metalayer.UpdateField(editField);
+                    _metalayer.UpdateCrop(editcrop);
                     RefreshConnection();
                 }
             }
         }
+        public static CropBank GetInst() => UniqueInst ?? (UniqueInst = new CropBank());
+
 
         public void RefreshConnection()
         {
             try
             {
                 BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
-                FieldList = metaLayer.GetFields();
+                CropList = metaLayer.GetCrops();
 
                 GetConnectionState = true;
             }

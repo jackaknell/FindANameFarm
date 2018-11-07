@@ -12,9 +12,5 @@ namespace FindANameFarm.MetaLayer
         public int CropId { get; set; }
         public string CropName { get; set; }
         public int CropStock { get; set; }
-
-
-
-
     }
 }
