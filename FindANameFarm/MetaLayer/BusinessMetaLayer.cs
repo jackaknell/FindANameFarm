@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
+using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 
 namespace FindANameFarm.MetaLayer
@@ -216,6 +217,30 @@ namespace FindANameFarm.MetaLayer
 
             }
             return vehicles;
+        }
+
+        public List<FertiliserAndTreatment> GetFertiliserAndTreatment()
+        {
+            List<FertiliserAndTreatment> fertTreat = new List<FertiliserAndTreatment>();
+
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr = _con.Select("SELECT * FROM FertiliserAndTreatment;");
+
+                while (dr.Read())
+                {
+                    FertiliserAndTreatment fertTreatType = new FertiliserAndTreatment
+                    {
+                        FertTreatId = dr.GetInt32(0),
+                        FertTreatName = dr.GetString(1),
+                        FertTreatQuantity = dr.GetInt32(2)
+                    };
+                    fertTreat.Add(fertTreatType);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+            return fertTreat;
         }
 
         /// <summary>
@@ -450,6 +475,14 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
             _con.CloseConnection();
         }
+        public void AddFertTreatToDataBase(FertiliserAndTreatment newFertTreat)
+        {
+            string query = "Insert into FertiliserAndTreatment(fertTreatName,fertTreatQuantity) Values('" +
+                newFertTreat.FertTreatName + "', '" + newFertTreat.FertTreatQuantity + "');";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+        }
 
         /// <summary>
         /// ian 28/10/2018
@@ -506,6 +539,16 @@ namespace FindANameFarm.MetaLayer
         {
             String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize + "" +
                            ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
+
+            _con.Update(query);
+            _con.CloseConnection();
+        }
+
+        public void UpdateFertTreat(FertiliserAndTreatment updateFertTreat)
+        {
+            String query = "UPDATE FertiliserAndTreatment SET fertTreatName = '" + updateFertTreat.FertTreatName +
+                "', fertTreatQuantity = " + updateFertTreat.FertTreatQuantity +
+                " Where fertTreatId =" + updateFertTreat.FertTreatId;
 
             _con.Update(query);
             _con.CloseConnection();
