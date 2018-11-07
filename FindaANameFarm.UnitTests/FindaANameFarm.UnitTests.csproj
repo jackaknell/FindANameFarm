@@ -54,6 +54,7 @@
     <Compile Include="BusinessMetaLayerTests.cs" />
     <Compile Include="FieldBankTests.cs" />
     <Compile Include="FertiliserAndTreatmentTests.cs" />
+    <Compile Include="CropBankTests.cs" />
     <Compile Include="VehicleBankTests.cs" />
   </ItemGroup>
   <ItemGroup>

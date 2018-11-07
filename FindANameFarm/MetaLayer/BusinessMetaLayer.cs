@@ -51,9 +51,11 @@ namespace FindANameFarm.MetaLayer
                 dr.Close();
                 _con.CloseConnection();
             }
-            Debug.WriteLine(staffLogin.Count);
+           
             return staffLogin.Count;
         }
+
+
 
         /// <summary>
         /// Ian 27/10/2018
@@ -102,6 +104,46 @@ namespace FindANameFarm.MetaLayer
 
             return staff;
         }
+
+        public List<Crops> GetCrops()
+        {
+            List<Crops> crops = new List<Crops>();
+
+            //IIDbConnection con = DbFactory.Instance();
+            if (_con.OpenConnection())
+            {
+
+                DbDataReader dr = _con.Select("SELECT * FROM Crops;");
+
+
+                //Read the data and store them in the list
+                while (dr.Read())
+                {
+
+                    Crops crop = new Crops
+                    {
+                        CropId = dr.GetInt32(0),
+                        CropName = dr.GetString(1),
+                        CropStock = dr.GetInt32(2)
+                       
+                    };
+
+
+                    crops.Add(crop);
+
+
+
+                }
+
+                //close Data Reader
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return crops;
+        }
+
+
 
         /// <summary>
         /// Ian 3/11/2018
@@ -309,39 +351,8 @@ namespace FindANameFarm.MetaLayer
 
             return fields;
         }
-       public List<Crops> GetCrop()
-        {
+      
 
-            List<Crops> crops = new List<Crops>();
-            if (_con.OpenConnection())
-            {
-
-                DbDataReader dr = _con.Select("");
-
-            while (dr.Read())
-            {
-                    Crops crop = new Crops()
-                    {
-                        CropId = dr.GetInt32(0),
-                        CropName = dr.GetString(1),
-                        CropStock = dr.GetInt32(2),
-
-                    };
-
-                    crops.Add(crop);
-
-                }
-
-                dr.Close();
-                _con.CloseConnection();
-            
-
-            }
-
-
-            return crops;
-        }
-        
         public List<Storage> GetStorage()
         {
             List<Storage> storage = new List<Storage>();
@@ -446,6 +457,18 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
 
         }
+
+        public void AddCropToDataBase(Crops newCrop)
+        {
+            string CropName = newCrop.CropName;
+            Int32 fieldSize = newCrop.CropStock;
+
+            string query = "Insert into Crops(CropName, CropStock) Values('" + CropName + "'," +
+                           fieldSize + ");";
+
+            _con.Insert(query);
+
+        }
         /// <summary>
         /// ian 28/10/2018
         /// inserts a new vehicle into the database
@@ -530,6 +553,8 @@ namespace FindANameFarm.MetaLayer
             _con.Update(query);
             _con.CloseConnection();
         }
+
+
         /// <summary>
         /// ian 06/11/2018
         /// Update the selected field
@@ -537,13 +562,19 @@ namespace FindANameFarm.MetaLayer
         /// <param name="updateField"></param>
         public void UpdateField(Fields updateField)
         {
-            String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize + "" +
-                           ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
+            String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize +  ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
 
             _con.Update(query);
             _con.CloseConnection();
         }
 
+        public void UpdateCrop(Crops updateCrop)
+        {
+            String query = "UPDATE Crops SET cropName = '" + updateCrop.CropName + "', cropStock = " + updateCrop.CropStock + " Where cropId =" + updateCrop.CropId;
+
+            _con.Update(query);
+            _con.CloseConnection();
+        }
         public void UpdateFertTreat(FertiliserAndTreatment updateFertTreat)
         {
             String query = "UPDATE FertiliserAndTreatment SET fertTreatName = '" + updateFertTreat.FertTreatName +

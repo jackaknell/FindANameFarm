@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FindANameFarm.Banks;
 using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm
@@ -50,6 +51,8 @@ namespace FindANameFarm
         }
         public void updateStaff(Staff editStaffMember)
         {
+          
+
             for (int i = 0; i < StaffList.Count; i++)
             {
                 Staff staff = StaffList[i];

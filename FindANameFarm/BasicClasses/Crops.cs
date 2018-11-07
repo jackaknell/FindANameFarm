@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindANameFarm.MetaLayer
 {
-    class Crops
+    public class Crops
     {
 
         public int CropId { get; set; }
