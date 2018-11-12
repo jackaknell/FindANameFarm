@@ -126,45 +126,7 @@ namespace FindaANameFarm.UnitTests
             
         }
 
-        /// <summary>
-        /// Ian 1/11/18
-        /// Tests that the competency list populates with the selected staff members competencies
-        /// </summary>
-        //[TestMethod]
-
-        //public void DeleteStaff_WhenCalled_DeleteStaffFromDataBase()
-        //{
-        //    int listCount = Staff.StaffList.Count;
-            
-        //    Staff staff = new Staff
-        //    {
-                
-        //        FirstName = "testDelete",
-        //        SurName = "test1",
-        //        Gender = "test1",
-        //        Email = "test1",
-        //        Role = "test1",
-        //        Contact = "test1",
-        //        ImageFile = "test1",
-        //        //Password = "test1",
-        //    };
-        //    //add a staff member to the database to be removed
-        //    Staff.AddStaffToList(staff);
-
-
-        //    //Act
-            
-        //    //returns the staff member at the index position of the previously entered staff
-        //    Staff staffMember = Staff.StaffList[4];
-        //    Debug.WriteLine(staffMember.StaffId);
-        //    Staff.deleteStaff(staffMember.StaffId);
-        //    //
-        //    //list count after item removed
-        //    int listCount2 = Staff.StaffList.Count;
-
-        //    //Assert
-        //    Assert.AreEqual(listCount,listCount2);
-        //}
+       
     }
 }
 

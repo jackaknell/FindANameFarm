@@ -49,13 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StaffBankTests.cs" />
+    <Compile Include="BanksTests\StaffBankTests.cs" />
+    <Compile Include="BanksTests\WorkTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BusinessMetaLayerTests.cs" />
-    <Compile Include="FieldBankTests.cs" />
-    <Compile Include="FertiliserAndTreatmentTests.cs" />
-    <Compile Include="CropBankTests.cs" />
-    <Compile Include="VehicleBankTests.cs" />
+    <Compile Include="MetaLayerTests\BusinessMetaLayerTests.cs" />
+    <Compile Include="BanksTests\FieldBankTests.cs" />
+    <Compile Include="BanksTests\FertiliserAndTreatmentBankTests.cs" />
+    <Compile Include="BanksTests\CropBankTests.cs" />
+    <Compile Include="BanksTests\VehicleBankTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

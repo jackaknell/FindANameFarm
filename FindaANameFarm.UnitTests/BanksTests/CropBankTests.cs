@@ -11,6 +11,10 @@ namespace FindaANameFarm.UnitTests
     {
         CropsBank _crop = CropsBank.GetInst();
 
+        /// <summary>
+        /// Ian 07/11/18
+        /// test cropbank singleton
+        /// </summary>
         [TestMethod]
         public void GetInst_IsSingleton()
         {
@@ -23,6 +27,10 @@ namespace FindaANameFarm.UnitTests
             Assert.AreEqual(CropsBank.InstanceCount, 1);
         }
 
+        /// <summary>
+        /// Ian 07/11/18
+        /// tests crop insert method
+        /// </summary>
         [TestMethod]
         public void AddCrop_whenCalled_InsertCrop()
         {
@@ -40,6 +48,10 @@ namespace FindaANameFarm.UnitTests
             Assert.AreEqual(_crop.CropsList[listCount], crop);
         }
 
+        /// <summary>
+        /// ia 07/11/18
+        /// tests crop update method
+        /// </summary>
         [TestMethod]
 
         public void upDatacrop_WhenCalled_updatesCropInDataBase()

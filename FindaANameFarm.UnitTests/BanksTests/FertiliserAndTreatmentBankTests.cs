@@ -6,10 +6,14 @@ using FindANameFarm.Banks;
 namespace FindaANameFarm.UnitTests
 {
     [TestClass]
-    public class FertiliserAndTreatmentTests
+    public class FertiliserAndTreatmentBankTests
     {
         FertTreatBank FertAndTreat = FertTreatBank.GetInst();
 
+        /// <summary>
+        /// Jason 7/11/18
+        /// tests the fert and treatment bak singleton
+        /// </summary>
         [TestMethod]
         //method, what you're doing, expected outcome
         public void GetInst_IsSingleton()
@@ -22,6 +26,10 @@ namespace FindaANameFarm.UnitTests
             Assert.AreSame(instance1, instance2);
             Assert.AreEqual(FertTreatBank.InstanceCount, 1);
         }
+
+        /// <summary>
+        /// Jason 07/11/08
+        /// </summary>
         [TestMethod]
         public void AddFertTreat_whenCalled_InsertFertTreat()
         {
@@ -34,6 +42,9 @@ namespace FindaANameFarm.UnitTests
             Assert.AreEqual(FertAndTreat.FertTreatList[listCount], fertTreat);
         }
 
+        /// <summary>
+        /// Jason 07/11/08
+        /// </summary>
         [TestMethod]
         public void updateFertTreat_WhenCalled_updateFertTreat()
         {

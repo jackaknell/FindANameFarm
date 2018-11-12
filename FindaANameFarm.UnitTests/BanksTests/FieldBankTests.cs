@@ -6,11 +6,18 @@ using FindANameFarm.BasicClasses;
 
 namespace FindaANameFarm.UnitTests
 {
+    /// <summary>
+    /// ian all methods 06/11/18
+    /// field band class
+    /// </summary>
     [TestClass]
     public class FieldBankTests
     {
        FieldBank _field = FieldBank.GetInst();
 
+        /// <summary>
+        /// ian 06/11/18
+        /// </summary>
         [TestMethod]
         public void GetInst_IsSingleton()
         {
@@ -23,6 +30,9 @@ namespace FindaANameFarm.UnitTests
             Assert.AreEqual(FieldBank.InstanceCount, 1);
         }
 
+        /// <summary>
+        /// ian 06/11/18
+        /// </summary>
         [TestMethod]
         public void AddField_whenCalled_InsertField()
         {
@@ -40,6 +50,9 @@ namespace FindaANameFarm.UnitTests
             Assert.AreEqual(_field.FieldList[listCount], field);
         }
 
+        /// <summary>
+        /// ian 6/11/18
+        /// </summary>
         [TestMethod]
 
         public void upDataField_WhenCalled_updatesFieldInDataBase()

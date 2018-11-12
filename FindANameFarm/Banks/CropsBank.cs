@@ -8,6 +8,10 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
 {
+    /// <summary>
+    /// ian 07/11/18
+    /// all crop bank methods completed
+    /// </summary>
     public class CropsBank
     {
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
@@ -23,14 +27,30 @@ namespace FindANameFarm.Banks
             InstanceCount++;
         }
 
+        /// <summary>
+        /// ian 07/11/18
+        /// crop bank singleton
+        /// </summary>
+        /// <returns></returns>
         public static CropsBank GetInst() => UniqueInst ?? (UniqueInst = new CropsBank());
 
+        /// <summary>
+        /// ian 07/11/18
+        /// adds crop to crop list and db
+        /// </summary>
+        /// <param name="crop"></param>
         public void AddCropToList(Crops crop)
         {
             CropsList.Add(crop);
             _metalayer.AddCropToDataBase(crop);
 
         }
+
+        /// <summary>
+        /// ian 07/11/18
+        /// updates crops in db
+        /// </summary>
+        /// <param name="editCrop"></param>
         public void UpdateCrop(Crops editCrop)
         {
             for (int i = 0; i < CropsList.Count; i++)
@@ -44,6 +64,10 @@ namespace FindANameFarm.Banks
                 }
             }
         }
+        /// <summary>
+        /// ian 07/11/18
+        /// refreshes lists and checks connection state
+        /// </summary>
         public void RefreshConnection()
         {
             try

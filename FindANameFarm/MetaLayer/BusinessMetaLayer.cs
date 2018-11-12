@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Diagnostics;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
+using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.MetaLayer
 {
@@ -182,6 +183,36 @@ namespace FindANameFarm.MetaLayer
             }
 
             return competencies;
+        }
+
+        public List<Staff> GetCurrentTaskStaff(int taskId)
+        {
+            List<Staff> taskStaffList = new List<Staff>();
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr =
+                    _con.Select("SELECT StaffWorkTask.staffId, Staff.firstName, Staff.surname FROM Staff INNER JOIN StaffWorkTask ON Staff.staffID = StaffWorkTask.staffId WHERE WorkTaskId = " +
+                                taskId + "; ");
+
+
+                while (dr.Read())
+                {
+                    Staff taskStaffMember = new Staff()
+                    {
+                        StaffId= dr.GetInt32(0),
+                        FirstName = dr.GetString(1),
+                        SurName =  dr.GetString(2),
+                    };
+
+                    taskStaffList.Add(taskStaffMember);
+                }
+
+
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return taskStaffList;
         }
 
         /// <summary>
@@ -412,7 +443,38 @@ namespace FindANameFarm.MetaLayer
             return audit;
         }
 
+        public List<WorkTasks> GetWorkTasks()
+        {
+            List<WorkTasks> workTasks = new List<WorkTasks>();
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr = _con.Select("SELECT * FROM WorkTasks;");
 
+                while (dr.Read())
+                {
+                    WorkTasks workTask= new WorkTasks()
+                    {
+                        TaskId = dr.GetInt32(0),
+                        TaskType = dr.GetString(1),
+                        TaskStartDate = dr.GetDateTime(2),
+                        TaskEndDate = dr.GetDateTime(3),
+                        FieldId = dr.GetInt32(4),
+                        CropId = dr.GetInt32(5),
+                        TreatmentId = dr.GetInt32(6),
+                        QuantityRequired = dr.GetInt32(7),
+                        JobDuration = dr.GetInt32(8),
+                        ExpectedHarvestDate = dr.GetDateTime(9),
+                        ExpectedYield = dr.GetInt32(10)
+
+                    };
+                    workTasks.Add(workTask);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return workTasks;
+        }
         /// <summary>
         /// ian 28/10/2018
         /// inserts a new staff member to the database
@@ -498,6 +560,16 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
             _con.CloseConnection();
         }
+
+        public void AddStaffToTaskAndDb(TaskStaff addStaffToTask)
+        {
+            string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.staffId +
+                           "," + addStaffToTask.TaskId +");";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+
+        }
         public void AddFertTreatToDataBase(FertiliserAndTreatment newFertTreat)
         {
             string query = "Insert into FertiliserAndTreatment(fertTreatName,fertTreatQuantity) Values('" +
@@ -518,6 +590,22 @@ namespace FindANameFarm.MetaLayer
             _con.Insert(query);
         }
 
+        /// <summary>
+        /// ian 08/11/2018
+        /// inserts a new workTask into the database
+        /// </summary>
+        public void AddWorkTaskToList(WorkTasks neWorkTask)
+        {
+            string query =
+                "Insert into WorkTasks(TaskType, startDate, finishDate, FieldId, CropId, treatmentId, QuantityRequired, jobDuration, ExpectedHarvestDate, ExpectedYield )" +
+                "VALUES('"+neWorkTask.TaskType+ "','" + neWorkTask.TaskStartDate + "','" + neWorkTask.TaskEndDate + "'," + neWorkTask.FieldId + "," + neWorkTask.CropId + "," + 
+                neWorkTask.TreatmentId + "," + neWorkTask.QuantityRequired + "," + neWorkTask.JobDuration + ",'" + neWorkTask.ExpectedHarvestDate + "'," + neWorkTask.ExpectedYield+ ");";
+
+            Debug.WriteLine(query);
+
+            _con.Update(query);
+            _con.CloseConnection();
+        }
         /// <summary>
         /// ian 28/10/2018
         /// updates the selected staff member
