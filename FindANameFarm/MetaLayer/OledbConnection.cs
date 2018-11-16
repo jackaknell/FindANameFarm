@@ -120,9 +120,11 @@ namespace FindANameFarm.MetaLayer
             {
                 OleDbCommand cmd = _connection.CreateCommand();
                 cmd.CommandText = queryString;
+                
                 Debug.WriteLine(queryString);
                 _connection.Open();
                 cmd.ExecuteNonQuery();
+
             }
             finally
             {
@@ -140,6 +142,7 @@ namespace FindANameFarm.MetaLayer
         public void Update(string query)
         {
             OleDbCommand cmd = _connection.CreateCommand();
+            Debug.WriteLine(query);
             cmd.CommandText = query;
             Debug.WriteLine(query);
             _connection.Open();

@@ -8,6 +8,13 @@ namespace FindANameFarm
     /// ian 28/10/2018
     /// structure to temporarily hold category id and name
     /// </summary>
+    public struct VehicleAndDriver
+    {
+        public int staffId { get; set; }
+        public string firstName { get; set; }
+        public int categoryId { get; set; }
+    }
+
     public struct Cat
     {
         public int CatId { get; set; }
@@ -38,7 +45,7 @@ namespace FindANameFarm
        
         public List<Cat> Categories { get; private set; }
         public bool GetConnectionState { get; private set; }
-
+        public List<VehicleAndDriver> Drivers { get; private set; }
         public List<VehicleAndCategory> VehicleAndCategoryLists { get; private set; }
 
         public static VehicleBank UniqueInst;
@@ -47,7 +54,7 @@ namespace FindANameFarm
         public VehicleBank()
         {
             RefreshConnection();
-            Categories = new List<Cat>();
+            //Categories = new List<Cat>();
             InstanceCount++;
         }
         /// <summary>
@@ -57,6 +64,11 @@ namespace FindANameFarm
         /// <returns></returns>
         public static VehicleBank GetInst() => UniqueInst ?? (UniqueInst = new VehicleBank());
 
+        public void GetDrivers()
+        {
+            Drivers =_metaLayer.GetDriverList();
+            
+        }
         /// <summary>
         /// ian 26/10/2018
         /// </summary>

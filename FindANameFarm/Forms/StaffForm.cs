@@ -220,10 +220,7 @@ namespace FindANameFarm
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            showCompetencies();
-        }
+      
 
         private void btnRemoveCompetency_Click(object sender, EventArgs e)
         {

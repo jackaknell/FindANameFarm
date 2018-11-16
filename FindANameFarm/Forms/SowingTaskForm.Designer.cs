@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.btnCloseSowingTask = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCreateSowingTask = new System.Windows.Forms.Button();
+            this.gbSowingTask = new System.Windows.Forms.GroupBox();
+            this.btnResetForm = new System.Windows.Forms.Button();
             this.nudExpectedYeild = new System.Windows.Forms.NumericUpDown();
             this.lblTaskId = new System.Windows.Forms.Label();
+            this.btnUpdateSowingTask = new System.Windows.Forms.Button();
             this.txtTaskID = new System.Windows.Forms.TextBox();
             this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
@@ -54,32 +56,33 @@
             this.gbVehicleSelection = new System.Windows.Forms.GroupBox();
             this.lblSowingTaskVehicleCat = new System.Windows.Forms.Label();
             this.cbSowingTaskVehicleList = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.btnVehicleAdd = new System.Windows.Forms.Button();
+            this.cbVehicleCatList = new System.Windows.Forms.ComboBox();
+            this.cbVehicleDriver = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblSowingTaskVehicle = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtRemoveVehicleFromTask = new System.Windows.Forms.Button();
+            this.btnRemoveLabourerFromTask = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnSowingTaskAddWorker = new System.Windows.Forms.Button();
             this.cbSowingTaskStaffList = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnUpdateSowingTask = new System.Windows.Forms.Button();
             this.listExistingSowingTasks = new System.Windows.Forms.ListView();
             this.listTaskVehicles = new System.Windows.Forms.ListView();
             this.listTaskStaff = new System.Windows.Forms.ListView();
-            this.groupBox1.SuspendLayout();
+            this.gbTaskVehiclesAndStaff = new System.Windows.Forms.GroupBox();
+            this.gbSowingTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudExpectedYeild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJobDuration)).BeginInit();
             this.gbVehicleSelection.SuspendLayout();
+            this.gbTaskVehiclesAndStaff.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCloseSowingTask
             // 
-            this.btnCloseSowingTask.Location = new System.Drawing.Point(784, 711);
+            this.btnCloseSowingTask.Location = new System.Drawing.Point(1230, 658);
             this.btnCloseSowingTask.Name = "btnCloseSowingTask";
             this.btnCloseSowingTask.Size = new System.Drawing.Size(125, 45);
             this.btnCloseSowingTask.TabIndex = 11;
@@ -87,49 +90,63 @@
             this.btnCloseSowingTask.UseVisualStyleBackColor = true;
             this.btnCloseSowingTask.Click += new System.EventHandler(this.btnCloseSowingTask_Click);
             // 
-            // button6
+            // btnCreateSowingTask
             // 
-            this.button6.Location = new System.Drawing.Point(25, 711);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(125, 45);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Create sowing task";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnCreateSowingTask.Location = new System.Drawing.Point(19, 553);
+            this.btnCreateSowingTask.Name = "btnCreateSowingTask";
+            this.btnCreateSowingTask.Size = new System.Drawing.Size(125, 45);
+            this.btnCreateSowingTask.TabIndex = 10;
+            this.btnCreateSowingTask.Text = "Create sowing task";
+            this.btnCreateSowingTask.UseVisualStyleBackColor = true;
+            this.btnCreateSowingTask.Click += new System.EventHandler(this.btnCreateSowingTask_Click);
             // 
-            // groupBox1
+            // gbSowingTask
             // 
-            this.groupBox1.Controls.Add(this.nudExpectedYeild);
-            this.groupBox1.Controls.Add(this.lblTaskId);
-            this.groupBox1.Controls.Add(this.txtTaskID);
-            this.groupBox1.Controls.Add(this.nudQuantity);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.dtpFinishDate);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.nudJobDuration);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.dtpExpectedHarvestDate);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.cbSowingTaskCropList);
-            this.groupBox1.Controls.Add(this.cbSowingTaskFieldList);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dtpStartDate);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(17, 35);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(466, 580);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.gbSowingTask.Controls.Add(this.btnResetForm);
+            this.gbSowingTask.Controls.Add(this.nudExpectedYeild);
+            this.gbSowingTask.Controls.Add(this.lblTaskId);
+            this.gbSowingTask.Controls.Add(this.btnUpdateSowingTask);
+            this.gbSowingTask.Controls.Add(this.txtTaskID);
+            this.gbSowingTask.Controls.Add(this.nudQuantity);
+            this.gbSowingTask.Controls.Add(this.btnCreateSowingTask);
+            this.gbSowingTask.Controls.Add(this.label20);
+            this.gbSowingTask.Controls.Add(this.dtpFinishDate);
+            this.gbSowingTask.Controls.Add(this.label19);
+            this.gbSowingTask.Controls.Add(this.label18);
+            this.gbSowingTask.Controls.Add(this.label17);
+            this.gbSowingTask.Controls.Add(this.nudJobDuration);
+            this.gbSowingTask.Controls.Add(this.label12);
+            this.gbSowingTask.Controls.Add(this.dtpExpectedHarvestDate);
+            this.gbSowingTask.Controls.Add(this.label8);
+            this.gbSowingTask.Controls.Add(this.label7);
+            this.gbSowingTask.Controls.Add(this.cbSowingTaskCropList);
+            this.gbSowingTask.Controls.Add(this.cbSowingTaskFieldList);
+            this.gbSowingTask.Controls.Add(this.label4);
+            this.gbSowingTask.Controls.Add(this.label3);
+            this.gbSowingTask.Controls.Add(this.dtpStartDate);
+            this.gbSowingTask.Controls.Add(this.label2);
+            this.gbSowingTask.Location = new System.Drawing.Point(17, 35);
+            this.gbSowingTask.Name = "gbSowingTask";
+            this.gbSowingTask.Size = new System.Drawing.Size(466, 610);
+            this.gbSowingTask.TabIndex = 8;
+            this.gbSowingTask.TabStop = false;
+            this.gbSowingTask.Enter += new System.EventHandler(this.gbSowingTask_Enter);
+            // 
+            // btnResetForm
+            // 
+            this.btnResetForm.Location = new System.Drawing.Point(318, 553);
+            this.btnResetForm.Name = "btnResetForm";
+            this.btnResetForm.Size = new System.Drawing.Size(125, 45);
+            this.btnResetForm.TabIndex = 39;
+            this.btnResetForm.Text = "Reset Form";
+            this.btnResetForm.UseVisualStyleBackColor = true;
+            this.btnResetForm.Click += new System.EventHandler(this.btnResetForm_Click);
             // 
             // nudExpectedYeild
             // 
             this.nudExpectedYeild.Location = new System.Drawing.Point(173, 492);
             this.nudExpectedYeild.Name = "nudExpectedYeild";
+            this.nudExpectedYeild.ReadOnly = true;
             this.nudExpectedYeild.Size = new System.Drawing.Size(120, 20);
             this.nudExpectedYeild.TabIndex = 38;
             // 
@@ -142,6 +159,16 @@
             this.lblTaskId.TabIndex = 37;
             this.lblTaskId.Text = "Task ID";
             // 
+            // btnUpdateSowingTask
+            // 
+            this.btnUpdateSowingTask.Location = new System.Drawing.Point(172, 553);
+            this.btnUpdateSowingTask.Name = "btnUpdateSowingTask";
+            this.btnUpdateSowingTask.Size = new System.Drawing.Size(125, 45);
+            this.btnUpdateSowingTask.TabIndex = 13;
+            this.btnUpdateSowingTask.Text = "Update sowing task";
+            this.btnUpdateSowingTask.UseVisualStyleBackColor = true;
+            this.btnUpdateSowingTask.Click += new System.EventHandler(this.btnUpdateSowingTask_Click);
+            // 
             // txtTaskID
             // 
             this.txtTaskID.Location = new System.Drawing.Point(172, 16);
@@ -149,11 +176,13 @@
             this.txtTaskID.ReadOnly = true;
             this.txtTaskID.Size = new System.Drawing.Size(100, 20);
             this.txtTaskID.TabIndex = 36;
+            this.txtTaskID.TextChanged += new System.EventHandler(this.txtTaskID_TextChanged);
             // 
             // nudQuantity
             // 
             this.nudQuantity.Location = new System.Drawing.Point(172, 318);
             this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.ReadOnly = true;
             this.nudQuantity.Size = new System.Drawing.Size(120, 20);
             this.nudQuantity.TabIndex = 34;
             // 
@@ -205,6 +234,7 @@
             // 
             this.nudJobDuration.Location = new System.Drawing.Point(172, 378);
             this.nudJobDuration.Name = "nudJobDuration";
+            this.nudJobDuration.ReadOnly = true;
             this.nudJobDuration.Size = new System.Drawing.Size(120, 20);
             this.nudJobDuration.TabIndex = 24;
             // 
@@ -244,6 +274,7 @@
             // 
             // cbSowingTaskCropList
             // 
+            this.cbSowingTaskCropList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSowingTaskCropList.FormattingEnabled = true;
             this.cbSowingTaskCropList.Location = new System.Drawing.Point(172, 257);
             this.cbSowingTaskCropList.Name = "cbSowingTaskCropList";
@@ -252,6 +283,7 @@
             // 
             // cbSowingTaskFieldList
             // 
+            this.cbSowingTaskFieldList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSowingTaskFieldList.FormattingEnabled = true;
             this.cbSowingTaskFieldList.Location = new System.Drawing.Point(172, 196);
             this.cbSowingTaskFieldList.Name = "cbSowingTaskFieldList";
@@ -297,12 +329,12 @@
             this.gbVehicleSelection.BackColor = System.Drawing.SystemColors.ControlDark;
             this.gbVehicleSelection.Controls.Add(this.lblSowingTaskVehicleCat);
             this.gbVehicleSelection.Controls.Add(this.cbSowingTaskVehicleList);
-            this.gbVehicleSelection.Controls.Add(this.button5);
-            this.gbVehicleSelection.Controls.Add(this.comboBox2);
-            this.gbVehicleSelection.Controls.Add(this.comboBox6);
+            this.gbVehicleSelection.Controls.Add(this.btnVehicleAdd);
+            this.gbVehicleSelection.Controls.Add(this.cbVehicleCatList);
+            this.gbVehicleSelection.Controls.Add(this.cbVehicleDriver);
             this.gbVehicleSelection.Controls.Add(this.label11);
             this.gbVehicleSelection.Controls.Add(this.lblSowingTaskVehicle);
-            this.gbVehicleSelection.Location = new System.Drawing.Point(527, 301);
+            this.gbVehicleSelection.Location = new System.Drawing.Point(22, 255);
             this.gbVehicleSelection.Name = "gbVehicleSelection";
             this.gbVehicleSelection.Size = new System.Drawing.Size(399, 127);
             this.gbVehicleSelection.TabIndex = 35;
@@ -325,30 +357,32 @@
             this.cbSowingTaskVehicleList.Size = new System.Drawing.Size(121, 21);
             this.cbSowingTaskVehicleList.TabIndex = 17;
             // 
-            // button5
+            // btnVehicleAdd
             // 
-            this.button5.Location = new System.Drawing.Point(291, 88);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(91, 23);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "Add Vehicle";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnVehicleAdd.Location = new System.Drawing.Point(291, 88);
+            this.btnVehicleAdd.Name = "btnVehicleAdd";
+            this.btnVehicleAdd.Size = new System.Drawing.Size(91, 23);
+            this.btnVehicleAdd.TabIndex = 23;
+            this.btnVehicleAdd.Text = "Add Vehicle";
+            this.btnVehicleAdd.UseVisualStyleBackColor = true;
+            this.btnVehicleAdd.Click += new System.EventHandler(this.btnVehicleAdd_Click);
             // 
-            // comboBox2
+            // cbVehicleCatList
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(149, 11);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 35;
+            this.cbVehicleCatList.FormattingEnabled = true;
+            this.cbVehicleCatList.Location = new System.Drawing.Point(149, 11);
+            this.cbVehicleCatList.Name = "cbVehicleCatList";
+            this.cbVehicleCatList.Size = new System.Drawing.Size(121, 21);
+            this.cbVehicleCatList.TabIndex = 35;
+            this.cbVehicleCatList.SelectedIndexChanged += new System.EventHandler(this.cbVehicleCatList_SelectedIndexChanged);
             // 
-            // comboBox6
+            // cbVehicleDriver
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(149, 90);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 22;
+            this.cbVehicleDriver.FormattingEnabled = true;
+            this.cbVehicleDriver.Location = new System.Drawing.Point(149, 90);
+            this.cbVehicleDriver.Name = "cbVehicleDriver";
+            this.cbVehicleDriver.Size = new System.Drawing.Size(121, 21);
+            this.cbVehicleDriver.TabIndex = 22;
             // 
             // label11
             // 
@@ -368,28 +402,30 @@
             this.lblSowingTaskVehicle.TabIndex = 9;
             this.lblSowingTaskVehicle.Text = "Vehicles:";
             // 
-            // button4
+            // txtRemoveVehicleFromTask
             // 
-            this.button4.Location = new System.Drawing.Point(531, 610);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(164, 23);
-            this.button4.TabIndex = 27;
-            this.button4.Text = "Remove selected from list";
-            this.button4.UseVisualStyleBackColor = true;
+            this.txtRemoveVehicleFromTask.Location = new System.Drawing.Point(26, 564);
+            this.txtRemoveVehicleFromTask.Name = "txtRemoveVehicleFromTask";
+            this.txtRemoveVehicleFromTask.Size = new System.Drawing.Size(164, 23);
+            this.txtRemoveVehicleFromTask.TabIndex = 27;
+            this.txtRemoveVehicleFromTask.Text = "Remove Vehicle from task";
+            this.txtRemoveVehicleFromTask.UseVisualStyleBackColor = true;
+            this.txtRemoveVehicleFromTask.Click += new System.EventHandler(this.txtRemoveVehicleFromTask_Click);
             // 
-            // button1
+            // btnRemoveLabourerFromTask
             // 
-            this.button1.Location = new System.Drawing.Point(525, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Remove selected from list";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRemoveLabourerFromTask.Location = new System.Drawing.Point(20, 217);
+            this.btnRemoveLabourerFromTask.Name = "btnRemoveLabourerFromTask";
+            this.btnRemoveLabourerFromTask.Size = new System.Drawing.Size(162, 23);
+            this.btnRemoveLabourerFromTask.TabIndex = 26;
+            this.btnRemoveLabourerFromTask.Text = "Remove labourer from task";
+            this.btnRemoveLabourerFromTask.UseVisualStyleBackColor = true;
+            this.btnRemoveLabourerFromTask.Click += new System.EventHandler(this.btnRemoveLabourerFromTask_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(528, 436);
+            this.label10.Location = new System.Drawing.Point(23, 390);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 13);
             this.label10.TabIndex = 19;
@@ -398,7 +434,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(524, 93);
+            this.label9.Location = new System.Drawing.Point(19, 47);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(131, 13);
             this.label9.TabIndex = 16;
@@ -406,7 +442,7 @@
             // 
             // btnSowingTaskAddWorker
             // 
-            this.btnSowingTaskAddWorker.Location = new System.Drawing.Point(721, 57);
+            this.btnSowingTaskAddWorker.Location = new System.Drawing.Point(216, 11);
             this.btnSowingTaskAddWorker.Name = "btnSowingTaskAddWorker";
             this.btnSowingTaskAddWorker.Size = new System.Drawing.Size(91, 23);
             this.btnSowingTaskAddWorker.TabIndex = 14;
@@ -417,7 +453,7 @@
             // cbSowingTaskStaffList
             // 
             this.cbSowingTaskStaffList.FormattingEnabled = true;
-            this.cbSowingTaskStaffList.Location = new System.Drawing.Point(585, 57);
+            this.cbSowingTaskStaffList.Location = new System.Drawing.Point(80, 11);
             this.cbSowingTaskStaffList.Name = "cbSowingTaskStaffList";
             this.cbSowingTaskStaffList.Size = new System.Drawing.Size(121, 21);
             this.cbSowingTaskStaffList.TabIndex = 13;
@@ -425,27 +461,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(522, 62);
+            this.label5.Location = new System.Drawing.Point(17, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Labourers:";
             // 
-            // btnUpdateSowingTask
-            // 
-            this.btnUpdateSowingTask.Location = new System.Drawing.Point(316, 711);
-            this.btnUpdateSowingTask.Name = "btnUpdateSowingTask";
-            this.btnUpdateSowingTask.Size = new System.Drawing.Size(125, 45);
-            this.btnUpdateSowingTask.TabIndex = 13;
-            this.btnUpdateSowingTask.Text = "Update sowing task";
-            this.btnUpdateSowingTask.UseVisualStyleBackColor = true;
-            // 
             // listExistingSowingTasks
             // 
             this.listExistingSowingTasks.GridLines = true;
-            this.listExistingSowingTasks.Location = new System.Drawing.Point(978, 111);
+            this.listExistingSowingTasks.Location = new System.Drawing.Point(976, 46);
             this.listExistingSowingTasks.Name = "listExistingSowingTasks";
-            this.listExistingSowingTasks.Size = new System.Drawing.Size(320, 493);
+            this.listExistingSowingTasks.Size = new System.Drawing.Size(379, 599);
             this.listExistingSowingTasks.TabIndex = 36;
             this.listExistingSowingTasks.UseCompatibleStateImageBehavior = false;
             this.listExistingSowingTasks.View = System.Windows.Forms.View.Details;
@@ -454,7 +481,7 @@
             // listTaskVehicles
             // 
             this.listTaskVehicles.GridLines = true;
-            this.listTaskVehicles.Location = new System.Drawing.Point(531, 458);
+            this.listTaskVehicles.Location = new System.Drawing.Point(26, 412);
             this.listTaskVehicles.Name = "listTaskVehicles";
             this.listTaskVehicles.Size = new System.Drawing.Size(289, 136);
             this.listTaskVehicles.TabIndex = 37;
@@ -464,60 +491,72 @@
             // listTaskStaff
             // 
             this.listTaskStaff.GridLines = true;
-            this.listTaskStaff.Location = new System.Drawing.Point(527, 122);
+            this.listTaskStaff.Location = new System.Drawing.Point(22, 76);
             this.listTaskStaff.Name = "listTaskStaff";
             this.listTaskStaff.Size = new System.Drawing.Size(281, 125);
             this.listTaskStaff.TabIndex = 38;
             this.listTaskStaff.UseCompatibleStateImageBehavior = false;
             this.listTaskStaff.View = System.Windows.Forms.View.Details;
             // 
+            // gbTaskVehiclesAndStaff
+            // 
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.listTaskVehicles);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.listTaskStaff);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.label5);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.label10);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.cbSowingTaskStaffList);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.btnRemoveLabourerFromTask);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.gbVehicleSelection);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.btnSowingTaskAddWorker);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.txtRemoveVehicleFromTask);
+            this.gbTaskVehiclesAndStaff.Controls.Add(this.label9);
+            this.gbTaskVehiclesAndStaff.Location = new System.Drawing.Point(504, 35);
+            this.gbTaskVehiclesAndStaff.Name = "gbTaskVehiclesAndStaff";
+            this.gbTaskVehiclesAndStaff.Size = new System.Drawing.Size(452, 610);
+            this.gbTaskVehiclesAndStaff.TabIndex = 39;
+            this.gbTaskVehiclesAndStaff.TabStop = false;
+            // 
             // SowingTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1387, 778);
-            this.Controls.Add(this.listTaskStaff);
-            this.Controls.Add(this.listTaskVehicles);
+            this.ClientSize = new System.Drawing.Size(1387, 722);
+            this.Controls.Add(this.gbTaskVehiclesAndStaff);
             this.Controls.Add(this.listExistingSowingTasks);
-            this.Controls.Add(this.btnUpdateSowingTask);
-            this.Controls.Add(this.gbVehicleSelection);
             this.Controls.Add(this.btnCloseSowingTask);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.btnSowingTaskAddWorker);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbSowingTaskStaffList);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.gbSowingTask);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SowingTaskForm";
-            this.Text = "SowingTask";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sowing Task Form";
             this.Load += new System.EventHandler(this.SowingTaskForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbSowingTask.ResumeLayout(false);
+            this.gbSowingTask.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudExpectedYeild)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJobDuration)).EndInit();
             this.gbVehicleSelection.ResumeLayout(false);
             this.gbVehicleSelection.PerformLayout();
+            this.gbTaskVehiclesAndStaff.ResumeLayout(false);
+            this.gbTaskVehiclesAndStaff.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnCloseSowingTask;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnCreateSowingTask;
+        private System.Windows.Forms.GroupBox gbSowingTask;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button txtRemoveVehicleFromTask;
+        private System.Windows.Forms.Button btnRemoveLabourerFromTask;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown nudJobDuration;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Button btnVehicleAdd;
+        private System.Windows.Forms.ComboBox cbVehicleDriver;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbSowingTaskVehicleList;
@@ -541,7 +580,7 @@
         private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblSowingTaskVehicleCat;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbVehicleCatList;
         private System.Windows.Forms.GroupBox gbVehicleSelection;
         private System.Windows.Forms.Label lblTaskId;
         private System.Windows.Forms.TextBox txtTaskID;
@@ -549,5 +588,7 @@
         private System.Windows.Forms.ListView listExistingSowingTasks;
         private System.Windows.Forms.ListView listTaskVehicles;
         private System.Windows.Forms.ListView listTaskStaff;
+        private System.Windows.Forms.GroupBox gbTaskVehiclesAndStaff;
+        private System.Windows.Forms.Button btnResetForm;
     }
 }

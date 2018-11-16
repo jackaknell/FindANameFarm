@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using FindANameFarm;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FindANameFarm.Banks;
@@ -24,7 +25,7 @@ namespace FindaANameFarm.UnitTests.BanksTests
         [TestMethod]
         public void AddWorkTask_whenCalled_InsertWorkTask()
         {
-            // Arrange
+            //Arrange
 
             //gives the current list count which will be the index position of the next object added
             int listCount = WorkTask.WorkTaskList.Count;
@@ -32,15 +33,15 @@ namespace FindaANameFarm.UnitTests.BanksTests
             //Act
             WorkTasks workTask = new WorkTasks();
 
-            workTask.TaskType = "sowing";
-            //workTask.TaskStartDate = DateTime.Now;
-            //workTask.TaskEndDate = DateTime.Now;
-            //workTask.FieldId = 1;
-            //workTask.CropId = 1;
-            //workTask.QuantityRequired = 1;
-            //workTask.JobDuration = 1;
-            //workTask.ExpectedHarvestDate = DateTime.Now;
-            //workTask.ExpectedYield = 1;
+            workTask.TaskType = "Sowing";
+            workTask.TaskStartDate = DateTime.Now;
+            workTask.TaskEndDate = DateTime.Now;
+            workTask.FieldId = 1;
+            workTask.CropId = 1;
+            workTask.QuantityRequired = 1;
+            workTask.JobDuration = 1;
+            workTask.ExpectedHarvestDate = DateTime.Now;
+            workTask.ExpectedYield = 1;
 
             WorkTask.AddWorkTaskToList(workTask);
 
@@ -48,5 +49,24 @@ namespace FindaANameFarm.UnitTests.BanksTests
             Assert.AreEqual(WorkTask.WorkTaskList[listCount], workTask);
 
         }
+
+        //[TestMethod]
+        //public void AddStaffToTask_whenCalled_InsertStaffToCurrentWorkTask()
+        //{
+        //    //Arrange
+           
+        //    //gives the current list count which will be the index position of the next object added
+        //    int listCount = WorkTask.TaskStaff.Count;
+
+        //    //Act
+        //    TaskStaff taskStaff = new TaskStaff();
+        //    taskStaff.TaskId = 100;
+        //    taskStaff.staffId = 100;
+
+        //    WorkTask.AddStaffToTask(taskStaff);
+
+        //    //Assert
+        //    Assert.AreEqual(WorkTask.TaskStaff[listCount], taskStaff);
+        //}
     }
 }
