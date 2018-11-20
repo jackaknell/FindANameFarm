@@ -48,8 +48,7 @@ namespace FindANameFarm.MetaLayer
                     };
                     staffLogin.Add(staffMember);
                 }
-
-                dr.Close();
+               dr.Close();
                 _con.CloseConnection();
             }
 
@@ -185,6 +184,62 @@ namespace FindANameFarm.MetaLayer
             return competencies;
         }
 
+        public List<VehicleAndDriver> GetDriverList()
+        {
+            List<VehicleAndDriver> driverList = new List<VehicleAndDriver>();
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr =
+                    _con.Select(
+                        "SELECT Staff_category.staffId, Staff.firstName, Staff_category.categoryId FROM Staff INNER JOIN Staff_category ON Staff.staffID = Staff_category.staffId; "
+                    );
+
+                while (dr.Read())
+                {
+                    VehicleAndDriver driver = new VehicleAndDriver()
+                    {
+                        staffId = dr.GetInt32(0),
+                        firstName = dr.GetString(1),
+                        categoryId = dr.GetInt32(2)
+                    };
+                    driverList.Add(driver);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return driverList;
+        }
+
+        public List<TaskVehiclesAndDrivers> GetCurrentTaskVehicleList(int taskId)
+        {
+            List<TaskVehiclesAndDrivers>taskVehicleList = new List<TaskVehiclesAndDrivers>();
+            if (_con.OpenConnection())
+            {
+                DbDataReader dr =
+                    _con.Select("SELECT Vehicles.vehicleName, Staff.firstName, Vehicle_WorkTask.workTaskId, Vehicles.VehicleId, Staff.staffID FROM Vehicles INNER JOIN(Staff INNER JOIN Vehicle_WorkTask ON Staff.staffID = Vehicle_WorkTask.staffId) ON Vehicles.VehicleId = Vehicle_WorkTask.vehicleId WHERE WorkTaskId = " +taskId+";");
+
+                while (dr.Read())
+                {
+                    TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers()
+                    {
+                        VehicleName= dr.GetString(0),
+                        DriverName = dr.GetString(1),
+                        TaskId = dr.GetInt32(2),
+                        VehicleId = dr.GetInt32(3),
+                        DriverId = dr.GetInt32(4)
+                        
+                        
+                    };
+                    
+                    taskVehicleList.Add(taskVehicle);
+                }
+                dr.Close();
+                _con.CloseConnection();
+            }
+
+            return taskVehicleList;
+        }
         public List<Staff> GetCurrentTaskStaff(int taskId)
         {
             List<Staff> taskStaffList = new List<Staff>();
@@ -499,8 +554,9 @@ namespace FindANameFarm.MetaLayer
                         JobDuration = dr.GetInt32(8),
                         ExpectedHarvestDate = dr.GetDateTime(9),
                         ExpectedYield = dr.GetInt32(10)
-
+                       
                     };
+                    Debug.WriteLine(workTask.TaskStartDate);
                     workTasks.Add(workTask);
                 }
                 dr.Close();
@@ -604,6 +660,16 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
 
         }
+
+        public void AddVehicleAndDriverToDb(TaskVehiclesAndDrivers addVehiclesAndDriverToDb)
+        {
+            string query = "Insert into Vehicle_WorkTask(vehicleId,workTaskId,staffId)VALUES(" +
+                           addVehiclesAndDriverToDb.VehicleId + "," + addVehiclesAndDriverToDb.TaskId + "," +
+                           addVehiclesAndDriverToDb.DriverId + ");";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+        }
         public void AddFertTreatToDataBase(FertiliserAndTreatment newFertTreat)
         {
             string query = "Insert into FertiliserAndTreatment(fertTreatName,fertTreatQuantity) Values('" +
@@ -706,6 +772,21 @@ namespace FindANameFarm.MetaLayer
             _con.Update(query);
             _con.CloseConnection();
         }
+
+        public void UpdateCurrentWorkTaskInDb(WorkTasks updateWorkTask)
+        {
+            String query = "UPDATE WorkTasks SET TaskType = '" + updateWorkTask.TaskType + "', startDate = '" +
+                           updateWorkTask.TaskStartDate + "',finishDate = '" + updateWorkTask.TaskEndDate +
+                           "', FieldId = " + updateWorkTask.FieldId + ", CropId = " + updateWorkTask.CropId +
+                           ", treatmentId =" + updateWorkTask.TreatmentId + ", QuantityRequired =" +
+                           updateWorkTask.QuantityRequired + ", jobDuration =" + updateWorkTask.JobDuration +
+                           ", ExpectedHarvestDate = '" + updateWorkTask.ExpectedHarvestDate +
+                           "', ExpectedYield =" + updateWorkTask.ExpectedYield + " WHERE workTaskId =" +
+                           updateWorkTask.TaskId;
+
+            _con.Update(query);
+            _con.CloseConnection();
+        }
         /// <summary>
         /// ian 28/10/2018
         /// deletes the selected staff member
@@ -720,6 +801,21 @@ namespace FindANameFarm.MetaLayer
             _con.CloseConnection();
         }
 
+        public void DeleteVehicleAndDriverFromDb(TaskVehiclesAndDrivers vehicleDriverToDelete)
+        {
+            string query = "Delete From Vehicle_workTask where vehicleId = " + vehicleDriverToDelete.VehicleId + " and workTaskId = " + vehicleDriverToDelete.TaskId + " and staffId =" + vehicleDriverToDelete.DriverId;
+
+            _con.Delete(query);
+            _con.CloseConnection();
+        }
+
+        public void DeleteStaffFromTask(TaskStaff staffToDelete)
+        {
+            string query = "DELETE From StaffWorkTask WHERE staffId =" +staffToDelete.staffId+ " and workTaskId =" +staffToDelete.TaskId;
+
+            _con.Delete(query);
+            _con.CloseConnection();
+        }
         /// <summary>
         /// ian 28/10/2018
         /// deletes the selected vehicle

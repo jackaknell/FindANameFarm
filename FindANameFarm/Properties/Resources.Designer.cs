@@ -98,5 +98,15 @@ namespace FindANameFarm.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a member of staff to remove.
+        /// </summary>
+        internal static string SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to_remove {
+            get {
+                return ResourceManager.GetString("SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to" +
+                        "_remove", resourceCulture);
+            }
+        }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FindANameFarm.BasicClasses;
 using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
@@ -14,7 +10,7 @@ namespace FindANameFarm.Banks
     /// </summary>
     public class CropsBank
     {
-        private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
+        private readonly BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
         public List<Crops> CropsList { get; private set; }
         public static CropsBank UniqueInst;
         public bool GetConnectionState { get; private set; }
@@ -42,7 +38,7 @@ namespace FindANameFarm.Banks
         public void AddCropToList(Crops crop)
         {
             CropsList.Add(crop);
-            _metalayer.AddCropToDataBase(crop);
+            _metaLayer.AddCropToDataBase(crop);
 
         }
 
@@ -53,13 +49,12 @@ namespace FindANameFarm.Banks
         /// <param name="editCrop"></param>
         public void UpdateCrop(Crops editCrop)
         {
-            for (int i = 0; i < CropsList.Count; i++)
+            foreach (var crop in CropsList)
             {
-                Crops crop = CropsList[i];
                 if (crop.CropId == editCrop.CropId)
                 {
 
-                    _metalayer.UpdateCrop(editCrop);
+                    _metaLayer.UpdateCrop(editCrop);
                     RefreshConnection();
                 }
             }

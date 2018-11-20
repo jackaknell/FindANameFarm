@@ -1,60 +1,99 @@
 ﻿using FindANameFarm.Banks;
-using FindANameFarm.BasicClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing.Text;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.Forms
 {
-    
+    /// <summary>
+    /// ian 17/11/18
+    /// sowing task form controls
+    /// </summary>
     public partial class SowingTaskForm : Form
     {
-        private FieldBank _field = FieldBank.GetInst();
-        private StaffBank _staff = StaffBank.GetInst(); 
-        private CropsBank _crop = CropsBank.GetInst();
-        private VehicleBank _vehicle = VehicleBank.GetInst();
-        private WorkTaskBank _workTask = WorkTaskBank.GetInst(); 
+        private readonly FieldBank _field = FieldBank.GetInst();
+        private readonly StaffBank _staff = StaffBank.GetInst(); 
+        private readonly CropsBank _crop = CropsBank.GetInst();
+        private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
+        private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst(); 
         private string _taskType ="Sowing";
-
+       
         
-        public SowingTaskForm()
+       public SowingTaskForm()
         {
             InitializeComponent();
-           showExistingSowingTasks();
+            ResetForm();
+
+            refresh();
+
         }
         private void SowingTaskForm_Load(object sender, EventArgs e)
         {
-            listExistingSowingTasks.View = View.Details;
-            listExistingSowingTasks.FullRowSelect = true;
+            gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskID.Text);
+           
+            btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
 
-            listExistingSowingTasks.Columns.Add("Id", 50);
-            listExistingSowingTasks.Columns.Add("Task Type", 150);
-            listExistingSowingTasks.Columns.Add("Start Date", 150);
+            ShowExistingSowingTasks();
+            //sowing task list view setup (would normally be done from the form objects properties)
+            SetUpSowingTaskListView();
+            //staff list view setup (would normally be done from the form objects properties)
+            SetUpStaffListView();
+            //task vehicle list setup (would normally be done from the form objects properties)
+            SetUpVehicleTaskViewList();
 
+            ResetForm();
+        }
+        private void txtTaskID_TextChanged(object sender, EventArgs e)
+        {
+            gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
+            
+            btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
+        }
 
+       
+
+        private void SetUpVehicleTaskViewList()
+        {
+         
+            listTaskVehicles.View = View.Details;
+            listTaskVehicles.FullRowSelect = true;
+            listTaskVehicles.Columns.Add("VehicleName", 100);
+            listTaskVehicles.Columns.Add("Driver", 100);
+        }
+
+        private void SetUpStaffListView()
+        {
             listTaskStaff.View = View.Details;
             listTaskStaff.FullRowSelect = true;
             listTaskStaff.Columns.Add("Id", 25);
             listTaskStaff.Columns.Add("First Name", 75);
             listTaskStaff.Columns.Add("Surname", 60);
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void SetUpSowingTaskListView()
         {
-            showFields();
-            showStaff();
+            listExistingSowingTasks.View = View.Details;
+            listExistingSowingTasks.FullRowSelect = true;
+            listExistingSowingTasks.Columns.Add("Id", 50);
+            listExistingSowingTasks.Columns.Add("Task Type", 150);
+            listExistingSowingTasks.Columns.Add("Start Date", 150);
+            
+        }
+        //calls the methods to display the task drop down fields
+        private void gbSowingTask_Enter(object sender, EventArgs e)
+        {
+            ShowFields();
+            ShowStaff();
             ShowCrop();
-            ShowVehicle();
+
+            ShowCategories();
         }
 
-        public void showFields()
+        private void ShowFields()
         {
             if (cbSowingTaskFieldList !=null)
             {
@@ -66,7 +105,7 @@ namespace FindANameFarm.Forms
             cbSowingTaskFieldList.ValueMember = "FieldId";
         }
 
-        public void showStaff()
+        private void ShowStaff()
         {
             if (cbSowingTaskStaffList != null)
             {
@@ -78,7 +117,7 @@ namespace FindANameFarm.Forms
             cbSowingTaskStaffList.ValueMember = "StaffId";
         }
 
-        public void ShowCrop()
+        private void ShowCrop()
         {
             if (cbSowingTaskCropList != null)
             {
@@ -89,96 +128,35 @@ namespace FindANameFarm.Forms
             cbSowingTaskCropList.DisplayMember = "CropName";
             cbSowingTaskCropList.ValueMember = "CropId";
         }
-
-        public void ShowVehicle()
+        private void ShowCategories()
         {
-            if (cbSowingTaskVehicleList != null)
+           
+            if (cbVehicleCatList != null)
             {
-                cbSowingTaskVehicleList.DataSource = _vehicle.VehicleList;
+                cbVehicleCatList.DataSource = _vehicleBank.Categories;
+                
             }
 
-            if (cbSowingTaskVehicleList == null) return;
-            cbSowingTaskVehicleList.DisplayMember = "VehicleName";
-            cbSowingTaskVehicleList.ValueMember = "VehicleId";
-        }
-        private void btnCloseSowingTask_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+            if (cbVehicleCatList == null) return;
+            cbVehicleCatList.DisplayMember = "CatName";
+            cbVehicleCatList.ValueMember = "CatId";
 
-        public void showStaffOnTask()
-        {
-            _workTask.GetWorkTaskStaff(Convert.ToInt32(txtTaskID.Text));
-
-            listTaskStaff.Items.Clear();
-
-            foreach (Staff SelectedTaskStaffList in _workTask.taskStaff)
-            {
-                ListViewItem lvItem = new ListViewItem(SelectedTaskStaffList.StaffId.ToString());
-                lvItem.SubItems.Add(SelectedTaskStaffList.FirstName);
-                lvItem.SubItems.Add(SelectedTaskStaffList.SurName);
-
-                listTaskStaff.Items.Add(lvItem);
-            }
-           
-        }
-        private void btnSowingTaskAddWorker_Click(object sender, EventArgs e)
-        {
-            TaskStaff taskstaff = new TaskStaff();
-            taskstaff.TaskId = Convert.ToInt32(txtTaskID.Text);
-            taskstaff.staffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue);
-           
-            _workTask.AddStaffToTask(taskstaff);
-
-
-            showStaffOnTask();
+            ShowVehicle();
+            ShowVehicleDriver();
+            
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        
+        private void ShowExistingSowingTasks()
         {
-           
-            WorkTasks addWorkTask = new WorkTasks();
-
-            addWorkTask.TaskType = _taskType;
-            addWorkTask.TaskStartDate = dtpStartDate.Value;
-            addWorkTask.TaskEndDate = dtpFinishDate.Value;
-            addWorkTask.FieldId = Convert.ToInt32(cbSowingTaskFieldList.SelectedValue);
-            addWorkTask.CropId = Convert.ToInt32(cbSowingTaskCropList.SelectedValue);
-            addWorkTask.QuantityRequired = Convert.ToInt32(nudQuantity.Value);
-            addWorkTask.JobDuration = Convert.ToInt32(nudJobDuration.Value);
-            addWorkTask.ExpectedHarvestDate = dtpExpectedHarvestDate.Value;
-            addWorkTask.ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value);
-
-            Debug.WriteLine(addWorkTask.ExpectedHarvestDate);
-            _workTask.AddWorkTaskToList(addWorkTask);
-           
-            refresh();
-        }
-
-        private void refresh()
-        {
-            _workTask.refreshConnection();
-            showExistingSowingTasks();
-        }
-
-        private void showExistingSowingTasks()
-        {
-            //if (cbExistingSowingTask != null)
-            //{
-            //    cbExistingSowingTask.DataSource = _workTask.WorkTaskList;
-            //}
-
-            //if (cbExistingSowingTask == null) return;
-            //cbExistingSowingTask.DisplayMember = "TaskType";
-            //cbExistingSowingTask.ValueMember = "TaskId";
 
             listExistingSowingTasks.Items.Clear();
-            List<WorkTasks> workTaskList =_workTask.WorkTaskList;
-            
+            List<WorkTasks> workTaskList = _workTask.WorkTaskList;
 
-            foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType =="Sowing")))
+
+            foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType == "Sowing")))
             {
-               ListViewItem lvItem = new ListViewItem(workTask.TaskId.ToString());
+                ListViewItem lvItem = new ListViewItem(workTask.TaskId.ToString());
                 lvItem.SubItems.Add(workTask.TaskType);
                 lvItem.SubItems.Add(workTask.TaskStartDate.ToLongDateString());
                 lvItem.SubItems.Add(workTask.TaskEndDate.ToLongDateString());
@@ -190,37 +168,346 @@ namespace FindANameFarm.Forms
                 lvItem.SubItems.Add(workTask.CropId.ToString());
                 listExistingSowingTasks.Items.Add(lvItem);
 
+
+            }
+
+            
+        }
+        private void ShowVehicle()
+        {
+            List<Vehicles> filteredList = new List<Vehicles>();
+           
+            foreach (var v in _vehicleBank.VehicleList.Where(v => (v.Category == Convert.ToInt32(cbVehicleCatList.SelectedValue))) )
+            {
+                Vehicles vehicle = new Vehicles
+                {
+                    VehicleId = v.VehicleId,
+                    VehicleName = v.VehicleName,
+                    Category = v.Category,
+
+                };
+                    filteredList.Add(vehicle);
+
+            }
+
+            Debug.WriteLine(filteredList.Count);
+            if (filteredList.Count != 0)
+            {
+
+
+            }
+
+            else
+
+            {
+                Vehicles vehicle = new Vehicles
+                {
+                    VehicleId = 0,
+                    VehicleName = "",
+                    Category = 0
+
+                };
+                filteredList.Add(vehicle);
+            }
+
+            cbSowingTaskVehicleList.DataSource = filteredList;
+
+            cbSowingTaskVehicleList.DisplayMember = "VehicleName";
+            cbSowingTaskVehicleList.ValueMember = "VehicleId";
+
+
+
+
+        }
+        
+        private void ShowVehicleDriver()
+        {
+            
+            List<VehicleAndDriver> filteredList =new List<VehicleAndDriver>();
+            _vehicleBank.GetDrivers();
+            foreach (var d in _vehicleBank.Drivers.Where(d => (d.categoryId== Convert.ToInt32(cbVehicleCatList.SelectedValue))))
+            {
+                VehicleAndDriver category = new VehicleAndDriver
+                {
+                   categoryId = d.categoryId,
+                   staffId = d.staffId,
+                    firstName = d.firstName,
+                   
+                };
+                filteredList.Add(category);
+            }
+            if (cbVehicleDriver != null)
+            {
+
+                cbVehicleDriver.DataSource = filteredList;
+
+            }
+
+            if (cbVehicleDriver == null) return;
+            cbVehicleDriver.DisplayMember = "FirstName";
+            cbVehicleDriver.ValueMember = "StaffId";
+        }
+
+
+        
+       
+      
+        private void btnCloseSowingTask_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void ShowStaffOnTask()
+        {
+            _workTask.GetWorkTaskStaff(Convert.ToInt32(txtTaskID.Text));
+
+            listTaskStaff.Items.Clear();
+
+            foreach (Staff selectedTaskStaffList in _workTask.TaskStaff)
+            {
+                ListViewItem lvItem = new ListViewItem(selectedTaskStaffList.StaffId.ToString());
+                lvItem.SubItems.Add(selectedTaskStaffList.FirstName);
+                lvItem.SubItems.Add(selectedTaskStaffList.SurName);
                 
+
+                listTaskStaff.Items.Add(lvItem);
             }
             
+        }
+
+        private void ShowVehiclesInTask()
+        {
+            _workTask.GetWorkTaskVehicles(Convert.ToInt32(txtTaskID.Text));
+           
+            listTaskVehicles.Items.Clear();
+           
+
+            foreach (TaskVehiclesAndDrivers selectedTaskVehicleAndDriver in _workTask.CurrentVehicleAndDriverList)
+            {
+                ListViewItem lvItem = new ListViewItem(selectedTaskVehicleAndDriver.VehicleName);
+                lvItem.SubItems.Add(selectedTaskVehicleAndDriver.DriverName);
+                lvItem.SubItems.Add(selectedTaskVehicleAndDriver.TaskId.ToString());
+                lvItem.SubItems.Add(selectedTaskVehicleAndDriver.DriverId.ToString());
+                lvItem.SubItems.Add(selectedTaskVehicleAndDriver.VehicleId.ToString());
+                listTaskVehicles.Items.Add(lvItem);
+            }
+
+        }
+
+
+        private void  refresh()
+        {
+            _workTask.refreshConnection();
+            ShowExistingSowingTasks();
+            ShowCategories();
+        }
+
+        private void ResetForm()
+        {
+            
+            txtTaskID.Text = "";
+            dtpStartDate.Value = DateTime.Now;
+            dtpFinishDate.Value = DateTime.Now;
+            cbSowingTaskFieldList.SelectedIndex = -1;
+            cbSowingTaskCropList.SelectedIndex = -1;
+            nudQuantity.Value = 0;
+            nudJobDuration.Value = 0;
+            dtpExpectedHarvestDate.Value = DateTime.Now;
+            nudExpectedYeild.Value = 0;
+
 
         }
 
         private void listExistingSowingTasks_MouseClick(object sender, MouseEventArgs e)
         {
-            string ID = listExistingSowingTasks.SelectedItems[0].SubItems[0].Text;
-            string StartDate = listExistingSowingTasks.SelectedItems[0].SubItems[2].Text;
-            string FinishDate = listExistingSowingTasks.SelectedItems[0].SubItems[3].Text;
-            string Quantity = listExistingSowingTasks.SelectedItems[0].SubItems[4].Text;
-            string JobDuration = listExistingSowingTasks.SelectedItems[0].SubItems[5].Text;
-            string ExpectedHarvestdate = listExistingSowingTasks.SelectedItems[0].SubItems[6].Text;
-            string ExpectedYield = listExistingSowingTasks.SelectedItems[0].SubItems[7].Text;
-            string FieldId = listExistingSowingTasks.SelectedItems[0].SubItems[8].Text;
-            string CropId = listExistingSowingTasks.SelectedItems[0].SubItems[9].Text;
+            string id = listExistingSowingTasks.SelectedItems[0].SubItems[0].Text;
+            string startDate = listExistingSowingTasks.SelectedItems[0].SubItems[2].Text;
+            string finishDate = listExistingSowingTasks.SelectedItems[0].SubItems[3].Text;
+            string quantity = listExistingSowingTasks.SelectedItems[0].SubItems[4].Text;
+            string jobDuration = listExistingSowingTasks.SelectedItems[0].SubItems[5].Text;
+            string expectedHarvestDate = listExistingSowingTasks.SelectedItems[0].SubItems[6].Text;
+            string expectedYield = listExistingSowingTasks.SelectedItems[0].SubItems[7].Text;
+            string fieldId = listExistingSowingTasks.SelectedItems[0].SubItems[8].Text;
+            string cropId = listExistingSowingTasks.SelectedItems[0].SubItems[9].Text;
 
-            txtTaskID.Text = ID;
-            dtpStartDate.Text = StartDate;
-            dtpFinishDate.Text = FinishDate;
-            nudQuantity.Value = Convert.ToInt32(Quantity);
-            nudJobDuration.Value = Convert.ToInt32(JobDuration);
-            dtpExpectedHarvestDate.Text = ExpectedHarvestdate;
-            nudExpectedYeild.Text = ExpectedYield;
-            cbSowingTaskFieldList.SelectedValue = Convert.ToInt32(FieldId);
-            cbSowingTaskCropList.SelectedValue= Convert.ToInt32(CropId);
+            txtTaskID.Text = id;
+            dtpStartDate.Text = startDate;
+            dtpFinishDate.Text = finishDate;
+            nudQuantity.Value = Convert.ToInt32(quantity);
+            nudJobDuration.Value = Convert.ToInt32(jobDuration);
+            dtpExpectedHarvestDate.Text = expectedHarvestDate;
+            nudExpectedYeild.Text = expectedYield;
+            cbSowingTaskFieldList.SelectedValue = Convert.ToInt32(fieldId);
+            cbSowingTaskCropList.SelectedValue= Convert.ToInt32(cropId);
 
-            showStaffOnTask();
+            ShowStaffOnTask();
+            ShowVehiclesInTask();
+            ShowVehicle();
         }
 
-       
+        private void btnCreateSowingTask_Click(object sender, EventArgs e)
+        {
+            WorkTasks addWorkTask = new WorkTasks
+            {
+                TaskType = _taskType,
+                TaskStartDate = dtpStartDate.Value,
+                TaskEndDate = dtpFinishDate.Value,
+                FieldId = Convert.ToInt32(cbSowingTaskFieldList.SelectedValue),
+                CropId = Convert.ToInt32(cbSowingTaskCropList.SelectedValue),
+                QuantityRequired = Convert.ToInt32(nudQuantity.Value),
+                JobDuration = Convert.ToInt32(nudJobDuration.Value),
+                ExpectedHarvestDate = dtpExpectedHarvestDate.Value,
+                ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value)
+            };
+
+
+            if (addWorkTask.TaskEndDate <addWorkTask.TaskStartDate)
+            {
+                MessageBox.Show("Task Finish Date can't be before task start date");
+            }
+            else
+            {
+                _workTask.AddWorkTaskToList(addWorkTask);
+
+                refresh();
+            }
+
+            int taskNumber = (_workTask.WorkTaskList.Count)-1;
+
+            txtTaskID.Text = _workTask.WorkTaskList[taskNumber].TaskId.ToString();
+        }
+
+        private void btnSowingTaskAddWorker_Click(object sender, EventArgs e)
+        {
+            
+            
+                TaskStaff taskStaff = new TaskStaff
+                {
+                    TaskId = Convert.ToInt32(txtTaskID.Text),
+                    staffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue)
+                };
+
+
+            bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.staffId);
+
+            if (alreadyOnTask == false)
+            {
+                _workTask.AddStaffToTask(taskStaff);
+
+
+                ShowStaffOnTask();
+            }
+            else
+            {
+                MessageBox.Show("Staff Member Already on task");
+            }
+
+        }
+
+        private void cbVehicleCatList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowCategories();
+        }
+
+        private void btnVehicleAdd_Click(object sender, EventArgs e)
+        {
+            TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers
+            {
+                TaskId = Convert.ToInt32(txtTaskID.Text),
+                VehicleId = Convert.ToInt32(cbSowingTaskVehicleList.SelectedValue),
+                DriverId = Convert.ToInt32(cbVehicleDriver.SelectedValue)
+            };
+
+            bool alreadyOnTask = _workTask.CurrentVehicleAndDriverList.Any(x => x.VehicleId == taskVehicle.VehicleId && x.DriverId ==taskVehicle.DriverId );
+
+            if (Convert.ToInt32(cbSowingTaskVehicleList.SelectedValue) == 0)
+            {
+                MessageBox.Show("You dont have any vehicles in that category");
+            }
+
+            if (alreadyOnTask == false)
+            {
+                _workTask.AddvehicleToTask(taskVehicle);
+
+            ShowVehiclesInTask();
+
+            }
+            else
+            {
+                MessageBox.Show("Staff Member or vehicle Already on task");
+            }
+
+        }
+
+        private void txtRemoveVehicleFromTask_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int vehicleId = Convert.ToInt32(listTaskVehicles.SelectedItems[0].SubItems[4].Text);
+                int workTaskId = Convert.ToInt32(listTaskVehicles.SelectedItems[0].SubItems[2].Text);
+                int staffId = Convert.ToInt32(listTaskVehicles.SelectedItems[0].SubItems[3].Text);
+
+                TaskVehiclesAndDrivers vehicleToDelete = new TaskVehiclesAndDrivers();
+
+                vehicleToDelete.VehicleId = vehicleId;
+                vehicleToDelete.TaskId = workTaskId;
+                vehicleToDelete.DriverId = staffId;
+
+                _workTask.DeleteVehicleAndDriverFromTask(vehicleToDelete);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Please Select A vehicle to remove first");
+                Console.WriteLine(exception);
+                
+            }
+           
+        }
+
+        private void btnRemoveLabourerFromTask_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                int staffId = Convert.ToInt32(listTaskStaff.SelectedItems[0].SubItems[0].Text);
+                int workTaskId = Convert.ToInt32(txtTaskID.Text);
+
+                TaskStaff staffToDelete = new TaskStaff();
+
+                staffToDelete.staffId = staffId;
+                staffToDelete.TaskId = workTaskId;
+
+
+                _workTask.StaffToDeleteFromTask(staffToDelete);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Please Select A Staff member to remove first");
+                Console.WriteLine(exception);
+              
+            }
+        }
+
+        private void btnUpdateSowingTask_Click(object sender, EventArgs e)
+        {
+            WorkTasks editWorkTask = new WorkTasks();
+            editWorkTask.TaskId = Convert.ToInt32(txtTaskID.Text);
+            editWorkTask.TaskType = "Sowing";
+            editWorkTask.TaskStartDate = dtpStartDate.Value;
+            editWorkTask.TaskEndDate = dtpFinishDate.Value;
+            editWorkTask.FieldId = Convert.ToInt32(cbSowingTaskFieldList.SelectedValue);
+            editWorkTask.CropId = Convert.ToInt32(cbSowingTaskCropList.SelectedValue);
+            editWorkTask.QuantityRequired = Convert.ToInt32(nudQuantity.Value);
+            editWorkTask.JobDuration = Convert.ToInt32(nudJobDuration.Value);
+            editWorkTask.ExpectedHarvestDate = dtpExpectedHarvestDate.Value;
+            editWorkTask.ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value);
+            _workTask.UpdateWorkTask(editWorkTask);
+
+            refresh();
+        }
+
+        private void btnResetForm_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
     }
 }
