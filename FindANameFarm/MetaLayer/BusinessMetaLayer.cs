@@ -17,7 +17,7 @@ namespace FindANameFarm.MetaLayer
 
         private static BusinessMetaLayer _instance;
         IIDbConnection _con = DbFactory.Instance();
-        
+
         public static BusinessMetaLayer GetInstance()
         {
             return _instance ?? (_instance = new BusinessMetaLayer());
@@ -43,7 +43,7 @@ namespace FindANameFarm.MetaLayer
                     Staff staffMember = new Staff
                     {
                         StaffId = dr.GetInt32(0),
-                       
+
                         Password = dr.GetString(1)
                     };
                     staffLogin.Add(staffMember);
@@ -52,7 +52,7 @@ namespace FindANameFarm.MetaLayer
                 dr.Close();
                 _con.CloseConnection();
             }
-           
+
             return staffLogin.Count;
         }
 
@@ -66,18 +66,18 @@ namespace FindANameFarm.MetaLayer
         public List<Staff> GetStaff()
         {
             List<Staff> staff = new List<Staff>();
-            
+
             //IIDbConnection con = DbFactory.Instance();
             if (_con.OpenConnection())
             {
-                
-              DbDataReader dr = _con.Select("SELECT staffID, firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword FROM Staff;");
 
-                
+                DbDataReader dr = _con.Select("SELECT staffID, firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword FROM Staff;");
+
+
                 //Read the data and store them in the list
                 while (dr.Read())
                 {
-                    
+
                     Staff staffMember = new Staff
                     {
                         StaffId = dr.GetInt32(0),
@@ -90,11 +90,11 @@ namespace FindANameFarm.MetaLayer
                         ImageFile = dr.GetString(7),
                         Password = dr.GetString(8)
                     };
-                    
-                    
+
+
                     staff.Add(staffMember);
 
-                    
+
 
                 }
 
@@ -126,7 +126,7 @@ namespace FindANameFarm.MetaLayer
                         CropId = dr.GetInt32(0),
                         CropName = dr.GetString(1),
                         CropStock = dr.GetInt32(2)
-                       
+
                     };
 
 
@@ -164,7 +164,7 @@ namespace FindANameFarm.MetaLayer
                         "SELECT Staff_category.categoryId, Category.categoryName FROM Category INNER JOIN Staff_category ON Category.categoryId = Staff_category.categoryId WHERE staffId = " +
                         staffId + "; ");
 
-              
+
 
                 while (dr.Read())
                 {
@@ -199,9 +199,9 @@ namespace FindANameFarm.MetaLayer
                 {
                     Staff taskStaffMember = new Staff()
                     {
-                        StaffId= dr.GetInt32(0),
+                        StaffId = dr.GetInt32(0),
                         FirstName = dr.GetString(1),
-                        SurName =  dr.GetString(2),
+                        SurName = dr.GetString(2),
                     };
 
                     taskStaffList.Add(taskStaffMember);
@@ -240,7 +240,7 @@ namespace FindANameFarm.MetaLayer
 
                     categoriesList.Add(category);
                 }
-                
+
 
                 dr.Close();
                 _con.CloseConnection();
@@ -257,12 +257,12 @@ namespace FindANameFarm.MetaLayer
         public List<Vehicles> GetVehicle()
         {
             List<Vehicles> vehicles = new List<Vehicles>();
-            
-            
+
+
             if (_con.OpenConnection())
             {
 
-                
+
                 DbDataReader dr = _con.Select("SELECT * FROM Vehicles; ");
                 //
                 //Read the data and store them in the list
@@ -271,16 +271,16 @@ namespace FindANameFarm.MetaLayer
                     //Debug.WriteLine(dr.HasRows);
                     Vehicles vehicle = new Vehicles
                     {
-                        
+
                         VehicleId = dr.GetInt32(0),
                         VehicleName = dr.GetString(1),
                         Category = dr.GetInt32(2)
-                        
+
                     };
-                   
-                    
+
+
                     vehicles.Add(vehicle);
-                   
+
                 }
 
                 //close Data Reader
@@ -342,7 +342,7 @@ namespace FindANameFarm.MetaLayer
                         CategoryName = dr.GetString(2)
 
                     };
-                   
+
 
                     vehicleCat.Add(vehicleCategory);
                 }
@@ -382,17 +382,17 @@ namespace FindANameFarm.MetaLayer
 
             return fields;
         }
-      
+
 
         public List<Storage> GetStorage()
         {
             List<Storage> storage = new List<Storage>();
             if (_con.OpenConnection())
-           {
+            {
 
                 DbDataReader dr = _con.Select("");
 
-            while (dr.Read())
+                while (dr.Read())
                 {
                     Storage store = new Storage()
                     {
@@ -412,6 +412,22 @@ namespace FindANameFarm.MetaLayer
 
             return storage;
         }
+
+        public void AddStorageToDatabase(Storage newStorage)
+        {
+            string query = "Insert.....................*************************************************";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+        }
+
+        public void UpdateStorage(Storage editStorages)
+        {
+            string query = "update storage ****************###########################################";
+            _con.Update(query);
+            _con.CloseConnection();
+        }
+
 
         public List<Audit> GetAuidt()
         {
@@ -443,6 +459,24 @@ namespace FindANameFarm.MetaLayer
             return audit;
         }
 
+
+
+        public void AddAuditToDatabase(Audit newAudit)
+        {
+            string query = "Insert.....................*************************************************";
+
+            _con.Insert(query);
+            _con.CloseConnection();
+        }
+
+        public void UpdateAudit(Audit editAudit)
+        {
+            string query = "update storage ****************###########################################";
+            _con.Update(query);
+            _con.CloseConnection();
+        }
+
+
         public List<WorkTasks> GetWorkTasks()
         {
             List<WorkTasks> workTasks = new List<WorkTasks>();
@@ -452,7 +486,7 @@ namespace FindANameFarm.MetaLayer
 
                 while (dr.Read())
                 {
-                    WorkTasks workTask= new WorkTasks()
+                    WorkTasks workTask = new WorkTasks()
                     {
                         TaskId = dr.GetInt32(0),
                         TaskType = dr.GetString(1),
@@ -482,24 +516,24 @@ namespace FindANameFarm.MetaLayer
         /// <param name="newStaff"></param>
         public void AddStaffToDataBase(Staff newStaff)
         {
-          
-            
+
+
             string firstName = newStaff.FirstName;
-                string surname = newStaff.SurName;
-                string gender = newStaff.Gender;
-                string email = newStaff.Email;
-                string role = newStaff.Role;
-                string contactNumber = newStaff.Contact;
-                string filepath = newStaff.ImageFile;
+            string surname = newStaff.SurName;
+            string gender = newStaff.Gender;
+            string email = newStaff.Email;
+            string role = newStaff.Role;
+            string contactNumber = newStaff.Contact;
+            string filepath = newStaff.ImageFile;
             string password = newStaff.Password;
-                
-                string query = "Insert into staff(firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword) Values('" +
-                               firstName + "','" + surname + "','" + gender + "','" + email + "','" + role + "','" +
-                               contactNumber + "','" + filepath + "','" + password + "');";
-               
+
+            string query = "Insert into staff(firstName, surname, gender, email, role, contactNumber, imageLocation, staffpassword) Values('" +
+                           firstName + "','" + surname + "','" + gender + "','" + email + "','" + role + "','" +
+                           contactNumber + "','" + filepath + "','" + password + "');";
+
 
             _con.Insert(query);
-            
+
         }
         /// <summary>
         /// ian 06/11/2018
@@ -541,7 +575,7 @@ namespace FindANameFarm.MetaLayer
 
             string query = "Insert into vehicles(vehicleName,vehicleCategory) Values('" +
                            newVehicle.VehicleName + "','" + newVehicle.Category + "');";
-            
+
 
             _con.Insert(query);
             _con.CloseConnection();
@@ -564,7 +598,7 @@ namespace FindANameFarm.MetaLayer
         public void AddStaffToTaskAndDb(TaskStaff addStaffToTask)
         {
             string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.staffId +
-                           "," + addStaffToTask.TaskId +");";
+                           "," + addStaffToTask.TaskId + ");";
 
             _con.Insert(query);
             _con.CloseConnection();
@@ -598,8 +632,8 @@ namespace FindANameFarm.MetaLayer
         {
             string query =
                 "Insert into WorkTasks(TaskType, startDate, finishDate, FieldId, CropId, treatmentId, QuantityRequired, jobDuration, ExpectedHarvestDate, ExpectedYield )" +
-                "VALUES('"+neWorkTask.TaskType+ "','" + neWorkTask.TaskStartDate + "','" + neWorkTask.TaskEndDate + "'," + neWorkTask.FieldId + "," + neWorkTask.CropId + "," + 
-                neWorkTask.TreatmentId + "," + neWorkTask.QuantityRequired + "," + neWorkTask.JobDuration + ",'" + neWorkTask.ExpectedHarvestDate + "'," + neWorkTask.ExpectedYield+ ");";
+                "VALUES('" + neWorkTask.TaskType + "','" + neWorkTask.TaskStartDate + "','" + neWorkTask.TaskEndDate + "'," + neWorkTask.FieldId + "," + neWorkTask.CropId + "," +
+                neWorkTask.TreatmentId + "," + neWorkTask.QuantityRequired + "," + neWorkTask.JobDuration + ",'" + neWorkTask.ExpectedHarvestDate + "'," + neWorkTask.ExpectedYield + ");";
 
             Debug.WriteLine(query);
 
@@ -613,13 +647,13 @@ namespace FindANameFarm.MetaLayer
         /// <param name="updateStaffMember"></param>
         public void UpdateStaffMember(Staff updateStaffMember)
         {
-           
+
 
             String query = "UPDATE staff SET firstName = '" + updateStaffMember.FirstName + "', surname='" +
                            updateStaffMember.SurName + "', gender= '" + updateStaffMember.Gender + "', email= '" +
                            updateStaffMember.Email + "', role= '" + updateStaffMember.Role + "', contactNumber='" +
-                           updateStaffMember.Contact + "', imageLocation= '" + updateStaffMember.ImageFile +"' WHERE staffId=" + updateStaffMember.StaffId;
-            
+                           updateStaffMember.Contact + "', imageLocation= '" + updateStaffMember.ImageFile + "' WHERE staffId=" + updateStaffMember.StaffId;
+
 
             _con.Update(query);
             _con.CloseConnection();
@@ -636,7 +670,7 @@ namespace FindANameFarm.MetaLayer
                            "', vehicleCategory = '" + updateVehicle.Category + "' Where VehicleId =" +
                            updateVehicle.VehicleId;
 
-         
+
 
             _con.Update(query);
             _con.CloseConnection();
@@ -650,7 +684,7 @@ namespace FindANameFarm.MetaLayer
         /// <param name="updateField"></param>
         public void UpdateField(Fields updateField)
         {
-            String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize +  ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
+            String query = "UPDATE Fields SET FieldName = '" + updateField.FieldName + "', FieldSize = " + updateField.FieldSize + ", FieldSuitability = '" + updateField.FieldSuitability + "' Where FieldId =" + updateField.FieldId;
 
             _con.Update(query);
             _con.CloseConnection();
@@ -679,7 +713,7 @@ namespace FindANameFarm.MetaLayer
         /// <param name="staffMember"></param>
         public void DeleteStaffMember(int staffMember)
         {
-            
+
 
             string query = "DELETE FROM staff where staffId = " + staffMember;
             _con.Delete(query);

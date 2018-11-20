@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BanksTests\StaffBankTests.cs" />
+    <Compile Include="BanksTests\StorageBankTests.cs" />
+    <Compile Include="BanksTests\AuditBankTest.cs" />
     <Compile Include="BanksTests\WorkTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MetaLayerTests\BusinessMetaLayerTests.cs" />
