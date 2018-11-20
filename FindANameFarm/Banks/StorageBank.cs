@@ -45,6 +45,25 @@ namespace FindANameFarm.Banks
             }
         }
 
+
+
+        //public void UpdateStorage(Storage editStorage)
+        //{
+        //    foreach (var storage in StorageList)
+        //    {
+        //        if (storage.StorageID == editStorage.StorageID)
+        //        {
+
+        //            _metalayer.UpdateStorage(editStorage);
+        //            RefreshConnection();
+        //        }
+        //    }
+        //}
+
+
+
+
+
         public void RefreshConnection()
         {
             try

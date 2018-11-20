@@ -49,7 +49,7 @@
             // 
             // btncloseStore
             // 
-            this.btncloseStore.Location = new System.Drawing.Point(602, 415);
+            this.btncloseStore.Location = new System.Drawing.Point(732, 421);
             this.btncloseStore.Name = "btncloseStore";
             this.btncloseStore.Size = new System.Drawing.Size(75, 23);
             this.btncloseStore.TabIndex = 32;
@@ -59,7 +59,7 @@
             // 
             // btnUpdateStore
             // 
-            this.btnUpdateStore.Location = new System.Drawing.Point(193, 265);
+            this.btnUpdateStore.Location = new System.Drawing.Point(142, 289);
             this.btnUpdateStore.Name = "btnUpdateStore";
             this.btnUpdateStore.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateStore.TabIndex = 31;
@@ -69,14 +69,14 @@
             // 
             // nudCapacity
             // 
-            this.nudCapacity.Location = new System.Drawing.Point(186, 115);
+            this.nudCapacity.Location = new System.Drawing.Point(135, 139);
             this.nudCapacity.Name = "nudCapacity";
             this.nudCapacity.Size = new System.Drawing.Size(159, 20);
             this.nudCapacity.TabIndex = 30;
             // 
             // nudTemp
             // 
-            this.nudTemp.Location = new System.Drawing.Point(186, 187);
+            this.nudTemp.Location = new System.Drawing.Point(135, 211);
             this.nudTemp.Name = "nudTemp";
             this.nudTemp.Size = new System.Drawing.Size(159, 20);
             this.nudTemp.TabIndex = 29;
@@ -84,7 +84,7 @@
             // lblTemp
             // 
             this.lblTemp.AutoSize = true;
-            this.lblTemp.Location = new System.Drawing.Point(109, 189);
+            this.lblTemp.Location = new System.Drawing.Point(58, 213);
             this.lblTemp.Name = "lblTemp";
             this.lblTemp.Size = new System.Drawing.Size(34, 13);
             this.lblTemp.TabIndex = 28;
@@ -93,7 +93,7 @@
             // lblAvailableStore
             // 
             this.lblAvailableStore.AutoSize = true;
-            this.lblAvailableStore.Location = new System.Drawing.Point(90, 156);
+            this.lblAvailableStore.Location = new System.Drawing.Point(39, 180);
             this.lblAvailableStore.Name = "lblAvailableStore";
             this.lblAvailableStore.Size = new System.Drawing.Size(90, 13);
             this.lblAvailableStore.TabIndex = 26;
@@ -102,7 +102,7 @@
             // lblCapacity
             // 
             this.lblCapacity.AutoSize = true;
-            this.lblCapacity.Location = new System.Drawing.Point(109, 117);
+            this.lblCapacity.Location = new System.Drawing.Point(58, 141);
             this.lblCapacity.Name = "lblCapacity";
             this.lblCapacity.Size = new System.Drawing.Size(48, 13);
             this.lblCapacity.TabIndex = 24;
@@ -111,7 +111,7 @@
             // lblStoreID
             // 
             this.lblStoreID.AutoSize = true;
-            this.lblStoreID.Location = new System.Drawing.Point(109, 48);
+            this.lblStoreID.Location = new System.Drawing.Point(58, 72);
             this.lblStoreID.Name = "lblStoreID";
             this.lblStoreID.Size = new System.Drawing.Size(58, 13);
             this.lblStoreID.TabIndex = 23;
@@ -119,14 +119,14 @@
             // 
             // txtStoreID
             // 
-            this.txtStoreID.Location = new System.Drawing.Point(186, 48);
+            this.txtStoreID.Location = new System.Drawing.Point(135, 72);
             this.txtStoreID.Name = "txtStoreID";
             this.txtStoreID.Size = new System.Drawing.Size(159, 20);
             this.txtStoreID.TabIndex = 22;
             // 
             // btnCreateStore
             // 
-            this.btnCreateStore.Location = new System.Drawing.Point(112, 265);
+            this.btnCreateStore.Location = new System.Drawing.Point(61, 289);
             this.btnCreateStore.Name = "btnCreateStore";
             this.btnCreateStore.Size = new System.Drawing.Size(75, 23);
             this.btnCreateStore.TabIndex = 21;
@@ -139,7 +139,7 @@
             this.listStorage.GridLines = true;
             this.listStorage.Location = new System.Drawing.Point(363, 12);
             this.listStorage.Name = "listStorage";
-            this.listStorage.Size = new System.Drawing.Size(358, 359);
+            this.listStorage.Size = new System.Drawing.Size(442, 375);
             this.listStorage.TabIndex = 20;
             this.listStorage.UseCompatibleStateImageBehavior = false;
             this.listStorage.View = System.Windows.Forms.View.Details;
@@ -147,7 +147,7 @@
             // 
             // nudAvailableStore
             // 
-            this.nudAvailableStore.Location = new System.Drawing.Point(186, 154);
+            this.nudAvailableStore.Location = new System.Drawing.Point(135, 178);
             this.nudAvailableStore.Name = "nudAvailableStore";
             this.nudAvailableStore.Size = new System.Drawing.Size(159, 20);
             this.nudAvailableStore.TabIndex = 33;
@@ -155,7 +155,7 @@
             // lblStoreName
             // 
             this.lblStoreName.AutoSize = true;
-            this.lblStoreName.Location = new System.Drawing.Point(105, 82);
+            this.lblStoreName.Location = new System.Drawing.Point(54, 106);
             this.lblStoreName.Name = "lblStoreName";
             this.lblStoreName.Size = new System.Drawing.Size(75, 13);
             this.lblStoreName.TabIndex = 35;
@@ -163,7 +163,7 @@
             // 
             // txtStoreName
             // 
-            this.txtStoreName.Location = new System.Drawing.Point(186, 79);
+            this.txtStoreName.Location = new System.Drawing.Point(135, 103);
             this.txtStoreName.Name = "txtStoreName";
             this.txtStoreName.Size = new System.Drawing.Size(159, 20);
             this.txtStoreName.TabIndex = 34;
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(819, 456);
             this.Controls.Add(this.lblStoreName);
             this.Controls.Add(this.txtStoreName);
             this.Controls.Add(this.nudAvailableStore);
@@ -188,6 +188,7 @@
             this.Controls.Add(this.btnCreateStore);
             this.Controls.Add(this.listStorage);
             this.Name = "StorageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StorageForm";
             this.Load += new System.EventHandler(this.StorageForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).EndInit();

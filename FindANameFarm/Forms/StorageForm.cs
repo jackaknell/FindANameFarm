@@ -19,6 +19,7 @@ namespace FindANameFarm.Forms
         public StorageForm()
         {
             InitializeComponent();
+            ShowStorage(_storageBank.StorageList);
             refresh();
         }
 
@@ -44,9 +45,10 @@ namespace FindANameFarm.Forms
             string temp = listStorage.SelectedItems[0].SubItems[4].Text;
 
             txtStoreID.Text = storageID;
-            nudCapacity.Text = capacity;
-            nudAvailableStore.Text = availableStorage;
-            nudTemp.Text = temp;
+            txtStoreName.Text = storageName;
+            nudCapacity.Value = Convert.ToInt32(capacity);
+            nudAvailableStore.Value = Convert.ToInt32(availableStorage);
+            nudTemp.Value = Convert.ToInt32(temp);
         }
 
         public void ShowStorage(List<Storage> storageList)
@@ -56,23 +58,29 @@ namespace FindANameFarm.Forms
             foreach (Storage storage in storageList)
             {
                 ListViewItem lvItem = new ListViewItem(storage.StorageID.ToString());
+                lvItem.SubItems.Add(storage.StorageName.ToString());
                 lvItem.SubItems.Add(storage.Capacity.ToString());
                 lvItem.SubItems.Add(storage.AvailableStorage.ToString());
                 lvItem.SubItems.Add(storage.Temp.ToString());
+
+                listStorage.Items.Add(lvItem);
 
             }
         }
 
         private void btnCreateStore_Click(object sender, EventArgs e)
         {
-            Storage addStorage = new Storage
-            {
+            Storage addStorage = new Storage();
+            addStorage.StorageName = txtStoreName.Text;
+            addStorage.AvailableStorage = Convert.ToInt32(nudAvailableStore.Value);
+            addStorage.Capacity = Convert.ToInt32(nudCapacity.Value);
+            addStorage.Temp = Convert.ToInt32(nudTemp.Value);
                 
-            };
-            _storageBank?.AddStorageList(addStorage);
+            
+            _storageBank?.AddStorageToList(addStorage);
 
             refresh();
-            resetForm();
+            
         }
 
         private void refresh()
@@ -86,9 +94,9 @@ namespace FindANameFarm.Forms
         {
             txtStoreID.Text = "";
             txtStoreName.Text = "";
-            nudAvailableStore = "";
-            nudCapacity = "";
-            nudTemp = "";
+            nudAvailableStore.Value = 0;
+            nudCapacity.Value = 0;
+            nudTemp.Value = 0;
             
         }
 
@@ -100,10 +108,11 @@ namespace FindANameFarm.Forms
         private void btnUpdateStore_Click(object sender, EventArgs e)
         {
             Storage editStorage = new Storage();
-            editStorage.StorageID = txtStoreID.Text;
+            editStorage.StorageID = Convert.ToInt32(txtStoreID.Text);
             editStorage.StorageName = txtStoreName.Text;
-            editStorage.AvailableStorage = ;
-            editStorage.Temp = ;
+            editStorage.AvailableStorage = Convert.ToInt32(nudAvailableStore.Value);
+            editStorage.Capacity = Convert.ToInt32(nudCapacity.Value);
+            editStorage.Temp = Convert.ToInt32(nudTemp.Value);
 
             _storageBank.UpdateStorage(editStorage);
 

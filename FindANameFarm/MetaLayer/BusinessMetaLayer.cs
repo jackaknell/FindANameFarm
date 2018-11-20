@@ -445,16 +445,17 @@ namespace FindANameFarm.MetaLayer
             if (_con.OpenConnection())
             {
 
-                DbDataReader dr = _con.Select("");
+                DbDataReader dr = _con.Select("SELECT * FROM Storage;");
 
                 while (dr.Read())
                 {
                     Storage store = new Storage()
                     {
                         StorageID = dr.GetInt32(0),
-                        Capacity = dr.GetInt32(1),
-                        AvailableStorage = dr.GetInt32(2),
-                        Temp = dr.GetInt32(3)
+                        StorageName = dr.GetString(1),
+                        Capacity = dr.GetInt32(2),
+                        AvailableStorage = dr.GetInt32(3),
+                        Temp = dr.GetInt32(4)
                     };
 
                     storage.Add(store);
@@ -470,7 +471,13 @@ namespace FindANameFarm.MetaLayer
 
         public void AddStorageToDatabase(Storage newStorage)
         {
-            string query = "Insert.....................*************************************************";
+
+            string storageName = newStorage.StorageName;
+            Int32 capacity = newStorage.Capacity;
+            Int32 availableStorage = newStorage.AvailableStorage;
+            Int32 temp = newStorage.Temp;
+
+            string query = "Insert into Storage(name, capacity, availableStorage, temp) Values('" + storageName + "', '" + capacity + "','"  + availableStorage + "', '" + temp + "');";
 
             _con.Insert(query);
             _con.CloseConnection();
@@ -478,9 +485,10 @@ namespace FindANameFarm.MetaLayer
 
         public void UpdateStorage(Storage editStorages)
         {
-            string query = "update storage ****************###########################################";
-            _con.Update(query);
-            _con.CloseConnection();
+            string query = "UPDATE Storage SET name = '" + editStorages.StorageName + "', capacity = " + editStorages.Capacity + ", availableStorage = " + editStorages.AvailableStorage + ", temp = " + editStorages.Temp + " Where storageID = " + editStorages.StorageID;
+
+                 _con.Update(query);
+                _con.CloseConnection();
         }
 
 
@@ -518,7 +526,7 @@ namespace FindANameFarm.MetaLayer
 
         public void AddAuditToDatabase(Audit newAudit)
         {
-            string query = "Insert.....................*************************************************";
+            string query = "SELECT * FROM Audit;";
 
             _con.Insert(query);
             _con.CloseConnection();
@@ -526,7 +534,7 @@ namespace FindANameFarm.MetaLayer
 
         public void UpdateAudit(Audit editAudit)
         {
-            string query = "update storage ****************###########################################";
+            string query = "SELECT * FROM Audit;";
             _con.Update(query);
             _con.CloseConnection();
         }
