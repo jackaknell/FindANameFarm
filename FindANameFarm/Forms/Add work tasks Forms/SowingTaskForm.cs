@@ -18,14 +18,14 @@ namespace FindANameFarm.Forms
     public partial class SowingTaskForm : Form
     {
         private readonly FieldBank _field = FieldBank.GetInst();
-        private readonly StaffBank _staff = StaffBank.GetInst(); 
+        private readonly StaffBank _staff = StaffBank.GetInst();
         private readonly CropsBank _crop = CropsBank.GetInst();
         private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
-        private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst(); 
-        private string _taskType ="Sowing";
-       
-        
-       public SowingTaskForm()
+        private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst();
+        private string _taskType = "Sowing";
+
+
+        public SowingTaskForm()
         {
             InitializeComponent();
             ResetForm();
@@ -36,24 +36,24 @@ namespace FindANameFarm.Forms
         private void SowingTaskForm_Load(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskID.Text);
-           
+
             btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
 
             ShowExistingSowingTasks();
-           
+
 
             ResetForm();
         }
         private void txtTaskID_TextChanged(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
-            
+
             btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
         }
 
-       
 
-  
+
+
         //calls the methods to display the task drop down fields
         private void gbSowingTask_Enter(object sender, EventArgs e)
         {
@@ -65,7 +65,7 @@ namespace FindANameFarm.Forms
 
         private void ShowFields()
         {
-            if (cbSowingTaskFieldList !=null)
+            if (cbSowingTaskFieldList != null)
             {
                 cbSowingTaskFieldList.DataSource = _field.FieldList;
             }
@@ -110,13 +110,14 @@ namespace FindANameFarm.Forms
             cbSowingTaskCropList.DisplayMember = "CropName";
             cbSowingTaskCropList.ValueMember = "CropId";
         }
+
         private void ShowCategories()
         {
-           
+
             if (cbVehicleCatList != null)
             {
                 cbVehicleCatList.DataSource = _vehicleBank.Categories;
-                
+
             }
 
             if (cbVehicleCatList == null) return;
@@ -125,10 +126,9 @@ namespace FindANameFarm.Forms
 
             ShowVehicle();
             ShowVehicleDriver();
-            
+
         }
 
-        
         private void ShowExistingSowingTasks()
         {
 
@@ -154,13 +154,14 @@ namespace FindANameFarm.Forms
 
             }
 
-            
+
         }
+
         private void ShowVehicle()
         {
             List<Vehicles> filteredList = new List<Vehicles>();
-           
-            foreach (var v in _vehicleBank.VehicleList.Where(v => (v.Category == Convert.ToInt32(cbVehicleCatList.SelectedValue))) )
+
+            foreach (var v in _vehicleBank.VehicleList.Where(v => (v.Category == Convert.ToInt32(cbVehicleCatList.SelectedValue))))
             {
                 Vehicles vehicle = new Vehicles
                 {
@@ -169,11 +170,11 @@ namespace FindANameFarm.Forms
                     Category = v.Category,
 
                 };
-                    filteredList.Add(vehicle);
+                filteredList.Add(vehicle);
 
             }
 
-          //refreshes vehicle list  with a blank string when a new category is selected with no vehicles in it
+            //refreshes vehicle list  with a blank string when a new category is selected with no vehicles in it
             if (filteredList.Count == 0)
             {
 
@@ -187,27 +188,27 @@ namespace FindANameFarm.Forms
                 filteredList.Add(vehicle);
             }
 
-           
+
 
             cbSowingTaskVehicleList.DataSource = filteredList;
 
             cbSowingTaskVehicleList.DisplayMember = "VehicleName";
             cbSowingTaskVehicleList.ValueMember = "VehicleId";
-       }
-        
+        }
+
         private void ShowVehicleDriver()
         {
-            
-            List<VehicleAndDriver> filteredList =new List<VehicleAndDriver>();
+
+            List<VehicleAndDriver> filteredList = new List<VehicleAndDriver>();
             _vehicleBank.GetDrivers();
-            foreach (var d in _vehicleBank.Drivers.Where(d => (d.categoryId== Convert.ToInt32(cbVehicleCatList.SelectedValue))))
+            foreach (var d in _vehicleBank.Drivers.Where(d => (d.categoryId == Convert.ToInt32(cbVehicleCatList.SelectedValue))))
             {
                 VehicleAndDriver category = new VehicleAndDriver
                 {
-                   categoryId = d.categoryId,
-                   staffId = d.staffId,
+                    categoryId = d.categoryId,
+                    staffId = d.staffId,
                     firstName = d.firstName,
-                   
+
                 };
                 filteredList.Add(category);
             }
@@ -223,10 +224,6 @@ namespace FindANameFarm.Forms
             cbVehicleDriver.ValueMember = "StaffId";
         }
 
-
-        
-       
-      
         private void btnCloseSowingTask_Click(object sender, EventArgs e)
         {
             Close();
@@ -243,19 +240,19 @@ namespace FindANameFarm.Forms
                 ListViewItem lvItem = new ListViewItem(selectedTaskStaffList.StaffId.ToString());
                 lvItem.SubItems.Add(selectedTaskStaffList.FirstName);
                 lvItem.SubItems.Add(selectedTaskStaffList.SurName);
-                
+
 
                 listTaskStaff.Items.Add(lvItem);
             }
-            
+
         }
 
         private void ShowVehiclesInTask()
         {
             _workTask.GetWorkTaskVehicles(Convert.ToInt32(txtTaskID.Text));
-           
+
             listTaskVehicles.Items.Clear();
-           
+
 
             foreach (TaskVehiclesAndDrivers selectedTaskVehicleAndDriver in _workTask.CurrentVehicleAndDriverList)
             {
@@ -269,8 +266,7 @@ namespace FindANameFarm.Forms
 
         }
 
-
-        private void  refresh()
+        private void refresh()
         {
             _workTask.refreshConnection();
             ShowExistingSowingTasks();
@@ -279,7 +275,7 @@ namespace FindANameFarm.Forms
 
         private void ResetForm()
         {
-            
+
             txtTaskID.Text = "";
             dtpStartDate.Value = DateTime.Now;
             dtpFinishDate.Value = DateTime.Now;
@@ -314,13 +310,13 @@ namespace FindANameFarm.Forms
             dtpExpectedHarvestDate.Text = expectedHarvestDate;
             nudExpectedYeild.Text = expectedYield;
             cbSowingTaskFieldList.SelectedValue = Convert.ToInt32(fieldId);
-            cbSowingTaskCropList.SelectedValue= Convert.ToInt32(cropId);
+            cbSowingTaskCropList.SelectedValue = Convert.ToInt32(cropId);
             cbTaskStatus.SelectedItem = status;
 
             ShowStaffOnTask();
             ShowVehiclesInTask();
             ShowVehicle();
-        } 
+        }
 
         private void btnCreateSowingTask_Click(object sender, EventArgs e)
         {
@@ -335,11 +331,11 @@ namespace FindANameFarm.Forms
                 JobDuration = Convert.ToInt32(nudJobDuration.Value),
                 ExpectedHarvestDate = dtpExpectedHarvestDate.Value,
                 ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value),
-                TaskStatus = cbTaskStatus.SelectedItem.ToString() 
+                TaskStatus = cbTaskStatus.SelectedItem.ToString()
             };
 
 
-            if (addWorkTask.TaskEndDate <addWorkTask.TaskStartDate)
+            if (addWorkTask.TaskEndDate < addWorkTask.TaskStartDate)
             {
                 MessageBox.Show("Task Finish Date can't be before task start date");
             }
@@ -350,28 +346,28 @@ namespace FindANameFarm.Forms
                 refresh();
             }
 
-            int taskNumber = (_workTask.WorkTaskList.Count)-1;
+            int taskNumber = (_workTask.WorkTaskList.Count) - 1;
 
             txtTaskID.Text = _workTask.WorkTaskList[taskNumber].TaskId.ToString();
         }
 
         private void btnSowingTaskAddWorker_Click(object sender, EventArgs e)
         {
-            
-            
-                TaskStaff taskStaff = new TaskStaff
-                {
-                    TaskId = Convert.ToInt32(txtTaskID.Text),
-                    staffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue)
-                };
+
+
+            TaskStaff taskStaff = new TaskStaff
+            {
+                TaskId = Convert.ToInt32(txtTaskID.Text),
+                staffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue)
+            };
 
 
             bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.staffId);
-            
+
             if (alreadyOnTask == false)
             {
                 _workTask.AddStaffToTask(taskStaff);
-                
+
 
                 ShowStaffOnTask();
             }
@@ -396,7 +392,7 @@ namespace FindANameFarm.Forms
                 DriverId = Convert.ToInt32(cbVehicleDriver.SelectedValue)
             };
 
-            bool alreadyOnTask = _workTask.CurrentVehicleAndDriverList.Any(x => x.VehicleId == taskVehicle.VehicleId && x.DriverId ==taskVehicle.DriverId );
+            bool alreadyOnTask = _workTask.CurrentVehicleAndDriverList.Any(x => x.VehicleId == taskVehicle.VehicleId && x.DriverId == taskVehicle.DriverId);
 
             if (Convert.ToInt32(cbSowingTaskVehicleList.SelectedValue) == 0)
             {
@@ -407,7 +403,7 @@ namespace FindANameFarm.Forms
             {
                 _workTask.AddvehicleToTask(taskVehicle);
 
-            ShowVehiclesInTask();
+                ShowVehiclesInTask();
 
             }
             else
@@ -437,14 +433,14 @@ namespace FindANameFarm.Forms
             {
                 MessageBox.Show("Please Select A vehicle to remove first");
                 Console.WriteLine(exception);
-                
+
             }
-           
+
         }
 
         private void btnRemoveLabourerFromTask_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 int staffId = Convert.ToInt32(listTaskStaff.SelectedItems[0].SubItems[0].Text);
                 int workTaskId = Convert.ToInt32(txtTaskID.Text);
@@ -461,7 +457,7 @@ namespace FindANameFarm.Forms
             {
                 MessageBox.Show("Please Select A Staff member to remove first");
                 Console.WriteLine(exception);
-              
+
             }
         }
 
@@ -481,7 +477,7 @@ namespace FindANameFarm.Forms
             editWorkTask.TaskStatus = cbTaskStatus.SelectedItem.ToString();
             _workTask.UpdateWorkTask(editWorkTask);
 
-          
+
             refresh();
 
         }
@@ -493,10 +489,10 @@ namespace FindANameFarm.Forms
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbTaskStatus.SelectedIndex == 0)
+            if (cbTaskStatus.SelectedIndex == 0)
                 lblTaskStatus.ForeColor = Color.Blue;
 
-            if(cbTaskStatus.SelectedIndex == 1)
+            if (cbTaskStatus.SelectedIndex == 1)
                 lblTaskStatus.ForeColor = Color.Orange;
 
             if (cbTaskStatus.SelectedIndex == 2)
