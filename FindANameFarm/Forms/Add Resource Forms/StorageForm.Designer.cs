@@ -1,7 +1,7 @@
 ﻿namespace FindANameFarm.Forms
 {
     partial class StorageForm
-    {
+    { 
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,159 +28,172 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StorageForm));
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.btncloseStore = new System.Windows.Forms.Button();
+            this.btnUpdateStore = new System.Windows.Forms.Button();
+            this.nudCapacity = new System.Windows.Forms.NumericUpDown();
+            this.nudTemp = new System.Windows.Forms.NumericUpDown();
+            this.lblTemp = new System.Windows.Forms.Label();
+            this.lblAvailableStore = new System.Windows.Forms.Label();
+            this.lblCapacity = new System.Windows.Forms.Label();
+            this.lblStoreID = new System.Windows.Forms.Label();
+            this.txtStoreID = new System.Windows.Forms.TextBox();
+            this.btnCreateStore = new System.Windows.Forms.Button();
+            this.listStorage = new System.Windows.Forms.ListView();
+            this.nudAvailableStore = new System.Windows.Forms.NumericUpDown();
+            this.lblStoreName = new System.Windows.Forms.Label();
+            this.txtStoreName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAvailableStore)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // btncloseStore
             // 
-            this.button2.Location = new System.Drawing.Point(617, 367);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btncloseStore.Location = new System.Drawing.Point(732, 421);
+            this.btncloseStore.Name = "btncloseStore";
+            this.btncloseStore.Size = new System.Drawing.Size(75, 23);
+            this.btncloseStore.TabIndex = 32;
+            this.btncloseStore.Text = "Close";
+            this.btncloseStore.UseVisualStyleBackColor = true;
+            this.btncloseStore.Click += new System.EventHandler(this.btncloseStore_Click);
             // 
-            // button4
+            // btnUpdateStore
             // 
-            this.button4.Location = new System.Drawing.Point(193, 265);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Update";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnUpdateStore.Location = new System.Drawing.Point(142, 289);
+            this.btnUpdateStore.Name = "btnUpdateStore";
+            this.btnUpdateStore.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateStore.TabIndex = 31;
+            this.btnUpdateStore.Text = "Update";
+            this.btnUpdateStore.UseVisualStyleBackColor = true;
+            this.btnUpdateStore.Click += new System.EventHandler(this.btnUpdateStore_Click);
             // 
-            // numericUpDown2
+            // nudCapacity
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(186, 105);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(159, 20);
-            this.numericUpDown2.TabIndex = 30;
+            this.nudCapacity.Location = new System.Drawing.Point(135, 139);
+            this.nudCapacity.Name = "nudCapacity";
+            this.nudCapacity.Size = new System.Drawing.Size(159, 20);
+            this.nudCapacity.TabIndex = 30;
             // 
-            // numericUpDown1
+            // nudTemp
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(186, 177);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(159, 20);
-            this.numericUpDown1.TabIndex = 29;
+            this.nudTemp.Location = new System.Drawing.Point(135, 211);
+            this.nudTemp.Name = "nudTemp";
+            this.nudTemp.Size = new System.Drawing.Size(159, 20);
+            this.nudTemp.TabIndex = 29;
             // 
-            // label5
+            // lblTemp
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(109, 179);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Temp";
+            this.lblTemp.AutoSize = true;
+            this.lblTemp.Location = new System.Drawing.Point(58, 213);
+            this.lblTemp.Name = "lblTemp";
+            this.lblTemp.Size = new System.Drawing.Size(34, 13);
+            this.lblTemp.TabIndex = 28;
+            this.lblTemp.Text = "Temp";
             // 
-            // label4
+            // lblAvailableStore
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(90, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Available Storage";
+            this.lblAvailableStore.AutoSize = true;
+            this.lblAvailableStore.Location = new System.Drawing.Point(39, 180);
+            this.lblAvailableStore.Name = "lblAvailableStore";
+            this.lblAvailableStore.Size = new System.Drawing.Size(90, 13);
+            this.lblAvailableStore.TabIndex = 26;
+            this.lblAvailableStore.Text = "Available Storage";
             // 
-            // button3
+            // lblCapacity
             // 
-            this.button3.Location = new System.Drawing.Point(274, 265);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.lblCapacity.AutoSize = true;
+            this.lblCapacity.Location = new System.Drawing.Point(58, 141);
+            this.lblCapacity.Name = "lblCapacity";
+            this.lblCapacity.Size = new System.Drawing.Size(48, 13);
+            this.lblCapacity.TabIndex = 24;
+            this.lblCapacity.Text = "Capacity";
             // 
-            // label3
+            // lblStoreID
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(109, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Capacity";
+            this.lblStoreID.AutoSize = true;
+            this.lblStoreID.Location = new System.Drawing.Point(58, 72);
+            this.lblStoreID.Name = "lblStoreID";
+            this.lblStoreID.Size = new System.Drawing.Size(58, 13);
+            this.lblStoreID.TabIndex = 23;
+            this.lblStoreID.Text = "Storage ID";
             // 
-            // label2
+            // txtStoreID
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Storage ID";
+            this.txtStoreID.Location = new System.Drawing.Point(135, 72);
+            this.txtStoreID.Name = "txtStoreID";
+            this.txtStoreID.Size = new System.Drawing.Size(159, 20);
+            this.txtStoreID.TabIndex = 22;
             // 
-            // textBox1
+            // btnCreateStore
             // 
-            this.textBox1.Location = new System.Drawing.Point(186, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 22;
+            this.btnCreateStore.Location = new System.Drawing.Point(61, 289);
+            this.btnCreateStore.Name = "btnCreateStore";
+            this.btnCreateStore.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateStore.TabIndex = 21;
+            this.btnCreateStore.Text = "Create";
+            this.btnCreateStore.UseVisualStyleBackColor = true;
+            this.btnCreateStore.Click += new System.EventHandler(this.btnCreateStore_Click);
             // 
-            // button1
+            // listStorage
             // 
-            this.button1.Location = new System.Drawing.Point(112, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = true;
+            this.listStorage.GridLines = true;
+            this.listStorage.Location = new System.Drawing.Point(363, 12);
+            this.listStorage.Name = "listStorage";
+            this.listStorage.Size = new System.Drawing.Size(442, 375);
+            this.listStorage.TabIndex = 20;
+            this.listStorage.UseCompatibleStateImageBehavior = false;
+            this.listStorage.View = System.Windows.Forms.View.Details;
+            this.listStorage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listStorage_MouseClick);
             // 
-            // listView1
+            // nudAvailableStore
             // 
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(421, 61);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(271, 256);
-            this.listView1.TabIndex = 20;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.nudAvailableStore.Location = new System.Drawing.Point(135, 178);
+            this.nudAvailableStore.Name = "nudAvailableStore";
+            this.nudAvailableStore.Size = new System.Drawing.Size(159, 20);
+            this.nudAvailableStore.TabIndex = 33;
             // 
-            // numericUpDown3
+            // lblStoreName
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(186, 144);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(159, 20);
-            this.numericUpDown3.TabIndex = 33;
+            this.lblStoreName.AutoSize = true;
+            this.lblStoreName.Location = new System.Drawing.Point(54, 106);
+            this.lblStoreName.Name = "lblStoreName";
+            this.lblStoreName.Size = new System.Drawing.Size(75, 13);
+            this.lblStoreName.TabIndex = 35;
+            this.lblStoreName.Text = "Storage Name";
+            // 
+            // txtStoreName
+            // 
+            this.txtStoreName.Location = new System.Drawing.Point(135, 103);
+            this.txtStoreName.Name = "txtStoreName";
+            this.txtStoreName.Size = new System.Drawing.Size(159, 20);
+            this.txtStoreName.TabIndex = 34;
             // 
             // StorageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ClientSize = new System.Drawing.Size(819, 456);
+            this.Controls.Add(this.lblStoreName);
+            this.Controls.Add(this.txtStoreName);
+            this.Controls.Add(this.nudAvailableStore);
+            this.Controls.Add(this.btncloseStore);
+            this.Controls.Add(this.btnUpdateStore);
+            this.Controls.Add(this.nudCapacity);
+            this.Controls.Add(this.nudTemp);
+            this.Controls.Add(this.lblTemp);
+            this.Controls.Add(this.lblAvailableStore);
+            this.Controls.Add(this.lblCapacity);
+            this.Controls.Add(this.lblStoreID);
+            this.Controls.Add(this.txtStoreID);
+            this.Controls.Add(this.btnCreateStore);
+            this.Controls.Add(this.listStorage);
             this.Name = "StorageForm";
-            this.Text = "Storage Management Form";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "StorageForm";
+            this.Load += new System.EventHandler(this.StorageForm_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAvailableStore)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,18 +201,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Button btncloseStore;
+        private System.Windows.Forms.Button btnUpdateStore;
+        private System.Windows.Forms.NumericUpDown nudCapacity;
+        private System.Windows.Forms.NumericUpDown nudTemp;
+        private System.Windows.Forms.Label lblTemp;
+        private System.Windows.Forms.Label lblAvailableStore;
+        private System.Windows.Forms.Label lblCapacity;
+        private System.Windows.Forms.Label lblStoreID;
+        private System.Windows.Forms.TextBox txtStoreID;
+        private System.Windows.Forms.Button btnCreateStore;
+        private System.Windows.Forms.ListView listStorage;
+        private System.Windows.Forms.NumericUpDown nudAvailableStore;
+        private System.Windows.Forms.Label lblStoreName;
+        private System.Windows.Forms.TextBox txtStoreName;
     }
 }
