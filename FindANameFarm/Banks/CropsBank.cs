@@ -10,7 +10,7 @@ namespace FindANameFarm.Banks
     /// </summary>
     public class CropsBank
     {
-        private readonly BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
+        private BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
         public List<Crops> CropsList { get; private set; }
         public static CropsBank UniqueInst;
         public bool GetConnectionState { get; private set; }

@@ -28,199 +28,197 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.txtCropName = new System.Windows.Forms.TextBox();
+            this.listCrops = new System.Windows.Forms.ListView();
+            this.lblCropName = new System.Windows.Forms.Label();
+            this.txtCropId = new System.Windows.Forms.TextBox();
+            this.lblCropId = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblAuditDesc = new System.Windows.Forms.Label();
+            this.lblAuditAmount = new System.Windows.Forms.Label();
+            this.lblAuditDate = new System.Windows.Forms.Label();
+            this.nudCropAudit = new System.Windows.Forms.NumericUpDown();
+            this.rtbCropAudit = new System.Windows.Forms.RichTextBox();
+            this.dtpCropAudit = new System.Windows.Forms.DateTimePicker();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCropAudit)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // btnClose
             // 
-            this.button4.Location = new System.Drawing.Point(608, 503);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Close";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(608, 503);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 29;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // button3
+            // btnUpdate
             // 
-            this.button3.Location = new System.Drawing.Point(228, 147);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(201, 487);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 28;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // button2
+            // btnCreate
             // 
-            this.button2.Location = new System.Drawing.Point(233, 489);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCreate.Location = new System.Drawing.Point(70, 487);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 26;
+            this.btnCreate.Text = "Create ";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // button1
+            // txtCropName
             // 
-            this.button1.Location = new System.Drawing.Point(71, 489);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Create ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtCropName.Location = new System.Drawing.Point(115, 53);
+            this.txtCropName.Name = "txtCropName";
+            this.txtCropName.Size = new System.Drawing.Size(100, 20);
+            this.txtCropName.TabIndex = 23;
             // 
-            // textBox2
+            // listCrops
             // 
-            this.textBox2.Location = new System.Drawing.Point(115, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 25;
+            this.listCrops.GridLines = true;
+            this.listCrops.Location = new System.Drawing.Point(345, 15);
+            this.listCrops.Name = "listCrops";
+            this.listCrops.Size = new System.Drawing.Size(430, 421);
+            this.listCrops.TabIndex = 22;
+            this.listCrops.UseCompatibleStateImageBehavior = false;
+            this.listCrops.View = System.Windows.Forms.View.Details;
+            this.listCrops.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listCrops_MouseDoubleClick);
             // 
-            // label2
+            // lblCropName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Crop Stock";
+            this.lblCropName.AutoSize = true;
+            this.lblCropName.Location = new System.Drawing.Point(49, 56);
+            this.lblCropName.Name = "lblCropName";
+            this.lblCropName.Size = new System.Drawing.Size(60, 13);
+            this.lblCropName.TabIndex = 21;
+            this.lblCropName.Text = "Crop Name";
             // 
-            // textBox1
+            // txtCropId
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 23;
+            this.txtCropId.Location = new System.Drawing.Point(117, 12);
+            this.txtCropId.Name = "txtCropId";
+            this.txtCropId.ReadOnly = true;
+            this.txtCropId.Size = new System.Drawing.Size(100, 20);
+            this.txtCropId.TabIndex = 31;
             // 
-            // listView1
+            // lblCropId
             // 
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(345, 15);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(430, 421);
-            this.listView1.TabIndex = 22;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Crop";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(117, 12);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 31;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Crop Id";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lblCropId.AutoSize = true;
+            this.lblCropId.Location = new System.Drawing.Point(51, 15);
+            this.lblCropId.Name = "lblCropId";
+            this.lblCropId.Size = new System.Drawing.Size(41, 13);
+            this.lblCropId.TabIndex = 30;
+            this.lblCropId.Text = "Crop Id";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown2);
-            this.groupBox1.Controls.Add(this.richTextBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.btnSubmit);
+            this.groupBox1.Controls.Add(this.lblAuditDesc);
+            this.groupBox1.Controls.Add(this.lblAuditAmount);
+            this.groupBox1.Controls.Add(this.lblAuditDate);
+            this.groupBox1.Controls.Add(this.nudCropAudit);
+            this.groupBox1.Controls.Add(this.rtbCropAudit);
+            this.groupBox1.Controls.Add(this.dtpCropAudit);
             this.groupBox1.Location = new System.Drawing.Point(12, 203);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 244);
+            this.groupBox1.Size = new System.Drawing.Size(326, 278);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Audit";
             // 
-            // numericUpDown2
+            // lblAuditDesc
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(103, 55);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(200, 20);
-            this.numericUpDown2.TabIndex = 34;
+            this.lblAuditDesc.AutoSize = true;
+            this.lblAuditDesc.Location = new System.Drawing.Point(39, 125);
+            this.lblAuditDesc.Name = "lblAuditDesc";
+            this.lblAuditDesc.Size = new System.Drawing.Size(60, 13);
+            this.lblAuditDesc.TabIndex = 36;
+            this.lblAuditDesc.Text = "Description";
             // 
-            // richTextBox1
+            // lblAuditAmount
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(105, 90);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(200, 101);
-            this.richTextBox1.TabIndex = 33;
-            this.richTextBox1.Text = "";
+            this.lblAuditAmount.AutoSize = true;
+            this.lblAuditAmount.Location = new System.Drawing.Point(54, 62);
+            this.lblAuditAmount.Name = "lblAuditAmount";
+            this.lblAuditAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblAuditAmount.TabIndex = 35;
+            this.lblAuditAmount.Text = "Amount";
             // 
-            // dateTimePicker1
+            // lblAuditDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(102, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
+            this.lblAuditDate.AutoSize = true;
+            this.lblAuditDate.Location = new System.Drawing.Point(55, 19);
+            this.lblAuditDate.Name = "lblAuditDate";
+            this.lblAuditDate.Size = new System.Drawing.Size(30, 13);
+            this.lblAuditDate.TabIndex = 34;
+            this.lblAuditDate.Text = "Date";
             // 
-            // numericUpDown1
+            // nudCropAudit
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(115, 150);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(107, 20);
-            this.numericUpDown1.TabIndex = 4;
+            this.nudCropAudit.Location = new System.Drawing.Point(103, 55);
+            this.nudCropAudit.Name = "nudCropAudit";
+            this.nudCropAudit.Size = new System.Drawing.Size(200, 20);
+            this.nudCropAudit.TabIndex = 34;
             // 
-            // label5
+            // rtbCropAudit
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Quantity";
+            this.rtbCropAudit.Location = new System.Drawing.Point(105, 90);
+            this.rtbCropAudit.Name = "rtbCropAudit";
+            this.rtbCropAudit.Size = new System.Drawing.Size(200, 101);
+            this.rtbCropAudit.TabIndex = 33;
+            this.rtbCropAudit.Text = "";
+            // 
+            // dtpCropAudit
+            // 
+            this.dtpCropAudit.Location = new System.Drawing.Point(102, 19);
+            this.dtpCropAudit.Name = "dtpCropAudit";
+            this.dtpCropAudit.Size = new System.Drawing.Size(200, 20);
+            this.dtpCropAudit.TabIndex = 0;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(227, 219);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 33;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // CropForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(801, 538);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCropId);
+            this.Controls.Add(this.lblCropId);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.txtCropName);
+            this.Controls.Add(this.listCrops);
+            this.Controls.Add(this.lblCropName);
             this.Name = "CropForm";
-            this.Text = "C";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crop & Seeds";
+            this.Load += new System.EventHandler(this.CropForm_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCropAudit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,22 +226,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.TextBox txtCropName;
+        private System.Windows.Forms.ListView listCrops;
+        private System.Windows.Forms.Label lblCropName;
+        private System.Windows.Forms.TextBox txtCropId;
+        private System.Windows.Forms.Label lblCropId;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nudCropAudit;
+        private System.Windows.Forms.RichTextBox rtbCropAudit;
+        private System.Windows.Forms.DateTimePicker dtpCropAudit;
+        private System.Windows.Forms.Label lblAuditDate;
+        private System.Windows.Forms.Label lblAuditDesc;
+        private System.Windows.Forms.Label lblAuditAmount;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }
