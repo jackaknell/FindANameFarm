@@ -17,9 +17,9 @@ namespace FindANameFarm.Banks
         public static int InstanceCount { get; set; }
         public bool GetConnectionState { get; private set; }
         public static List<WorkTaskReport> CropsInCultivation { get; set; }
-        public List<WorkTaskReport>HarvestTimeTable { get; set; }
+        public List<WorkTaskReport> HarvestTimeTable { get; set; }
         public List<WorkTaskReport> VehicleWorkTasks { get; set; }
-        public List<WorkTaskReport>StaffWorkTasks { get; private set; }
+        public List<WorkTaskReport> StaffWorkTasks { get; private set; }
         public ReportBank()
         {
             RefreshConnection();
@@ -41,12 +41,12 @@ namespace FindANameFarm.Banks
             CropsInCultivation = _metaLayer.GetCropsInCultivationFromDb();
 
             return CropsInCultivation;
-        {
+            {
 
+            }
         }
-    }
 
-        public List<WorkTaskReport> GetStaffWorkTasks(int staffMember,string startTime, string finishTime)
+        public List<WorkTaskReport> GetStaffWorkTasks(int staffMember, string startTime, string finishTime)
         {
             StaffWorkTasks = _metaLayer.GetLabouerWorkTasks(staffMember, startTime, finishTime);
 
@@ -58,7 +58,7 @@ namespace FindANameFarm.Banks
         /// <returns></returns>
         public List<WorkTaskReport> GetHarvestTimeTable(string startTime, string finishTime)
         {
-            HarvestTimeTable=_metaLayer.GetHarvestTimeTableTasks(startTime,finishTime);
+            HarvestTimeTable = _metaLayer.GetHarvestTimeTableTasks(startTime, finishTime);
 
             return HarvestTimeTable;
         }
@@ -76,7 +76,7 @@ namespace FindANameFarm.Banks
         {
             try
             {
-                
+
 
                 GetConnectionState = true;
             }
@@ -87,8 +87,8 @@ namespace FindANameFarm.Banks
             }
         }
 
-       
 
-       
+
+
     }
 }
