@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FindANameFarm
 {
-    class Audit
+    public class Audit
     {
 
         public int AuditId { get; set; }
