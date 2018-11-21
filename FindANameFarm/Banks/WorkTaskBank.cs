@@ -10,13 +10,18 @@ using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.Banks
 {
+    /// <summary>
+    /// ian 12/11/18
+    /// </summary>
     public struct TaskStaff
     {
         public int TaskId { get; set; }
         public int staffId { get; set; }
     }
 
-
+    /// <summary>
+    /// ian 12/11/18
+    /// </summary>
     public struct TaskVehiclesAndDrivers
     {
         public int TaskId { get; set; }
@@ -51,17 +56,11 @@ namespace FindANameFarm.Banks
         public static WorkTaskBank GetInst() => UniqueInst ?? (UniqueInst = new WorkTaskBank());
         public void GetWorkTasks()
         {
-            Debug.WriteLine("flag" + dataBaseFlag);
-            if (dataBaseFlag == false)
-            {
+            
+          
                 WorkTaskList = _metaLayer.GetWorkTasks();
 
-                dataBaseFlag = true;
-            }
-            else
-            {
-                return;
-            }
+            
         }
         public void AddWorkTaskToList(WorkTasks workTask)
         {
@@ -103,7 +102,7 @@ namespace FindANameFarm.Banks
         public void UpdateWorkTask(WorkTasks editWorkTask)
         {
             _metaLayer.UpdateCurrentWorkTaskInDb(editWorkTask);
-
+            refreshConnection();
         }
         public void refreshConnection()
         {

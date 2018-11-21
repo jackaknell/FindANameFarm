@@ -8,6 +8,9 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
 {
+    /// <summary>
+    /// Jason 07/11/18
+    /// </summary>
     public class FieldBank
     {
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();

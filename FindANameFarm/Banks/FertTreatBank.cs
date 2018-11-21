@@ -7,7 +7,9 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
 {
-
+    /// <summary>
+    /// Jason
+    /// </summary>
     public class FertTreatBank
     {
         private BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();

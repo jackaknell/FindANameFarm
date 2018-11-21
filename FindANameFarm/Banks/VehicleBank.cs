@@ -14,7 +14,9 @@ namespace FindANameFarm
         public string firstName { get; set; }
         public int categoryId { get; set; }
     }
-
+    /// <summary>
+    /// ian 
+    /// </summary>
     public struct Cat
     {
         public int CatId { get; set; }

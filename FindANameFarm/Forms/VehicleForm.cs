@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FindANameFarm.Forms
 {
     public partial class VehicleForm : Form
     {
-        private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
+        private VehicleBank _vehicleBank = VehicleBank.GetInst();
         public VehicleForm()
         {
             InitializeComponent();
@@ -66,7 +68,7 @@ namespace FindANameFarm.Forms
             _vehicleBank?.AddVehicleToList(addVehicle);
 
             refresh();
-            ResetForm();
+            resetForm();
         }
 
         private void refresh()
@@ -75,7 +77,7 @@ namespace FindANameFarm.Forms
             ShowVehicles(_vehicleBank.VehicleAndCategoryLists);
             ShowCategories(cbVehicleCategory);
             ShowCategories(cbVehicleCategoryList);
-            ResetForm();
+            resetForm();
         }
 
         private void ShowCategories(ComboBox vehicleCategory)
@@ -90,7 +92,7 @@ namespace FindANameFarm.Forms
             vehicleCategory.ValueMember = "CatId";
         }
 
-        private void ResetForm()
+        private void resetForm()
         {
             txtVehicleId.Text = "";
             txtVehicleType.Text = "";
@@ -104,11 +106,6 @@ namespace FindANameFarm.Forms
             
             btnAddCategory.Enabled = !string.IsNullOrEmpty(txtAddCategory.Text);
 
-        private void txtVehicleId_TextChanged(object sender, EventArgs e)
-        {
-            btnDeleteVehicle.Enabled = !string.IsNullOrEmpty(txtVehicleId.Text);
-        }
-
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             _vehicleBank?.AddCategoryToDb(txtAddCategory.Text);
@@ -121,12 +118,16 @@ namespace FindANameFarm.Forms
             int vehicleToDelete = Convert.ToInt32(txtVehicleId.Text);
             _vehicleBank.DeleteVehicle(vehicleToDelete);
             refresh();
-            ResetForm();
+            resetForm();
         }
 
        
 
-        
+        private void txtVehicleId_TextChanged(object sender, EventArgs e)
+        {
+            btnDeleteVehicle.Enabled = !string.IsNullOrEmpty(txtVehicleId.Text);
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -134,13 +135,11 @@ namespace FindANameFarm.Forms
 
         private void btnUpdateVehicle_Click(object sender, EventArgs e)
         {
-            Vehicles editVehicle = new Vehicles
-            {
-                VehicleId = Convert.ToInt32(txtVehicleId.Text),
-                VehicleName = txtVehicleType.Text,
-                Category = Convert.ToInt32(cbVehicleCategoryList.SelectedValue)
-            };
-
+            Vehicles editVehicle = new Vehicles();
+            editVehicle.VehicleId = Convert.ToInt32(txtVehicleId.Text);
+            editVehicle.VehicleName = txtVehicleType.Text;
+          
+            editVehicle.Category = Convert.ToInt32(cbVehicleCategoryList.SelectedValue);
 
             _vehicleBank.UpdateVehicle(editVehicle);
 
