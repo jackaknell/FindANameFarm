@@ -13,9 +13,10 @@ namespace FindANameFarm.Forms
         public Login()
         {
             InitializeComponent();
+            this.ActiveControl = txtLoginId;
+            txtLoginId.Focus();
+            
         }
-
-        
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -54,16 +55,15 @@ namespace FindANameFarm.Forms
             {
                 MessageBox.Show(@"Something went wrong please try again later");
             }
-           
-            
-     
-
-          
+ 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void txtLoginPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }
