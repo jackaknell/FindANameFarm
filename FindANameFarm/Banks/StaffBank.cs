@@ -6,6 +6,9 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm
 {
+    /// <summary>
+    /// ian 5/11/18
+    /// </summary>
     public struct StaffAndCategory
     {
         public int StaffId { get; set; }

@@ -17,6 +17,8 @@ namespace FindANameFarm.WorkTaskClasses
         public int JobDuration{ get; set; }
         public DateTime ExpectedHarvestDate { get; set; }
         public int ExpectedYield { get; set; }
+
+        public string TaskStatus { get; set; }
         
         public List<TaskVehiclesAndDrivers> VehicleAndDriverList { get; set; }
         public List<TaskStaff> StaffTaskList { get; set; }

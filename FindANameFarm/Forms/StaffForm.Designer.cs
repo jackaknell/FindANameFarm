@@ -61,8 +61,8 @@
             this.lblCompetency = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtStaffPassword = new System.Windows.Forms.TextBox();
-            this.staffAndCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.staffAndCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).BeginInit();
             this.gbCompetencies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staffAndCategoryBindingSource)).BeginInit();
@@ -361,10 +361,6 @@
             this.txtStaffPassword.Size = new System.Drawing.Size(175, 20);
             this.txtStaffPassword.TabIndex = 26;
             // 
-            // staffAndCategoryBindingSource
-            // 
-            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(363, 265);
@@ -373,7 +369,11 @@
             this.button1.TabIndex = 28;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-        
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // staffAndCategoryBindingSource
+            // 
+            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
             // 
             // StaffForm
             // 
