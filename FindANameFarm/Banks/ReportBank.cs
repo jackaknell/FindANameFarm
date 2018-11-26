@@ -70,15 +70,15 @@ namespace FindANameFarm.Banks
 
             return VehicleWorkTasks;
         }
-		public List<WorkTaskReport> GetAvailableStorage()
-		{
-			AvailableStorage = _metaLayer.GetAvailableStorageFromDb();
+		//public List<WorkTaskReport> GetAvailableStorage()
+		//{
+		//	AvailableStorage = _metaLayer.GetAvailableStorageFromDb();
 
-			return AvailableStorage;
-			{
+		//	return AvailableStorage;
+		//	{
 
-			}
-		}
+		//	}
+		//}
         /// <summary>
         /// ian 16/11/18
         /// </summary>

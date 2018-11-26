@@ -696,8 +696,7 @@ namespace FindANameFarm.MetaLayer
 				_con.CloseConnection();
 			}
 			return harvestList;
-		}
-		//
+		}		
 		public List<WorkTaskReport> GetCropsInCultivationFromDb()
 		{
 			List<WorkTaskReport> cropsInCultivationList = new List<WorkTaskReport>();
@@ -729,29 +728,7 @@ namespace FindANameFarm.MetaLayer
 			}
 
 			return cropsInCultivationList;
-		}
-		//
-		public List<WorkTaskReport> GetAvailableStorageFromDb()
-		{
-			List<WorkTaskReport> availableStorageList = new List<WorkTaskReport>();
-
-			if (_con.OpenConnection())
-			{
-				DbDataReader dr = _con.Select("SELECT * Storage");
-				while (dr.Read())
-				{
-					WorkTaskReport activeStorage = new WorkTaskReport
-					{
-						
-					};
-					availableStorageList.Add(activeStorage);
-				}
-				dr.Close();
-				_con.CloseConnection();
-			}
-			return availableStorageList;
-			
-		}
+		}		
 		/// <summary>
 		/// ian 28/10/2018
 		/// inserts a new staff member to the database
