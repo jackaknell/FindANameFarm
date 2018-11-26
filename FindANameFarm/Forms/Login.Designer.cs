@@ -53,6 +53,7 @@
             this.txtLoginPassword.PasswordChar = '*';
             this.txtLoginPassword.Size = new System.Drawing.Size(156, 20);
             this.txtLoginPassword.TabIndex = 1;
+            this.txtLoginPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLoginPassword_KeyDown);
             // 
             // lblIdNumber
             // 
