@@ -100,7 +100,6 @@
             this.btnExitApplication.TabIndex = 6;
             this.btnExitApplication.Text = "Exit";
             this.btnExitApplication.UseVisualStyleBackColor = true;
-            this.btnExitApplication.Click += new System.EventHandler(this.button1_Click);
             // 
             // Login
             // 

@@ -24,7 +24,7 @@ namespace FindANameFarm
     {
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
         public List<Staff> StaffList { get; private set; }
-        public List<StaffAndCategory>CompetencyList { get; private set; }
+        public List<StaffAndCategory> CompetencyList { get; private set; }
         public bool GetConnectionState { get; private set; }
         public static StaffBank UniqueInst;
         public List<CatIdAndName> StaffCompetenciesList { get; private set; }
@@ -40,12 +40,12 @@ namespace FindANameFarm
         //singleton
         public static StaffBank GetInst() => UniqueInst ?? (UniqueInst = new StaffBank());
 
-        
+
         public void AddStaffToList(Staff staff)
         {
-           
+
             StaffList.Add(staff);
-           _metalayer.AddStaffToDataBase(staff);
+            _metalayer.AddStaffToDataBase(staff);
         }
 
         public void AddCompetency(StaffAndCategory addCompetency)
@@ -54,14 +54,14 @@ namespace FindANameFarm
         }
         public void updateStaff(Staff editStaffMember)
         {
-          
+
 
             for (int i = 0; i < StaffList.Count; i++)
             {
                 Staff staff = StaffList[i];
                 if (staff.StaffId == editStaffMember.StaffId)
                 {
-                    
+
                     _metalayer.UpdateStaffMember(editStaffMember);
                     refreshConnection();
                 }
@@ -87,10 +87,10 @@ namespace FindANameFarm
 
         public void deleteStaffCompetency(int staffId, int catId)
         {
-           
-                    _metalayer.DeleteStaffCompetency(staffId,catId);
-                    refreshConnection();
-          
+
+            _metalayer.DeleteStaffCompetency(staffId, catId);
+            refreshConnection();
+
         }
 
         public void refreshConnection()
@@ -99,7 +99,7 @@ namespace FindANameFarm
             {
                 BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
                 StaffList = metaLayer.GetStaff();
-                
+
                 GetConnectionState = true;
             }
             catch (Exception)

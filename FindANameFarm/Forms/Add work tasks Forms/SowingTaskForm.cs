@@ -1,21 +1,18 @@
 ﻿using FindANameFarm.Banks;
+using FindANameFarm.WorkTaskClasses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Text;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Windows.Forms;
-using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.Forms
 {
-    /// <summary>
-    /// ian 17/11/18
-    /// sowing task form controls
-    /// </summary>
-    public partial class SowingTaskForm : Form
+	/// <summary>
+	/// ian 17/11/18
+	/// sowing task form controls
+	/// </summary>
+	public partial class SowingTaskForm : Form
     {
         private readonly FieldBank _field = FieldBank.GetInst();
         private readonly StaffBank _staff = StaffBank.GetInst();
@@ -24,15 +21,14 @@ namespace FindANameFarm.Forms
         private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst();
         private string _taskType = "Sowing";
 
-
         public SowingTaskForm()
         {
             InitializeComponent();
             ResetForm();
 
             refresh();
-
         }
+
         private void SowingTaskForm_Load(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskID.Text);
@@ -41,19 +37,15 @@ namespace FindANameFarm.Forms
 
             ShowExistingSowingTasks();
 
-
             ResetForm();
         }
+
         private void txtTaskID_TextChanged(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
 
             btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
         }
-
-
-
-
         //calls the methods to display the task drop down fields
         private void gbSowingTask_Enter(object sender, EventArgs e)
         {
@@ -113,7 +105,6 @@ namespace FindANameFarm.Forms
 
         private void ShowCategories()
         {
-
             if (cbVehicleCatList != null)
             {
                 cbVehicleCatList.DataSource = _vehicleBank.Categories;
@@ -126,15 +117,12 @@ namespace FindANameFarm.Forms
 
             ShowVehicle();
             ShowVehicleDriver();
-
         }
 
         private void ShowExistingSowingTasks()
         {
-
             listExistingSowingTasks.Items.Clear();
             List<WorkTasks> workTaskList = _workTask.WorkTaskList;
-
 
             foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType == _taskType)))
             {
@@ -150,11 +138,7 @@ namespace FindANameFarm.Forms
                 lvItem.SubItems.Add(workTask.CropId.ToString());
                 lvItem.SubItems.Add(workTask.TaskStatus);
                 listExistingSowingTasks.Items.Add(lvItem);
-
-
             }
-
-
         }
 
         private void ShowVehicle()

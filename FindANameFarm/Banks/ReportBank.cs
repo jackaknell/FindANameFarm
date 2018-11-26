@@ -20,6 +20,7 @@ namespace FindANameFarm.Banks
         public List<WorkTaskReport> HarvestTimeTable { get; set; }
         public List<WorkTaskReport> VehicleWorkTasks { get; set; }
         public List<WorkTaskReport> StaffWorkTasks { get; private set; }
+		public List<WorkTaskReport> AvailableStorage { get; set; }
         public ReportBank()
         {
             RefreshConnection();
@@ -69,6 +70,15 @@ namespace FindANameFarm.Banks
 
             return VehicleWorkTasks;
         }
+		public List<WorkTaskReport> GetAvailableStorage()
+		{
+			AvailableStorage = _metaLayer.GetAvailableStorageFromDb();
+
+			return AvailableStorage;
+			{
+
+			}
+		}
         /// <summary>
         /// ian 16/11/18
         /// </summary>
@@ -86,9 +96,5 @@ namespace FindANameFarm.Banks
                 throw;
             }
         }
-
-
-
-
     }
 }
