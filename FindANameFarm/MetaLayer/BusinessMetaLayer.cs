@@ -780,11 +780,12 @@ namespace FindANameFarm.MetaLayer
 		/// <param name="newCrop"></param>
 		public void AddCropToDataBase(Crops newCrop)
 		{
+           
 			string CropName = newCrop.CropName;
-			Int32 fieldSize = newCrop.CropStock;
+			Int32 cropStock = newCrop.CropStock;
 
 			string query = "Insert into Crops(CropName, CropStock) Values('" + CropName + "'," +
-						   fieldSize + ");";
+                           cropStock + ");";
 
 			_con.Insert(query);
 
