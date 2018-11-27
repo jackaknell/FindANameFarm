@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FindANameFarm.Forms.Reports;
+using FindANameFarm.Properties;
 
 namespace FindANameFarm.Forms
 {
@@ -113,6 +114,27 @@ namespace FindANameFarm.Forms
             newForm.Show();
         }
 
-       
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult message =MessageBox.Show(Resources.Exit_message,Resources.Exit_Title,MessageBoxButtons.YesNo);
+                if (message == DialogResult.Yes)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form login = new Login();
+            Hide();
+            login.Show();
+        }
     }
 }

@@ -48,12 +48,13 @@ namespace FindANameFarm.Forms
                         Hide();
                         StaffWorkSheet ws = new StaffWorkSheet(labourer);
                         ws.Show();
+                        
                     }
                 }
             }
             catch (Exception )
             {
-                MessageBox.Show(@"Something went wrong please try again later");
+                MessageBox.Show(Resources.Error);
             }
  
         }
@@ -63,6 +64,22 @@ namespace FindANameFarm.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin.PerformClick();
+            }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult message = MessageBox.Show(Resources.Exit_message, Resources.Exit_Title, MessageBoxButtons.YesNo);
+                if (message == DialogResult.Yes)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

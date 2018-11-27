@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using FindANameFarm.MetaLayer;
+using FindANameFarm.Properties;
 
 namespace FindANameFarm.Forms
 {
@@ -79,23 +81,19 @@ namespace FindANameFarm.Forms
             cbSowingTaskStaffList.ValueMember = "StaffId";
         }
 
-        private void ShowStaff2()
-        {
-            if (cbSowingTaskStaffList != null)
-            {
-                cbSowingTaskStaffList.DataSource = _staff.StaffList;
-            }
-
-            if (cbSowingTaskStaffList == null) return;
-            cbSowingTaskStaffList.DisplayMember = "FirstName";
-            cbSowingTaskStaffList.ValueMember = "StaffId";
-        }
-
+       // foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType == _taskType)))
         private void ShowCrop()
         {
+            List<Crops>seeds = new List<Crops>();
+
+            foreach (var seed in _crop.CropsList.Where(seed =>seed.CropName.Contains("Seed")))
+            {
+                seeds.Add(seed);
+            }
             if (cbSowingTaskCropList != null)
             {
-                cbSowingTaskCropList.DataSource = _crop.CropsList;
+                cbSowingTaskCropList.DataSource = seeds;
+                //_crop.CropsList;
             }
 
             if (cbSowingTaskCropList == null) return;
@@ -124,7 +122,7 @@ namespace FindANameFarm.Forms
             listExistingSowingTasks.Items.Clear();
             List<WorkTasks> workTaskList = _workTask.WorkTaskList;
 
-            foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType == _taskType)))
+            foreach (var workTask in workTaskList.Where(workTask => workTask.TaskType == _taskType))
             {
                 ListViewItem lvItem = new ListViewItem(workTask.TaskId.ToString());
                 lvItem.SubItems.Add(workTask.TaskType);
@@ -321,7 +319,7 @@ namespace FindANameFarm.Forms
 
             if (addWorkTask.TaskEndDate < addWorkTask.TaskStartDate)
             {
-                MessageBox.Show("Task Finish Date can't be before task start date");
+                MessageBox.Show(Resources.CheckDates);
             }
             else
             {
@@ -357,7 +355,7 @@ namespace FindANameFarm.Forms
             }
             else
             {
-                MessageBox.Show("Staff Member Already on task");
+                MessageBox.Show(Resources.StaffMemberExists);
             }
 
         }
@@ -380,7 +378,7 @@ namespace FindANameFarm.Forms
 
             if (Convert.ToInt32(cbSowingTaskVehicleList.SelectedValue) == 0)
             {
-                MessageBox.Show("You dont have any vehicles in that category");
+                MessageBox.Show(Resources.SelectVehicleCat);
             }
 
             if (alreadyOnTask == false)
@@ -392,7 +390,7 @@ namespace FindANameFarm.Forms
             }
             else
             {
-                MessageBox.Show("Staff Member or vehicle Already on task");
+                MessageBox.Show(Resources.StaffOrVehicleExist);
             }
 
         }
@@ -405,17 +403,17 @@ namespace FindANameFarm.Forms
                 int workTaskId = Convert.ToInt32(listTaskVehicles.SelectedItems[0].SubItems[2].Text);
                 int staffId = Convert.ToInt32(listTaskVehicles.SelectedItems[0].SubItems[3].Text);
 
-                TaskVehiclesAndDrivers vehicleToDelete = new TaskVehiclesAndDrivers();
+                TaskVehiclesAndDrivers vehicleToDelete = new TaskVehiclesAndDrivers
+                {
+                    VehicleId = vehicleId, TaskId = workTaskId, DriverId = staffId
+                };
 
-                vehicleToDelete.VehicleId = vehicleId;
-                vehicleToDelete.TaskId = workTaskId;
-                vehicleToDelete.DriverId = staffId;
 
                 _workTask.DeleteVehicleAndDriverFromTask(vehicleToDelete);
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Please Select A vehicle to remove first");
+                MessageBox.Show(Resources.SelectVehicleFirst);
                 Console.WriteLine(exception);
 
             }
@@ -429,17 +427,13 @@ namespace FindANameFarm.Forms
                 int staffId = Convert.ToInt32(listTaskStaff.SelectedItems[0].SubItems[0].Text);
                 int workTaskId = Convert.ToInt32(txtTaskID.Text);
 
-                TaskStaff staffToDelete = new TaskStaff();
-
-                staffToDelete.staffId = staffId;
-                staffToDelete.TaskId = workTaskId;
-
+                TaskStaff staffToDelete = new TaskStaff {staffId = staffId, TaskId = workTaskId};
 
                 _workTask.StaffToDeleteFromTask(staffToDelete);
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Please Select A Staff member to remove first");
+                MessageBox.Show(Resources.SelectStaffMemberFirst);
                 Console.WriteLine(exception);
 
             }
@@ -447,18 +441,20 @@ namespace FindANameFarm.Forms
 
         private void btnUpdateSowingTask_Click(object sender, EventArgs e)
         {
-            WorkTasks editWorkTask = new WorkTasks();
-            editWorkTask.TaskId = Convert.ToInt32(txtTaskID.Text);
-            editWorkTask.TaskType = "Sowing";
-            editWorkTask.TaskStartDate = dtpStartDate.Value;
-            editWorkTask.TaskEndDate = dtpFinishDate.Value;
-            editWorkTask.FieldId = Convert.ToInt32(cbSowingTaskFieldList.SelectedValue);
-            editWorkTask.CropId = Convert.ToInt32(cbSowingTaskCropList.SelectedValue);
-            editWorkTask.QuantityRequired = Convert.ToInt32(nudQuantity.Value);
-            editWorkTask.JobDuration = Convert.ToInt32(nudJobDuration.Value);
-            editWorkTask.ExpectedHarvestDate = dtpExpectedHarvestDate.Value;
-            editWorkTask.ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value);
-            editWorkTask.TaskStatus = cbTaskStatus.SelectedItem.ToString();
+            WorkTasks editWorkTask = new WorkTasks
+            {
+                TaskId = Convert.ToInt32(txtTaskID.Text),
+                TaskType = "Sowing",
+                TaskStartDate = dtpStartDate.Value,
+                TaskEndDate = dtpFinishDate.Value,
+                FieldId = Convert.ToInt32(cbSowingTaskFieldList.SelectedValue),
+                CropId = Convert.ToInt32(cbSowingTaskCropList.SelectedValue),
+                QuantityRequired = Convert.ToInt32(nudQuantity.Value),
+                JobDuration = Convert.ToInt32(nudJobDuration.Value),
+                ExpectedHarvestDate = dtpExpectedHarvestDate.Value,
+                ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value),
+                TaskStatus = cbTaskStatus.SelectedItem.ToString()
+            };
             _workTask.UpdateWorkTask(editWorkTask);
 
 
@@ -477,7 +473,10 @@ namespace FindANameFarm.Forms
                 lblTaskStatus.ForeColor = Color.Blue;
 
             if (cbTaskStatus.SelectedIndex == 1)
+            {
                 lblTaskStatus.ForeColor = Color.Orange;
+                //TODO Call storage method to adjust stock (does not exist 27/11/18)
+            }
 
             if (cbTaskStatus.SelectedIndex == 2)
                 lblTaskStatus.ForeColor = Color.Green;

@@ -61,12 +61,48 @@ namespace FindANameFarm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Task Finish Date can&apos;t be before task start date.
+        /// </summary>
+        internal static string CheckDates {
+            get {
+                return ResourceManager.GetString("CheckDates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap defaultImage {
             get {
                 object obj = ResourceManager.GetObject("defaultImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong please try again later.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to exit the application?.
+        /// </summary>
+        internal static string Exit_message {
+            get {
+                return ResourceManager.GetString("Exit message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Sure.
+        /// </summary>
+        internal static string Exit_Title {
+            get {
+                return ResourceManager.GetString("Exit Title", resourceCulture);
             }
         }
         
@@ -100,12 +136,57 @@ namespace FindANameFarm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select A Staff member to remove first.
+        /// </summary>
+        internal static string SelectStaffMemberFirst {
+            get {
+                return ResourceManager.GetString("SelectStaffMemberFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You dont have any vehicles in that category.
+        /// </summary>
+        internal static string SelectVehicleCat {
+            get {
+                return ResourceManager.GetString("SelectVehicleCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select A vehicle to remove first.
+        /// </summary>
+        internal static string SelectVehicleFirst {
+            get {
+                return ResourceManager.GetString("SelectVehicleFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Select a member of staff to remove.
         /// </summary>
         internal static string SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to_remove {
             get {
                 return ResourceManager.GetString("SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to" +
                         "_remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff Member Already on task.
+        /// </summary>
+        internal static string StaffMemberExists {
+            get {
+                return ResourceManager.GetString("StaffMemberExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staff Member or vehicle Already on task.
+        /// </summary>
+        internal static string StaffOrVehicleExist {
+            get {
+                return ResourceManager.GetString("StaffOrVehicleExist", resourceCulture);
             }
         }
     }

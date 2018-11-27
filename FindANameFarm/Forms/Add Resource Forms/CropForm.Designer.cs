@@ -37,13 +37,16 @@
             this.txtCropId = new System.Windows.Forms.TextBox();
             this.lblCropId = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblAuditDesc = new System.Windows.Forms.Label();
             this.lblAuditAmount = new System.Windows.Forms.Label();
             this.lblAuditDate = new System.Windows.Forms.Label();
             this.nudCropAudit = new System.Windows.Forms.NumericUpDown();
             this.rtbCropAudit = new System.Windows.Forms.RichTextBox();
             this.dtpCropAudit = new System.Windows.Forms.DateTimePicker();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.rbSeed = new System.Windows.Forms.RadioButton();
+            this.rbCrop = new System.Windows.Forms.RadioButton();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropAudit)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +97,7 @@
             this.listCrops.TabIndex = 22;
             this.listCrops.UseCompatibleStateImageBehavior = false;
             this.listCrops.View = System.Windows.Forms.View.Details;
-            this.listCrops.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listCrops_MouseDoubleClick);
+            this.listCrops.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listCrops_MouseClick);
             // 
             // lblCropName
             // 
@@ -137,6 +140,15 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Audit";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(227, 219);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 33;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
             // 
             // lblAuditDesc
             // 
@@ -187,15 +199,37 @@
             this.dtpCropAudit.Size = new System.Drawing.Size(200, 20);
             this.dtpCropAudit.TabIndex = 0;
             // 
-            // btnSubmit
+            // rbSeed
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(227, 219);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 33;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.rbSeed.AutoSize = true;
+            this.rbSeed.Location = new System.Drawing.Point(239, 55);
+            this.rbSeed.Name = "rbSeed";
+            this.rbSeed.Size = new System.Drawing.Size(50, 17);
+            this.rbSeed.TabIndex = 33;
+            this.rbSeed.TabStop = true;
+            this.rbSeed.Text = "Seed";
+            this.rbSeed.UseVisualStyleBackColor = true;
+            // 
+            // rbCrop
+            // 
+            this.rbCrop.AutoSize = true;
+            this.rbCrop.Location = new System.Drawing.Point(239, 79);
+            this.rbCrop.Name = "rbCrop";
+            this.rbCrop.Size = new System.Drawing.Size(47, 17);
+            this.rbCrop.TabIndex = 34;
+            this.rbCrop.TabStop = true;
+            this.rbCrop.Text = "Crop";
+            this.rbCrop.UseVisualStyleBackColor = true;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(456, 503);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 35;
+            this.btnReset.Text = "Clear";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // CropForm
             // 
@@ -203,6 +237,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(801, 538);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.rbCrop);
+            this.Controls.Add(this.rbSeed);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtCropId);
             this.Controls.Add(this.lblCropId);
@@ -242,5 +279,8 @@
         private System.Windows.Forms.Label lblAuditDesc;
         private System.Windows.Forms.Label lblAuditAmount;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.RadioButton rbSeed;
+        private System.Windows.Forms.RadioButton rbCrop;
+        private System.Windows.Forms.Button btnReset;
     }
 }

@@ -133,4 +133,31 @@
   <data name="SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to_remove" xml:space="preserve">
     <value>Please Select a member of staff to remove</value>
   </data>
+  <data name="Exit message" xml:space="preserve">
+    <value>Do you want to exit the application?</value>
+  </data>
+  <data name="Exit Title" xml:space="preserve">
+    <value>Are You Sure</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Something went wrong please try again later</value>
+  </data>
+  <data name="CheckDates" xml:space="preserve">
+    <value>Task Finish Date can't be before task start date</value>
+  </data>
+  <data name="StaffMemberExists" xml:space="preserve">
+    <value>Staff Member Already on task</value>
+  </data>
+  <data name="SelectVehicleCat" xml:space="preserve">
+    <value>You dont have any vehicles in that category</value>
+  </data>
+  <data name="StaffOrVehicleExist" xml:space="preserve">
+    <value>Staff Member or vehicle Already on task</value>
+  </data>
+  <data name="SelectVehicleFirst" xml:space="preserve">
+    <value>Please Select A vehicle to remove first</value>
+  </data>
+  <data name="SelectStaffMemberFirst" xml:space="preserve">
+    <value>Please Select A Staff member to remove first</value>
+  </data>
 </root>

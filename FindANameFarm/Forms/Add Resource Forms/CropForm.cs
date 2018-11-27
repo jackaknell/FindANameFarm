@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FindANameFarm.Banks;
-using FindANameFarm.BasicClasses;
+﻿using FindANameFarm.Banks;
 using FindANameFarm.MetaLayer;
- 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Forms;
+
 namespace FindANameFarm.Forms
 {
     public partial class CropForm : Form
     {
 
-        private CropsBank _cropsBank = CropsBank.GetInst();
+        private readonly CropsBank _cropsBank = CropsBank.GetInst();
         public CropForm()
         {
             InitializeComponent();
+            rbSeed.Checked = true;
             ShowCrops(_cropsBank.CropsList);
             refresh();
         }
@@ -35,43 +30,63 @@ namespace FindANameFarm.Forms
 
         }
 
-        private void listCrops_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            string CropId = listCrops.SelectedItems[0].SubItems[0].Text;
-            string CropName = listCrops.SelectedItems[0].SubItems[1].Text;
-            string CropStock = listCrops.SelectedItems[0].SubItems[2].Text;
+     
 
-            txtCropId.Text = CropId;
-            txtCropName.Text = CropName;
-            
-
-        }
-
-        public void ShowCrops(List<Crops> CropsList)
+        public void ShowCrops(List<Crops> cropsList)
         {
             listCrops.Items.Clear();
 
-            foreach (Crops crops in CropsList)
+            foreach (Crops crops in cropsList)
             {
                 ListViewItem lvItem = new ListViewItem(crops.CropId.ToString());
               
-                lvItem.SubItems.Add(crops.CropName.ToString());
+                lvItem.SubItems.Add(crops.CropName);
                 lvItem.SubItems.Add(crops.CropStock.ToString());
                 
 
                 listCrops.Items.Add(lvItem);
-            };
+            }
+        }
+
+        private string CheckIfSeed()
+        {
+            string cropName;
+            if (rbSeed.Checked)
+            {
+                cropName = txtCropName.Text + " Seeds";
+            }
+            else
+            {
+                cropName = txtCropName.Text;
+            }
+            return cropName;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Crops addCrops = new Crops();
-            addCrops.CropName = txtCropName.Text;
-           
+            Crops addCrops = new Crops
+            {
+                CropName = CheckIfSeed()
+            };
+
 
             _cropsBank?.AddCropToList(addCrops);
 
-            Refresh();
+            refresh();
+            ResetForm();
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Crops editCrop = new Crops
+            {
+                
+                CropName = CheckIfSeed()
+            };
+
+            Debug.WriteLine(editCrop.CropName);
+            _cropsBank.UpdateCrop(editCrop);
+
+            refresh();
         }
 
         private void refresh()
@@ -80,8 +95,9 @@ namespace FindANameFarm.Forms
             ShowCrops(_cropsBank.CropsList);
         }
 
-        private void resetForm()
+        private void ResetForm()
         {
+            txtCropId.Text = "";
             txtCropName.Text = "";
             
         }
@@ -91,20 +107,19 @@ namespace FindANameFarm.Forms
             Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void listCrops_MouseClick(object sender, MouseEventArgs e)
         {
-            Crops editCrop = new Crops();
-            editCrop.CropName = txtCropName.Text;
-           
+            string CropId = listCrops.SelectedItems[0].SubItems[0].Text;
+            string CropName = listCrops.SelectedItems[0].SubItems[1].Text;
+            //string CropStock = listCrops.SelectedItems[0].SubItems[2].Text;
 
-            _cropsBank.UpdateCrop(editCrop);
-
-            refresh();
+            txtCropId.Text = CropId;
+            txtCropName.Text = CropName;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-
+            ResetForm();
         }
     }
 }
