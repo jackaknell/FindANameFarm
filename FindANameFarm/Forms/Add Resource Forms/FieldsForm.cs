@@ -101,15 +101,23 @@ namespace FindANameFarm.Forms
 		}
 
 		private void btnUpdateField_Click(object sender, EventArgs e)
-		{
-			Fields editField = new Fields();
-			editField.FieldId = Convert.ToInt32(txtFieldId.Text);
-			editField.FieldName = txtFieldName.Text;
-			editField.FieldSize = Convert.ToInt32(nudFieldSize.Value);
-			editField.FieldSuitability = txtFieldSuitability.Text;
+        {
+            try
+            {
+                Fields editField = new Fields();
+                editField.FieldId = Convert.ToInt32(txtFieldId.Text);
+                editField.FieldName = txtFieldName.Text;
+                editField.FieldSize = Convert.ToInt32(nudFieldSize.Value);
+                editField.FieldSuitability = txtFieldSuitability.Text;
 
-			_fieldBank.UpdateField(editField);
-			refresh();
+                _fieldBank.UpdateField(editField);
+                refresh();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show("Select a Field First");
+                Console.WriteLine(exception);
+            }
 		}
 
 		private void btnFieldClose_Click(object sender, EventArgs e) => Close();

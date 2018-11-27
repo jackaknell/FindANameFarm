@@ -615,7 +615,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
 		{
-			List<WorkTaskReport> vehiclerWorkTaskReport = new List<WorkTaskReport>();
+			List<WorkTaskReport> VehiclerWorkTaskReport = new List<WorkTaskReport>();
 			if (_con.OpenConnection())
 			{
 				DbDataReader dr = _con.Select("SELECT WorkTasks.TaskType, WorkTasks.startDate, WorkTasks.finishDate, " +
@@ -635,7 +635,7 @@ namespace FindANameFarm.MetaLayer
 
 				while (dr.Read())
 				{
-					WorkTaskReport vehicleWorkTask = new WorkTaskReport()
+					WorkTaskReport VehicleWorkTask = new WorkTaskReport()
 					{
 						TaskType = dr.GetString(0),
 						TaskStartDate = dr.GetDateTime(1),
@@ -651,19 +651,19 @@ namespace FindANameFarm.MetaLayer
 						VehicleName = dr.GetString(11)
 					};
 
-					vehiclerWorkTaskReport.Add(vehicleWorkTask);
+					VehiclerWorkTaskReport.Add(VehicleWorkTask);
 				}
 				dr.Close();
 				_con.CloseConnection();
 			}
 
-			return vehiclerWorkTaskReport;
+			return VehiclerWorkTaskReport;
 		}
 		/// <summary>
 		/// ian 17/11/18
 		/// </summary>
 		/// <returns></returns>
-		public List<WorkTaskReport> GetHarvestTimeTableTasks(string startTime, string finishTime)
+		public List<WorkTaskReport> GetHarvestTimeTableTasks(string StartTime, string FinishTime)
 		{
 			List<WorkTaskReport> harvestList = new List<WorkTaskReport>();
 
@@ -674,7 +674,7 @@ namespace FindANameFarm.MetaLayer
 											  " WorkTasks.TaskType, Crops.cropName, Fields.FieldName, IIF(IsNull(FertiliserAndTreatment.fertTreatName),'None',FertiliserAndTreatment.fertTreatName) " +
 											  "FROM FertiliserAndTreatment right JOIN(Fields INNER JOIN(Crops INNER JOIN WorkTasks ON Crops.cropID = WorkTasks.CropId) ON Fields.FieldId =" +
 											  " WorkTasks.FieldId) ON FertiliserAndTreatment.fertTreatId =" +
-											  " WorkTasks.treatmentId where WorkTasks.startDate >= #" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate; ");
+											  " WorkTasks.treatmentId where WorkTasks.startDate >= #" + StartTime + "# and WorkTasks.startDate <= #" + FinishTime + "# order by WorkTasks.startDate; ");
 
 				while (dr.Read())
 				{
@@ -780,11 +780,12 @@ namespace FindANameFarm.MetaLayer
 		/// <param name="newCrop"></param>
 		public void AddCropToDataBase(Crops newCrop)
 		{
-			string cropName = newCrop.CropName;
-			Int32 fieldSize = newCrop.CropStock;
+           
+			string CropName = newCrop.CropName;
+			Int32 cropStock = newCrop.CropStock;
 
-			string query = "Insert into Crops(CropName, CropStock) Values('" + cropName + "'," +
-						   fieldSize + ");";
+			string query = "Insert into Crops(CropName, CropStock) Values('" + CropName + "'," +
+                           cropStock + ");";
 
 			_con.Insert(query);
 

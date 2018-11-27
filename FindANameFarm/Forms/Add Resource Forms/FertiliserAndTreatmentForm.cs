@@ -94,13 +94,22 @@ namespace FindANameFarm.Forms
 
 		private void btnFertTreatUpdate_Click(object sender, EventArgs e)
 		{
-			FertiliserAndTreatment editFertTreat = new FertiliserAndTreatment();
-			editFertTreat.FertTreatId = Convert.ToInt32(txtFertTreatId.Text);
-			editFertTreat.FertTreatName = txtFertTreatName.Text;
-			editFertTreat.FertTreatQuantity = Convert.ToInt32(nudFertTreatQuantity.Value);
+            try
+            {
+                FertiliserAndTreatment editFertTreat = new FertiliserAndTreatment();
+                editFertTreat.FertTreatId = Convert.ToInt32(txtFertTreatId.Text);
+                editFertTreat.FertTreatName = txtFertTreatName.Text;
+                editFertTreat.FertTreatQuantity = Convert.ToInt32(nudFertTreatQuantity.Value);
 
-			_fertTreatBank.UpdateFertTreat(editFertTreat);
-			refresh();
+                _fertTreatBank.UpdateFertTreat(editFertTreat);
+                refresh();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show("Select a Treatment First");
+                Console.WriteLine(exception);
+            }
+            
 		}
 
 		private void btnFertTreatClose_Click(object sender, EventArgs e) => Close();

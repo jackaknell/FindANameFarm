@@ -64,28 +64,38 @@ namespace FindANameFarm.Forms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Crops addCrops = new Crops
-            {
-                CropName = CheckIfSeed()
-            };
+                Crops addCrops = new Crops
+                {
+                    CropName = CheckIfSeed()
+                };
 
 
-            _cropsBank?.AddCropToList(addCrops);
-
+                _cropsBank?.AddCropToList(addCrops);
+            
+           
             refresh();
             ResetForm();
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Crops editCrop = new Crops
+            try
             {
-                
-                CropName = CheckIfSeed()
-            };
 
-            Debug.WriteLine(editCrop.CropName);
-            _cropsBank.UpdateCrop(editCrop);
+                Crops editCrop = new Crops
+                {
 
+                    CropId = Convert.ToInt32(txtCropId.Text),
+                    CropName = CheckIfSeed()
+
+                };
+
+
+                _cropsBank.UpdateCrop(editCrop);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Select a Crop item to update.");
+            }
             refresh();
         }
 

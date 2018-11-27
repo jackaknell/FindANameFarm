@@ -107,14 +107,28 @@ namespace FindANameFarm.Forms
 
         private void btnUpdateStore_Click(object sender, EventArgs e)
         {
-            Storage editStorage = new Storage();
-            editStorage.StorageID = Convert.ToInt32(txtStoreID.Text);
-            editStorage.StorageName = txtStoreName.Text;
-            editStorage.AvailableStorage = Convert.ToInt32(nudAvailableStore.Value);
-            editStorage.Capacity = Convert.ToInt32(nudCapacity.Value);
-            editStorage.Temp = Convert.ToInt32(nudTemp.Value);
 
-            _storageBank.UpdateStorage(editStorage);
+            try
+            {
+
+                Storage editStorage = new Storage();
+
+                editStorage.StorageID = Convert.ToInt32(txtStoreID.Text);
+                editStorage.StorageName = txtStoreName.Text;
+                editStorage.AvailableStorage = Convert.ToInt32(nudAvailableStore.Value);
+                editStorage.Capacity = Convert.ToInt32(nudCapacity.Value);
+                editStorage.Temp = Convert.ToInt32(nudTemp.Value);
+
+                _storageBank.UpdateStorage(editStorage);
+            }
+
+            catch (Exception exception)
+            {
+                MessageBox.Show("Select a Storage container to update.");
+                
+            }
+
+            
 
             refresh();
         }
