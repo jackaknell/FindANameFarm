@@ -215,5 +215,11 @@ namespace FindANameFarm.Forms
             txtYield.Text = expectedYield;
             txtTreatment.Text = treatment;
         }
+
+        private void btnViewStorage_Click(object sender, EventArgs e)
+        {
+            ReportAvailableStorageForm storage = new ReportAvailableStorageForm();
+            storage.Show();
+        }
     }
 }

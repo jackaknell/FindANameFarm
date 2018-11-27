@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm.Forms
+﻿namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     partial class VehicleForm
     {
@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleForm));
             this.btnVehicleFormClose = new System.Windows.Forms.Button();
-            this.btnDeleteVehicle = new System.Windows.Forms.Button();
             this.btnUpdateVehicle = new System.Windows.Forms.Button();
             this.btnCreateVehicle = new System.Windows.Forms.Button();
             this.txtVehicleType = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblCategorySelection = new System.Windows.Forms.Label();
             this.cbVehicleCategoryList = new System.Windows.Forms.ComboBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.gbCategories.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,21 +64,10 @@
             this.btnVehicleFormClose.UseVisualStyleBackColor = true;
             this.btnVehicleFormClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnDeleteVehicle
-            // 
-            this.btnDeleteVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteVehicle.Location = new System.Drawing.Point(265, 396);
-            this.btnDeleteVehicle.Name = "btnDeleteVehicle";
-            this.btnDeleteVehicle.Size = new System.Drawing.Size(154, 45);
-            this.btnDeleteVehicle.TabIndex = 21;
-            this.btnDeleteVehicle.Text = "Delete Selected Vehicle";
-            this.btnDeleteVehicle.UseVisualStyleBackColor = true;
-            this.btnDeleteVehicle.Click += new System.EventHandler(this.btnDeleteVehicle_Click);
-            // 
             // btnUpdateVehicle
             // 
             this.btnUpdateVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateVehicle.Location = new System.Drawing.Point(40, 396);
+            this.btnUpdateVehicle.Location = new System.Drawing.Point(52, 378);
             this.btnUpdateVehicle.Name = "btnUpdateVehicle";
             this.btnUpdateVehicle.Size = new System.Drawing.Size(161, 45);
             this.btnUpdateVehicle.TabIndex = 20;
@@ -250,15 +239,26 @@
             this.cbVehicleCategoryList.Size = new System.Drawing.Size(121, 21);
             this.cbVehicleCategoryList.TabIndex = 25;
             // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(258, 378);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(129, 45);
+            this.btnReset.TabIndex = 26;
+            this.btnReset.Text = "Reset Form";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // VehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 470);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.cbVehicleCategoryList);
             this.Controls.Add(this.lblCategorySelection);
             this.Controls.Add(this.btnVehicleFormClose);
-            this.Controls.Add(this.btnDeleteVehicle);
             this.Controls.Add(this.btnUpdateVehicle);
             this.Controls.Add(this.btnCreateVehicle);
             this.Controls.Add(this.txtVehicleType);
@@ -284,7 +284,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnVehicleFormClose;
-        private System.Windows.Forms.Button btnDeleteVehicle;
         private System.Windows.Forms.Button btnUpdateVehicle;
         private System.Windows.Forms.Button btnCreateVehicle;
         private System.Windows.Forms.TextBox txtVehicleType;
@@ -304,5 +303,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button btnReset;
     }
 }

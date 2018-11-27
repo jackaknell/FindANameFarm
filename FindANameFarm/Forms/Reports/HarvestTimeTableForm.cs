@@ -1,20 +1,20 @@
-﻿using FindANameFarm.Banks;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Reports
 {
     /// <summary>
     /// ian 17/11/18
     /// </summary>
     public partial class HarvestTimeTableForm : Form
     {
-        private string taskType;
+        private string _taskType;
         
         private List<WorkTaskReport> HarvestTimeTable { get; set; }
         public string StartTime { get; set; }
@@ -24,7 +24,7 @@ namespace FindANameFarm.Forms
         public HarvestTimeTableForm()
         {
             InitializeComponent();
-            dtDateTo.Value = dtDateTo.Value.AddDays(10);
+            dtDateTo.Value = dtDateTo.Value.AddDays(60);
             rbAllTasks.Checked = true;
 
            
@@ -41,20 +41,20 @@ namespace FindANameFarm.Forms
 
         private void ShowHarvestTimeTable()
         {
-            StartTime = dtDateFrom.Value.ToString();
-            FinishTime = dtDateTo.Value.ToString();
+            StartTime = dtDateFrom.Value.ToString(CultureInfo.CurrentCulture);
+            FinishTime = dtDateTo.Value.ToString(CultureInfo.CurrentCulture);
 
             listHarvestTimeTable.Items.Clear();
             HarvestTimeTable = _report.GetHarvestTimeTable(StartTime,FinishTime);
 
-            if (taskType == "All")
+            if (_taskType == "All")
             {
 
                 foreach (var harvestTask in HarvestTimeTable)
                     //.Where(harvestTask => (true)))
 
                 {
-                    listBody(harvestTask);
+                    ListBody(harvestTask);
                 }
 
                 ListRefresh();
@@ -62,17 +62,17 @@ namespace FindANameFarm.Forms
             }
             else
             {
-                foreach (var harvestTask in HarvestTimeTable.Where(harvestTask => (harvestTask.TaskType == taskType)))
+                foreach (var harvestTask in HarvestTimeTable.Where(harvestTask => (harvestTask.TaskType == _taskType)))
 
                 {
-                    listBody(harvestTask);
+                    ListBody(harvestTask);
                 }
 
                 ListRefresh();
             }
         }
 
-        private void listBody(WorkTaskReport harvestTask)
+        private void ListBody(WorkTaskReport harvestTask)
         {
           
 
@@ -110,22 +110,22 @@ namespace FindANameFarm.Forms
         {
             if (rbAllTasks.Checked)
             {
-                taskType = "All";
+                _taskType = "All";
             }
 
             if (rbFertTreatment.Checked)
             {
-                taskType = "Treatment";
+                _taskType = "Treatment";
             }
 
             if (rbHarvest.Checked)
             {
-                taskType = "Harvest";
+                _taskType = "Harvest";
             }
 
             if (rbSowingTasks.Checked)
             {
-                taskType = "Sowing";
+                _taskType = "Sowing";
             }
 
             ShowHarvestTimeTable();
@@ -133,11 +133,16 @@ namespace FindANameFarm.Forms
 
         private void adDateTo_ValueChanged(object sender, EventArgs e)
         {
-            StartTime = dtDateFrom.Value.ToString();
-            FinishTime = dtDateTo.Value.ToString();
+            StartTime = dtDateFrom.Value.ToString(CultureInfo.CurrentCulture);
+            FinishTime = dtDateTo.Value.ToString(CultureInfo.CurrentCulture);
 
         
             ShowHarvestTimeTable();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

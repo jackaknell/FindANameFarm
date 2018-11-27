@@ -1,25 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using FindANameFarm.Properties;
 
-namespace FindANameFarm
+namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     public partial class StaffForm : Form
     {
-        private StaffBank _staffBank = StaffBank.GetInst();
-        private VehicleBank _vehicleBank = VehicleBank.GetInst();
+        private readonly StaffBank _staffBank = StaffBank.GetInst();
+        private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
         public StaffForm()
         {
             InitializeComponent();
+            gbCompetencies.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
+            btnUpdate.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
            
-            ShowStaff(_staffBank.StaffList);
             refresh();
         }
 
-       
-       
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+            gbCompetencies.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
+            btnUpdate.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
+        }
+
 
         public void ShowStaff(List<Staff> staffList)
         {
@@ -56,7 +64,7 @@ namespace FindANameFarm
             cbCompetencies.ValueMember = "CatId";
         }
 
-        public void showCompetencies()
+        public void ShowCompetencies()
         {
             _staffBank.GetCompetencies(Convert.ToInt32(txtId.Text));
 
@@ -69,14 +77,14 @@ namespace FindANameFarm
                 lvItem.SubItems.Add(competency.CategoryName);
 
 
-                this.listCompetencies.Items.Add(lvItem);
+                listCompetencies.Items.Add(lvItem);
             }
 
         }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
-            string ID = listStaff.SelectedItems[0].SubItems[0].Text;
+            string id = listStaff.SelectedItems[0].SubItems[0].Text;
             string fName = listStaff.SelectedItems[0].SubItems[1].Text;
             string sName = listStaff.SelectedItems[0].SubItems[2].Text;
             string gender = listStaff.SelectedItems[0].SubItems[3].Text;
@@ -86,7 +94,7 @@ namespace FindANameFarm
             string filePath = listStaff.SelectedItems[0].SubItems[7].Text;
             string password = listStaff.SelectedItems[0].SubItems[8].Text;
             
-            txtId.Text = ID;
+            txtId.Text = id;
             txtfName.Text = fName;
             txtSname.Text = sName;
             cbGender.SelectedItem = gender;
@@ -95,24 +103,46 @@ namespace FindANameFarm
             txtContact.Text = contact;
             txtImagePath.Text = filePath;
             txtStaffPassword.Text = password;
-            showCompetencies();
+            ShowCompetencies();
+            ShowStaffImage();
+            
         }
+        
+        private void ShowStaffImage()
+        {
+            try
+            {
+                string filepath = txtImagePath.Text;
+                Debug.Write(filepath);
+                pbStaffImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbStaffImage.Load(filepath);
+            }
+            catch (Exception e)
+            {
+                pbStaffImage.Image = Resources.defaultImage;
+                Console.WriteLine(e);
+                
+            }
+               
 
+        }
        
 
        
 
       
-        private void resetForm()
+        private void ResetForm()
         {
             txtId.Text = "";
             txtfName.Text = "";
             txtSname.Text = "";
-            //txtGender.Text = "";
+            cbGender.SelectedIndex = -1;
+            cbPosition.SelectedIndex = -1;
             txtemail.Text = "";
             cbCompetencies.SelectedIndex = -1;
             txtContact.Text = "";
-            pbStaffImage.Image = Properties.Resources.defaultImage;
+            txtImagePath.Text = "";
+            pbStaffImage.Image =Resources.defaultImage;
         }
 
         private void refresh()
@@ -123,7 +153,7 @@ namespace FindANameFarm
             ShowCategories();
             
 
-            resetForm();
+            ResetForm();
 
         }
 
@@ -132,38 +162,35 @@ namespace FindANameFarm
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             {
                 openFileDialog1.Filter =
-                    "jpeg images (*.jpg)|*.jpg|png images (*.png)|*.png|bitmap files (*.bmp)|*.bmp";
+                    Resources.fileNameFilter;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    FileInfo Info = new FileInfo(openFileDialog1.FileName);
-                    string path = Info.DirectoryName;
-                    string fileName = Info.Name;
+                    FileInfo info = new FileInfo(openFileDialog1.FileName);
+                    string path = info.DirectoryName;
+                    string fileName = info.Name;
 
                     txtImagePath.Text = path + fileName;
+                   ShowStaffImage();
                 }
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int staffMemberToDelete = Convert.ToInt32(txtId.Text);
-            _staffBank.deleteStaff(staffMemberToDelete);
-
-            refresh();
-            resetForm();
-        }
+    
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Staff editstaff = new Staff();
-            editstaff.StaffId = Convert.ToInt32(txtId.Text);
-            editstaff.FirstName = txtfName.Text;
-            editstaff.SurName = txtSname.Text;
-            editstaff.Gender = cbGender.SelectedItem.ToString();
-            editstaff.Email = txtemail.Text;
-            editstaff.Role = cbPosition.SelectedItem.ToString();
-            editstaff.Contact = txtContact.Text;
-            _staffBank.updateStaff(editstaff);
+            Staff editStaffMember = new Staff
+            {
+                StaffId = Convert.ToInt32(txtId.Text),
+                FirstName = txtfName.Text,
+                SurName = txtSname.Text,
+                Gender = cbGender.SelectedItem.ToString(),
+                Email = txtemail.Text,
+                Role = cbPosition.SelectedItem.ToString(),
+                Contact = txtContact.Text,
+                ImageFile = txtImagePath.Text
+            };
+            _staffBank.updateStaff(editStaffMember);
 
             refresh();
             
@@ -171,29 +198,54 @@ namespace FindANameFarm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Staff addstaff = new Staff();
-            addstaff.FirstName = txtfName.Text;
-            addstaff.SurName = txtSname.Text;
-            addstaff.Gender = cbGender.SelectedItem.ToString();
-            addstaff.Email = txtemail.Text;
-            addstaff.Role = cbPosition.SelectedItem.ToString();
-            addstaff.Contact = txtContact.Text;
-            addstaff.ImageFile = txtImagePath.Text;
-            addstaff.Password = txtStaffPassword.Text;
+            try
+            {
+                Staff addStaff = new Staff
+                {
+                    FirstName = txtfName.Text,
+                    SurName = txtSname.Text,
+                    Gender = cbGender.SelectedItem.ToString(),
+                    Email = txtemail.Text,
+                    Role = cbPosition.SelectedItem.ToString(),
+                    Contact = txtContact.Text,
+                    ImageFile = txtImagePath.Text,
+                    Password = txtStaffPassword.Text
+                };
 
-            _staffBank.AddStaffToList(addstaff);
-           
+                _staffBank.AddStaffToList(addStaff);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(Resources.tryAgain);
+                Console.WriteLine(exception);
+               
+            }
+            
+          
             refresh();
         }
 
         private void btnAddCompetency_Click(object sender, EventArgs e)
         {
-            StaffAndCategory competency = new StaffAndCategory();
-            competency.CatId = Convert.ToInt32(cbCompetencies.SelectedValue);
-            competency.StaffId = Convert.ToInt32(txtId.Text);
-            _staffBank.AddCompetency(competency);
-            
-            showCompetencies();
+           
+            try
+            {
+                StaffAndCategory competency = new StaffAndCategory
+                {
+                    CatId = Convert.ToInt32(cbCompetencies.SelectedValue),
+                    StaffId = Convert.ToInt32(txtId.Text)
+                };
+                _staffBank.AddCompetency(competency);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(Resources.selectStaff);
+                Console.WriteLine(exception);
+
+            }
+
+
+            ShowCompetencies();
         }
 
      
@@ -207,13 +259,31 @@ namespace FindANameFarm
 
         private void btnRemoveCompetency_Click(object sender, EventArgs e)
         {
-            int staffMember = Convert.ToInt32(txtId.Text);
-            int catId = Convert.ToInt32(listCompetencies.SelectedItems[0].SubItems[0].Text);
+            try
+            {
+                int staffMember = Convert.ToInt32(txtId.Text);
+                int catId = Convert.ToInt32(listCompetencies.SelectedItems[0].SubItems[0].Text);
+
+                _staffBank.deleteStaffCompetency(staffMember, catId);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(Resources.deleteCompetency);
+                Console.WriteLine(exception);
+                
+            }
             
-           _staffBank.deleteStaffCompetency(staffMember,catId);
-            showCompetencies();
+            ShowCompetencies();
         }
 
-       
+        private void StaffForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
     }
 }

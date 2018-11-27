@@ -82,6 +82,7 @@
             this.btnViewStorage.TabIndex = 0;
             this.btnViewStorage.Text = "View Storage";
             this.btnViewStorage.UseVisualStyleBackColor = true;
+            this.btnViewStorage.Click += new System.EventHandler(this.btnViewStorage_Click);
             // 
             // btnLogout
             // 

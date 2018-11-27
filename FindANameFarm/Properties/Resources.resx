@@ -160,4 +160,25 @@
   <data name="SelectStaffMemberFirst" xml:space="preserve">
     <value>Please Select A Staff member to remove first</value>
   </data>
+  <data name="selectStaff" xml:space="preserve">
+    <value>Please select a member of staff first</value>
+  </data>
+  <data name="deleteCompetency" xml:space="preserve">
+    <value>Please select a competenct to delete first</value>
+  </data>
+  <data name="fileNameFilter" xml:space="preserve">
+    <value>jpeg images (*.jpg)|*.jpg|png images (*.png)|*.png|bitmap files (*.bmp)|*.bmp</value>
+  </data>
+  <data name="exitProblem" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="addCat" xml:space="preserve">
+    <value>Insert a category to add first</value>
+  </data>
+  <data name="tryAgain" xml:space="preserve">
+    <value>Please make sure all details are entered and try again</value>
+  </data>
+  <data name="pictureError" xml:space="preserve">
+    <value>Error Try A different File</value>
+  </data>
 </root>

@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm.Forms
+﻿namespace FindANameFarm.Forms.Add_work_tasks_Forms
 {
     partial class SowingTaskForm
     {
@@ -32,6 +32,8 @@
             this.btnCloseSowingTask = new System.Windows.Forms.Button();
             this.btnCreateSowingTask = new System.Windows.Forms.Button();
             this.gbSowingTask = new System.Windows.Forms.GroupBox();
+            this.lblTaskStatus = new System.Windows.Forms.Label();
+            this.cbTaskStatus = new System.Windows.Forms.ComboBox();
             this.btnResetForm = new System.Windows.Forms.Button();
             this.nudExpectedYeild = new System.Windows.Forms.NumericUpDown();
             this.lblTaskId = new System.Windows.Forms.Label();
@@ -41,7 +43,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.dtpFinishDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.nudJobDuration = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,8 +82,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbTaskVehiclesAndStaff = new System.Windows.Forms.GroupBox();
-            this.cbTaskStatus = new System.Windows.Forms.ComboBox();
-            this.lblTaskStatus = new System.Windows.Forms.Label();
             this.gbSowingTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudExpectedYeild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
@@ -125,7 +124,6 @@
             this.gbSowingTask.Controls.Add(this.label20);
             this.gbSowingTask.Controls.Add(this.dtpFinishDate);
             this.gbSowingTask.Controls.Add(this.label19);
-            this.gbSowingTask.Controls.Add(this.label18);
             this.gbSowingTask.Controls.Add(this.label17);
             this.gbSowingTask.Controls.Add(this.nudJobDuration);
             this.gbSowingTask.Controls.Add(this.label12);
@@ -144,6 +142,30 @@
             this.gbSowingTask.TabIndex = 8;
             this.gbSowingTask.TabStop = false;
             this.gbSowingTask.Enter += new System.EventHandler(this.gbSowingTask_Enter);
+            // 
+            // lblTaskStatus
+            // 
+            this.lblTaskStatus.AutoSize = true;
+            this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskStatus.Location = new System.Drawing.Point(22, 554);
+            this.lblTaskStatus.Name = "lblTaskStatus";
+            this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
+            this.lblTaskStatus.TabIndex = 41;
+            this.lblTaskStatus.Text = "Task Current Status:";
+            // 
+            // cbTaskStatus
+            // 
+            this.cbTaskStatus.FormattingEnabled = true;
+            this.cbTaskStatus.Items.AddRange(new object[] {
+            "Not Started",
+            "Task Started",
+            "Task Finished",
+            "Unable To Complete Task"});
+            this.cbTaskStatus.Location = new System.Drawing.Point(203, 556);
+            this.cbTaskStatus.Name = "cbTaskStatus";
+            this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
+            this.cbTaskStatus.TabIndex = 40;
+            this.cbTaskStatus.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnResetForm
             // 
@@ -224,16 +246,6 @@
             this.label19.TabIndex = 31;
             this.label19.Text = "Finish Date:";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(328, 503);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 13);
-            this.label18.TabIndex = 30;
-            this.label18.Text = "Volume m2";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -254,7 +266,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(328, 385);
+            this.label12.Location = new System.Drawing.Point(298, 380);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 25;
@@ -582,30 +594,6 @@
             this.gbTaskVehiclesAndStaff.TabIndex = 39;
             this.gbTaskVehiclesAndStaff.TabStop = false;
             // 
-            // cbTaskStatus
-            // 
-            this.cbTaskStatus.FormattingEnabled = true;
-            this.cbTaskStatus.Items.AddRange(new object[] {
-            "Not Started",
-            "Task Started",
-            "Task Finished",
-            "Unable To Complete Task"});
-            this.cbTaskStatus.Location = new System.Drawing.Point(203, 556);
-            this.cbTaskStatus.Name = "cbTaskStatus";
-            this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
-            this.cbTaskStatus.TabIndex = 40;
-            this.cbTaskStatus.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // lblTaskStatus
-            // 
-            this.lblTaskStatus.AutoSize = true;
-            this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaskStatus.Location = new System.Drawing.Point(22, 554);
-            this.lblTaskStatus.Name = "lblTaskStatus";
-            this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
-            this.lblTaskStatus.TabIndex = 41;
-            this.lblTaskStatus.Text = "Task Current Status:";
-            // 
             // SowingTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,7 +628,6 @@
         private System.Windows.Forms.Button btnCloseSowingTask;
         private System.Windows.Forms.Button btnCreateSowingTask;
         private System.Windows.Forms.GroupBox gbSowingTask;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button txtRemoveVehicleFromTask;
         private System.Windows.Forms.Button btnRemoveLabourerFromTask;

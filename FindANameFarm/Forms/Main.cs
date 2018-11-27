@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using FindANameFarm.Forms.Add_Resource_Forms;
+using FindANameFarm.Forms.Add_work_tasks_Forms;
 using FindANameFarm.Forms.Reports;
 using FindANameFarm.Properties;
 
@@ -118,15 +120,17 @@ namespace FindANameFarm.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                DialogResult message =MessageBox.Show(Resources.Exit_message,Resources.Exit_Title,MessageBoxButtons.YesNo);
-                if (message == DialogResult.Yes)
-                {
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
+               
+                    DialogResult message = MessageBox.Show(Resources.Exit_message, Resources.Exit_Title, MessageBoxButtons.YesNo);
+                    if (message == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+
             }
         }
 

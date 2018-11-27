@@ -1,20 +1,20 @@
-﻿using FindANameFarm.Banks;
-using FindANameFarm.WorkTaskClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using FindANameFarm.Banks;
 using FindANameFarm.MetaLayer;
 using FindANameFarm.Properties;
+using FindANameFarm.WorkTaskClasses;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Add_work_tasks_Forms
 {
-	/// <summary>
-	/// ian 17/11/18
-	/// sowing task form controls
-	/// </summary>
-	public partial class SowingTaskForm : Form
+    /// <summary>
+    /// ian 17/11/18
+    /// sowing task form controls
+    /// </summary>
+    public partial class SowingTaskForm : Form
     {
         private readonly FieldBank _field = FieldBank.GetInst();
         private readonly StaffBank _staff = StaffBank.GetInst();

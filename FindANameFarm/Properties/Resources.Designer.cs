@@ -61,6 +61,15 @@ namespace FindANameFarm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert a category to add first.
+        /// </summary>
+        internal static string addCat {
+            get {
+                return ResourceManager.GetString("addCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Task Finish Date can&apos;t be before task start date.
         /// </summary>
         internal static string CheckDates {
@@ -76,6 +85,15 @@ namespace FindANameFarm.Properties {
             get {
                 object obj = ResourceManager.GetObject("defaultImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a competenct to delete first.
+        /// </summary>
+        internal static string deleteCompetency {
+            get {
+                return ResourceManager.GetString("deleteCompetency", resourceCulture);
             }
         }
         
@@ -107,6 +125,24 @@ namespace FindANameFarm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong.
+        /// </summary>
+        internal static string exitProblem {
+            get {
+                return ResourceManager.GetString("exitProblem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to jpeg images (*.jpg)|*.jpg|png images (*.png)|*.png|bitmap files (*.bmp)|*.bmp.
+        /// </summary>
+        internal static string fileNameFilter {
+            get {
+                return ResourceManager.GetString("fileNameFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter both your employee number and your password.
         /// </summary>
         internal static string Login_btnLogin_Click_Please_enter_both_your_employee_number_and_your_password {
@@ -132,6 +168,24 @@ namespace FindANameFarm.Properties {
             get {
                 object obj = ResourceManager.GetObject("login image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Try A different File.
+        /// </summary>
+        internal static string pictureError {
+            get {
+                return ResourceManager.GetString("pictureError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a member of staff first.
+        /// </summary>
+        internal static string selectStaff {
+            get {
+                return ResourceManager.GetString("selectStaff", resourceCulture);
             }
         }
         
@@ -187,6 +241,15 @@ namespace FindANameFarm.Properties {
         internal static string StaffOrVehicleExist {
             get {
                 return ResourceManager.GetString("StaffOrVehicleExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure all details are entered and try again.
+        /// </summary>
+        internal static string tryAgain {
+            get {
+                return ResourceManager.GetString("tryAgain", resourceCulture);
             }
         }
     }
