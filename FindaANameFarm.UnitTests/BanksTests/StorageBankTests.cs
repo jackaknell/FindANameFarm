@@ -48,7 +48,7 @@ namespace FindaANameFarm.UnitTests
             Storage storage = new Storage
             {
                 StorageID = storageID,
-                StorageName = "TestStorageName",
+                StorageName = "StorageName",
                 AvailableStorage = 50,
                 Capacity = 100,
                 Temp = 23
