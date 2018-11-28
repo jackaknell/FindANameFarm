@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm
+﻿namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     partial class StaffForm
     {
@@ -52,7 +52,6 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblContact = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.txtImagePath = new System.Windows.Forms.TextBox();
             this.lblImage = new System.Windows.Forms.Label();
             this.cbPosition = new System.Windows.Forms.ComboBox();
@@ -72,6 +71,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtStaffPassword = new System.Windows.Forms.TextBox();
             this.staffAndCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).BeginInit();
             this.gbCompetencies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staffAndCategoryBindingSource)).BeginInit();
@@ -138,6 +138,7 @@
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(175, 20);
             this.txtId.TabIndex = 1;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // txtfName
             // 
@@ -169,7 +170,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(363, 630);
+            this.btnAdd.Location = new System.Drawing.Point(193, 620);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(143, 23);
             this.btnAdd.TabIndex = 8;
@@ -249,23 +250,13 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(187, 630);
+            this.btnUpdate.Location = new System.Drawing.Point(17, 620);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(143, 23);
             this.btnUpdate.TabIndex = 16;
             this.btnUpdate.Text = "Update Selected Staff Member";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(18, 630);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(143, 23);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Delete Sellected Staff Member";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtImagePath
             // 
@@ -329,6 +320,7 @@
             // 
             // pbStaffImage
             // 
+            this.pbStaffImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbStaffImage.Location = new System.Drawing.Point(363, 64);
             this.pbStaffImage.Name = "pbStaffImage";
             this.pbStaffImage.Size = new System.Drawing.Size(180, 173);
@@ -441,11 +433,22 @@
             // 
             this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(358, 620);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(120, 23);
+            this.btnReset.TabIndex = 28;
+            this.btnReset.Text = "Reset Form";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1187, 665);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtStaffPassword);
             this.Controls.Add(this.gbCompetencies);
@@ -457,7 +460,6 @@
             this.Controls.Add(this.cbPosition);
             this.Controls.Add(this.lblImage);
             this.Controls.Add(this.txtImagePath);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblContact);
             this.Controls.Add(this.lblPosition);
@@ -479,6 +481,7 @@
             this.Name = "StaffForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Management Form";
+            this.Load += new System.EventHandler(this.StaffForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).EndInit();
             this.gbCompetencies.ResumeLayout(false);
             this.gbCompetencies.PerformLayout();
@@ -505,7 +508,6 @@
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Label lblContact;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtImagePath;
         private System.Windows.Forms.Label lblImage;
         private System.Windows.Forms.ComboBox cbPosition;
@@ -532,6 +534,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

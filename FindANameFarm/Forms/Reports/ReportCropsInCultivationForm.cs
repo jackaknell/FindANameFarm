@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
@@ -60,7 +59,10 @@ namespace FindANameFarm.Forms.Reports
             txtEndDate.Text = finishDate;
             txtExpectedYield.Text = expectedYield;
         }
-      
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

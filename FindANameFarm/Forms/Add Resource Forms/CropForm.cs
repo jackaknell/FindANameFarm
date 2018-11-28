@@ -1,11 +1,10 @@
-﻿using FindANameFarm.Banks;
-using FindANameFarm.MetaLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
+using FindANameFarm.Banks;
+using FindANameFarm.MetaLayer;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     public partial class CropForm : Form
     {
@@ -95,7 +94,9 @@ namespace FindANameFarm.Forms
             catch (Exception exception)
             {
                 MessageBox.Show("Select a Crop item to update.");
+                Console.Write(exception);
             }
+           
             refresh();
         }
 

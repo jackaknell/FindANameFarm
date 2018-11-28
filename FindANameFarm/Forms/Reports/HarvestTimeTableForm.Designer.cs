@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm.Forms
+﻿namespace FindANameFarm.Forms.Reports
 {
     partial class HarvestTimeTableForm
     {
@@ -57,6 +57,7 @@
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // gbRadialButtons
             // 
@@ -215,6 +216,8 @@
             this.Controls.Add(this.gbRadialButtons);
             this.Controls.Add(this.listHarvestTimeTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HarvestTimeTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harvest Time Table Form";

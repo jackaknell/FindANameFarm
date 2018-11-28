@@ -125,7 +125,7 @@ namespace FindANameFarm.Forms
             catch (Exception exception)
             {
                 MessageBox.Show("Select a Storage container to update.");
-                
+                Console.Write(exception);
             }
 
             

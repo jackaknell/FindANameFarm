@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm.Forms
+﻿namespace FindANameFarm.Forms.Add_Resource_Forms
 { 
     partial class CropForm
     {

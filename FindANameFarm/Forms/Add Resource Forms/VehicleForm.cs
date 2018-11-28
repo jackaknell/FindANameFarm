@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     public partial class VehicleForm : Form
     {
@@ -10,6 +10,8 @@ namespace FindANameFarm.Forms
         public VehicleForm()
         {
             InitializeComponent();
+            gbCategories.Enabled = !string.IsNullOrWhiteSpace(txtVehicleId.Text);
+            btnUpdateVehicle.Enabled = !string.IsNullOrWhiteSpace(txtVehicleId.Text);
             refresh();
         }
 
@@ -20,8 +22,13 @@ namespace FindANameFarm.Forms
             listVehicles.Columns.Add("Id", 50);
             listVehicles.Columns.Add("Vehicle Name",100);
             listVehicles.Columns.Add("Vehicle Category", 100);
-            btnAddCategory.Enabled = !string.IsNullOrEmpty(txtAddCategory.Text);
-            btnDeleteVehicle.Enabled = !string.IsNullOrEmpty(txtVehicleId.Text);
+            
+           
+        }
+        private void txtAddCategory_TextChanged(object sender, EventArgs e)
+        {
+            btnAddCategory.Enabled = !string.IsNullOrWhiteSpace(txtAddCategory.Text);
+           
         }
 
         private void listVehicles_MouseClick(object sender, MouseEventArgs e)
@@ -97,35 +104,14 @@ namespace FindANameFarm.Forms
             cbVehicleCategoryList.SelectedIndex = -1;
         }
 
-
-
-        private void txtAddCategory_TextChanged(object sender, EventArgs e) =>
-            
-            btnAddCategory.Enabled = !string.IsNullOrEmpty(txtAddCategory.Text);
-
-        private void txtVehicleId_TextChanged(object sender, EventArgs e)
-        {
-            btnDeleteVehicle.Enabled = !string.IsNullOrEmpty(txtVehicleId.Text);
-        }
-
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            _vehicleBank?.AddCategoryToDb(txtAddCategory.Text);
-
+          
+                _vehicleBank?.AddCategoryToDb(txtAddCategory.Text);
+            
             refresh();
         }
 
-        private void btnDeleteVehicle_Click(object sender, EventArgs e)
-        {
-            int vehicleToDelete = Convert.ToInt32(txtVehicleId.Text);
-            _vehicleBank.DeleteVehicle(vehicleToDelete);
-            refresh();
-            ResetForm();
-        }
-
-       
-
-        
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -144,6 +130,18 @@ namespace FindANameFarm.Forms
             _vehicleBank.UpdateVehicle(editVehicle);
 
             refresh();
+        }
+
+        private void txtVehicleId_TextChanged(object sender, EventArgs e)
+        {
+            btnUpdateVehicle.Enabled = !string.IsNullOrWhiteSpace(txtVehicleId.Text);         
+            gbCategories.Enabled = !string.IsNullOrWhiteSpace(txtVehicleId.Text);
+            btnAddCategory.Enabled = false;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetForm();
         }
     }
 }

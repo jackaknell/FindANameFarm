@@ -56,6 +56,7 @@
             this.button1.TabIndex = 23;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtExpectedYield
             // 
@@ -204,7 +205,10 @@
             this.Controls.Add(this.listCropsInCultivation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ReportCropsInCultivationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crops Currently In Cultivation";
             this.Load += new System.EventHandler(this.ReportCropsInCultivationForm_Load);
             this.ResumeLayout(false);
