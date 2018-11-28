@@ -103,10 +103,11 @@ namespace FindANameFarm.Banks
 		{
 			try
 			{
-				//BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
-				GetWorkTasks();
+                //BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
+			    WorkTaskList = _metaLayer.GetWorkTasks();
+                //GetWorkTasks();
 
-				GetConnectionState = true;
+                GetConnectionState = true;
 			}
 			catch (Exception)
 			{

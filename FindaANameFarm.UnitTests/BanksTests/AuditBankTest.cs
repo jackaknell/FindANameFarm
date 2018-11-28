@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FindANameFarm.Banks;
 using FindANameFarm;
 
-namespace FindaANameFarm.UnitTests.BanksTests
+namespace FindANameFarm.UnitTests.BanksTests
 {
     [TestClass]
     public class AuditBankTest
@@ -12,57 +12,57 @@ namespace FindaANameFarm.UnitTests.BanksTests
 
         AuditBank _audit = AuditBank.GetInst();
 
-        [TestMethod]
-        public void GetInst_IsSingleton()
-        {
+        //[TestMethod]
+        //public void GetInst_IsSingleton()
+        //{
 
-            var instance1 = AuditBank.GetInst();
-            var instance2 = AuditBank.GetInst();
+        //    var instance1 = AuditBank.GetInst();
+        //    var instance2 = AuditBank.GetInst();
 
-            Assert.AreSame(instance1, instance2);
-            Assert.AreEqual(AuditBank.InstanceCount, 1);
+        //    Assert.AreSame(instance1, instance2);
+        //    Assert.AreEqual(AuditBank.InstanceCount, 1);
 
-        }
+        //}
 
-        [TestMethod]
-        public void AddAudit_whenCalled_InsertAudit()
-        {
+        //[TestMethod]
+        //public void AddAudit_whenCalled_InsertAudit()
+        //{
 
-            int listCount = _audit.AuditList.Count;
+        //    int listCount = _audit.AuditList.Count;
 
-            Audit audit = new Audit();
+        //    Audit audit = new Audit();
 
-            _audit.AddAuditToList(audit);
+        //    _audit.AddAuditToList(audit);
 
-            Assert.AreEqual(_audit.AuditList[listCount], audit);
+        //    Assert.AreEqual(_audit.AuditList[listCount], audit);
 
-        }
+        //}
 
 
-        [TestMethod]
-        public void upDateAudit_WhenCalled_UpdateAuditInDatabase()
-        {
+        //[TestMethod]
+        //public void upDateAudit_WhenCalled_UpdateAuditInDatabase()
+        //{
 
-            int AuditId = _audit.AuditList[0].AuditId;
+        //    int AuditId = _audit.AuditList[0].AuditId;
 
-            Audit audit = new Audit
-            {
-                AuditId = AuditId,
-                //Date = DateTime,
-                Name = "",
-                Amount = 50,
-                Decription = ""
+        //    Audit audit = new Audit
+        //    {
+        //        AuditId = AuditId,
+        //        //Date = DateTime,
+        //        Name = "",
+        //        Amount = 50,
+        //        Decription = ""
 
-            };
+        //    };
 
-            _audit.UpdateAudit(audit);
+        //    _audit.UpdateAudit(audit);
 
-            Assert.AreEqual(_audit.AuditList[0].Name, audit.Name);
-            Assert.AreEqual(_audit.AuditList[0].Date, audit.Date);
-            Assert.AreEqual(_audit.AuditList[0].Amount, audit.Amount);
-            Assert.AreEqual(_audit.AuditList[0].Decription, audit.Decription);
+        //    Assert.AreEqual(_audit.AuditList[0].Name, audit.Name);
+        //    Assert.AreEqual(_audit.AuditList[0].Date, audit.Date);
+        //    Assert.AreEqual(_audit.AuditList[0].Amount, audit.Amount);
+        //    Assert.AreEqual(_audit.AuditList[0].Decription, audit.Decription);
 
-        }
+        //}
 
 
 

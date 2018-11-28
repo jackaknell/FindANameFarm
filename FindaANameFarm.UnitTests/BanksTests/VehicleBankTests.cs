@@ -5,7 +5,7 @@ using FindANameFarm;
 using FindANameFarm.MetaLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests
 {
     [TestClass]
     public class VehicleBankTests

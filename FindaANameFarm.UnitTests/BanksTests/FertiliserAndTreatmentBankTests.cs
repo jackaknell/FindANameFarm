@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FindANameFarm;
 using FindANameFarm.Banks;
 
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests
 {
     [TestClass]
     public class FertiliserAndTreatmentBankTests

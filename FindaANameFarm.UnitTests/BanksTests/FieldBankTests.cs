@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests
 {
     /// <summary>
     /// ian all methods 06/11/18

@@ -4,7 +4,7 @@ using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 using FindANameFarm.MetaLayer;
 
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests
 {
     [TestClass]
     public class CropBankTests

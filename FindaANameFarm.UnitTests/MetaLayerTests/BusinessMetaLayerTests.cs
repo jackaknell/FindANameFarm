@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests
 {
     [TestClass]
     public class BusinessMetaLayerTests
