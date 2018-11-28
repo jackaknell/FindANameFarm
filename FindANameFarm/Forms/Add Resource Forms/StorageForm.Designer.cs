@@ -190,7 +190,7 @@
             this.Controls.Add(this.listStorage);
             this.Name = "StorageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StorageForm";
+            this.Text = "Storage";
             this.Load += new System.EventHandler(this.StorageForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).EndInit();
