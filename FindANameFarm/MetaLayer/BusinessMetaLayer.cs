@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
+using System.Text;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 using FindANameFarm.WorkTaskClasses;
@@ -571,6 +572,15 @@ namespace FindANameFarm.MetaLayer
 			}
 			return workTasks;
 		}
+
+	    private string EnglishToAmerican(string time)
+	    {
+	        StringBuilder convertDate = new StringBuilder();
+
+	        string convertedDate = convertDate.ToString();
+
+	        return convertedDate;
+	    }
 		/// <summary>
 		/// ian 16/11/18
 		/// </summary>
@@ -580,6 +590,11 @@ namespace FindANameFarm.MetaLayer
 			List<WorkTaskReport> labourerWorkTaskReport = new List<WorkTaskReport>();
 			if (_con.OpenConnection())
 			{
+                Debug.Write(startTime);
+                Debug.Write(finishTime);
+			   // startTime = EnglishToAmerican(startTime);
+			    //finishTime = EnglishToAmerican(finishTime);
+
 				DbDataReader dr = _con.Select("SELECT WorkTasks.TaskType, WorkTasks.startDate, WorkTasks.finishDate, WorkTasks.QuantityRequired, " +
 											  "Crops.cropName, Fields.FieldName, WorkTasks.jobDuration, WorkTasks.ExpectedHarvestDate," +
 											  " WorkTasks.ExpectedYield, WorkTasks.workTaskId, IIF(IsNull(FertiliserAndTreatment.fertTreatName),'None',FertiliserAndTreatment.fertTreatName) FROM" +
@@ -587,10 +602,19 @@ namespace FindANameFarm.MetaLayer
 											  "(WorkTasks INNER JOIN StaffWorkTask ON WorkTasks.workTaskId = StaffWorkTask.workTaskId)" +
 											  " ON Staff.staffID = StaffWorkTask.staffId) ON Fields.FieldId = WorkTasks.FieldId) " +
 											  "ON Crops.cropID = WorkTasks.CropId) ON FertiliserAndTreatment.fertTreatId = " +
-											  "WorkTasks.treatmentId WHERE StaffWorkTask.staffId=" + staffMember + "and WorkTasks.startDate >= " +
-											  "-#" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
+											  "WorkTasks.treatmentId WHERE StaffWorkTask.staffId=" + staffMember + "and WorkTasks.startDate between " +
+											  "#" + startTime + "# and #" + finishTime + "# order by WorkTasks.startDate;");
 
-				while (dr.Read())
+			    //"SELECT WorkTasks.TaskType, WorkTasks.startDate, WorkTasks.finishDate, WorkTasks.QuantityRequired, " +
+			    //    "Crops.cropName, Fields.FieldName, WorkTasks.jobDuration, WorkTasks.ExpectedHarvestDate," +
+			    //    " WorkTasks.ExpectedYield, WorkTasks.workTaskId, IIF(IsNull(FertiliserAndTreatment.fertTreatName),'None',FertiliserAndTreatment.fertTreatName) FROM" +
+			    //    " FertiliserAndTreatment RIGHT JOIN(Crops INNER JOIN(Fields INNER JOIN(Staff INNER JOIN" +
+			    //    "(WorkTasks INNER JOIN StaffWorkTask ON WorkTasks.workTaskId = StaffWorkTask.workTaskId)" +
+			    //    " ON Staff.staffID = StaffWorkTask.staffId) ON Fields.FieldId = WorkTasks.FieldId) " +
+			    //    "ON Crops.cropID = WorkTasks.CropId) ON FertiliserAndTreatment.fertTreatId = " +
+			    //    "WorkTasks.treatmentId WHERE StaffWorkTask.staffId=" + staffMember + "and WorkTasks.startDate >= " +
+			    //    "#" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
+                while (dr.Read())
 				{
 					WorkTaskReport labourerWorkTask = new WorkTaskReport()
 					{
@@ -825,14 +849,23 @@ namespace FindANameFarm.MetaLayer
 		/// ian 12/11/18
 		/// </summary>
 		/// <param name="addStaffToTask"></param>
-		public void AddStaffToTaskAndDb(TaskStaff addStaffToTask)
+		public bool AddStaffToTaskAndDb(TaskStaff addStaffToTask)
 		{
-			string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.staffId +
-						   "," + addStaffToTask.TaskId + ");";
+		    try
+		    {
+		        string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.staffId +
+		                       "," + addStaffToTask.TaskId + ");";
 
-			_con.Insert(query);
-			_con.CloseConnection();
+		        _con.Insert(query);
+		        _con.CloseConnection();
+            }
+		    catch (Exception e)
+		    {
+		        Console.WriteLine(e);
+		        return false;
+		    }
 
+		    return true;
 		}
 		/// <summary>
 		/// ian 12/11/18
@@ -1007,6 +1040,8 @@ namespace FindANameFarm.MetaLayer
 
 			_con.Delete(query);
 			_con.CloseConnection();
+
+		  
 		}
 		/// <summary>
 		/// ian 28/10/2018
