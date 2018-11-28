@@ -42,6 +42,9 @@
             this.nudAvailableStore = new System.Windows.Forms.NumericUpDown();
             this.lblStoreName = new System.Windows.Forms.Label();
             this.txtStoreName = new System.Windows.Forms.TextBox();
+            this.lblKG = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAvailableStore)).BeginInit();
@@ -168,12 +171,42 @@
             this.txtStoreName.Size = new System.Drawing.Size(159, 20);
             this.txtStoreName.TabIndex = 34;
             // 
+            // lblKG
+            // 
+            this.lblKG.AutoSize = true;
+            this.lblKG.Location = new System.Drawing.Point(300, 141);
+            this.lblKG.Name = "lblKG";
+            this.lblKG.Size = new System.Drawing.Size(20, 13);
+            this.lblKG.TabIndex = 36;
+            this.lblKG.Text = "Kg";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(300, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Kg";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(300, 213);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "C";
+            // 
             // StorageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(819, 456);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblKG);
             this.Controls.Add(this.lblStoreName);
             this.Controls.Add(this.txtStoreName);
             this.Controls.Add(this.nudAvailableStore);
@@ -190,7 +223,7 @@
             this.Controls.Add(this.listStorage);
             this.Name = "StorageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StorageForm";
+            this.Text = "Storage";
             this.Load += new System.EventHandler(this.StorageForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).EndInit();
@@ -216,5 +249,8 @@
         private System.Windows.Forms.NumericUpDown nudAvailableStore;
         private System.Windows.Forms.Label lblStoreName;
         private System.Windows.Forms.TextBox txtStoreName;
+        private System.Windows.Forms.Label lblKG;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -5,12 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FindANameFarm.Banks;
 using FindANameFarm.WorkTaskClasses;
 
-namespace FindaANameFarm.UnitTests.BanksTests
+namespace FindANameFarm.UnitTests.BanksTests
 {
     [TestClass]
     public class WorkTaskTests
     {
         WorkTaskBank WorkTask = WorkTaskBank.GetInst();
+
         [TestMethod]
         public void GetInst_IsSingleton()
         {
@@ -50,23 +51,23 @@ namespace FindaANameFarm.UnitTests.BanksTests
 
         }
 
-        //[TestMethod]
-        //public void AddStaffToTask_whenCalled_InsertStaffToCurrentWorkTask()
-        //{
-        //    //Arrange
-           
-        //    //gives the current list count which will be the index position of the next object added
-        //    int listCount = WorkTask.TaskStaff.Count;
+        [TestMethod]
+        public void AddStaffToTask_whenCalled_InsertStaffToCurrentWorkTask()
+        {
+            //Arrange
 
-        //    //Act
-        //    TaskStaff taskStaff = new TaskStaff();
-        //    taskStaff.TaskId = 100;
-        //    taskStaff.staffId = 100;
+            //gives the current list count which will be the index position of the next object added
+            int listCount = WorkTask.TaskStaff.Count;
+            Debug.Write(WorkTask.TaskStaff.Count);
+            //Act
+            TaskStaff taskStaff = new TaskStaff();
+            taskStaff.TaskId = 100;
+            taskStaff.staffId = 100;
 
-        //    WorkTask.AddStaffToTask(taskStaff);
+            WorkTask.AddStaffToTask(taskStaff);
 
-        //    //Assert
-        //    Assert.AreEqual(WorkTask.TaskStaff[listCount], taskStaff);
-        //}
+            //Assert
+            Assert.AreEqual(WorkTask.TaskStaff[listCount], taskStaff);
+        }
     }
 }

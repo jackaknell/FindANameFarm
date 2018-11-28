@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using FindANameFarm;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using FindANameFarm;
-using FindANameFarm.MetaLayer;
-
-namespace FindaANameFarm.UnitTests
+namespace FindANameFarm.UnitTests.BanksTests
 {
 
    
@@ -120,7 +117,8 @@ namespace FindaANameFarm.UnitTests
            
             //Act
             Staff.GetCompetencies(1);
-           
+            Debug.Write(Staff.StaffCompetenciesList[1].CategoryId);
+            Debug.Write(Staff.StaffCompetenciesList[1].CategoryName);
             //Assert
             CollectionAssert.AreEqual(Staff.StaffCompetenciesList,competency);
             

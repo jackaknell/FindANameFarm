@@ -541,7 +541,10 @@ namespace FindANameFarm.MetaLayer
 			List<WorkTasks> workTasks = new List<WorkTasks>();
 			if (_con.OpenConnection())
 			{
-				DbDataReader dr = _con.Select("SELECT * FROM WorkTasks;");
+				DbDataReader dr = _con.Select("SELECT workTaskId,TaskType,startDate," +
+				                              "finishDate,FieldId,CropId,treatmentId,quantityRequired," +
+				                              "jobduration,expectedharvestdate,expectedyield,taskstatus " +
+				                              "FROM WorkTasks;");
 
 				while (dr.Read())
 				{

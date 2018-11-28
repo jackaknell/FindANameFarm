@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindANameFarm", "FindANameFarm\FindANameFarm.csproj", "{16563AEF-8276-4868-B749-71AC6C2AD0C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaANameFarm.UnitTests", "FindaANameFarm.UnitTests\FindaANameFarm.UnitTests.csproj", "{E236751E-9FAD-4423-8E88-7657D9642562}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindANameFarm.UnitTests", "FindaANameFarm.UnitTests\FindANameFarm.UnitTests.csproj", "{E236751E-9FAD-4423-8E88-7657D9642562}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

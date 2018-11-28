@@ -51,11 +51,11 @@ namespace FindANameFarm.Forms
             nudTemp.Value = Convert.ToInt32(temp);
         }
 
-        public void ShowStorage(List<Storage> storageList)
+        public void ShowStorage(List<FindANameFarm.Storage> storageList)
         {
             listStorage.Items.Clear();
 
-            foreach (Storage storage in storageList)
+            foreach (FindANameFarm.Storage storage in storageList)
             {
                 ListViewItem lvItem = new ListViewItem(storage.StorageID.ToString());
                 lvItem.SubItems.Add(storage.StorageName.ToString());
@@ -70,7 +70,7 @@ namespace FindANameFarm.Forms
 
         private void btnCreateStore_Click(object sender, EventArgs e)
         {
-            Storage addStorage = new Storage();
+            FindANameFarm.Storage addStorage = new FindANameFarm.Storage();
             addStorage.StorageName = txtStoreName.Text;
             addStorage.AvailableStorage = Convert.ToInt32(nudAvailableStore.Value);
             addStorage.Capacity = Convert.ToInt32(nudCapacity.Value);
@@ -111,7 +111,7 @@ namespace FindANameFarm.Forms
             try
             {
 
-                Storage editStorage = new Storage();
+                FindANameFarm.Storage editStorage = new FindANameFarm.Storage();
 
                 editStorage.StorageID = Convert.ToInt32(txtStoreID.Text);
                 editStorage.StorageName = txtStoreName.Text;
