@@ -110,12 +110,14 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
         
         private void ShowStaffImage()
         {
+            Debug.Write(txtImagePath.Text);
             try
             {
-                string filepath = txtImagePath.Text;
-                Debug.Write(filepath);
+                string filePath = txtImagePath.Text;
+                Debug.Write(filePath);
                 pbStaffImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbStaffImage.Load(filepath);
+                pbStaffImage.Load(filePath);
+                pbStaffImage.Image =
             }
             catch (Exception e)
             {
