@@ -117,7 +117,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
                 Debug.Write(filePath);
                 pbStaffImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbStaffImage.Load(filePath);
-                pbStaffImage.Image =
+                //pbStaffImage.Image = filePath;
             }
             catch (Exception e)
             {

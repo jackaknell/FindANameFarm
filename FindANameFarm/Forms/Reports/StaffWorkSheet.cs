@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using FindANameFarm.Banks;
+﻿using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace FindANameFarm.Forms
 {
@@ -96,7 +91,7 @@ namespace FindANameFarm.Forms
         }
         private void ShowLabourerDrivingTasks()
         {
-     
+     Debug.Write(FinishTime);
 
             listDrivingTasks.Items.Clear();
 
@@ -220,6 +215,13 @@ namespace FindANameFarm.Forms
         {
             ReportAvailableStorageForm storage = new ReportAvailableStorageForm();
             storage.Show();
+        }
+
+        private void StaffWorkSheet_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form login = new Login();
+            Hide();
+            login.Show();
         }
     }
 }

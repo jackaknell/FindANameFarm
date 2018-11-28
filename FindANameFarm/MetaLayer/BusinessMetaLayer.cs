@@ -630,7 +630,7 @@ namespace FindANameFarm.MetaLayer
 											  "Vehicle_WorkTask.workTaskId) ON Crops.cropID = WorkTasks.CropId) ON FertiliserAndTreatment.fertTreatId = " +
 											  "WorkTasks.treatmentId) ON Fields.FieldId = WorkTasks.FieldId) ON Vehicles.VehicleId = " +
 											  "Vehicle_WorkTask.vehicleId WHERE Vehicle_WorkTask.staffId=" + staffMember + "and WorkTasks.startDate " +
-											  ">= #" + startTime + "# and WorkTasks.finishDate <= #" + finishTime + "# order by WorkTasks.startDate;");
+											  ">= #" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
 
 
 
@@ -677,7 +677,7 @@ namespace FindANameFarm.MetaLayer
 											  " WorkTasks.TaskType, Crops.cropName, Fields.FieldName, IIF(IsNull(FertiliserAndTreatment.fertTreatName),'None',FertiliserAndTreatment.fertTreatName) " +
 											  "FROM FertiliserAndTreatment right JOIN(Fields INNER JOIN(Crops INNER JOIN WorkTasks ON Crops.cropID = WorkTasks.CropId) ON Fields.FieldId =" +
 											  " WorkTasks.FieldId) ON FertiliserAndTreatment.fertTreatId =" +
-											  " WorkTasks.treatmentId where WorkTasks.startDate >= #" + startTime + "# and WorkTasks.finishDate <= #" + finishTime + "# order by WorkTasks.startDate; ");
+											  " WorkTasks.treatmentId where WorkTasks.finishDate >= #" + startTime + "# and WorkTasks.finishDate <= #" + finishTime + "# order by WorkTasks.startDate; ");
 
 				while (dr.Read())
 				{

@@ -489,6 +489,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Work Sheet";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffWorkSheet_FormClosing);
             this.Load += new System.EventHandler(this.StaffWorkSheet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
