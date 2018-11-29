@@ -829,6 +829,7 @@ namespace FindANameFarm.MetaLayer
 		/// <param name="addStaffToTask"></param>
 		public bool AddStaffToTaskAndDb(TaskStaff addStaffToTask)
 		{
+		    bool flag;
 		    try
 		    {
 		        string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.StaffId +
@@ -836,27 +837,42 @@ namespace FindANameFarm.MetaLayer
 
 		        _con.Insert(query);
 		        _con.CloseConnection();
+		        flag= true;
             }
 		    catch (Exception e)
 		    {
 		        Console.WriteLine(e);
-		        return false;
+		        flag= false;
 		    }
 
-		    return true;
+		    return flag;
 		}
 		/// <summary>
 		/// ian 12/11/18
 		/// </summary>
 		/// <param name="addVehiclesAndDriverToDb"></param>
-		public void AddVehicleAndDriverToDb(TaskVehiclesAndDrivers addVehiclesAndDriverToDb)
+		public bool AddVehicleAndDriverToDb(TaskVehiclesAndDrivers addVehiclesAndDriverToDb)
 		{
-			string query = "Insert into Vehicle_WorkTask(vehicleId,workTaskId,staffId)VALUES(" +
-						   addVehiclesAndDriverToDb.VehicleId + "," + addVehiclesAndDriverToDb.TaskId + "," +
-						   addVehiclesAndDriverToDb.DriverId + ");";
+		    bool flag;
+		    try
+		    {
+		        string query = "Insert into Vehicle_WorkTask(vehicleId,workTaskId,staffId)VALUES(" +
+		                       addVehiclesAndDriverToDb.VehicleId + "," + addVehiclesAndDriverToDb.TaskId + "," +
+		                       addVehiclesAndDriverToDb.DriverId + ");";
 
-			_con.Insert(query);
-			_con.CloseConnection();
+		        _con.Insert(query);
+		        _con.CloseConnection();
+		        flag = true;
+		    }
+		    catch (Exception e)
+		    {
+		        string exception = e.ToString();
+                
+		        flag = false;
+		    }
+
+		    return flag;
+
 		}
 		/// <summary>
 		/// Jason 07/11/18
@@ -984,19 +1000,7 @@ namespace FindANameFarm.MetaLayer
 			_con.Update(query);
 			_con.CloseConnection();
 		}
-		/// <summary>
-		/// ian 28/10/2018
-		/// deletes the selected staff member
-		/// </summary>
-		/// <param name="staffMember"></param>
-		public void DeleteStaffMember(int staffMember)
-		{
-
-
-			string query = "DELETE FROM staff where staffId = " + staffMember;
-			_con.Delete(query);
-			_con.CloseConnection();
-		}
+		
 		/// <summary>
 		/// ian 14/11/18
 		/// </summary>
@@ -1021,17 +1025,7 @@ namespace FindANameFarm.MetaLayer
 
 		  
 		}
-		/// <summary>
-		/// ian 28/10/2018
-		/// deletes the selected vehicle
-		/// </summary>
-		/// <param name="vehicleId"></param>
-		public void DeleteVehicle(int vehicleId)
-		{
-			string query = "DELETE FROM vehicles where vehicleId= " + vehicleId;
-			_con.Delete(query);
-			_con.CloseConnection();
-		}
+		
 		/// <summary>
 		/// ian 3/11/2018
 		/// deletes the selected staff competency

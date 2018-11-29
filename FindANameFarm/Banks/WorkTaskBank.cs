@@ -80,16 +80,18 @@ namespace FindANameFarm.Banks
 		    return added;
 		}
 
-		public void AddVehicleToTask(TaskVehiclesAndDrivers addVehicleAndDriverToTask)
+		public bool AddVehicleToTask(TaskVehiclesAndDrivers addVehicleAndDriverToTask)
 		{
-			_metaLayer.AddVehicleAndDriverToDb(addVehicleAndDriverToTask);
+		    bool added=_metaLayer.AddVehicleAndDriverToDb(addVehicleAndDriverToTask);
 
+		    return added;
         }
 
 	    public void StaffToDeleteFromTask(TaskStaff staffToDelete)
 	    {
 	        _metaLayer.DeleteStaffFromTask(staffToDelete);
 
+	       
 	    }
 
         public void DeleteVehicleAndDriverFromTask(TaskVehiclesAndDrivers vehicleAndDriver)

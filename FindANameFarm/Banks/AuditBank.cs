@@ -52,8 +52,8 @@ namespace FindANameFarm.Banks
         {
             try
             {
-                BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
-                AuditList = metaLayer.GetAuidt();
+                //BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
+               // AuditList = metaLayer.GetAuidt();
 
                 GetConnectionState = true;
             }

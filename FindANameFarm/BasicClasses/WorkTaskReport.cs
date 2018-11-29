@@ -2,7 +2,7 @@
 
 namespace FindANameFarm.BasicClasses
 {
-    class WorkTaskReport:WorkTasks
+    public class WorkTaskReport:WorkTasks
     {
         public string FieldName { get; set; }
         public string CropName { get; set; }

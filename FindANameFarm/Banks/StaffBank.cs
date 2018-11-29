@@ -68,12 +68,6 @@ namespace FindANameFarm
                 }
             }
         }
-        public void GetCompetencies(int staffid)
-        {
-
-            StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
-        }
-        
 
         public void deleteStaffCompetency(int staffId, int catId)
         {
@@ -82,6 +76,15 @@ namespace FindANameFarm
             refreshConnection();
 
         }
+
+        public void GetCompetencies(int staffid)
+        {
+
+            StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
+        }
+        
+
+     
 
         public void refreshConnection()
         {

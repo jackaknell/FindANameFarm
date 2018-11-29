@@ -11,6 +11,7 @@ namespace FindANameFarm.UnitTests.BanksTests
     public class WorkTaskTests
     {
         WorkTaskBank WorkTask = WorkTaskBank.GetInst();
+       
 
         [TestMethod]
         public void GetInst_IsSingleton()
@@ -60,15 +61,105 @@ namespace FindANameFarm.UnitTests.BanksTests
                 TaskId = 100,
                 StaffId = 100
             };
-            WorkTask.StaffToDeleteFromTask(taskStaff);
+
 
             //Act
+            WorkTask.StaffToDeleteFromTask(taskStaff);
 
-          
 
             //Assert
             Assert.IsTrue(WorkTask.AddStaffToTask(taskStaff));
 
         }
+
+        [TestMethod]
+        public void AddVehicleToTask_whenCalled_InsertVehicleToCurrentWorkTask()
+        {
+            //Arrange
+            TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers
+            {
+                TaskId = 100,
+                VehicleId = 100,
+                DriverId = 100
+                
+            };
+
+
+            //Act
+            WorkTask.DeleteVehicleAndDriverFromTask(taskVehicle);
+            //Assert
+            Assert.IsTrue(WorkTask.AddVehicleToTask(taskVehicle));
+
+        }
+
+        [TestMethod]
+        public void GetWorkTasStaff_whenCalled_getStaffListForTask()
+        {
+            //Arrange
+            try
+            {
+                TaskStaff deleteTaskStaff = new TaskStaff
+                {
+                    TaskId =1,
+                    StaffId = 22
+                };
+                WorkTask.StaffToDeleteFromTask(deleteTaskStaff);
+            }
+            catch (Exception e)
+            {
+                
+                
+            }
+            //Act
+            TaskStaff addTaskStaff = new TaskStaff
+            {
+                TaskId = 1,
+                StaffId = 22
+            };
+            WorkTask.AddStaffToTask(addTaskStaff);
+
+            WorkTask.GetWorkTaskStaff(1);
+            
+            //Assert
+            
+            Assert.AreEqual(1,WorkTask.TaskStaff.Count);
+        }
+
+        [TestMethod]
+        public void GetWorkTaskVehiclesAndDrivers_whenCalled_getVehiclesDriverListForTask()
+        {
+            //Arrange
+            TaskVehiclesAndDrivers TaskVehicle = new TaskVehiclesAndDrivers
+            {
+                TaskId = 1,
+                VehicleId = 3,
+                DriverId = 22
+            };
+
+            try
+            {
+               
+                WorkTask.DeleteVehicleAndDriverFromTask(TaskVehicle);
+            }
+            catch (Exception e)
+            {
+
+
+            }
+            //Act
+
+            WorkTask.AddVehicleToTask(TaskVehicle);
+
+            WorkTask.GetWorkTaskVehicles(1);
+
+            //Assert
+
+            Assert.AreEqual(1, WorkTask.CurrentVehicleAndDriverList.Count);
+            Assert.AreEqual(TaskVehicle.DriverId, WorkTask.CurrentVehicleAndDriverList[0].DriverId);
+            Assert.AreEqual(TaskVehicle.VehicleId, WorkTask.CurrentVehicleAndDriverList[0].VehicleId);
+        }
+
+       
+        
     }
 }

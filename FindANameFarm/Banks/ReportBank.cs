@@ -9,7 +9,7 @@ namespace FindANameFarm.Banks
     /// <summary>
     /// ian 16/11/18
     /// </summary>
-    class ReportBank
+    public class ReportBank
     {
         private readonly MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
 
@@ -18,7 +18,7 @@ namespace FindANameFarm.Banks
         public static ReportBank UniqueInst;
         public static int InstanceCount { get; set; }
         public bool GetConnectionState { get; private set; }
-        public static List<WorkTaskReport> CropsInCultivation { get; set; }
+        public List<WorkTaskReport> CropsInCultivation { get; set; }
         public List<WorkTaskReport> HarvestTimeTable { get; set; }
         public List<WorkTaskReport> VehicleWorkTasks { get; set; }
         public List<WorkTaskReport> StaffWorkTasks { get; private set; }

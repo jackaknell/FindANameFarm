@@ -29,12 +29,29 @@ namespace FindANameFarm.UnitTests
             Assert.AreSame(instance1, instance2);
             Assert.AreEqual(VehicleBank.InstanceCount, 1);
         }
+        /// <summary>
+        /// ian 29/11/18
+        /// </summary>
+        [TestMethod]
 
+        public void GetVehicles_whenCalled_InsertVehicle()
+        {
+            // Arrange
+
+            //gives the current list count which will be the index position of the next object added
+            Vehicle.GetDrivers();
+
+            //Act
+            Assert.AreEqual(3,Vehicle.Drivers[0].categoryId);
+            Assert.AreEqual("test1", Vehicle.Drivers[0].firstName);
+            Assert.AreEqual(1, Vehicle.Drivers[0].staffId);
+
+        }
         /// <summary>
         /// ian 2/11/2018
         /// Tests that the add vehicle method adds a vehicle to teh vehicle list and database
         /// </summary>
-         [TestMethod]
+        [TestMethod]
 
         public void AddVehicle_whenCalled_InsertVehicle()
         {

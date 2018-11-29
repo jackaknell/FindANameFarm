@@ -124,7 +124,27 @@ namespace FindANameFarm.UnitTests.BanksTests
             
         }
 
-       
+        [TestMethod]
+
+        public void DeleteStaffCompetency_WhenCalled_DeleteStaffCompetency()
+        {
+            //Arrange
+            StaffAndCategory competency = new StaffAndCategory()
+            {
+                StaffId = 50,
+                CatId = 50
+
+            };
+
+             Staff.AddCompetency(competency);
+            //Act
+            Staff.deleteStaffCompetency(50,50);
+            Staff.GetCompetencies(50);
+            //Assert
+            Assert.AreEqual(Staff.StaffCompetenciesList.Count,0);
+
+        }
+
     }
 }
 
