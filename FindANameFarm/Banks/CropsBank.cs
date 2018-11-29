@@ -10,6 +10,8 @@ namespace FindANameFarm.Banks
     /// </summary>
     public class CropsBank
     {
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+        //ref to sql queries
         private BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
         public List<Crops> CropsList { get; private set; }
         public static CropsBank UniqueInst;
@@ -72,9 +74,12 @@ namespace FindANameFarm.Banks
 
                 GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
                 throw;
             }
         }

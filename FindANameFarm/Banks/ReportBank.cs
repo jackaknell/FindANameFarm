@@ -11,6 +11,8 @@ namespace FindANameFarm.Banks
     /// </summary>
     class ReportBank
     {
+        private readonly MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+
         private readonly BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
 
         public static ReportBank UniqueInst;
@@ -42,9 +44,7 @@ namespace FindANameFarm.Banks
             CropsInCultivation = _metaLayer.GetCropsInCultivationFromDb();
 
             return CropsInCultivation;
-            {
 
-            }
         }
 
         public List<WorkTaskReport> GetStaffWorkTasks(int staffMember, string startTime, string finishTime)
@@ -53,6 +53,7 @@ namespace FindANameFarm.Banks
 
             return StaffWorkTasks;
         }
+
         /// <summary>
         /// ian 16/11/18
         /// </summary>
@@ -70,15 +71,7 @@ namespace FindANameFarm.Banks
 
             return VehicleWorkTasks;
         }
-		//public List<WorkTaskReport> GetAvailableStorage()
-		//{
-		//	AvailableStorage = _metaLayer.GetAvailableStorageFromDb();
-
-		//	return AvailableStorage;
-		//	{
-
-		//	}
-		//}
+		
         /// <summary>
         /// ian 16/11/18
         /// </summary>
@@ -90,9 +83,13 @@ namespace FindANameFarm.Banks
 
                 GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
                 throw;
             }
         }

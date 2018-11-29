@@ -250,7 +250,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         private void refresh()
         {
-            _workTask.refreshConnection();
+            _workTask.RefreshConnection();
             ShowExistingSowingTasks();
             ShowCategories();
         }
@@ -340,11 +340,11 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             TaskStaff taskStaff = new TaskStaff
             {
                 TaskId = Convert.ToInt32(txtTaskID.Text),
-                staffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue)
+                StaffId = Convert.ToInt32(cbSowingTaskStaffList.SelectedValue)
             };
 
 
-            bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.staffId);
+            bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.StaffId);
 
             if (alreadyOnTask == false)
             {
@@ -383,7 +383,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             if (alreadyOnTask == false)
             {
-                _workTask.AddvehicleToTask(taskVehicle);
+                _workTask.AddVehicleToTask(taskVehicle);
 
                 ShowVehiclesInTask();
 
@@ -427,7 +427,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 int staffId = Convert.ToInt32(listTaskStaff.SelectedItems[0].SubItems[0].Text);
                 int workTaskId = Convert.ToInt32(txtTaskID.Text);
 
-                TaskStaff staffToDelete = new TaskStaff {staffId = staffId, TaskId = workTaskId};
+                TaskStaff staffToDelete = new TaskStaff {StaffId = staffId, TaskId = workTaskId};
 
                 _workTask.StaffToDeleteFromTask(staffToDelete);
             }

@@ -9,6 +9,7 @@ namespace FindANameFarm.Banks
 {
     public class StorageBank
     {
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
         public List<Storage> StorageList { get; private set; }
         public static StorageBank UniqueInst;
@@ -56,9 +57,14 @@ namespace FindANameFarm.Banks
                 GetConnectionState = true;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
+
                 throw;
             }
 

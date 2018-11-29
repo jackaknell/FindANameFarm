@@ -161,6 +161,7 @@
     <Compile Include="MetaLayer\DBException.cs" />
     <Compile Include="MetaLayer\DbFactory.cs" />
     <Compile Include="MetaLayer\IIDbConnection.cs" />
+    <Compile Include="MetaLayer\MaintenanceAndErrorLog.cs" />
     <Compile Include="MetaLayer\OledbConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

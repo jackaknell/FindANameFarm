@@ -55,19 +55,20 @@ namespace FindANameFarm.UnitTests.BanksTests
         public void AddStaffToTask_whenCalled_InsertStaffToCurrentWorkTask()
         {
             //Arrange
+            TaskStaff taskStaff = new TaskStaff
+            {
+                TaskId = 100,
+                StaffId = 100
+            };
+            WorkTask.StaffToDeleteFromTask(taskStaff);
 
-            //gives the current list count which will be the index position of the next object added
-            int listCount = WorkTask.TaskStaff.Count;
-            Debug.Write(WorkTask.TaskStaff.Count);
             //Act
-            TaskStaff taskStaff = new TaskStaff();
-            taskStaff.TaskId = 100;
-            taskStaff.staffId = 100;
 
-            WorkTask.AddStaffToTask(taskStaff);
+          
 
             //Assert
-            Assert.AreEqual(WorkTask.TaskStaff[listCount], taskStaff);
+            Assert.IsTrue(WorkTask.AddStaffToTask(taskStaff));
+
         }
     }
 }

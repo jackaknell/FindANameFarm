@@ -573,14 +573,7 @@ namespace FindANameFarm.MetaLayer
 			return workTasks;
 		}
 
-	    private string EnglishToAmerican(string time)
-	    {
-	        StringBuilder convertDate = new StringBuilder();
-
-	        string convertedDate = convertDate.ToString();
-
-	        return convertedDate;
-	    }
+	
 		/// <summary>
 		/// ian 16/11/18
 		/// </summary>
@@ -590,10 +583,7 @@ namespace FindANameFarm.MetaLayer
 			List<WorkTaskReport> labourerWorkTaskReport = new List<WorkTaskReport>();
 			if (_con.OpenConnection())
 			{
-                Debug.Write(startTime);
-                Debug.Write(finishTime);
-			   // startTime = EnglishToAmerican(startTime);
-			    //finishTime = EnglishToAmerican(finishTime);
+      
 
 				DbDataReader dr = _con.Select("SELECT WorkTasks.TaskType, WorkTasks.startDate, WorkTasks.finishDate, WorkTasks.QuantityRequired, " +
 											  "Crops.cropName, Fields.FieldName, WorkTasks.jobDuration, WorkTasks.ExpectedHarvestDate," +
@@ -605,15 +595,7 @@ namespace FindANameFarm.MetaLayer
 											  "WorkTasks.treatmentId WHERE StaffWorkTask.staffId=" + staffMember + "and WorkTasks.startDate between " +
 											  "#" + startTime + "# and #" + finishTime + "# order by WorkTasks.startDate;");
 
-			    //"SELECT WorkTasks.TaskType, WorkTasks.startDate, WorkTasks.finishDate, WorkTasks.QuantityRequired, " +
-			    //    "Crops.cropName, Fields.FieldName, WorkTasks.jobDuration, WorkTasks.ExpectedHarvestDate," +
-			    //    " WorkTasks.ExpectedYield, WorkTasks.workTaskId, IIF(IsNull(FertiliserAndTreatment.fertTreatName),'None',FertiliserAndTreatment.fertTreatName) FROM" +
-			    //    " FertiliserAndTreatment RIGHT JOIN(Crops INNER JOIN(Fields INNER JOIN(Staff INNER JOIN" +
-			    //    "(WorkTasks INNER JOIN StaffWorkTask ON WorkTasks.workTaskId = StaffWorkTask.workTaskId)" +
-			    //    " ON Staff.staffID = StaffWorkTask.staffId) ON Fields.FieldId = WorkTasks.FieldId) " +
-			    //    "ON Crops.cropID = WorkTasks.CropId) ON FertiliserAndTreatment.fertTreatId = " +
-			    //    "WorkTasks.treatmentId WHERE StaffWorkTask.staffId=" + staffMember + "and WorkTasks.startDate >= " +
-			    //    "#" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
+
                 while (dr.Read())
 				{
 					WorkTaskReport labourerWorkTask = new WorkTaskReport()
@@ -655,10 +637,6 @@ namespace FindANameFarm.MetaLayer
 											  "WorkTasks.treatmentId) ON Fields.FieldId = WorkTasks.FieldId) ON Vehicles.VehicleId = " +
 											  "Vehicle_WorkTask.vehicleId WHERE Vehicle_WorkTask.staffId=" + staffMember + "and WorkTasks.startDate " +
 											  ">= #" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
-
-
-
-				//WHERE Vehicle_WorkTask.staffId=" + staffMember + "and WorkTasks.startDate >= #" + startTime + "# and WorkTasks.startDate <= #" + finishTime + "# order by WorkTasks.startDate;");
 
 				while (dr.Read())
 				{
@@ -853,7 +831,7 @@ namespace FindANameFarm.MetaLayer
 		{
 		    try
 		    {
-		        string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.staffId +
+		        string query = "Insert into StaffWorkTask(staffId, workTaskId)VALUES(" + addStaffToTask.StaffId +
 		                       "," + addStaffToTask.TaskId + ");";
 
 		        _con.Insert(query);
@@ -1036,7 +1014,7 @@ namespace FindANameFarm.MetaLayer
 		/// <param name="staffToDelete"></param>
 		public void DeleteStaffFromTask(TaskStaff staffToDelete)
 		{
-			string query = "DELETE From StaffWorkTask WHERE staffId =" + staffToDelete.staffId + " and workTaskId =" + staffToDelete.TaskId;
+			string query = "DELETE From StaffWorkTask WHERE staffId =" + staffToDelete.StaffId + " and workTaskId =" + staffToDelete.TaskId;
 
 			_con.Delete(query);
 			_con.CloseConnection();

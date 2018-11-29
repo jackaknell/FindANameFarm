@@ -254,7 +254,7 @@ namespace FindANameFarm.Forms
 
 		private void refresh()
 		{
-			_workTask.refreshConnection();
+			_workTask.RefreshConnection();
 			ShowExistingFertTreatTasks();
 			ShowCategories();
 		}
@@ -352,11 +352,11 @@ namespace FindANameFarm.Forms
 			TaskStaff taskStaff = new TaskStaff
 			{
 				TaskId = Convert.ToInt32(txtTaskId.Text),
-				staffId = Convert.ToInt32(cbFertTreatTaskStaffList.SelectedValue)
+				StaffId = Convert.ToInt32(cbFertTreatTaskStaffList.SelectedValue)
 			};
 
 
-			bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.staffId);
+			bool alreadyOnTask = _workTask.TaskStaff.Any(x => x.StaffId == taskStaff.StaffId);
 
 			if (alreadyOnTask == false)
 			{
@@ -380,7 +380,7 @@ namespace FindANameFarm.Forms
 
 				TaskStaff staffToDelete = new TaskStaff();
 
-				staffToDelete.staffId = staffId;
+				staffToDelete.StaffId = staffId;
 				staffToDelete.TaskId = workTaskId;
 
 
@@ -435,7 +435,7 @@ namespace FindANameFarm.Forms
 
 			if (alreadyOnTask == false)
 			{
-				_workTask.AddvehicleToTask(taskVehicle);
+				_workTask.AddVehicleToTask(taskVehicle);
 
 				ShowVehiclesInTask();
 

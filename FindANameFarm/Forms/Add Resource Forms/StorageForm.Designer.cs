@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StorageForm));
             this.btncloseStore = new System.Windows.Forms.Button();
             this.btnUpdateStore = new System.Windows.Forms.Button();
             this.nudCapacity = new System.Windows.Forms.NumericUpDown();
@@ -221,6 +222,7 @@
             this.Controls.Add(this.txtStoreID);
             this.Controls.Add(this.btnCreateStore);
             this.Controls.Add(this.listStorage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StorageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Storage";

@@ -1,15 +1,18 @@
-﻿using FindANameFarm.Banks;
-using FindANameFarm.BasicClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using FindANameFarm.Banks;
+using FindANameFarm.BasicClasses;
+using FindANameFarm.MetaLayer;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Reports
 {
+
     public partial class StaffWorkSheet : Form
     {
+        private readonly MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
         private readonly ReportBank _report = ReportBank.GetInst();
         public int StaffId { get; set; }
         public string StartTime { get; set; }
@@ -163,11 +166,9 @@ namespace FindANameFarm.Forms
         }
 
 
-
-
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            _log.LogEntry("User Logged out\n");
             Close();
             Login login = new Login();
             login.Show();
@@ -175,8 +176,9 @@ namespace FindANameFarm.Forms
 
         private void dtDateTo_ValueChanged(object sender, EventArgs e)
         {
-            StartTime = dtDateFrom.Value.ToString();
-            FinishTime = dtDateTo.Value.ToString();
+            
+            StartTime = dtDateFrom.Value.ToString("MM-dd-yyyy");
+            FinishTime = dtDateTo.Value.ToString("MM-dd-yyyy");
 
             ShowLabourerWorkTasks();
             ShowLabourerDrivingTasks();

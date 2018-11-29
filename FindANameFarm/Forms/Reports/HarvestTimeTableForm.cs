@@ -133,8 +133,8 @@ namespace FindANameFarm.Forms.Reports
 
         private void adDateTo_ValueChanged(object sender, EventArgs e)
         {
-            StartTime = dtDateFrom.Value.ToString(CultureInfo.CurrentCulture);
-            FinishTime = dtDateTo.Value.ToString(CultureInfo.CurrentCulture);
+            StartTime = dtDateFrom.Value.ToString("MM-dd-yyyy");
+            FinishTime = dtDateTo.Value.ToString("MM-dd-yyyy");
 
         
             ShowHarvestTimeTable();

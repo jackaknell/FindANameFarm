@@ -22,9 +22,10 @@ namespace FindANameFarm
     }
     public class StaffBank
     {
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
         public List<Staff> StaffList { get; private set; }
-        public List<StaffAndCategory> CompetencyList { get; private set; }
         public bool GetConnectionState { get; private set; }
         public static StaffBank UniqueInst;
         public List<CatIdAndName> StaffCompetenciesList { get; private set; }
@@ -72,18 +73,7 @@ namespace FindANameFarm
 
             StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
         }
-        public void deleteStaff(int staffMember)
-        {
-            for (int i = 0; i < StaffList.Count; i++)
-            {
-                Staff staff = StaffList[i];
-                if (staff.StaffId == staffMember)
-                {
-                    _metalayer.DeleteStaffMember(staffMember);
-                    refreshConnection();
-                }
-            }
-        }
+        
 
         public void deleteStaffCompetency(int staffId, int catId)
         {
@@ -102,9 +92,14 @@ namespace FindANameFarm
 
                 GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
+
                 throw;
             }
         }

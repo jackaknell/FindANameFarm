@@ -12,6 +12,8 @@ namespace FindANameFarm.Banks
     /// </summary>
     public class FertTreatBank
     {
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+
         private BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
         public List<FertiliserAndTreatment> FertTreatList { get; private set; }
         public static FertTreatBank UniqueInst;
@@ -35,19 +37,7 @@ namespace FindANameFarm.Banks
             _metaLayer.AddFertTreatToDataBase(fertTreat);
         }
 
-        /*
-         * public void DeleteFertTreat(int fertTreatId)
-        {
-            foreach (var fertTreat in FertTreatList)
-            {
-                if (fertTreat.FertTreatID == fertTreatId)
-                {
-                    _metaLayer.DeleteFertTreat(fertTreatId);
-                    RefreshConnection();
-                }
-            }
-        }
-        */
+      
 
         public void UpdateFertTreat(FertiliserAndTreatment editFertTreat)
         {
@@ -71,9 +61,14 @@ namespace FindANameFarm.Banks
 
                 GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
+
                 throw;
             }
         }

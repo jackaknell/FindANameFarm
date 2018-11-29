@@ -13,6 +13,9 @@ namespace FindANameFarm.Banks
     /// </summary>
     public class FieldBank
     {
+
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+
         private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
         public List<Fields> FieldList { get; private set; }
         public static FieldBank UniqueInst;
@@ -59,9 +62,13 @@ namespace FindANameFarm.Banks
 
                 GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
+
                 throw;
             }
         }

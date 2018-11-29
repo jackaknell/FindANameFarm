@@ -1,20 +1,15 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Common;
 
-/// <summary>
-/// ian 25/10/2018
-/// interface for db
-/// </summary>
 namespace FindANameFarm.MetaLayer
 {
- 
-   public interface IIDbConnection
+
+    public interface IIDbConnection
    {
+
+       /// <summary>
+       /// ian 25/10/2018
+       /// interface for db
+       /// </summary>
         bool OpenConnection();
 
         bool CloseConnection();

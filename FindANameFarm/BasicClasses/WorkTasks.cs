@@ -21,7 +21,6 @@ namespace FindANameFarm.WorkTaskClasses
 
         public string TaskStatus { get; set; }
         
-        public List<TaskVehiclesAndDrivers> VehicleAndDriverList { get; set; }
-        public List<TaskStaff> StaffTaskList { get; set; }
+       
     }
 }

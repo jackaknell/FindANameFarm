@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 using System.Data.OleDb;
 using System.Data.Common;
@@ -17,11 +16,11 @@ namespace FindANameFarm.MetaLayer
         public OledbConnection(Dictionary<string, string> properties)
         {
             _properties = properties;
-            initialize();
+            Initialize();
         }
 
 
-        private void initialize()
+        private void Initialize()
         {
             try
             {
@@ -46,7 +45,7 @@ namespace FindANameFarm.MetaLayer
             catch (Exception e)
             {
                 // Wrap exception up and throw it on
-                throw new DBException("DBException - OleDatabaseConnection::initialize()\n" + e.Message);
+                throw new DbException("DBException - OleDatabaseConnection::initialize()\n" + e.Message);
             }
         }
 
@@ -59,7 +58,7 @@ namespace FindANameFarm.MetaLayer
             catch (Exception e)
             {
                 // Wrap exception up and throw it on
-                throw new DBException("DBException - OleDatabaseConnection::OpenConnection()\n" + e.Message);
+                throw new DbException("DBException - OleDatabaseConnection::OpenConnection()\n" + e.Message);
             }
 
             return true;
@@ -74,7 +73,7 @@ namespace FindANameFarm.MetaLayer
             catch (Exception e)
             {
                 // Wrap exception up and throw it on
-                throw new DBException("DBException - OleDatabaseConnection::CloseConnection()\n" + e.Message);
+                throw new DbException("DBException - OleDatabaseConnection::CloseConnection()\n" + e.Message);
             }
 
             return true;
@@ -91,17 +90,16 @@ namespace FindANameFarm.MetaLayer
             try
             {
                 Debug.WriteLine(query);
-                OleDbCommand command = new OleDbCommand(query);
-                
-                command.Connection = _connection;
-               
+                OleDbCommand command = new OleDbCommand(query) {Connection = _connection};
+
+
                 reader = command.ExecuteReader();
                 
             }
             catch (Exception e)
             {
                 // Wrap exception up and throw it on
-                throw new DBException("DBException - OleDatabaseConnection::RunQuery()\n" + e.Message);
+                throw new DbException("DBException - OleDatabaseConnection::RunQuery()\n" + e.Message);
             }
             //finally
             //{
@@ -161,30 +159,5 @@ namespace FindANameFarm.MetaLayer
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
-       
-        public DataSet GetDataSet(string sqlStatement)
-        {
-            try
-            {
-                DataSet dataSet;
-
-                // create the object dataAdapter to manipulate a table from the database StudentDissertations specified by connectionToDB
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(sqlStatement, _connection);
-
-                // create the dataset
-                dataSet = new DataSet();
-                dataAdapter.Fill(dataSet);
-
-                //return the dataSet
-                return dataSet;
-            }
-            finally
-            {
-                _connection.Close();
-            }
-           
-        }
-
-      
     }
 }

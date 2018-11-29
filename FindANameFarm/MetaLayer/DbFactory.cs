@@ -14,7 +14,7 @@ namespace FindANameFarm.MetaLayer
         private static IIDbConnection _instance;
 
         Dictionary<string, string> _properties;
-        private static string propfile = Environment.CurrentDirectory + "/MetaLayer/" + "properties.dat";
+        private static readonly string Propfile = Environment.CurrentDirectory + "/MetaLayer/" + "properties.dat";
 
         private DbFactory()
         {
@@ -49,7 +49,7 @@ namespace FindANameFarm.MetaLayer
                     else
                     {
                         // should throw unsupport exception here
-                        throw new DBException("Not supported provider '" + provider + "'");
+                        throw new DbException("Not supported provider '" + provider + "'");
                     }
                 }
                 catch (FileNotFoundException e)
@@ -69,16 +69,15 @@ namespace FindANameFarm.MetaLayer
         private Dictionary<string, string> getProperties()
         {
             string fileData;
-            using (StreamReader sr = new StreamReader(propfile))
+            using (StreamReader sr = new StreamReader(Propfile))
             {
                 fileData = sr.ReadToEnd().Replace("\r", "");
             }
             Dictionary<string, string> properties = new Dictionary<string, string>();
-            string[] kvp;
             string[] records = fileData.Split("\n".ToCharArray());
             foreach (string record in records)
             {
-                kvp = record.Split("=".ToCharArray());
+                var kvp = record.Split("=".ToCharArray());
                 properties.Add(kvp[0], kvp[1]);
             }
             return properties;

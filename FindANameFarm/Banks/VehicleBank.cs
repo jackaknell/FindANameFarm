@@ -10,6 +10,7 @@ namespace FindANameFarm
     /// </summary>
     public struct VehicleAndDriver
     {
+
         public int staffId { get; set; }
         public string firstName { get; set; }
         public int categoryId { get; set; }
@@ -31,6 +32,7 @@ namespace FindANameFarm
     /// </summary>
     public struct VehicleAndCategory
     {
+
         public int VehicleId { get; set; }
         public string VehicleName { get; set; }
         public string CategoryName { get; set; }
@@ -41,6 +43,8 @@ namespace FindANameFarm
     /// </summary>
     public class VehicleBank
     {
+        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+
         private readonly BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
 
         public List<Vehicles> VehicleList { get; private set; }
@@ -87,21 +91,7 @@ namespace FindANameFarm
         public void AddCategoryToDb(string category) => _metaLayer.AddCategoryToDataBase(category);
 
 
-        /// <summary>
-        /// ian 26/10/2018
-        /// </summary>
-        /// <param name="vehicleId"></param>
-        public void DeleteVehicle(int vehicleId)
-        {
-            foreach (var vehicle in VehicleList)
-            {
-                if (vehicle.VehicleId == vehicleId)
-                {
-                    _metaLayer.DeleteVehicle(vehicleId);
-                    RefreshConnection();
-                }
-            }
-        }
+    
         /// <summary>
         /// ian 26/10/2018
         /// </summary>
@@ -132,9 +122,14 @@ namespace FindANameFarm
 
               GetConnectionState = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 GetConnectionState = false;
+
+                string exception = e.ToString();
+
+                _log.LogEntry("Connection failed " + exception);
+
                 throw;
             }
         }

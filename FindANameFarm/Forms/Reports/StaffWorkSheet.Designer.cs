@@ -1,4 +1,4 @@
-﻿namespace FindANameFarm.Forms
+﻿namespace FindANameFarm.Forms.Reports
 {
     partial class StaffWorkSheet
     {
