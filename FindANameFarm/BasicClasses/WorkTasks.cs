@@ -4,6 +4,9 @@ using FindANameFarm.Banks;
 
 namespace FindANameFarm.WorkTaskClasses
 {
+    /// <summary>
+    /// ian 18/11/2018
+    /// </summary>
     public class WorkTasks
     {
         public int TaskId { get; set; }

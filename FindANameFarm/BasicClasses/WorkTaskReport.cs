@@ -2,6 +2,10 @@
 
 namespace FindANameFarm.BasicClasses
 {
+    /// <summary>
+    ///
+    /// Ian 25/11/2018
+    /// </summary>
     public class WorkTaskReport:WorkTasks
     {
         public string FieldName { get; set; }
