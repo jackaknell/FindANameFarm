@@ -90,7 +90,7 @@ namespace FindANameFarm
         {
             try
             {
-                BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
+               BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
                 StaffList = metaLayer.GetStaff();
 
                 GetConnectionState = true;

@@ -68,7 +68,37 @@ namespace FindANameFarm.UnitTests.BanksTests
 
             //gives the current list count which will be the index position of the next object added
 
-            Staff staff = new Staff
+            Staff staff2 = new Staff
+            {
+                StaffId = staffId,
+                FirstName = "test2",
+                SurName = "test2",
+                Gender = "test2",
+                Email = "test2",
+                Role = "test2",
+                Contact = "test2",
+                ImageFile = "test2"
+                //Password = "test1",
+            };
+
+            //Act
+
+
+            Staff.updateStaff(staff2);
+
+            //Assert
+            Assert.AreEqual(Staff.StaffList[0].FirstName, staff2.FirstName);
+            Assert.AreEqual(Staff.StaffList[0].SurName, staff2.SurName);
+            Assert.AreEqual(Staff.StaffList[0].Gender, staff2.Gender);
+            Assert.AreEqual(Staff.StaffList[0].Email, staff2.Email);
+            Assert.AreEqual(Staff.StaffList[0].Role, staff2.Role);
+            Assert.AreEqual(Staff.StaffList[0].Contact, staff2.Contact);
+            Assert.AreEqual(Staff.StaffList[0].ImageFile, staff2.ImageFile);
+            //Assert.AreEqual(Staff.StaffList[0].Password, staff.Password);
+
+            //clean up
+
+            Staff staff1 = new Staff
             {
                 StaffId = staffId,
                 FirstName = "test1",
@@ -81,22 +111,7 @@ namespace FindANameFarm.UnitTests.BanksTests
                 //Password = "test1",
             };
 
-            //Act
-
-
-            Staff.updateStaff(staff);
-
-            //Assert
-            Assert.AreEqual(Staff.StaffList[0].FirstName, staff.FirstName);
-            Assert.AreEqual(Staff.StaffList[0].SurName, staff.SurName);
-            Assert.AreEqual(Staff.StaffList[0].Gender, staff.Gender);
-            Assert.AreEqual(Staff.StaffList[0].Email, staff.Email);
-            Assert.AreEqual(Staff.StaffList[0].Role, staff.Role);
-            Assert.AreEqual(Staff.StaffList[0].Contact, staff.Contact);
-            Assert.AreEqual(Staff.StaffList[0].ImageFile, staff.ImageFile);
-            //Assert.AreEqual(Staff.StaffList[0].Password, staff.Password);
-
-
+            Staff.updateStaff(staff1);
 
 
         }
@@ -117,8 +132,7 @@ namespace FindANameFarm.UnitTests.BanksTests
            
             //Act
             Staff.GetCompetencies(1);
-            Debug.Write(Staff.StaffCompetenciesList[1].CategoryId);
-            Debug.Write(Staff.StaffCompetenciesList[1].CategoryName);
+            
             //Assert
             CollectionAssert.AreEqual(Staff.StaffCompetenciesList,competency);
             
@@ -137,8 +151,13 @@ namespace FindANameFarm.UnitTests.BanksTests
             };
 
              Staff.AddCompetency(competency);
+
+            Staff.GetCompetencies(50);
+            Assert.AreEqual(Staff.StaffCompetenciesList.Count, 1);
+
             //Act
             Staff.deleteStaffCompetency(50,50);
+
             Staff.GetCompetencies(50);
             //Assert
             Assert.AreEqual(Staff.StaffCompetenciesList.Count,0);

@@ -2,7 +2,7 @@
 using FindANameFarm.Banks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FindaANameFarm.UnitTests.BanksTests
+namespace FindANameFarm.UnitTests.BanksTests
 {
     /// <summary>
     /// ian 29/11/18

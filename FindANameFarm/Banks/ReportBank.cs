@@ -54,6 +54,13 @@ namespace FindANameFarm.Banks
             return StaffWorkTasks;
         }
 
+        public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
+        {
+            VehicleWorkTasks = _metaLayer.GetVehicleWorkTasks(staffMember, startTime, finishTime);
+
+            return VehicleWorkTasks;
+        }
+
         /// <summary>
         /// ian 16/11/18
         /// </summary>
@@ -65,12 +72,7 @@ namespace FindANameFarm.Banks
             return HarvestTimeTable;
         }
 
-        public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
-        {
-            VehicleWorkTasks = _metaLayer.GetVehicleWorkTasks(staffMember, startTime, finishTime);
-
-            return VehicleWorkTasks;
-        }
+       
 		
         /// <summary>
         /// ian 16/11/18

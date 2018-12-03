@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FindaANameFarm.UnitTests.BanksTests;
+using FindANameFarm.UnitTests.BanksTests;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 using FindANameFarm.WorkTaskClasses;
 
-namespace FindaANameFarm.UnitTests.BanksTests
+namespace FindANameFarm.UnitTests.BanksTests
 {
     [TestClass]
     public class ReportTaskTests
