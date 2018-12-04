@@ -68,6 +68,8 @@
             this.lblTaskField = new System.Windows.Forms.Label();
             this.dtpTaskStart = new System.Windows.Forms.DateTimePicker();
             this.lblTaskStart = new System.Windows.Forms.Label();
+            this.lblTaskStatus = new System.Windows.Forms.Label();
+            this.cbTaskStatus = new System.Windows.Forms.ComboBox();
             this.gbTaskVehiclesAndStaff.SuspendLayout();
             this.gbVehicleSelection.SuspendLayout();
             this.gbFertTreatTask.SuspendLayout();
@@ -309,6 +311,8 @@
             // 
             // gbFertTreatTask
             // 
+            this.gbFertTreatTask.Controls.Add(this.lblTaskStatus);
+            this.gbFertTreatTask.Controls.Add(this.cbTaskStatus);
             this.gbFertTreatTask.Controls.Add(this.txtTaskId);
             this.gbFertTreatTask.Controls.Add(this.lblTaskId);
             this.gbFertTreatTask.Controls.Add(this.nudTaskQuantity);
@@ -456,6 +460,30 @@
             this.lblTaskStart.TabIndex = 0;
             this.lblTaskStart.Text = "Date of task:";
             // 
+            // lblTaskStatus
+            // 
+            this.lblTaskStatus.AutoSize = true;
+            this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskStatus.Location = new System.Drawing.Point(35, 483);
+            this.lblTaskStatus.Name = "lblTaskStatus";
+            this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
+            this.lblTaskStatus.TabIndex = 43;
+            this.lblTaskStatus.Text = "Task Current Status:";
+            // 
+            // cbTaskStatus
+            // 
+            this.cbTaskStatus.FormattingEnabled = true;
+            this.cbTaskStatus.Items.AddRange(new object[] {
+            "Not Started",
+            "Task Started",
+            "Task Finished",
+            "Unable To Complete Task"});
+            this.cbTaskStatus.Location = new System.Drawing.Point(216, 485);
+            this.cbTaskStatus.Name = "cbTaskStatus";
+            this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
+            this.cbTaskStatus.TabIndex = 42;
+            this.cbTaskStatus.SelectedIndexChanged += new System.EventHandler(this.cbTaskStatus_SelectedIndexChanged);
+            // 
             // TreatmentTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,5 +554,7 @@
         private System.Windows.Forms.Label lblTaskField;
         private System.Windows.Forms.DateTimePicker dtpTaskStart;
         private System.Windows.Forms.Label lblTaskStart;
+        private System.Windows.Forms.Label lblTaskStatus;
+        private System.Windows.Forms.ComboBox cbTaskStatus;
     }
 }

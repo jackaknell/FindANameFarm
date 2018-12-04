@@ -376,7 +376,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             if (cbTaskStatus.SelectedIndex == 1)
             {
-                lblTaskStatus.ForeColor = Color.Orange;
+                lblTaskStatus.ForeColor = Color.Yellow;
                
             }
 

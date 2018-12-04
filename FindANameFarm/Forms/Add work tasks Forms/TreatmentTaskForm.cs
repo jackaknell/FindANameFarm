@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FindANameFarm.Forms
 {
@@ -452,5 +453,23 @@ namespace FindANameFarm.Forms
 		{
 			ShowCategories();
 		}
-	}
+
+        private void cbTaskStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTaskStatus.SelectedIndex == 0)
+                lblTaskStatus.ForeColor = Color.Blue;
+
+            if (cbTaskStatus.SelectedIndex == 1)
+            {
+                lblTaskStatus.ForeColor = Color.Yellow;
+
+            }
+
+            if (cbTaskStatus.SelectedIndex == 2)
+                lblTaskStatus.ForeColor = Color.Green;
+
+            if (cbTaskStatus.SelectedIndex == 3)
+                lblTaskStatus.ForeColor = Color.Red;
+        }
+    }
 }
