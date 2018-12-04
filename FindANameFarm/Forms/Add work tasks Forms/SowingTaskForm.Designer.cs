@@ -82,6 +82,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbTaskVehiclesAndStaff = new System.Windows.Forms.GroupBox();
+            this.lblStorage = new System.Windows.Forms.Label();
+            this.cbStorage = new System.Windows.Forms.ComboBox();
             this.gbSowingTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudExpectedYeild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
@@ -112,6 +114,8 @@
             // 
             // gbSowingTask
             // 
+            this.gbSowingTask.Controls.Add(this.cbStorage);
+            this.gbSowingTask.Controls.Add(this.lblStorage);
             this.gbSowingTask.Controls.Add(this.lblTaskStatus);
             this.gbSowingTask.Controls.Add(this.cbTaskStatus);
             this.gbSowingTask.Controls.Add(this.btnResetForm);
@@ -301,7 +305,7 @@
             // 
             this.cbSowingTaskCropList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSowingTaskCropList.FormattingEnabled = true;
-            this.cbSowingTaskCropList.Location = new System.Drawing.Point(172, 257);
+            this.cbSowingTaskCropList.Location = new System.Drawing.Point(85, 258);
             this.cbSowingTaskCropList.Name = "cbSowingTaskCropList";
             this.cbSowingTaskCropList.Size = new System.Drawing.Size(121, 21);
             this.cbSowingTaskCropList.TabIndex = 7;
@@ -594,6 +598,23 @@
             this.gbTaskVehiclesAndStaff.TabIndex = 39;
             this.gbTaskVehiclesAndStaff.TabStop = false;
             // 
+            // lblStorage
+            // 
+            this.lblStorage.AutoSize = true;
+            this.lblStorage.Location = new System.Drawing.Point(245, 261);
+            this.lblStorage.Name = "lblStorage";
+            this.lblStorage.Size = new System.Drawing.Size(47, 13);
+            this.lblStorage.TabIndex = 42;
+            this.lblStorage.Text = "Storage:";
+            // 
+            // cbStorage
+            // 
+            this.cbStorage.FormattingEnabled = true;
+            this.cbStorage.Location = new System.Drawing.Point(322, 258);
+            this.cbStorage.Name = "cbStorage";
+            this.cbStorage.Size = new System.Drawing.Size(121, 21);
+            this.cbStorage.TabIndex = 43;
+            // 
             // SowingTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -678,5 +699,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ComboBox cbTaskStatus;
         private System.Windows.Forms.Label lblTaskStatus;
+        private System.Windows.Forms.ComboBox cbStorage;
+        private System.Windows.Forms.Label lblStorage;
     }
 }

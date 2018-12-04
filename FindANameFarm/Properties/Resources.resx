@@ -117,68 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login_btnLogin_Click_Please_enter_both_your_employee_number_and_your_password" xml:space="preserve">
-    <value>Please enter both your employee number and your password</value>
+  <data name="SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to_remove" xml:space="preserve">
+    <value>Please Select a member of staff to remove</value>
+  </data>
+  <data name="StaffOrVehicleExist" xml:space="preserve">
+    <value>Staff Member or vehicle Already on task</value>
+  </data>
+  <data name="StaffMemberExists" xml:space="preserve">
+    <value>Staff Member Already on task</value>
+  </data>
+  <data name="exitProblem" xml:space="preserve">
+    <value>Something went wrong</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="login image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Login_btnLogin_Click_Your_employee_number_and_password_don_t_match__please_try_again" xml:space="preserve">
-    <value>Your employee number and password don't match, please try again</value>
-  </data>
-  <data name="defaultImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\defaultImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SowingTaskForm_btnRemoveLabourerFromTask_Click_Please_Select_a_member_of_staff_to_remove" xml:space="preserve">
-    <value>Please Select a member of staff to remove</value>
-  </data>
-  <data name="Exit message" xml:space="preserve">
-    <value>Do you want to exit the application?</value>
-  </data>
-  <data name="Exit Title" xml:space="preserve">
-    <value>Are You Sure</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Something went wrong please try again later</value>
-  </data>
-  <data name="CheckDates" xml:space="preserve">
-    <value>Task Finish Date can't be before task start date</value>
-  </data>
-  <data name="StaffMemberExists" xml:space="preserve">
-    <value>Staff Member Already on task</value>
-  </data>
   <data name="SelectVehicleCat" xml:space="preserve">
     <value>You dont have any vehicles in that category</value>
-  </data>
-  <data name="StaffOrVehicleExist" xml:space="preserve">
-    <value>Staff Member or vehicle Already on task</value>
-  </data>
-  <data name="SelectVehicleFirst" xml:space="preserve">
-    <value>Please Select A vehicle to remove first</value>
-  </data>
-  <data name="SelectStaffMemberFirst" xml:space="preserve">
-    <value>Please Select A Staff member to remove first</value>
   </data>
   <data name="selectStaff" xml:space="preserve">
     <value>Please select a member of staff first</value>
   </data>
-  <data name="deleteCompetency" xml:space="preserve">
-    <value>Please select a competenct to delete first</value>
+  <data name="pictureError" xml:space="preserve">
+    <value>Error Try A different File</value>
+  </data>
+  <data name="CheckDates" xml:space="preserve">
+    <value>Task Finish Date can't be before task start date</value>
+  </data>
+  <data name="defaultImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\defaultImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fileNameFilter" xml:space="preserve">
     <value>jpeg images (*.jpg)|*.jpg|png images (*.png)|*.png|bitmap files (*.bmp)|*.bmp</value>
   </data>
-  <data name="exitProblem" xml:space="preserve">
-    <value>Something went wrong</value>
-  </data>
   <data name="addCat" xml:space="preserve">
     <value>Insert a category to add first</value>
+  </data>
+  <data name="Exit message" xml:space="preserve">
+    <value>Do you want to exit the application?</value>
+  </data>
+  <data name="Login_btnLogin_Click_Please_enter_both_your_employee_number_and_your_password" xml:space="preserve">
+    <value>Please enter both your employee number and your password</value>
+  </data>
+  <data name="Exit Title" xml:space="preserve">
+    <value>Are You Sure</value>
+  </data>
+  <data name="SelectVehicleFirst" xml:space="preserve">
+    <value>Please Select A vehicle to remove first</value>
+  </data>
+  <data name="deleteCompetency" xml:space="preserve">
+    <value>Please select a competenct to delete first</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Something went wrong please try again later</value>
+  </data>
+  <data name="Login_btnLogin_Click_Your_employee_number_and_password_don_t_match__please_try_again" xml:space="preserve">
+    <value>Your employee number and password don't match, please try again</value>
   </data>
   <data name="tryAgain" xml:space="preserve">
     <value>Please make sure all details are entered and try again</value>
   </data>
-  <data name="pictureError" xml:space="preserve">
-    <value>Error Try A different File</value>
+  <data name="SelectStaffMemberFirst" xml:space="preserve">
+    <value>Please Select A Staff member to remove first</value>
+  </data>
+  <data name="farm image (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\farm image (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -33,16 +33,14 @@ namespace FindANameFarm.Forms.Reports
 
         private void HarvestTimeTableForm_Load(object sender, EventArgs e)
         {
-          
-           
-      
+
             ShowHarvestTimeTable();
         }
 
         private void ShowHarvestTimeTable()
         {
-            StartTime = dtDateFrom.Value.ToString(CultureInfo.CurrentCulture);
-            FinishTime = dtDateTo.Value.ToString(CultureInfo.CurrentCulture);
+            StartTime = dtDateFrom.Value.ToString("MM-dd-yyyy");
+            FinishTime = dtDateTo.Value.ToString("MM-dd-yyyy");
 
             listHarvestTimeTable.Items.Clear();
             HarvestTimeTable = _report.GetHarvestTimeTable(StartTime,FinishTime);

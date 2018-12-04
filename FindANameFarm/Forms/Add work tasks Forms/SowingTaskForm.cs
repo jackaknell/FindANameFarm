@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
         private readonly FieldBank _field = FieldBank.GetInst();
         private readonly StaffBank _staff = StaffBank.GetInst();
         private readonly CropsBank _crop = CropsBank.GetInst();
+        private readonly StorageBank _storage = StorageBank.GetInst();
         private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
         private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst();
         private string _taskType = "Sowing";
@@ -55,6 +57,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowStaff();
             ShowCrop();
             ShowCategories();
+            ShowStorage();
         }
 
         private void ShowFields()
@@ -69,6 +72,17 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbSowingTaskFieldList.ValueMember = "FieldId";
         }
 
+        private void ShowStorage()
+        {
+            if (cbStorage != null)
+            {
+                cbStorage.DataSource = _storage.StorageList;
+            }
+
+            if (cbStorage == null) return;
+            cbStorage.DisplayMember = "StorageName";
+            cbStorage.ValueMember = "storageId";
+        }
         private void ShowStaff()
         {
             if (cbSowingTaskStaffList != null)
@@ -462,6 +476,15 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        private void alterstorage()
+        {
+            _storage.StorageList[cbStorage.SelectedIndex].AvailableStorage -= Convert.ToInt32(nudQuantity.Value);
+            _storage.StorageList[cbStorage.SelectedIndex].Storing = cbSowingTaskCropList.DisplayMember;
+            Debug.WriteLine(_storage.StorageList[cbStorage.SelectedIndex].Storing);
+            _storage.UpdateStorage(_storage.StorageList[cbStorage.SelectedIndex]);
+            
+        }
+
         private void btnResetForm_Click(object sender, EventArgs e)
         {
             ResetForm();
@@ -475,6 +498,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             if (cbTaskStatus.SelectedIndex == 1)
             {
                 lblTaskStatus.ForeColor = Color.Orange;
+                alterstorage();
                 //TODO Call storage method to adjust stock (does not exist 27/11/18)
             }
 

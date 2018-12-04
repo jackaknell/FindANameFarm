@@ -14,7 +14,8 @@ namespace FindANameFarm
         public int Capacity { get; set; }
         public int AvailableStorage { get; set; }
         public int Temp { get; set; }
-        
+        public string Storing{ get; set; }
 
-    }
+
+}
 }

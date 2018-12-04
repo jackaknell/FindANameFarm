@@ -140,5 +140,12 @@ namespace FindANameFarm.Forms
             Hide();
             login.Show();
         }
+
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            
+            this.BackgroundImage = Properties.Resources.farm_image__2_;
+            
+        }
     }
 }
