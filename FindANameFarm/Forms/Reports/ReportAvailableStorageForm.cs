@@ -46,7 +46,9 @@ namespace FindANameFarm.Forms
 	        }
 	    }
 
-        private void listAvailableStorage_MouseClick(object sender, MouseEventArgs e)
+
+
+        private void listAvailableStorage_MouseClick_1(object sender, MouseEventArgs e)
         {
             string storageID = listAvailableStorage.SelectedItems[0].SubItems[0].Text;
             string storageName = listAvailableStorage.SelectedItems[0].SubItems[1].Text;
@@ -59,7 +61,7 @@ namespace FindANameFarm.Forms
             txtCapacity.Text = capacity;
             txtAvailable.Text = availableStorage;
             txtTemp.Text = temp;
-            txtstoring.Text = storing;
+            txtStoring.Text = storing;
 
         }
     }
