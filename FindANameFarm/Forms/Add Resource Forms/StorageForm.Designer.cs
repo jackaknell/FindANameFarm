@@ -75,6 +75,7 @@
             // 
             this.nudCapacity.Location = new System.Drawing.Point(135, 139);
             this.nudCapacity.Name = "nudCapacity";
+            this.nudCapacity.ReadOnly = true;
             this.nudCapacity.Size = new System.Drawing.Size(159, 20);
             this.nudCapacity.TabIndex = 30;
             // 
@@ -82,6 +83,7 @@
             // 
             this.nudTemp.Location = new System.Drawing.Point(135, 211);
             this.nudTemp.Name = "nudTemp";
+            this.nudTemp.ReadOnly = true;
             this.nudTemp.Size = new System.Drawing.Size(159, 20);
             this.nudTemp.TabIndex = 29;
             // 
@@ -125,6 +127,7 @@
             // 
             this.txtStoreID.Location = new System.Drawing.Point(135, 72);
             this.txtStoreID.Name = "txtStoreID";
+            this.txtStoreID.ReadOnly = true;
             this.txtStoreID.Size = new System.Drawing.Size(159, 20);
             this.txtStoreID.TabIndex = 22;
             // 
@@ -153,6 +156,7 @@
             // 
             this.nudAvailableStore.Location = new System.Drawing.Point(135, 178);
             this.nudAvailableStore.Name = "nudAvailableStore";
+            this.nudAvailableStore.ReadOnly = true;
             this.nudAvailableStore.Size = new System.Drawing.Size(159, 20);
             this.nudAvailableStore.TabIndex = 33;
             // 
@@ -203,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(819, 456);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

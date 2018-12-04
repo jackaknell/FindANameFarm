@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportAvailableStorageForm));
-            this.txtPlannedUsage = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtId = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTemp = new System.Windows.Forms.TextBox();
-            this.txtAvailable = new System.Windows.Forms.TextBox();
-            this.txtCapacity = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtstoring = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.listAvailableStorage = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // txtPlannedUsage
+            // textBox6
             // 
-            this.txtPlannedUsage.Location = new System.Drawing.Point(199, 214);
-            this.txtPlannedUsage.Name = "txtPlannedUsage";
-            this.txtPlannedUsage.ReadOnly = true;
-            this.txtPlannedUsage.Size = new System.Drawing.Size(158, 20);
-            this.txtPlannedUsage.TabIndex = 60;
+            this.textBox6.Location = new System.Drawing.Point(199, 214);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(158, 20);
+            this.textBox6.TabIndex = 60;
             // 
             // label6
             // 
@@ -71,13 +71,13 @@
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // txtId
+            // textBox5
             // 
-            this.txtId.Location = new System.Drawing.Point(199, 84);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(158, 20);
-            this.txtId.TabIndex = 57;
+            this.textBox5.Location = new System.Drawing.Point(199, 84);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(158, 20);
+            this.textBox5.TabIndex = 57;
             // 
             // label1
             // 
@@ -88,29 +88,29 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "Currently Storing";
             // 
-            // txtTemp
+            // textBox4
             // 
-            this.txtTemp.Location = new System.Drawing.Point(199, 188);
-            this.txtTemp.Name = "txtTemp";
-            this.txtTemp.ReadOnly = true;
-            this.txtTemp.Size = new System.Drawing.Size(158, 20);
-            this.txtTemp.TabIndex = 55;
+            this.textBox4.Location = new System.Drawing.Point(199, 188);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(158, 20);
+            this.textBox4.TabIndex = 55;
             // 
-            // txtAvailable
+            // textBox3
             // 
-            this.txtAvailable.Location = new System.Drawing.Point(199, 162);
-            this.txtAvailable.Name = "txtAvailable";
-            this.txtAvailable.ReadOnly = true;
-            this.txtAvailable.Size = new System.Drawing.Size(158, 20);
-            this.txtAvailable.TabIndex = 54;
+            this.textBox3.Location = new System.Drawing.Point(199, 162);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(158, 20);
+            this.textBox3.TabIndex = 54;
             // 
-            // txtCapacity
+            // textBox2
             // 
-            this.txtCapacity.Location = new System.Drawing.Point(199, 136);
-            this.txtCapacity.Name = "txtCapacity";
-            this.txtCapacity.ReadOnly = true;
-            this.txtCapacity.Size = new System.Drawing.Size(158, 20);
-            this.txtCapacity.TabIndex = 53;
+            this.textBox2.Location = new System.Drawing.Point(199, 136);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(158, 20);
+            this.textBox2.TabIndex = 53;
             // 
             // label5
             // 
@@ -148,47 +148,45 @@
             this.label2.TabIndex = 49;
             this.label2.Text = "Storage ID";
             // 
-            // txtstoring
+            // textBox1
             // 
-            this.txtstoring.Location = new System.Drawing.Point(199, 110);
-            this.txtstoring.Name = "txtstoring";
-            this.txtstoring.ReadOnly = true;
-            this.txtstoring.Size = new System.Drawing.Size(158, 20);
-            this.txtstoring.TabIndex = 48;
+            this.textBox1.Location = new System.Drawing.Point(199, 110);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(158, 20);
+            this.textBox1.TabIndex = 48;
             // 
             // listAvailableStorage
             // 
-            this.listAvailableStorage.GridLines = true;
             this.listAvailableStorage.Location = new System.Drawing.Point(439, 78);
             this.listAvailableStorage.Name = "listAvailableStorage";
             this.listAvailableStorage.Size = new System.Drawing.Size(295, 389);
             this.listAvailableStorage.TabIndex = 47;
             this.listAvailableStorage.UseCompatibleStateImageBehavior = false;
-            this.listAvailableStorage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listAvailableStorage_MouseClick);
             // 
             // ReportAvailableStorageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(800, 545);
-            this.Controls.Add(this.txtPlannedUsage);
+            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTemp);
-            this.Controls.Add(this.txtAvailable);
-            this.Controls.Add(this.txtCapacity);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtstoring);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listAvailableStorage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportAvailableStorageForm";
             this.Text = "ReportAvailableStorageForm";
-            this.Load += new System.EventHandler(this.ReportAvailableStorageForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,19 +194,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPlannedUsage;
+        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTemp;
-        private System.Windows.Forms.TextBox txtAvailable;
-        private System.Windows.Forms.TextBox txtCapacity;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtstoring;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListView listAvailableStorage;
     }
 }

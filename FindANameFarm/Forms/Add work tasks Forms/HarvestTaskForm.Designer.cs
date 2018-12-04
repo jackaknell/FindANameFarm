@@ -226,9 +226,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(23, 317);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(87, 13);
+            this.label20.Size = new System.Drawing.Size(98, 13);
             this.label20.TabIndex = 33;
-            this.label20.Text = "Quantity Needed";
+            this.label20.Text = "Quantity Harvested";
             // 
             // dtpFinishDate
             // 
@@ -598,6 +598,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(1381, 688);
             this.Controls.Add(this.gbTaskVehiclesAndStaff);
             this.Controls.Add(this.listExistingHarvestTasks);
