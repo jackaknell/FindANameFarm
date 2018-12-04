@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FindANameFarm.MetaLayer
 {
+    /// <summary>
+    /// ian 06//11/18
+    /// </summary>
     public class Crops
     {
 

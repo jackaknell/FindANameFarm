@@ -107,7 +107,7 @@ namespace FindANameFarm.UnitTests.BanksTests
             }
             catch (Exception e)
             {
-                
+              Console.Write(e);  
                 
             }
             //Act
@@ -143,7 +143,7 @@ namespace FindANameFarm.UnitTests.BanksTests
             }
             catch (Exception e)
             {
-
+                Console.Write(e);
 
             }
             //Act

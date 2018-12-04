@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Forms;
 using FindANameFarm.Banks;
 using FindANameFarm.MetaLayer;
 
@@ -31,6 +32,8 @@ namespace FindANameFarm
         public List<CatIdAndName> StaffCompetenciesList { get; private set; }
         //fot use with unit test
         public static int InstanceCount { get; set; }
+
+        //constructor
         public StaffBank()
         {
             refreshConnection();
@@ -41,7 +44,7 @@ namespace FindANameFarm
         //singleton
         public static StaffBank GetInst() => UniqueInst ?? (UniqueInst = new StaffBank());
 
-
+        //adds the new member of staff to the database and class list
         public void AddStaffToList(Staff staff)
         {
 
@@ -49,10 +52,13 @@ namespace FindANameFarm
             _metalayer.AddStaffToDataBase(staff);
         }
 
+        //add a competency to the current staff member
         public void AddCompetency(StaffAndCategory addCompetency)
         {
             _metalayer.AddStaffCompetencyToDataBase(addCompetency);
         }
+
+        //update the current staff member
         public void updateStaff(Staff editStaffMember)
         {
 
@@ -69,6 +75,7 @@ namespace FindANameFarm
             }
         }
 
+        //Deletes a competency from the current staff member
         public void deleteStaffCompetency(int staffId, int catId)
         {
 
@@ -77,20 +84,20 @@ namespace FindANameFarm
 
         }
 
+        //Gets the current member of staffs competencies
         public void GetCompetencies(int staffid)
         {
 
             StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
         }
-        
 
-     
 
+        //checks the state and refreshes the connection, reloading the staff list in the class
         public void refreshConnection()
         {
             try
             {
-                BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
+               BusinessMetaLayer metaLayer = BusinessMetaLayer.GetInstance();
                 StaffList = metaLayer.GetStaff();
 
                 GetConnectionState = true;

@@ -28,16 +28,19 @@ namespace FindANameFarm.Banks
             RefreshConnection();
             InstanceCount++;
         }
+
         /// <summary>
         /// ian 16/11/18
         /// </summary>
         /// <returns></returns>
+        //class singleton
         public static ReportBank GetInst() => UniqueInst ?? (UniqueInst = new ReportBank());
 
         /// <summary>
         /// ian 16/11/18
         /// </summary>
         /// <param name="staffMember"></param>
+        /// Gets a list of the crops currently in cultivation from the database
         /// <returns></returns>
         public List<WorkTaskReport> GetCropsInCultivation()
         {
@@ -47,6 +50,7 @@ namespace FindANameFarm.Banks
 
         }
 
+        //get a list of the labour tasks for the current labourer between the given dates from the database.
         public List<WorkTaskReport> GetStaffWorkTasks(int staffMember, string startTime, string finishTime)
         {
             StaffWorkTasks = _metaLayer.GetLabouerWorkTasks(staffMember, startTime, finishTime);
@@ -54,9 +58,17 @@ namespace FindANameFarm.Banks
             return StaffWorkTasks;
         }
 
+        //get a list of the vehicle tasks for the current labourer between the given dates from the database.
+        public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
+        {
+            VehicleWorkTasks = _metaLayer.GetVehicleWorkTasks(staffMember, startTime, finishTime);
+
+            return VehicleWorkTasks;
+        }
+
         /// <summary>
         /// ian 16/11/18
-        /// </summary>
+        /// Get the harvest time table from the database between the given dates
         /// <returns></returns>
         public List<WorkTaskReport> GetHarvestTimeTable(string startTime, string finishTime)
         {
@@ -65,16 +77,11 @@ namespace FindANameFarm.Banks
             return HarvestTimeTable;
         }
 
-        public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
-        {
-            VehicleWorkTasks = _metaLayer.GetVehicleWorkTasks(staffMember, startTime, finishTime);
 
-            return VehicleWorkTasks;
-        }
-		
+
         /// <summary>
         /// ian 16/11/18
-        /// </summary>
+        /// checks the state of the db and refreshes the connection.
         public void RefreshConnection()
         {
             try

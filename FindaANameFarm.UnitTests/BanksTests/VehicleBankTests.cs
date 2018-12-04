@@ -34,7 +34,7 @@ namespace FindANameFarm.UnitTests
         /// </summary>
         [TestMethod]
 
-        public void GetVehicles_whenCalled_InsertVehicle()
+        public void GetVehiclesDrivers_whenCalled_InsertVehicle()
         {
             // Arrange
 
@@ -99,8 +99,18 @@ namespace FindANameFarm.UnitTests
 
             Assert.AreEqual(Vehicle.VehicleList[0].VehicleName, vehicle.VehicleName);
             Assert.AreEqual(Vehicle.VehicleList[0].Category,vehicle.Category);
-            
-           
+
+            //clean up
+
+            Vehicles vehicle1 = new Vehicles
+            {
+                VehicleId = vehicleId,
+                VehicleName = "VehicleNameToTest",
+                Category = 2
+
+            };
+
+            Vehicle.UpdateVehicle(vehicle1);
             //Assert.AreEqual(Staff.StaffList[0].Password, staff.Password);
 
         }
@@ -125,8 +135,13 @@ namespace FindANameFarm.UnitTests
 
             Vehicle.AddCategoryToDb(category);
             Vehicle.RefreshConnection();
+
+
             //Assert
+            int id = Vehicle.Categories[listCount].CatId;
+
             Assert.AreEqual(Vehicle.Categories.Count, listCount+1);
+            Assert.AreEqual(Vehicle.Categories[listCount].CatName, "TestCategoryName");
         }
 
        

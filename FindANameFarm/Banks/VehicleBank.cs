@@ -79,7 +79,7 @@ namespace FindANameFarm
         }
         /// <summary>
         /// ian 26/10/2018
-        /// </summary>
+        /// adds a new vehicle to the database and to the local list
         /// <param name="vehicle"></param>
         public void AddVehicleToList(Vehicles vehicle)
         {
@@ -88,7 +88,7 @@ namespace FindANameFarm
         }
         /// <summary>
         /// ian 26/10/2018
-        /// </summary>
+        /// add a new category type to the database
         /// <param name="category"></param>
         public void AddCategoryToDb(string category) => _metaLayer.AddCategoryToDataBase(category);
 
@@ -96,7 +96,7 @@ namespace FindANameFarm
     
         /// <summary>
         /// ian 26/10/2018
-        /// </summary>
+        /// updates the currently selected vehicle in the database
         /// <param name="editVehicle"></param>
         public void UpdateVehicle(Vehicles editVehicle)
         {
@@ -111,7 +111,7 @@ namespace FindANameFarm
         }
         /// <summary>
         /// ian 26/10/2018
-        /// refreshes class lists
+        /// checks the state and refreshes the connection, reloading the vehicle list in the class
         /// </summary>
         public void RefreshConnection()
         {

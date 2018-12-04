@@ -471,68 +471,44 @@ namespace FindANameFarm.MetaLayer
 
 			return storage;
 		}
-		public void AddStorageToDatabase(Storage newStorage)
-		{
+        /// <summary>
+        /// Jack
+        /// </summary>
+        /// <returns></returns>
+	    public List<Audit> GetAuidt()
+	    {
+	        List<Audit> audit = new List<Audit>();
+	        if (_con.OpenConnection())
+	        {
 
-			string storageName = newStorage.StorageName;
-			Int32 capacity = newStorage.Capacity;
-			Int32 availableStorage = newStorage.AvailableStorage;
-			Int32 temp = newStorage.Temp;
+	            DbDataReader dr = _con.Select("");
 
-			string query = "Insert into Storage(name, capacity, availableStorage, temp) Values('" + storageName + "', '" + capacity + "','" + availableStorage + "', '" + temp + "');";
+	            while (dr.Read())
+	            {
+	                Audit auidt = new Audit()
+	                {
+	                    AuditId = dr.GetInt32(0),
+	                    Date = dr.GetDateTime(1),
+	                    Name = dr.GetString(2),
+	                    Amount = dr.GetInt32(3),
+	                    Decription = dr.GetString(4),
+	                };
 
-			_con.Insert(query);
-			_con.CloseConnection();
-		}
-		public void UpdateStorage(Storage editStorages)
-		{
-			string query = "UPDATE Storage SET name = '" + editStorages.StorageName + "', capacity = " + editStorages.Capacity + ", availableStorage = " + editStorages.AvailableStorage + ", temp = " + editStorages.Temp + " Where storageID = " + editStorages.StorageID;
+	                audit.Add(auidt);
+	            }
 
-			_con.Update(query);
-			_con.CloseConnection();
-		}
-		public List<Audit> GetAuidt()
-		{
-			List<Audit> audit = new List<Audit>();
-			if (_con.OpenConnection())
-			{
+	            dr.Close();
+	            _con.CloseConnection();
 
-				DbDataReader dr = _con.Select("");
+	        }
 
-				while (dr.Read())
-				{
-					Audit auidt = new Audit()
-					{
-						AuditId = dr.GetInt32(0),
-						Date = dr.GetDateTime(1),
-						Name = dr.GetString(2),
-						Amount = dr.GetInt32(3),
-						Decription = dr.GetString(4),
-					};
+	        return audit;
+	    }
+        
+		
 
-					audit.Add(auidt);
-				}
-
-				dr.Close();
-				_con.CloseConnection();
-
-			}
-
-			return audit;
-		}
-		public void AddAuditToDatabase(Audit newAudit)
-		{
-			string query = "SELECT * FROM Audit;";
-
-			_con.Insert(query);
-			_con.CloseConnection();
-		}
-		public void UpdateAudit(Audit editAudit)
-		{
-			string query = "SELECT * FROM Audit;";
-			_con.Update(query);
-			_con.CloseConnection();
-		}
+	
+		
 		/// <summary>
 		/// ian 12/11/18
 		/// </summary>
@@ -912,12 +888,40 @@ namespace FindANameFarm.MetaLayer
 			_con.Update(query);
 			_con.CloseConnection();
 		}
-		/// <summary>
-		/// ian 28/10/2018
-		/// updates the selected staff member
-		/// </summary>
-		/// <param name="updateStaffMember"></param>
-		public void UpdateStaffMember(Staff updateStaffMember)
+        /// <summary>
+        /// Jack
+        /// </summary>
+        /// <param name="newStorage"></param>
+	    public void AddStorageToDatabase(Storage newStorage)
+	    {
+
+	        string storageName = newStorage.StorageName;
+	        Int32 capacity = newStorage.Capacity;
+	        Int32 availableStorage = newStorage.AvailableStorage;
+	        Int32 temp = newStorage.Temp;
+
+	        string query = "Insert into Storage(name, capacity, availableStorage, temp) Values('" + storageName + "', '" + capacity + "','" + availableStorage + "', '" + temp + "');";
+
+	        _con.Insert(query);
+	        _con.CloseConnection();
+	    }
+        /// <summary>
+        /// Jack
+        /// </summary>
+        /// <param name="newAudit"></param>
+	    public void AddAuditToDatabase(Audit newAudit)
+	    {
+	        string query = "SELECT * FROM Audit;";
+
+	        _con.Insert(query);
+	        _con.CloseConnection();
+	    }
+        /// <summary>
+        /// ian 28/10/2018
+        /// updates the selected staff member
+        /// </summary>
+        /// <param name="updateStaffMember"></param>
+        public void UpdateStaffMember(Staff updateStaffMember)
 		{
 
 
@@ -1000,12 +1004,34 @@ namespace FindANameFarm.MetaLayer
 			_con.Update(query);
 			_con.CloseConnection();
 		}
-		
-		/// <summary>
-		/// ian 14/11/18
-		/// </summary>
-		/// <param name="vehicleDriverToDelete"></param>
-		public void DeleteVehicleAndDriverFromDb(TaskVehiclesAndDrivers vehicleDriverToDelete)
+
+        /// <summary>
+        /// Jack
+        /// </summary>
+        /// <param name="editStorages"></param>
+	    public void UpdateStorage(Storage editStorages)
+	    {
+	        string query = "UPDATE Storage SET name = '" + editStorages.StorageName + "', capacity = " + editStorages.Capacity + ", availableStorage = " + editStorages.AvailableStorage + ", temp = " + editStorages.Temp + " Where storageID = " + editStorages.StorageID;
+
+	        _con.Update(query);
+	        _con.CloseConnection();
+	    }
+
+        /// <summary>
+        /// Jack
+        /// </summary>
+        /// <param name="editAudit"></param>
+	    public void UpdateAudit(Audit editAudit)
+	    {
+	        string query = "SELECT * FROM Audit;";
+	        _con.Update(query);
+	        _con.CloseConnection();
+	    }
+        /// <summary>
+        /// ian 14/11/18
+        /// </summary>
+        /// <param name="vehicleDriverToDelete"></param>
+        public void DeleteVehicleAndDriverFromDb(TaskVehiclesAndDrivers vehicleDriverToDelete)
 		{
 			string query = "Delete From Vehicle_workTask where vehicleId = " + vehicleDriverToDelete.VehicleId + " and workTaskId = " + vehicleDriverToDelete.TaskId + " and staffId =" + vehicleDriverToDelete.DriverId;
 

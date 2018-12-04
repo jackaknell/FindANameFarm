@@ -12,17 +12,17 @@ namespace FindANameFarm.UnitTests.BanksTests
 
         AuditBank _audit = AuditBank.GetInst();
 
-        //[TestMethod]
-        //public void GetInst_IsSingleton()
-        //{
+        [TestMethod]
+        public void GetInst_IsSingleton()
+        {
 
-        //    var instance1 = AuditBank.GetInst();
-        //    var instance2 = AuditBank.GetInst();
+            var instance1 = AuditBank.GetInst();
+            var instance2 = AuditBank.GetInst();
 
-        //    Assert.AreSame(instance1, instance2);
-        //    Assert.AreEqual(AuditBank.InstanceCount, 1);
+            Assert.AreSame(instance1, instance2);
+            Assert.AreEqual(AuditBank.InstanceCount, 1);
 
-        //}
+        }
 
         //[TestMethod]
         //public void AddAudit_whenCalled_InsertAudit()

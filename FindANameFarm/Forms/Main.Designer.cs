@@ -95,7 +95,7 @@
             // 
             this.cropsToolStripMenuItem.Name = "cropsToolStripMenuItem";
             this.cropsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.cropsToolStripMenuItem.Text = "Crops";
+            this.cropsToolStripMenuItem.Text = "Crops/Seeds";
             this.cropsToolStripMenuItem.Click += new System.EventHandler(this.cropsToolStripMenuItem_Click);
             // 
             // storageToolStripMenuItem

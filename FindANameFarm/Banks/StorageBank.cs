@@ -26,6 +26,7 @@ namespace FindANameFarm.Banks
         //Singleton
         public static StorageBank GetInst() => UniqueInst ?? (UniqueInst = new StorageBank());
 
+        
         public void AddStorageToList(Storage storage)
         {
             StorageList.Add(storage);

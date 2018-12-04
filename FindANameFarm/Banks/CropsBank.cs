@@ -28,14 +28,14 @@ namespace FindANameFarm.Banks
         /// <summary>
         /// ian 07/11/18
         /// crop bank singleton
-        /// </summary>
+        ///singleton
         /// <returns></returns>
         public static CropsBank GetInst() => UniqueInst ?? (UniqueInst = new CropsBank());
 
         /// <summary>
         /// ian 07/11/18
         /// adds crop to crop list and db
-        /// </summary>
+        /// adds a new crop to the database
         /// <param name="crop"></param>
         public void AddCropToList(Crops crop)
         {
@@ -47,7 +47,7 @@ namespace FindANameFarm.Banks
         /// <summary>
         /// ian 07/11/18
         /// updates crops in db
-        /// </summary>
+        /// updates the curently selected crop
         /// <param name="editCrop"></param>
         public void UpdateCrop(Crops editCrop)
         {
