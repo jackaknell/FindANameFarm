@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FindANameFarm.Banks;
-using FindANameFarm.BasicClasses;
- 
+
 namespace FindANameFarm.Forms
 {
+    /// <summary>
+    /// Jack Anthony-Knell Nov 2018 
+    /// 
+    /// </summary>
+
+
 
     public partial class StorageForm : Form
     {
@@ -77,7 +76,7 @@ namespace FindANameFarm.Forms
             addStorage.Temp = Convert.ToInt32(nudTemp.Value);
                 
             
-            _storageBank?.AddStorageToList(addStorage);
+            _storageBank.AddStorageToList(addStorage);
 
             refresh();
             
@@ -89,7 +88,9 @@ namespace FindANameFarm.Forms
             ShowStorage(_storageBank.StorageList);
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void resetForm()
         {
             txtStoreID.Text = "";

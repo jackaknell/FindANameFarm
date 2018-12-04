@@ -125,6 +125,7 @@
             // 
             this.txtStoreID.Location = new System.Drawing.Point(135, 72);
             this.txtStoreID.Name = "txtStoreID";
+            this.txtStoreID.ReadOnly = true;
             this.txtStoreID.Size = new System.Drawing.Size(159, 20);
             this.txtStoreID.TabIndex = 22;
             // 
@@ -203,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(819, 456);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
