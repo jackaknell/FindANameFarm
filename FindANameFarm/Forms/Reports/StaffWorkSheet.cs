@@ -222,14 +222,30 @@ namespace FindANameFarm.Forms.Reports
             txtYield.Text = expectedYield;
             txtTreatment.Text = treatment;
         }
-
+    
         // opens the view storage form
         private void btnViewStorage_Click(object sender, EventArgs e)
         {
             ReportAvailableStorageForm storage = new ReportAvailableStorageForm();
-            storage.Show();
+            FormAllReadyOpen(storage);
         }
 
+        private void FormAllReadyOpen(Form formToOpen)
+        {
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == formToOpen.GetType())
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            Form newForm = formToOpen;
+           
+            newForm.Show();
+        }
         // closes the staff form and open the login form
         private void StaffWorkSheet_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -237,5 +253,6 @@ namespace FindANameFarm.Forms.Reports
             Hide();
             login.Show();
         }
+
     }
 }

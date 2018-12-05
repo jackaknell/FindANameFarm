@@ -46,8 +46,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.nudJobDuration = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.dtpExpectedHarvestDate = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cbHarvestTaskCropList = new System.Windows.Forms.ComboBox();
             this.cbHarvestTaskFieldList = new System.Windows.Forms.ComboBox();
@@ -102,7 +100,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(122, 615);
+            this.btnUpdate.Location = new System.Drawing.Point(171, 615);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 50;
@@ -112,7 +110,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(25, 615);
+            this.btnCreate.Location = new System.Drawing.Point(74, 615);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 48;
@@ -137,8 +135,6 @@
             this.gbSowingTask.Controls.Add(this.label17);
             this.gbSowingTask.Controls.Add(this.nudJobDuration);
             this.gbSowingTask.Controls.Add(this.label12);
-            this.gbSowingTask.Controls.Add(this.dtpExpectedHarvestDate);
-            this.gbSowingTask.Controls.Add(this.label8);
             this.gbSowingTask.Controls.Add(this.label7);
             this.gbSowingTask.Controls.Add(this.cbHarvestTaskCropList);
             this.gbSowingTask.Controls.Add(this.cbHarvestTaskFieldList);
@@ -157,7 +153,7 @@
             // 
             this.lblTaskStatus.AutoSize = true;
             this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaskStatus.Location = new System.Drawing.Point(22, 554);
+            this.lblTaskStatus.Location = new System.Drawing.Point(27, 502);
             this.lblTaskStatus.Name = "lblTaskStatus";
             this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
             this.lblTaskStatus.TabIndex = 41;
@@ -171,7 +167,7 @@
             "Task Started",
             "Task Finished",
             "Unable To Complete Task"});
-            this.cbTaskStatus.Location = new System.Drawing.Point(203, 556);
+            this.cbTaskStatus.Location = new System.Drawing.Point(208, 504);
             this.cbTaskStatus.Name = "cbTaskStatus";
             this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
             this.cbTaskStatus.TabIndex = 40;
@@ -179,7 +175,7 @@
             // 
             // btnResetForm
             // 
-            this.btnResetForm.Location = new System.Drawing.Point(218, 615);
+            this.btnResetForm.Location = new System.Drawing.Point(267, 615);
             this.btnResetForm.Name = "btnResetForm";
             this.btnResetForm.Size = new System.Drawing.Size(75, 23);
             this.btnResetForm.TabIndex = 39;
@@ -189,7 +185,7 @@
             // 
             // nudExpectedYeild
             // 
-            this.nudExpectedYeild.Location = new System.Drawing.Point(173, 492);
+            this.nudExpectedYeild.Location = new System.Drawing.Point(173, 435);
             this.nudExpectedYeild.Name = "nudExpectedYeild";
             this.nudExpectedYeild.ReadOnly = true;
             this.nudExpectedYeild.Size = new System.Drawing.Size(120, 20);
@@ -249,7 +245,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(23, 494);
+            this.label17.Location = new System.Drawing.Point(23, 437);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 13);
             this.label17.TabIndex = 28;
@@ -271,22 +267,6 @@
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 25;
             this.label12.Text = "in hours";
-            // 
-            // dtpExpectedHarvestDate
-            // 
-            this.dtpExpectedHarvestDate.Location = new System.Drawing.Point(172, 438);
-            this.dtpExpectedHarvestDate.Name = "dtpExpectedHarvestDate";
-            this.dtpExpectedHarvestDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpExpectedHarvestDate.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 435);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Expected Harvest Date:";
             // 
             // label7
             // 
@@ -638,8 +618,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown nudJobDuration;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dtpExpectedHarvestDate;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbHarvestTaskCropList;
         private System.Windows.Forms.ComboBox cbHarvestTaskFieldList;

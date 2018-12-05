@@ -46,6 +46,7 @@
             this.lblKG = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAvailableStore)).BeginInit();
@@ -53,7 +54,7 @@
             // 
             // btncloseStore
             // 
-            this.btncloseStore.Location = new System.Drawing.Point(732, 421);
+            this.btncloseStore.Location = new System.Drawing.Point(732, 406);
             this.btncloseStore.Name = "btncloseStore";
             this.btncloseStore.Size = new System.Drawing.Size(75, 23);
             this.btncloseStore.TabIndex = 32;
@@ -150,7 +151,6 @@
             this.listStorage.TabIndex = 20;
             this.listStorage.UseCompatibleStateImageBehavior = false;
             this.listStorage.View = System.Windows.Forms.View.Details;
-
             this.listStorage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listStorage_MouseClick);
             // 
             // nudAvailableStore
@@ -204,12 +204,23 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "C";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(363, 406);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 39;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // StorageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(819, 456);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblKG);
@@ -259,5 +270,6 @@
         private System.Windows.Forms.Label lblKG;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnClear;
     }
 }

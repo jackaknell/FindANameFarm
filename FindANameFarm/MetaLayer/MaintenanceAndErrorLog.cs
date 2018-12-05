@@ -24,7 +24,7 @@ namespace FindANameFarm.MetaLayer
         //stream writer method for writing to the error log file
         public void LogEntry(string log)
         {
-            Debug.Write(log);
+            
             string path = "C:\\Users\\def1a\\OneDrive\\Documents\\log.txt";
 
             try

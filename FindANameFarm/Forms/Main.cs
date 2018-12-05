@@ -18,74 +18,74 @@ namespace FindANameFarm.Forms
         private void staffToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StaffForm manageStaff = new StaffForm();
-            FormAllreadyOpen(manageStaff);
+            FormAllReadyOpen(manageStaff);
         }
 
         private void vehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VehicleForm manageVehicles = new VehicleForm();
-            FormAllreadyOpen(manageVehicles);
+            FormAllReadyOpen(manageVehicles);
         }
 
         private void cropsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CropForm manageCrops = new CropForm();
-            FormAllreadyOpen(manageCrops);
+            FormAllReadyOpen(manageCrops);
         }
 
         private void storageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StorageForm manageStorage = new StorageForm();
-            FormAllreadyOpen(manageStorage);
+            FormAllReadyOpen(manageStorage);
         }
 
         private void fertiliserAndTreatmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FertiliserAndTreatmentForm managerFertiliserAndTreatments= new FertiliserAndTreatmentForm();
-            FormAllreadyOpen(managerFertiliserAndTreatments);
+            FormAllReadyOpen(managerFertiliserAndTreatments);
         }
 
         private void fieldsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FieldsForm manageFields = new FieldsForm();
-            FormAllreadyOpen(manageFields);
+            FormAllReadyOpen(manageFields);
         }
 
         private void sowingTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SowingTaskForm createSowingTask = new SowingTaskForm();
-            FormAllreadyOpen(createSowingTask);
+            FormAllReadyOpen(createSowingTask);
         }
 
         private void harvestTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HarvestTaskForm createHarvestTask = new HarvestTaskForm();
-            FormAllreadyOpen(createHarvestTask);
+            FormAllReadyOpen(createHarvestTask);
         }
 
         private void fertiliserTreatmentTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreatmentTaskForm createTreatment = new TreatmentTaskForm();
-            FormAllreadyOpen(createTreatment);
+            FormAllReadyOpen(createTreatment);
     
         }
 
         private void viewLabourRequirmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportLabourRequirementsForm viewLabourRequirements = new ReportLabourRequirementsForm();
-            FormAllreadyOpen(viewLabourRequirements);
+            FormAllReadyOpen(viewLabourRequirements);
         }
 
         private void viewHarvestTimeTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HarvestTimeTableForm viewHarvestTimeTable = new HarvestTimeTableForm();
-            FormAllreadyOpen(viewHarvestTimeTable);
+            FormAllReadyOpen(viewHarvestTimeTable);
         }
 
         private void viewCropsCurrentlyInCultivationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportCropsInCultivationForm viewCropsInCultivation = new ReportCropsInCultivationForm();
-            FormAllreadyOpen(viewCropsInCultivation);
+            FormAllReadyOpen(viewCropsInCultivation);
         }
 
         private void viewStockLevelsAndPlannedUsageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,9 +97,9 @@ namespace FindANameFarm.Forms
         private void viewAvailableStorageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportAvailableStorageForm viewAvailableStorage = new ReportAvailableStorageForm();
-            FormAllreadyOpen(viewAvailableStorage);
+            FormAllReadyOpen(viewAvailableStorage);
         }
-        private void FormAllreadyOpen(Form formToOpen)
+        private void FormAllReadyOpen(Form formToOpen)
         {
 
             foreach (Form form in Application.OpenForms)
@@ -151,7 +151,7 @@ namespace FindANameFarm.Forms
         private void viewCurrentHarvestRequirementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportHarvestRequirements viewHarvestReport = new ReportHarvestRequirements();
-            FormAllreadyOpen(viewHarvestReport);
+            FormAllReadyOpen(viewHarvestReport);
         }
     }
 }

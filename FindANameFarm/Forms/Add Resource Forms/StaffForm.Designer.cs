@@ -443,7 +443,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             // 
             // staffAndCategoryBindingSource
             // 
-            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
+            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.Banks.StaffAndCategory);
             // 
             // StaffForm
             // 

@@ -55,14 +55,11 @@ namespace FindANameFarm.MetaLayer
                 }
                 catch (FileNotFoundException e)
                 {
-                    Debug.WriteLine("Error file not found" + e.Message);
+                    Console.Write(e);
                     throw;
+                    
                 }
-                catch (Exception e)
-                {
-                    Debug.WriteLine("Property file parsing exception thrown : " + e.Message);
-                    throw;
-                }
+              
                 return connection;
             }
         }

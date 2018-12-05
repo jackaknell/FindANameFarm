@@ -78,7 +78,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
         {
             List<Crops> seeds = new List<Crops>();
 
-            foreach (var seed in _crop.CropsList.Where(seed => seed.CropName.Contains("Seed")))
+            foreach (var seed in _crop.CropsList.Where(seed => !seed.CropName.Contains("Seed")))
             {
                 seeds.Add(seed);
             }
@@ -253,7 +253,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbHarvestTaskCropList.SelectedIndex = -1;
             nudQuantity.Value = 0;
             nudJobDuration.Value = 0;
-            dtpExpectedHarvestDate.Value = DateTime.Now;
+         
             nudExpectedYeild.Value = 0;
             cbTaskStatus.SelectedIndex = 0;
 
@@ -406,7 +406,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 CropId = Convert.ToInt32(cbHarvestTaskCropList.SelectedValue),
                 QuantityRequired = Convert.ToInt32(nudQuantity.Value),
                 JobDuration = Convert.ToInt32(nudJobDuration.Value),
-                ExpectedHarvestDate = dtpExpectedHarvestDate.Value,
+             
                 ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value),
                 TaskStatus = cbTaskStatus.SelectedItem.ToString()
             };
@@ -440,7 +440,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 CropId = Convert.ToInt32(cbHarvestTaskCropList.SelectedValue),
                 QuantityRequired = Convert.ToInt32(nudQuantity.Value),
                 JobDuration = Convert.ToInt32(nudJobDuration.Value),
-                ExpectedHarvestDate = dtpExpectedHarvestDate.Value,
+             
                 ExpectedYield = Convert.ToInt32(nudExpectedYeild.Value),
                 TaskStatus = cbTaskStatus.SelectedItem.ToString()
             };
@@ -481,7 +481,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             dtpFinishDate.Text = finishDate;
             nudQuantity.Value = Convert.ToInt32(quantity);
             nudJobDuration.Value = Convert.ToInt32(jobDuration);
-            dtpExpectedHarvestDate.Text = expectedHarvestDate;
+         
             nudExpectedYeild.Text = expectedYield;
             cbHarvestTaskFieldList.SelectedValue = Convert.ToInt32(fieldId);
             cbHarvestTaskCropList.SelectedValue = Convert.ToInt32(cropId);

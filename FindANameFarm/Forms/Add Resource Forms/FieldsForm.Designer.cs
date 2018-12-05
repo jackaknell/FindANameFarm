@@ -93,7 +93,7 @@ namespace FindANameFarm.Forms
             // 
             // btnUpdateField
             // 
-            this.btnUpdateField.Location = new System.Drawing.Point(221, 297);
+            this.btnUpdateField.Location = new System.Drawing.Point(101, 200);
             this.btnUpdateField.Name = "btnUpdateField";
             this.btnUpdateField.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateField.TabIndex = 59;
@@ -103,7 +103,7 @@ namespace FindANameFarm.Forms
             // 
             // btnFieldClose
             // 
-            this.btnFieldClose.Location = new System.Drawing.Point(640, 387);
+            this.btnFieldClose.Location = new System.Drawing.Point(657, 343);
             this.btnFieldClose.Name = "btnFieldClose";
             this.btnFieldClose.Size = new System.Drawing.Size(75, 23);
             this.btnFieldClose.TabIndex = 58;
@@ -113,7 +113,7 @@ namespace FindANameFarm.Forms
             // 
             // btnFieldCreate
             // 
-            this.btnFieldCreate.Location = new System.Drawing.Point(221, 268);
+            this.btnFieldCreate.Location = new System.Drawing.Point(221, 200);
             this.btnFieldCreate.Name = "btnFieldCreate";
             this.btnFieldCreate.Size = new System.Drawing.Size(75, 23);
             this.btnFieldCreate.TabIndex = 57;
@@ -160,7 +160,7 @@ namespace FindANameFarm.Forms
             // 
             // btnFieldClear
             // 
-            this.btnFieldClear.Location = new System.Drawing.Point(221, 178);
+            this.btnFieldClear.Location = new System.Drawing.Point(317, 343);
             this.btnFieldClear.Name = "btnFieldClear";
             this.btnFieldClear.Size = new System.Drawing.Size(75, 23);
             this.btnFieldClear.TabIndex = 66;

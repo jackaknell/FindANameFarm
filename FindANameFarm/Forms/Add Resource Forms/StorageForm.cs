@@ -95,6 +95,7 @@ namespace FindANameFarm.Forms
         {
             txtStoreID.Text = "";
             txtStoreName.Text = "";
+            
             nudAvailableStore.Value = 0;
             nudCapacity.Value = 0;
             nudTemp.Value = 0;
@@ -132,6 +133,11 @@ namespace FindANameFarm.Forms
             
 
             refresh();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            resetForm();
         }
     }
 }

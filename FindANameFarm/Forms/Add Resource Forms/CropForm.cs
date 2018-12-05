@@ -8,16 +8,27 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     public partial class CropForm : Form
     {
-
+        private readonly StorageBank _storage = StorageBank.GetInst();
         private readonly CropsBank _cropsBank = CropsBank.GetInst();
         public CropForm()
         {
             InitializeComponent();
             rbSeed.Checked = true;
+            ShowStorage();
             ShowCrops(_cropsBank.CropsList);
             refresh();
         }
+        private void ShowStorage()
+        {
+            if (cbStorage != null)
+            {
+                cbStorage.DataSource = _storage.StorageList;
+            }
 
+            if (cbStorage == null) return;
+            cbStorage.DisplayMember = "StorageName";
+            cbStorage.ValueMember = "StorageId";
+        }
         private void CropForm_Load(object sender, EventArgs e)
         {
             listCrops.View = View.Details;

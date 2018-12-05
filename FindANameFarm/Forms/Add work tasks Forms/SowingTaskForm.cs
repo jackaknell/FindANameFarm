@@ -520,9 +520,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
         private void AdjustStock()
         {
             _storage.StorageList[cbStorage.SelectedIndex].AvailableStorage -= Convert.ToInt16(nudQuantity.Value);
-            _storage.StorageList[cbStorage.SelectedIndex].Storing = cbSowingTaskCropList.SelectedValue.ToString();
-
-            Debug.WriteLine(_storage.StorageList[cbStorage.SelectedIndex].AvailableStorage+" "+ _storage.StorageList[cbStorage.SelectedIndex].Storing);
+            _storage.StorageList[cbStorage.SelectedIndex].Storing = cbSowingTaskCropList.SelectedValue.ToString();            
             _storage.UpdateStorage(_storage.StorageList[cbStorage.SelectedIndex]);
         }
 

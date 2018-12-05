@@ -26,9 +26,9 @@ namespace FindANameFarm.Forms
 			listField.FullRowSelect = true;
 
 			listField.Columns.Add("ID", 50);
-			listField.Columns.Add("Field Name", 75);
-			listField.Columns.Add("Field Size", 50);
-			listField.Columns.Add("Suitability of Field", 75);
+			listField.Columns.Add("Field Name", 100);
+			listField.Columns.Add("Field Size", 100);
+			listField.Columns.Add("Suitability of Field", 100);
 		}
 
 		public void ShowField(List<Fields> fieldList)

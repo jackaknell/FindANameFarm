@@ -14,17 +14,28 @@ namespace FindANameFarm.Forms
 {
 	public partial class FertiliserAndTreatmentForm : Form
 	{
-
-		private FertTreatBank _fertTreatBank = FertTreatBank.GetInst();
+	    private readonly StorageBank _storage = StorageBank.GetInst();
+        private FertTreatBank _fertTreatBank = FertTreatBank.GetInst();
 
 		public FertiliserAndTreatmentForm()
 		{
 			InitializeComponent();
 			ShowFertTreat(_fertTreatBank.FertTreatList);
+            ShowStorage();
 			refresh();
 		}
+	    private void ShowStorage()
+	    {
+	        if (cbStorage != null)
+	        {
+	            cbStorage.DataSource = _storage.StorageList;
+	        }
 
-		private void FertiliserAndTreatmentForm_Load(object sender, EventArgs e)
+	        if (cbStorage == null) return;
+	        cbStorage.DisplayMember = "StorageName";
+	        cbStorage.ValueMember = "StorageId";
+	    }
+        private void FertiliserAndTreatmentForm_Load(object sender, EventArgs e)
 		{
 			listFertTreat.View = View.Details;
 			listFertTreat.FullRowSelect = true;

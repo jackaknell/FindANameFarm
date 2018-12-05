@@ -541,7 +541,7 @@ namespace FindANameFarm.MetaLayer
 						ExpectedYield = dr.GetInt32(10),
 						TaskStatus = dr.GetString(11)
 					};
-					Debug.WriteLine(workTask.TaskStartDate);
+					
 					workTasks.Add(workTask);
 				}
 				dr.Close();
@@ -906,7 +906,7 @@ namespace FindANameFarm.MetaLayer
 				"VALUES('" + neWorkTask.TaskType + "','" + neWorkTask.TaskStartDate + "','" + neWorkTask.TaskEndDate + "'," + neWorkTask.FieldId + "," + neWorkTask.CropId + "," +
 				neWorkTask.TreatmentId + "," + neWorkTask.QuantityRequired + "," + neWorkTask.JobDuration + ",'" + neWorkTask.ExpectedHarvestDate + "'," + neWorkTask.ExpectedYield + ",'" + neWorkTask.TaskStatus + "');";
 
-			Debug.WriteLine(query);
+			
 
 			_con.Update(query);
 			_con.CloseConnection();

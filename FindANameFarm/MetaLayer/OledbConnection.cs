@@ -90,7 +90,7 @@ namespace FindANameFarm.MetaLayer
             DbDataReader reader;
             try
             {
-                Debug.WriteLine(query);
+                
                 OleDbCommand command = new OleDbCommand(query) {Connection = _connection};
 
 
