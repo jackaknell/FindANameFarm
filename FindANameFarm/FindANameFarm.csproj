@@ -257,6 +257,7 @@
     <Content Include="MetaLayer\FindANameFarm.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\farm image %284%29.jpg" />
     <None Include="Resources\farm image %282%29.jpg" />
   </ItemGroup>
   <ItemGroup />
