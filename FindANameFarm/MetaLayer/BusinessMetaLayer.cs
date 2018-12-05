@@ -262,7 +262,7 @@ namespace FindANameFarm.MetaLayer
 				DbDataReader dr =
 					_con.Select("SELECT StaffWorkTask.staffId, Staff.firstName, Staff.surname FROM Staff INNER JOIN StaffWorkTask ON Staff.staffID = StaffWorkTask.staffId WHERE WorkTaskId = " +
 								taskId + "; ");
-
+                
 				while (dr.Read())
 				{
 					Staff taskStaffMember = new Staff()

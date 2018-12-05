@@ -188,6 +188,7 @@
             this.viewCurrentHarvestRequirementsToolStripMenuItem.Name = "viewCurrentHarvestRequirementsToolStripMenuItem";
             this.viewCurrentHarvestRequirementsToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.viewCurrentHarvestRequirementsToolStripMenuItem.Text = "View Current harvest requirements";
+            this.viewCurrentHarvestRequirementsToolStripMenuItem.Click += new System.EventHandler(this.viewCurrentHarvestRequirementsToolStripMenuItem_Click);
             // 
             // viewHarvestTimeTableToolStripMenuItem
             // 

@@ -72,8 +72,8 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             this.lblCompetency = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtStaffPassword = new System.Windows.Forms.TextBox();
-            this.staffAndCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnReset = new System.Windows.Forms.Button();
+            this.staffAndCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).BeginInit();
             this.gbCompetencies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staffAndCategoryBindingSource)).BeginInit();
@@ -431,10 +431,6 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             this.txtStaffPassword.Size = new System.Drawing.Size(175, 20);
             this.txtStaffPassword.TabIndex = 26;
             // 
-            // staffAndCategoryBindingSource
-            // 
-            this.staffAndCategoryBindingSource.DataSource = typeof(StaffAndCategory);
-            // 
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(358, 620);
@@ -444,6 +440,10 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             this.btnReset.Text = "Reset Form";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // staffAndCategoryBindingSource
+            // 
+            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
             // 
             // StaffForm
             // 
@@ -484,7 +484,6 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             this.Name = "StaffForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Management Form";
-          
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).EndInit();
             this.gbCompetencies.ResumeLayout(false);
             this.gbCompetencies.PerformLayout();

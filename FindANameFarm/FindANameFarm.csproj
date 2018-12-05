@@ -77,6 +77,12 @@
     <Compile Include="Forms\Reports\ReportCropsInCultivationForm.Designer.cs">
       <DependentUpon>ReportCropsInCultivationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\ReportHarvestRequirements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportHarvestRequirements.Designer.cs">
+      <DependentUpon>ReportHarvestRequirements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\ReportLabourRequirementsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ReportCropsInCultivationForm.resx">
       <DependentUpon>ReportCropsInCultivationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ReportHarvestRequirements.resx">
+      <DependentUpon>ReportHarvestRequirements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ReportLabourRequirementsForm.resx">
       <DependentUpon>ReportLabourRequirementsForm.cs</DependentUpon>
