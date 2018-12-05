@@ -9,7 +9,11 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Forms.Reports
 {
-
+    /// <summary>
+    /// Ian
+    /// staff work tasks form shows a list of the staff and vehicle tasks for the given staff
+    /// member between the given dates
+    /// </summary>
     public partial class StaffWorkSheet : Form
     {
         private readonly MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();

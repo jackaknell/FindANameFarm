@@ -8,6 +8,7 @@ namespace FindANameFarm.MetaLayer
     /// <summary>
     /// ian 25/10/2018
     /// based off in class example
+    /// factory method for database connection
     /// </summary>
     public class DbFactory
     {

@@ -19,7 +19,7 @@ namespace FindANameFarm.MetaLayer
             Initialize();
         }
 
-
+        // string builder method for connection string
         private void Initialize()
         {
             try
@@ -81,6 +81,7 @@ namespace FindANameFarm.MetaLayer
         /// <summary>
         /// ian 26/10/2018
         /// based on in class example
+        /// 
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -111,8 +112,10 @@ namespace FindANameFarm.MetaLayer
 
         /// <summary>
         /// ian 26/10/2018
+        /// methods for sql statements
         /// </summary>
         /// <param name="queryString"></param>
+        /// 
         public void Insert(string queryString)
         {
             try
@@ -120,7 +123,7 @@ namespace FindANameFarm.MetaLayer
                 OleDbCommand cmd = _connection.CreateCommand();
                 cmd.CommandText = queryString;
                 
-                Debug.WriteLine(queryString);
+                
                 _connection.Open();
                 cmd.ExecuteNonQuery();
 
@@ -141,9 +144,9 @@ namespace FindANameFarm.MetaLayer
         public void Update(string query)
         {
             OleDbCommand cmd = _connection.CreateCommand();
-            Debug.WriteLine(query);
+          
             cmd.CommandText = query;
-            Debug.WriteLine(query);
+        
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
@@ -155,9 +158,11 @@ namespace FindANameFarm.MetaLayer
         {
             OleDbCommand cmd = _connection.CreateCommand();
             cmd.CommandText = query;
-            Debug.WriteLine(query);
+           
             _connection.Open();
             cmd.ExecuteNonQuery();
         }
     }
 }
+
+

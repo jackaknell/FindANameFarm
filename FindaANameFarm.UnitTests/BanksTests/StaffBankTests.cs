@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using FindANameFarm;
+using FindANameFarm.Banks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FindANameFarm.UnitTests.BanksTests
@@ -84,7 +83,7 @@ namespace FindANameFarm.UnitTests.BanksTests
             //Act
 
 
-            Staff.updateStaff(staff2);
+            Staff.UpdateStaff(staff2);
 
             //Assert
             Assert.AreEqual(Staff.StaffList[0].FirstName, staff2.FirstName);
@@ -111,7 +110,7 @@ namespace FindANameFarm.UnitTests.BanksTests
                 //Password = "test1",
             };
 
-            Staff.updateStaff(staff1);
+            Staff.UpdateStaff(staff1);
 
 
         }
@@ -156,7 +155,7 @@ namespace FindANameFarm.UnitTests.BanksTests
             Assert.AreEqual(Staff.StaffCompetenciesList.Count, 1);
 
             //Act
-            Staff.deleteStaffCompetency(50,50);
+            Staff.DeleteStaffCompetency(50,50);
 
             Staff.GetCompetencies(50);
             //Assert

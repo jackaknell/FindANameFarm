@@ -14,11 +14,16 @@ namespace FindANameFarm.MetaLayer
 
         bool CloseConnection();
 
+       //sql select query
         DbDataReader Select(string query);
-        //DataSet GetDataSet(string sqlStatement);
-
+       
+        //sql insert query
        void Insert(string query);
+
+       //sql update query
        void Update(string query);
+
+       //sql delete query
        void Delete(string query);
    }
 }

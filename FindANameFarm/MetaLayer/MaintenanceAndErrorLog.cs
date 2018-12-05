@@ -4,6 +4,9 @@ using System.IO;
 
 namespace FindANameFarm.MetaLayer
 {
+    /// <summary>
+    /// ian creates an error log and activity log for the project
+    /// </summary>
     class MaintenanceAndErrorLog
     {
       
@@ -18,6 +21,7 @@ namespace FindANameFarm.MetaLayer
 
         public static MaintenanceAndErrorLog GetInst() => UniqueInst ?? (UniqueInst = new MaintenanceAndErrorLog());
        
+        //stream writer method for writing to the error log file
         public void LogEntry(string log)
         {
             Debug.Write(log);

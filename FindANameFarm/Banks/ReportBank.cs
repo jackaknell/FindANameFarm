@@ -2,7 +2,6 @@
 using FindANameFarm.MetaLayer;
 using System;
 using System.Collections.Generic;
-using FindANameFarm.Forms;
 
 namespace FindANameFarm.Banks
 {
@@ -22,7 +21,7 @@ namespace FindANameFarm.Banks
         public List<WorkTaskReport> HarvestTimeTable { get; set; }
         public List<WorkTaskReport> VehicleWorkTasks { get; set; }
         public List<WorkTaskReport> StaffWorkTasks { get; private set; }
-		public List<WorkTaskReport> AvailableStorage { get; set; }
+		
         public ReportBank()
         {
             RefreshConnection();
@@ -38,8 +37,7 @@ namespace FindANameFarm.Banks
 
         /// <summary>
         /// ian 16/11/18
-        /// </summary>
-        /// <param name="staffMember"></param>
+        /// </summary>      
         /// Gets a list of the crops currently in cultivation from the database
         /// <returns></returns>
         public List<WorkTaskReport> GetCropsInCultivation()
@@ -66,10 +64,10 @@ namespace FindANameFarm.Banks
             return VehicleWorkTasks;
         }
 
-        /// <summary>
+        /// 
         /// ian 16/11/18
         /// Get the harvest time table from the database between the given dates
-        /// <returns></returns>
+        /// 
         public List<WorkTaskReport> GetHarvestTimeTable(string startTime, string finishTime)
         {
             HarvestTimeTable = _metaLayer.GetHarvestTimeTableTasks(startTime, finishTime);
@@ -79,7 +77,7 @@ namespace FindANameFarm.Banks
 
 
 
-        /// <summary>
+        /// 
         /// ian 16/11/18
         /// checks the state of the db and refreshes the connection.
         public void RefreshConnection()

@@ -9,7 +9,11 @@ namespace FindANameFarm.Forms.Reports
 
     public partial class ReportCropsInCultivationForm : Form
     {
-        
+        /// <summary>
+        /// ian
+        /// Crops in cultivation form, shows a list of all sowing tasks marked as started
+        /// </summary>
+    
         private List<WorkTaskReport> CropsInCultivation { get; set; }
         private readonly ReportBank _report= ReportBank.GetInst();
         public ReportCropsInCultivationForm() => InitializeComponent();

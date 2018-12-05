@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Forms;
-using FindANameFarm.Banks;
 using FindANameFarm.MetaLayer;
 
-namespace FindANameFarm
+namespace FindANameFarm.Banks
 {
     /// <summary>
     /// ian 5/11/18
@@ -23,9 +20,9 @@ namespace FindANameFarm
     }
     public class StaffBank
     {
-        private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
+        private readonly MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
 
-        private BusinessMetaLayer _metalayer = BusinessMetaLayer.GetInstance();
+        private readonly BusinessMetaLayer _metaLayer = BusinessMetaLayer.GetInstance();
         public List<Staff> StaffList { get; private set; }
         public bool GetConnectionState { get; private set; }
         public static StaffBank UniqueInst;
@@ -36,7 +33,7 @@ namespace FindANameFarm
         //constructor
         public StaffBank()
         {
-            refreshConnection();
+            RefreshConnection();
             //show how many times the constructor has been called (for unit test)
             InstanceCount++;
         }
@@ -49,51 +46,48 @@ namespace FindANameFarm
         {
 
             StaffList.Add(staff);
-            _metalayer.AddStaffToDataBase(staff);
+            _metaLayer.AddStaffToDataBase(staff);
         }
 
         //add a competency to the current staff member
         public void AddCompetency(StaffAndCategory addCompetency)
         {
-            _metalayer.AddStaffCompetencyToDataBase(addCompetency);
+            _metaLayer.AddStaffCompetencyToDataBase(addCompetency);
         }
 
         //update the current staff member
-        public void updateStaff(Staff editStaffMember)
+        public void UpdateStaff(Staff editStaffMember)
         {
-
-
-            for (int i = 0; i < StaffList.Count; i++)
+            foreach (var staff in StaffList)
             {
-                Staff staff = StaffList[i];
                 if (staff.StaffId == editStaffMember.StaffId)
                 {
 
-                    _metalayer.UpdateStaffMember(editStaffMember);
-                    refreshConnection();
+                    _metaLayer.UpdateStaffMember(editStaffMember);
+                    RefreshConnection();
                 }
             }
         }
 
         //Deletes a competency from the current staff member
-        public void deleteStaffCompetency(int staffId, int catId)
+        public void DeleteStaffCompetency(int staffId, int catId)
         {
 
-            _metalayer.DeleteStaffCompetency(staffId, catId);
-            refreshConnection();
+            _metaLayer.DeleteStaffCompetency(staffId, catId);
+            RefreshConnection();
 
         }
 
         //Gets the current member of staffs competencies
-        public void GetCompetencies(int staffid)
+        public void GetCompetencies(int staffId)
         {
 
-            StaffCompetenciesList = _metalayer.GetCompetencies(staffid);
+            StaffCompetenciesList = _metaLayer.GetCompetencies(staffId);
         }
 
 
         //checks the state and refreshes the connection, reloading the staff list in the class
-        public void refreshConnection()
+        public void RefreshConnection()
         {
             try
             {

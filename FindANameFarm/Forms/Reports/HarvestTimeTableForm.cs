@@ -11,6 +11,8 @@ namespace FindANameFarm.Forms.Reports
 {
     /// <summary>
     /// ian 17/11/18
+    /// harvest time table, shows a list of harvest tasks between the given dates,
+    /// also filterable by task type
     /// </summary>
     public partial class HarvestTimeTableForm : Form
     {
@@ -86,7 +88,7 @@ namespace FindANameFarm.Forms.Reports
             listHarvestTimeTable.Items.Add(lvItem);
         }
 
-        //refresh harvest list and filter results includes colour code
+        //refresh harvest list and filter results includes colour coding
         private void ListRefresh()
         {
             for (int i = 0; i < listHarvestTimeTable.Items.Count; i++)
@@ -106,7 +108,7 @@ namespace FindANameFarm.Forms.Reports
 
         }
 
-        // radial buttons changed event handler
+        // radial buttons changed, event handler
         private void rbAllTasks_CheckedChanged(object sender, EventArgs e)
         {
             if (rbAllTasks.Checked)

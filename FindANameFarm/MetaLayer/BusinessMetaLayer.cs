@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
-using System.Text;
 using FindANameFarm.Banks;
 using FindANameFarm.BasicClasses;
 using FindANameFarm.WorkTaskClasses;
@@ -109,6 +108,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 07/11/18
+		/// gets a list of all crops and details
 		/// </summary>
 		/// <returns></returns>
 		public List<Crops> GetCrops()
@@ -148,10 +148,10 @@ namespace FindANameFarm.MetaLayer
 
 			return crops;
 		}
+
 		/// <summary>
 		/// Ian 3/11/2018
 		/// selects all competencies for a given staff member
-		/// </summary>
 		/// <param name="staffId"></param>
 		/// <returns></returns>
 		public List<CatIdAndName> GetCompetencies(int staffId)
@@ -188,6 +188,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 09/11/18
+		/// gets a list of vehicles and drivers from the db
 		/// </summary>
 		/// <returns></returns>
 		public List<VehicleAndDriver> GetDriverList()
@@ -218,6 +219,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 11/11/18
+		/// gets a list of vehicle and drivers for the current task
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <returns></returns>
@@ -248,6 +250,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 11/11/18
+		/// gets a list of staff on the current task
 		/// </summary>
 		/// <param name="taskId"></param>
 		/// <returns></returns>
@@ -505,12 +508,10 @@ namespace FindANameFarm.MetaLayer
 	        return audit;
 	    }
         
-		
 
-	
-		
 		/// <summary>
 		/// ian 12/11/18
+		/// gets a list of all work tasks
 		/// </summary>
 		/// <returns></returns>
 		public List<WorkTasks> GetWorkTasks()
@@ -552,6 +553,7 @@ namespace FindANameFarm.MetaLayer
 	
 		/// <summary>
 		/// ian 16/11/18
+		/// gets a list of labour tasks for the given labourer between the given dates
 		/// </summary>
 		/// <returns></returns>
 		public List<WorkTaskReport> GetLabouerWorkTasks(int staffMember, string startTime, string finishTime)
@@ -598,6 +600,15 @@ namespace FindANameFarm.MetaLayer
 
 			return labourerWorkTaskReport;
 		}
+
+        /// <summary>
+        /// Ian 17/11/18
+        /// get a vehicle task list for the give labourer between the given dates
+        /// </summary>
+        /// <param name="staffMember"></param>
+        /// < param name="startTime"></param>
+        /// <param name="finishTime"></param>
+        /// <returns></returns>
 		public List<WorkTaskReport> GetVehicleWorkTasks(int staffMember, string startTime, string finishTime)
 		{
 			List<WorkTaskReport> vehiclerWorkTaskReport = new List<WorkTaskReport>();
@@ -642,6 +653,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 17/11/18
+		/// ets a list of all tasks between the given dates
 		/// </summary>
 		/// <returns></returns>
 		public List<WorkTaskReport> GetHarvestTimeTableTasks(string startTime, string finishTime)
@@ -678,7 +690,14 @@ namespace FindANameFarm.MetaLayer
 				_con.CloseConnection();
 			}
 			return harvestList;
-		}		
+		}
+
+        /// <summary>
+        /// ian 18/11/18
+        /// gets a list of crop tasks that are marked as started from the db
+        /// </summary>
+        /// <returns></returns>
+       
 		public List<WorkTaskReport> GetCropsInCultivationFromDb()
 		{
 			List<WorkTaskReport> cropsInCultivationList = new List<WorkTaskReport>();
@@ -758,6 +777,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 9/11/18
+		/// adds a new crop to the db
 		/// </summary>
 		/// <param name="newCrop"></param>
 		public void AddCropToDataBase(Crops newCrop)
@@ -802,6 +822,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 12/11/18
+		/// adds a new staff member to the db
 		/// </summary>
 		/// <param name="addStaffToTask"></param>
 		public bool AddStaffToTaskAndDb(TaskStaff addStaffToTask)
@@ -826,6 +847,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 12/11/18
+		/// adds a vehicle and driver to the db
 		/// </summary>
 		/// <param name="addVehiclesAndDriverToDb"></param>
 		public bool AddVehicleAndDriverToDb(TaskVehiclesAndDrivers addVehiclesAndDriverToDb)
@@ -965,6 +987,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 12/11/18
+		/// updates the selected crop
 		/// </summary>
 		/// <param name="updateCrop"></param>
 		public void UpdateCrop(Crops updateCrop)
@@ -989,6 +1012,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian 10/11/18
+		/// updates the current work task
 		/// </summary>
 		/// <param name="updateWorkTask"></param>
 		public void UpdateCurrentWorkTaskInDb(WorkTasks updateWorkTask)
@@ -1030,6 +1054,7 @@ namespace FindANameFarm.MetaLayer
 	    }
         /// <summary>
         /// ian 14/11/18
+        /// deletes a vehicle and driver from the task
         /// </summary>
         /// <param name="vehicleDriverToDelete"></param>
         public void DeleteVehicleAndDriverFromDb(TaskVehiclesAndDrivers vehicleDriverToDelete)
@@ -1041,6 +1066,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// ian30/11/18
+		/// deletes a staff member from a task
 		/// </summary>
 		/// <param name="staffToDelete"></param>
 		public void DeleteStaffFromTask(TaskStaff staffToDelete)
