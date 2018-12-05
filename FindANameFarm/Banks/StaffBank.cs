@@ -36,7 +36,7 @@ namespace FindANameFarm
         //constructor
         public StaffBank()
         {
-            refreshConnection();
+            RefreshConnection();
             //show how many times the constructor has been called (for unit test)
             InstanceCount++;
         }
@@ -59,7 +59,7 @@ namespace FindANameFarm
         }
 
         //update the current staff member
-        public void updateStaff(Staff editStaffMember)
+        public void UpdateStaff(Staff editStaffMember)
         {
 
 
@@ -70,17 +70,17 @@ namespace FindANameFarm
                 {
 
                     _metalayer.UpdateStaffMember(editStaffMember);
-                    refreshConnection();
+                    RefreshConnection();
                 }
             }
         }
 
         //Deletes a competency from the current staff member
-        public void deleteStaffCompetency(int staffId, int catId)
+        public void DeleteStaffCompetency(int staffId, int catId)
         {
 
             _metalayer.DeleteStaffCompetency(staffId, catId);
-            refreshConnection();
+            RefreshConnection();
 
         }
 
@@ -93,7 +93,7 @@ namespace FindANameFarm
 
 
         //checks the state and refreshes the connection, reloading the staff list in the class
-        public void refreshConnection()
+        public void RefreshConnection()
         {
             try
             {

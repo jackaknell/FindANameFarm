@@ -82,6 +82,7 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label2
             // 
@@ -116,7 +117,7 @@
             this.Controls.Add(this.listCompetencies);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportLabourRequirementsForm";
-            this.Text = "ReportLabourRequirementsForm";
+            this.Text = "he ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
