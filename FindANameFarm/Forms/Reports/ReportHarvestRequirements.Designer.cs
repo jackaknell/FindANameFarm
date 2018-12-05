@@ -49,9 +49,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(36, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Staff";
+            this.label3.Text = "Vehicles";
             // 
             // label2
             // 
@@ -139,12 +139,12 @@
             // ID
             // 
             this.ID.Text = "ID";
-            this.ID.Width = 47;
+            this.ID.Width = 84;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "First Name";
-            this.columnHeader2.Width = 84;
+            this.columnHeader2.Width = 83;
             // 
             // columnHeader3
             // 
