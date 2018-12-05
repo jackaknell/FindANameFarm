@@ -189,7 +189,7 @@ namespace FindANameFarm.Forms
             this.Controls.Add(this.lblFieldSize);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FieldsForm";
-            this.Text = "Field Management Form";
+            this.Text = "Field Management ";
             this.Load += new System.EventHandler(this.FieldsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudFieldSize)).EndInit();
             this.ResumeLayout(false);

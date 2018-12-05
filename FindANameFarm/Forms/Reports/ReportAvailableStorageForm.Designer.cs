@@ -189,7 +189,7 @@
             this.Controls.Add(this.listAvailableStorage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportAvailableStorageForm";
-            this.Text = "ReportAvailableStorageForm";
+            this.Text = "Available storage report";
             this.Load += new System.EventHandler(this.ReportAvailableStorageForm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();

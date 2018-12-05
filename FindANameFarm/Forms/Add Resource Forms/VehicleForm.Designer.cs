@@ -274,7 +274,7 @@
             this.MinimizeBox = false;
             this.Name = "VehicleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Vehicle Management Form";
+            this.Text = "Vehicle Management ";
             this.Load += new System.EventHandler(this.VehicleForm_Load);
             this.gbCategories.ResumeLayout(false);
             this.gbCategories.PerformLayout();

@@ -221,7 +221,7 @@
             this.MinimizeBox = false;
             this.Name = "HarvestTimeTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Harvest Time Table Form";
+            this.Text = "Harvest Time Table";
             this.Load += new System.EventHandler(this.HarvestTimeTableForm_Load);
             this.gbRadialButtons.ResumeLayout(false);
             this.gbRadialButtons.PerformLayout();

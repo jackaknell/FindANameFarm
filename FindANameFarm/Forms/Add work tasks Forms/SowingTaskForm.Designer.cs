@@ -32,6 +32,8 @@
             this.btnCloseSowingTask = new System.Windows.Forms.Button();
             this.btnCreateSowingTask = new System.Windows.Forms.Button();
             this.gbSowingTask = new System.Windows.Forms.GroupBox();
+            this.cbStorage = new System.Windows.Forms.ComboBox();
+            this.lblStorage = new System.Windows.Forms.Label();
             this.lblTaskStatus = new System.Windows.Forms.Label();
             this.cbTaskStatus = new System.Windows.Forms.ComboBox();
             this.btnResetForm = new System.Windows.Forms.Button();
@@ -82,8 +84,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbTaskVehiclesAndStaff = new System.Windows.Forms.GroupBox();
-            this.lblStorage = new System.Windows.Forms.Label();
-            this.cbStorage = new System.Windows.Forms.ComboBox();
             this.gbSowingTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudExpectedYeild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
@@ -146,6 +146,23 @@
             this.gbSowingTask.TabIndex = 8;
             this.gbSowingTask.TabStop = false;
             this.gbSowingTask.Enter += new System.EventHandler(this.gbSowingTask_Enter);
+            // 
+            // cbStorage
+            // 
+            this.cbStorage.FormattingEnabled = true;
+            this.cbStorage.Location = new System.Drawing.Point(322, 258);
+            this.cbStorage.Name = "cbStorage";
+            this.cbStorage.Size = new System.Drawing.Size(121, 21);
+            this.cbStorage.TabIndex = 43;
+            // 
+            // lblStorage
+            // 
+            this.lblStorage.AutoSize = true;
+            this.lblStorage.Location = new System.Drawing.Point(245, 261);
+            this.lblStorage.Name = "lblStorage";
+            this.lblStorage.Size = new System.Drawing.Size(47, 13);
+            this.lblStorage.TabIndex = 42;
+            this.lblStorage.Text = "Storage:";
             // 
             // lblTaskStatus
             // 
@@ -598,23 +615,6 @@
             this.gbTaskVehiclesAndStaff.TabIndex = 39;
             this.gbTaskVehiclesAndStaff.TabStop = false;
             // 
-            // lblStorage
-            // 
-            this.lblStorage.AutoSize = true;
-            this.lblStorage.Location = new System.Drawing.Point(245, 261);
-            this.lblStorage.Name = "lblStorage";
-            this.lblStorage.Size = new System.Drawing.Size(47, 13);
-            this.lblStorage.TabIndex = 42;
-            this.lblStorage.Text = "Storage:";
-            // 
-            // cbStorage
-            // 
-            this.cbStorage.FormattingEnabled = true;
-            this.cbStorage.Location = new System.Drawing.Point(322, 258);
-            this.cbStorage.Name = "cbStorage";
-            this.cbStorage.Size = new System.Drawing.Size(121, 21);
-            this.cbStorage.TabIndex = 43;
-            // 
             // SowingTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,7 +631,7 @@
             this.MinimizeBox = false;
             this.Name = "SowingTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create Sowing Task Form";
+            this.Text = "Create Sowing Task ";
             this.Load += new System.EventHandler(this.SowingTaskForm_Load);
             this.gbSowingTask.ResumeLayout(false);
             this.gbSowingTask.PerformLayout();

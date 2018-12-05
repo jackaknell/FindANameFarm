@@ -53,6 +53,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.gbFertTreatTask = new System.Windows.Forms.GroupBox();
+            this.lblTaskStatus = new System.Windows.Forms.Label();
+            this.cbTaskStatus = new System.Windows.Forms.ComboBox();
             this.txtTaskId = new System.Windows.Forms.TextBox();
             this.lblTaskId = new System.Windows.Forms.Label();
             this.nudTaskQuantity = new System.Windows.Forms.NumericUpDown();
@@ -68,8 +70,6 @@
             this.lblTaskField = new System.Windows.Forms.Label();
             this.dtpTaskStart = new System.Windows.Forms.DateTimePicker();
             this.lblTaskStart = new System.Windows.Forms.Label();
-            this.lblTaskStatus = new System.Windows.Forms.Label();
-            this.cbTaskStatus = new System.Windows.Forms.ComboBox();
             this.gbTaskVehiclesAndStaff.SuspendLayout();
             this.gbVehicleSelection.SuspendLayout();
             this.gbFertTreatTask.SuspendLayout();
@@ -335,6 +335,30 @@
             this.gbFertTreatTask.TabStop = false;
             this.gbFertTreatTask.Enter += new System.EventHandler(this.gbFertTreatTask_Enter);
             // 
+            // lblTaskStatus
+            // 
+            this.lblTaskStatus.AutoSize = true;
+            this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaskStatus.Location = new System.Drawing.Point(35, 483);
+            this.lblTaskStatus.Name = "lblTaskStatus";
+            this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
+            this.lblTaskStatus.TabIndex = 43;
+            this.lblTaskStatus.Text = "Task Current Status:";
+            // 
+            // cbTaskStatus
+            // 
+            this.cbTaskStatus.FormattingEnabled = true;
+            this.cbTaskStatus.Items.AddRange(new object[] {
+            "Not Started",
+            "Task Started",
+            "Task Finished",
+            "Unable To Complete Task"});
+            this.cbTaskStatus.Location = new System.Drawing.Point(216, 485);
+            this.cbTaskStatus.Name = "cbTaskStatus";
+            this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
+            this.cbTaskStatus.TabIndex = 42;
+            this.cbTaskStatus.SelectedIndexChanged += new System.EventHandler(this.cbTaskStatus_SelectedIndexChanged);
+            // 
             // txtTaskId
             // 
             this.txtTaskId.Location = new System.Drawing.Point(196, 17);
@@ -460,30 +484,6 @@
             this.lblTaskStart.TabIndex = 0;
             this.lblTaskStart.Text = "Date of task:";
             // 
-            // lblTaskStatus
-            // 
-            this.lblTaskStatus.AutoSize = true;
-            this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaskStatus.Location = new System.Drawing.Point(35, 483);
-            this.lblTaskStatus.Name = "lblTaskStatus";
-            this.lblTaskStatus.Size = new System.Drawing.Size(175, 20);
-            this.lblTaskStatus.TabIndex = 43;
-            this.lblTaskStatus.Text = "Task Current Status:";
-            // 
-            // cbTaskStatus
-            // 
-            this.cbTaskStatus.FormattingEnabled = true;
-            this.cbTaskStatus.Items.AddRange(new object[] {
-            "Not Started",
-            "Task Started",
-            "Task Finished",
-            "Unable To Complete Task"});
-            this.cbTaskStatus.Location = new System.Drawing.Point(216, 485);
-            this.cbTaskStatus.Name = "cbTaskStatus";
-            this.cbTaskStatus.Size = new System.Drawing.Size(164, 21);
-            this.cbTaskStatus.TabIndex = 42;
-            this.cbTaskStatus.SelectedIndexChanged += new System.EventHandler(this.cbTaskStatus_SelectedIndexChanged);
-            // 
             // TreatmentTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,7 +499,7 @@
             this.Controls.Add(this.gbFertTreatTask);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TreatmentTaskForm";
-            this.Text = "Create Treatment Task Form";
+            this.Text = "Create Treatment Task ";
             this.Load += new System.EventHandler(this.TreatmentTaskForm_Load);
             this.gbTaskVehiclesAndStaff.ResumeLayout(false);
             this.gbTaskVehiclesAndStaff.PerformLayout();

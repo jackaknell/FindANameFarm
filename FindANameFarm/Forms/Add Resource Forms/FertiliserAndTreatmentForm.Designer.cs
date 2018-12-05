@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FertiliserAndTreatmentForm));
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblAuditDesc = new System.Windows.Forms.Label();
+            this.lblAuditAmount = new System.Windows.Forms.Label();
+            this.lblAuditDate = new System.Windows.Forms.Label();
+            this.cbStorage = new System.Windows.Forms.ComboBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -44,12 +50,6 @@
             this.txtFertTreatName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbStorage = new System.Windows.Forms.ComboBox();
-            this.lblAuditDesc = new System.Windows.Forms.Label();
-            this.lblAuditAmount = new System.Windows.Forms.Label();
-            this.lblAuditDate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFertTreatQuantity)).BeginInit();
@@ -82,6 +82,59 @@
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Audit";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(207, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Storage";
+            // 
+            // lblAuditDesc
+            // 
+            this.lblAuditDesc.AutoSize = true;
+            this.lblAuditDesc.Location = new System.Drawing.Point(17, 127);
+            this.lblAuditDesc.Name = "lblAuditDesc";
+            this.lblAuditDesc.Size = new System.Drawing.Size(60, 13);
+            this.lblAuditDesc.TabIndex = 39;
+            this.lblAuditDesc.Text = "Description";
+            // 
+            // lblAuditAmount
+            // 
+            this.lblAuditAmount.AutoSize = true;
+            this.lblAuditAmount.Location = new System.Drawing.Point(25, 62);
+            this.lblAuditAmount.Name = "lblAuditAmount";
+            this.lblAuditAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblAuditAmount.TabIndex = 38;
+            this.lblAuditAmount.Text = "Amount";
+            // 
+            // lblAuditDate
+            // 
+            this.lblAuditDate.AutoSize = true;
+            this.lblAuditDate.Location = new System.Drawing.Point(36, 24);
+            this.lblAuditDate.Name = "lblAuditDate";
+            this.lblAuditDate.Size = new System.Drawing.Size(30, 13);
+            this.lblAuditDate.TabIndex = 37;
+            this.lblAuditDate.Text = "Date";
+            // 
+            // cbStorage
+            // 
+            this.cbStorage.FormattingEnabled = true;
+            this.cbStorage.Location = new System.Drawing.Point(82, 87);
+            this.cbStorage.Name = "cbStorage";
+            this.cbStorage.Size = new System.Drawing.Size(200, 21);
+            this.cbStorage.TabIndex = 35;
             // 
             // numericUpDown2
             // 
@@ -200,59 +253,6 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Quantity";
             // 
-            // cbStorage
-            // 
-            this.cbStorage.FormattingEnabled = true;
-            this.cbStorage.Location = new System.Drawing.Point(82, 87);
-            this.cbStorage.Name = "cbStorage";
-            this.cbStorage.Size = new System.Drawing.Size(200, 21);
-            this.cbStorage.TabIndex = 35;
-            // 
-            // lblAuditDesc
-            // 
-            this.lblAuditDesc.AutoSize = true;
-            this.lblAuditDesc.Location = new System.Drawing.Point(17, 127);
-            this.lblAuditDesc.Name = "lblAuditDesc";
-            this.lblAuditDesc.Size = new System.Drawing.Size(60, 13);
-            this.lblAuditDesc.TabIndex = 39;
-            this.lblAuditDesc.Text = "Description";
-            // 
-            // lblAuditAmount
-            // 
-            this.lblAuditAmount.AutoSize = true;
-            this.lblAuditAmount.Location = new System.Drawing.Point(25, 62);
-            this.lblAuditAmount.Name = "lblAuditAmount";
-            this.lblAuditAmount.Size = new System.Drawing.Size(43, 13);
-            this.lblAuditAmount.TabIndex = 38;
-            this.lblAuditAmount.Text = "Amount";
-            // 
-            // lblAuditDate
-            // 
-            this.lblAuditDate.AutoSize = true;
-            this.lblAuditDate.Location = new System.Drawing.Point(36, 24);
-            this.lblAuditDate.Name = "lblAuditDate";
-            this.lblAuditDate.Size = new System.Drawing.Size(30, 13);
-            this.lblAuditDate.TabIndex = 37;
-            this.lblAuditDate.Text = "Date";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Storage";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(207, 239);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // FertiliserAndTreatmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,7 +273,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FertiliserAndTreatmentForm";
-            this.Text = "Fertiliser And Treatment Management Form";
+            this.Text = "Fertiliser And Treatment Management ";
             this.Load += new System.EventHandler(this.FertiliserAndTreatmentForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

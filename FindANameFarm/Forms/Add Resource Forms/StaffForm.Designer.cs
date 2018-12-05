@@ -483,7 +483,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             this.MinimizeBox = false;
             this.Name = "StaffForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Staff Management Form";
+            this.Text = "Staff Management ";
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).EndInit();
             this.gbCompetencies.ResumeLayout(false);
             this.gbCompetencies.PerformLayout();
