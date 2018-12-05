@@ -7,6 +7,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
     public partial class VehicleForm : Form
     {
         private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
+        //constructor
         public VehicleForm()
         {
             InitializeComponent();
@@ -15,22 +16,24 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             refresh();
         }
 
+        //on form load
         private void VehicleForm_Load(object sender, EventArgs e)
         {
            
-                
             listVehicles.Columns.Add("Id", 50);
             listVehicles.Columns.Add("Vehicle Name",100);
             listVehicles.Columns.Add("Vehicle Category", 100);
-            
-           
+                      
         }
+
+        //add category to competency list
         private void txtAddCategory_TextChanged(object sender, EventArgs e)
         {
             btnAddCategory.Enabled = !string.IsNullOrWhiteSpace(txtAddCategory.Text);
            
         }
 
+        //allows the used to select a vehicle add view its details
         private void listVehicles_MouseClick(object sender, MouseEventArgs e)
         {
             string id = listVehicles.SelectedItems[0].SubItems[0].Text;
@@ -43,6 +46,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             cbVehicleCategoryList.SelectedIndex = cbVehicleCategoryList.FindStringExact(categoryName);
         }
 
+        //shows the list of vehicles
         public void ShowVehicles(List<VehicleAndCategory> vehicleList)
         {
             listVehicles.Items.Clear();
@@ -61,7 +65,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             }
         }
 
-       
+       //btn click, creates vehicles
         private void btnCreateVehicle_Click(object sender, EventArgs e)
         {
             Vehicles addVehicle = new Vehicles
@@ -75,6 +79,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             ResetForm();
         }
 
+        //refreshes connection and the lists
         private void refresh()
         {
             _vehicleBank.RefreshConnection();
@@ -84,6 +89,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             ResetForm();
         }
 
+        // shows the list of available categories
         private void ShowCategories(ComboBox vehicleCategory)
         {
             if (vehicleCategory != null)
@@ -96,6 +102,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             vehicleCategory.ValueMember = "CatId";
         }
 
+        //resets the form
         private void ResetForm()
         {
             txtVehicleId.Text = "";
@@ -104,6 +111,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             cbVehicleCategoryList.SelectedIndex = -1;
         }
 
+        //adds a competency to the list and refreshes the form
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
           
@@ -117,6 +125,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             Close();
         }
 
+        //updates the currently selected vehicle
         private void btnUpdateVehicle_Click(object sender, EventArgs e)
         {
             Vehicles editVehicle = new Vehicles
@@ -132,6 +141,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             refresh();
         }
 
+        //locks the form options until a vehicle is selected
         private void txtVehicleId_TextChanged(object sender, EventArgs e)
         {
             btnUpdateVehicle.Enabled = !string.IsNullOrWhiteSpace(txtVehicleId.Text);         
@@ -139,6 +149,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             btnAddCategory.Enabled = false;
         }
 
+        //btn press resets form
         private void btnReset_Click(object sender, EventArgs e)
         {
             ResetForm();

@@ -18,12 +18,11 @@ namespace FindANameFarm.Forms.Reports
         {
             ShowCropsInCultivation();
 
-            
         }
 
+        //shows list of sowing tasks marked as started
         private void ShowCropsInCultivation()
         {
-            
 
             listCropsInCultivation.Items.Clear();
             CropsInCultivation = _report.GetCropsInCultivation();
@@ -45,6 +44,7 @@ namespace FindANameFarm.Forms.Reports
             }
         }
 
+        //allows the user to select a task to view more details
         private void listCropsInCultivation_MouseClick(object sender, MouseEventArgs e)
         {
             string cropName = listCropsInCultivation.SelectedItems[0].SubItems[0].Text;
@@ -60,6 +60,7 @@ namespace FindANameFarm.Forms.Reports
             txtExpectedYield.Text = expectedYield;
         }
 
+        //closes form
         private void button1_Click(object sender, EventArgs e)
         {
             Close();

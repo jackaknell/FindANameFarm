@@ -110,7 +110,7 @@
             this.listLabourerTasks.TabIndex = 2;
             this.listLabourerTasks.UseCompatibleStateImageBehavior = false;
             this.listLabourerTasks.View = System.Windows.Forms.View.Details;
-            this.listLabourerTasks.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listLaboutTasks_MouseClick);
+            this.listLabourerTasks.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listLabourTasks_MouseClick);
             // 
             // columnHeader1
             // 

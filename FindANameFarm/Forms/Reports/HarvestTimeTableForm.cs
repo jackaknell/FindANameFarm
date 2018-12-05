@@ -27,16 +27,16 @@ namespace FindANameFarm.Forms.Reports
             dtDateTo.Value = dtDateTo.Value.AddDays(60);
             rbAllTasks.Checked = true;
 
-           
-
         }
 
+        //on form load, loads harvest time table
         private void HarvestTimeTableForm_Load(object sender, EventArgs e)
         {
 
             ShowHarvestTimeTable();
         }
 
+        //shows harvest time table between set times
         private void ShowHarvestTimeTable()
         {
             StartTime = dtDateFrom.Value.ToString("MM-dd-yyyy");
@@ -70,6 +70,7 @@ namespace FindANameFarm.Forms.Reports
             }
         }
 
+        //extracted method from showharvesttimetable method
         private void ListBody(WorkTaskReport harvestTask)
         {
           
@@ -85,6 +86,7 @@ namespace FindANameFarm.Forms.Reports
             listHarvestTimeTable.Items.Add(lvItem);
         }
 
+        //refresh harvest list and filter results includes colour code
         private void ListRefresh()
         {
             for (int i = 0; i < listHarvestTimeTable.Items.Count; i++)
@@ -104,6 +106,7 @@ namespace FindANameFarm.Forms.Reports
 
         }
 
+        // radial buttons changed event handler
         private void rbAllTasks_CheckedChanged(object sender, EventArgs e)
         {
             if (rbAllTasks.Checked)
@@ -129,6 +132,7 @@ namespace FindANameFarm.Forms.Reports
             ShowHarvestTimeTable();
         }
 
+        // sets and formats date 
         private void adDateTo_ValueChanged(object sender, EventArgs e)
         {
             StartTime = dtDateFrom.Value.ToString("MM-dd-yyyy");
@@ -138,6 +142,7 @@ namespace FindANameFarm.Forms.Reports
             ShowHarvestTimeTable();
         }
 
+        //closes form
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

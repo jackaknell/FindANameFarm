@@ -17,6 +17,8 @@ namespace FindANameFarm.Forms.Reports
         public int StaffId { get; set; }
         public string StartTime { get; set; }
         public string FinishTime { get; set; }
+
+        //constructor
         public StaffWorkSheet(Staff labourer)
         {
           
@@ -26,6 +28,7 @@ namespace FindANameFarm.Forms.Reports
             lblCurrentStaffName.Text = ("Welcome: " +labourer.FirstName+ " " +labourer.SurName);
         }
 
+        //on load gets staff and vehicle task list
         private void StaffWorkSheet_Load(object sender, EventArgs e)
         {
             ShowLabourerWorkTasks();
@@ -33,11 +36,9 @@ namespace FindANameFarm.Forms.Reports
 
         }
 
-     
+     //show a list of labour tasks for the given staff member and dates
         private void ShowLabourerWorkTasks()
         {
-          
-
 
             listLabourerTasks.Items.Clear();
             List<WorkTaskReport> staffWorkTasks = _report.GetStaffWorkTasks(StaffId, StartTime, FinishTime);
@@ -58,13 +59,13 @@ namespace FindANameFarm.Forms.Reports
                 lvItem.SubItems.Add(workTasks.TreatmentName);
                 listLabourerTasks.Items.Add(lvItem);
 
-            
             }
 
             StaffListRefresh();
         }
 
-        private void listLaboutTasks_MouseClick(object sender, MouseEventArgs e)
+        //shows details of selected task
+        private void listLabourTasks_MouseClick(object sender, MouseEventArgs e)
         {
             string taskType = listLabourerTasks.SelectedItems[0].SubItems[0].Text;
             string startDate = listLabourerTasks.SelectedItems[0].SubItems[1].Text;
@@ -92,9 +93,11 @@ namespace FindANameFarm.Forms.Reports
             txtTreatment.Text = treatment;
 
         }
+
+        //shows a list of driving tasks for the given staff member
         private void ShowLabourerDrivingTasks()
         {
-     Debug.Write(FinishTime);
+     
 
             listDrivingTasks.Items.Clear();
 
@@ -123,7 +126,7 @@ namespace FindANameFarm.Forms.Reports
         }
 
        
-
+        //refresh the staff list
         private void StaffListRefresh()
         {
             for (int i = 0; i < listLabourerTasks.Items.Count; i++)
@@ -145,6 +148,7 @@ namespace FindANameFarm.Forms.Reports
             
         }
 
+        //refresh the driving tasks
         private void DriversListRefresh()
         {
             for (int i = 0; i < listDrivingTasks.Items.Count; i++)
@@ -165,7 +169,7 @@ namespace FindANameFarm.Forms.Reports
             }
         }
 
-
+        //logout back to login screen
         private void btnLogout_Click(object sender, EventArgs e)
         {
             _log.LogEntry("User Logged out\n");
@@ -174,6 +178,7 @@ namespace FindANameFarm.Forms.Reports
             login.Show();
         }
 
+        //sets the start and finish dates and formats them
         private void dtDateTo_ValueChanged(object sender, EventArgs e)
         {
             
@@ -183,6 +188,7 @@ namespace FindANameFarm.Forms.Reports
             ShowLabourerWorkTasks();
             ShowLabourerDrivingTasks();
         }
+
 
         private void listDrivingTasks_MouseClick(object sender, MouseEventArgs e)
         {
@@ -213,12 +219,14 @@ namespace FindANameFarm.Forms.Reports
             txtTreatment.Text = treatment;
         }
 
+        // opens the view storage form
         private void btnViewStorage_Click(object sender, EventArgs e)
         {
             ReportAvailableStorageForm storage = new ReportAvailableStorageForm();
             storage.Show();
         }
 
+        // closes the staff form and open the login form
         private void StaffWorkSheet_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form login = new Login();

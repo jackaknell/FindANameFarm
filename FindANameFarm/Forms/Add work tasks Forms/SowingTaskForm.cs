@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
     /// </summary>
     public partial class SowingTaskForm : Form
     {
+        //ref to singleton instances
+        private readonly StorageBank _storage = StorageBank.GetInst();
         private readonly FieldBank _field = FieldBank.GetInst();
         private readonly StaffBank _staff = StaffBank.GetInst();
         private readonly CropsBank _crop = CropsBank.GetInst();
@@ -23,6 +26,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
         private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst();
         private string _taskType = "Sowing";
 
+        //constructor
         public SowingTaskForm()
         {
             InitializeComponent();
@@ -30,7 +34,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             refresh();
         }
-
+        //methods to call/actions on form load
         private void SowingTaskForm_Load(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskID.Text);
@@ -41,13 +45,14 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             ResetForm();
         }
-
+        //disables work task group box and update button until a task as been selected
         private void txtTaskID_TextChanged(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
 
             btnUpdateSowingTask.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
         }
+
         //calls the methods to display the task drop down fields
         private void gbSowingTask_Enter(object sender, EventArgs e)
         {
@@ -55,8 +60,10 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowStaff();
             ShowCrop();
             ShowCategories();
+            ShowStorage();
         }
 
+        //shows the list of fields
         private void ShowFields()
         {
             if (cbSowingTaskFieldList != null)
@@ -69,6 +76,20 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbSowingTaskFieldList.ValueMember = "FieldId";
         }
 
+        //show the list of storage
+        private void ShowStorage()
+        {
+            if (cbStorage != null)
+            {
+                cbStorage.DataSource = _storage.StorageList;
+            }
+
+            if (cbStorage == null) return;
+            cbStorage.DisplayMember = "StorageName";
+            cbStorage.ValueMember = "StorageId";
+        }
+
+        //show a list of staff
         private void ShowStaff()
         {
             if (cbSowingTaskStaffList != null)
@@ -81,7 +102,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbSowingTaskStaffList.ValueMember = "StaffId";
         }
 
-       // foreach (var workTask in workTaskList.Where(workTask => (workTask.TaskType == _taskType)))
+       //shows a list of crops that contain the word seeds
         private void ShowCrop()
         {
             List<Crops>seeds = new List<Crops>();
@@ -101,6 +122,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbSowingTaskCropList.ValueMember = "CropId";
         }
 
+        //Shows the list of vehicle competencies
         private void ShowCategories()
         {
             if (cbVehicleCatList != null)
@@ -117,6 +139,9 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowVehicleDriver();
         }
 
+        /// <summary>
+        /// shows a list of the sowing tasks
+        /// </summary>
         private void ShowExistingSowingTasks()
         {
             listExistingSowingTasks.Items.Clear();
@@ -139,6 +164,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
         }
 
+        // shows a list of vehicles for the given category
         private void ShowVehicle()
         {
             List<Vehicles> filteredList = new List<Vehicles>();
@@ -178,6 +204,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbSowingTaskVehicleList.ValueMember = "VehicleId";
         }
 
+        // show a list of drivers for the current vehicle type
         private void ShowVehicleDriver()
         {
 
@@ -206,11 +233,13 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbVehicleDriver.ValueMember = "StaffId";
         }
 
+        //closes the sowing task form
         private void btnCloseSowingTask_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //show a list of staff on the currently selected task
         public void ShowStaffOnTask()
         {
             _workTask.GetWorkTaskStaff(Convert.ToInt32(txtTaskID.Text));
@@ -229,6 +258,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        // shows a list of vehicles on the currently selected task
         private void ShowVehiclesInTask()
         {
             _workTask.GetWorkTaskVehicles(Convert.ToInt32(txtTaskID.Text));
@@ -248,6 +278,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        //refreshes the db connection, sowing task list and vehicle categories
         private void refresh()
         {
             _workTask.RefreshConnection();
@@ -255,6 +286,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowCategories();
         }
 
+        // resets the form
         private void ResetForm()
         {
 
@@ -271,6 +303,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        //click event shows details of selected list item
         private void listExistingSowingTasks_MouseClick(object sender, MouseEventArgs e)
         {
             string id = listExistingSowingTasks.SelectedItems[0].SubItems[0].Text;
@@ -300,6 +333,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowVehicle();
         }
 
+        //click event creates sowing task, checks dates and checks seeds have been selected
         private void btnCreateSowingTask_Click(object sender, EventArgs e)
         {
             WorkTasks addWorkTask = new WorkTasks
@@ -316,11 +350,17 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 TaskStatus = cbTaskStatus.SelectedItem.ToString()
             };
 
-
+            // checks start date is before end date
             if (addWorkTask.TaskEndDate < addWorkTask.TaskStartDate)
             {
                 MessageBox.Show(Resources.CheckDates);
             }
+
+            if (cbSowingTaskCropList.SelectedIndex < 0)
+            {
+                MessageBox.Show("please select seeds first");
+            }
+
             else
             {
                 _workTask.AddWorkTaskToList(addWorkTask);
@@ -328,11 +368,14 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 refresh();
             }
 
+           
+
             int taskNumber = (_workTask.WorkTaskList.Count) - 1;
 
             txtTaskID.Text = _workTask.WorkTaskList[taskNumber].TaskId.ToString();
         }
 
+        //adds a worker to the selected task
         private void btnSowingTaskAddWorker_Click(object sender, EventArgs e)
         {
 
@@ -360,11 +403,13 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        //adds a vehicle to the selected task
         private void cbVehicleCatList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowCategories();
         }
 
+        //Click event button press, add vehicle to current task
         private void btnVehicleAdd_Click(object sender, EventArgs e)
         {
             TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers
@@ -395,6 +440,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        //removes vehicle from current task
         private void txtRemoveVehicleFromTask_Click(object sender, EventArgs e)
         {
             try
@@ -420,6 +466,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        // removes labourer from given task
         private void btnRemoveLabourerFromTask_Click(object sender, EventArgs e)
         {
             try
@@ -439,6 +486,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
         }
 
+        //updates changes to the given task
         private void btnUpdateSowingTask_Click(object sender, EventArgs e)
         {
             WorkTasks editWorkTask = new WorkTasks
@@ -462,11 +510,23 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
+        // btn event calls the reset form method
         private void btnResetForm_Click(object sender, EventArgs e)
         {
             ResetForm();
         }
 
+        //adjusts the currently selected stock containers levels
+        private void AdjustStock()
+        {
+            _storage.StorageList[cbStorage.SelectedIndex].AvailableStorage -= Convert.ToInt16(nudQuantity.Value);
+            _storage.StorageList[cbStorage.SelectedIndex].Storing = cbSowingTaskCropList.SelectedValue.ToString();
+
+            Debug.WriteLine(_storage.StorageList[cbStorage.SelectedIndex].AvailableStorage+" "+ _storage.StorageList[cbStorage.SelectedIndex].Storing);
+            _storage.UpdateStorage(_storage.StorageList[cbStorage.SelectedIndex]);
+        }
+
+        //displays and sets the task status
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbTaskStatus.SelectedIndex == 0)
@@ -476,6 +536,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             {
                 lblTaskStatus.ForeColor = Color.Yellow;
                 //TODO Call storage method to adjust stock (does not exist 27/11/18)
+                AdjustStock();
             }
 
             if (cbTaskStatus.SelectedIndex == 2)

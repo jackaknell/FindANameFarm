@@ -150,6 +150,7 @@
             this.listStorage.TabIndex = 20;
             this.listStorage.UseCompatibleStateImageBehavior = false;
             this.listStorage.View = System.Windows.Forms.View.Details;
+
             this.listStorage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listStorage_MouseClick);
             // 
             // nudAvailableStore

@@ -16,17 +16,7 @@ namespace FindANameFarm.Forms
 		    ShowStorage(_storage.StorageList);
         }
 
-        private void ReportAvailableStorageForm_Load(object sender, EventArgs e)
-        {
-            listAvailableStorage.View = View.Details;
-            listAvailableStorage.FullRowSelect = true;
-
-            listAvailableStorage.Columns.Add("Id", 50);
-            listAvailableStorage.Columns.Add("Storage Name", 50);
-            listAvailableStorage.Columns.Add("capacity", 100);
-            listAvailableStorage.Columns.Add("Available Storage", 100);
-            listAvailableStorage.Columns.Add("Temp", 50);
-        }
+    
 
 	    public void ShowStorage(List<Storage> storageList)
 	    {
@@ -63,6 +53,18 @@ namespace FindANameFarm.Forms
             txtTemp.Text = temp;
             txtStoring.Text = storing;
 
+        }
+
+        private void ReportAvailableStorageForm_Load_1(object sender, EventArgs e)
+        {
+            listAvailableStorage.View = View.Details;
+            listAvailableStorage.FullRowSelect = true;
+
+            listAvailableStorage.Columns.Add("Id", 50);
+            listAvailableStorage.Columns.Add("Storage Name", 50);
+            listAvailableStorage.Columns.Add("capacity", 100);
+            listAvailableStorage.Columns.Add("Available Storage", 100);
+            listAvailableStorage.Columns.Add("Temp", 50);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace FindANameFarm.Forms.Add_Resource_Forms
+﻿using FindANameFarm.Banks;
+
+namespace FindANameFarm.Forms.Add_Resource_Forms
 {
     partial class StaffForm
     {
@@ -431,7 +433,7 @@
             // 
             // staffAndCategoryBindingSource
             // 
-            this.staffAndCategoryBindingSource.DataSource = typeof(FindANameFarm.StaffAndCategory);
+            this.staffAndCategoryBindingSource.DataSource = typeof(StaffAndCategory);
             // 
             // btnReset
             // 
@@ -482,7 +484,7 @@
             this.Name = "StaffForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Management Form";
-            this.Load += new System.EventHandler(this.StaffForm_Load);
+          
             ((System.ComponentModel.ISupportInitialize)(this.pbStaffImage)).EndInit();
             this.gbCompetencies.ResumeLayout(false);
             this.gbCompetencies.PerformLayout();

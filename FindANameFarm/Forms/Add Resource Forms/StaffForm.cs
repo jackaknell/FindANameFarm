@@ -5,30 +5,37 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using FindANameFarm.Banks;
 using FindANameFarm.Properties;
 
 namespace FindANameFarm.Forms.Add_Resource_Forms
 {
+    /// <summary>
+    /// Ian
+    /// creates/edits a staff member
+    /// </summary>
     public partial class StaffForm : Form
     {
         private readonly StaffBank _staffBank = StaffBank.GetInst();
         private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
+
+        //constructor
         public StaffForm()
         {
             InitializeComponent();
             gbCompetencies.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
             btnUpdate.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
            
-            refresh();
+            RefreshForm();
         }
-
+        //disables group box and update btn until a staff member is selected
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             gbCompetencies.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
             btnUpdate.Enabled = !string.IsNullOrWhiteSpace(txtId.Text);
         }
 
-
+        //shows the list of staff
         public void ShowStaff(List<Staff> staffList)
         {
             listStaff.Items.Clear();
@@ -50,7 +57,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             }
         }
        
-
+        //shows a list of available competencies
         private void ShowCategories()
         {
             if (cbCompetencies != null)
@@ -64,6 +71,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             cbCompetencies.ValueMember = "CatId";
         }
 
+        // shows the current staff members competencies
         public void ShowCompetencies()
         {
             _staffBank.GetCompetencies(Convert.ToInt32(txtId.Text));
@@ -82,6 +90,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
 
         }
 
+        //allows the user to a select a staff member to show its details
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
             string id = listStaff.SelectedItems[0].SubItems[0].Text;
@@ -108,6 +117,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             
         }
         
+        //shows the staff image or the default image if unavailable
         private void ShowStaffImage()
         {
             Debug.Write(txtImagePath.Text);
@@ -129,10 +139,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
 
         }
        
-
-       
-
-      
+        // resets the form
         private void ResetForm()
         {
             txtId.Text = "";
@@ -147,18 +154,18 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             pbStaffImage.Image =Resources.defaultImage;
         }
 
-        private void refresh()
+        //refreshes the lists and the db and resets form
+        private void RefreshForm()
         {
             _vehicleBank.RefreshConnection();
-            _staffBank.refreshConnection();
+            _staffBank.RefreshConnection();
             ShowStaff(_staffBank.StaffList);
             ShowCategories();
-            
-
             ResetForm();
 
         }
 
+        //allows the user to select a path name for an image file
         private void btnImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -178,7 +185,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
         }
 
     
-
+        // updates the currently selected staff member
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Staff editStaffMember = new Staff
@@ -192,12 +199,13 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
                 Contact = txtContact.Text,
                 ImageFile = txtImagePath.Text
             };
-            _staffBank.updateStaff(editStaffMember);
+            _staffBank.UpdateStaff(editStaffMember);
 
-            refresh();
+            RefreshForm();
             
         }
 
+        //adds a new staff member to the db
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -224,9 +232,10 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             }
             
           
-            refresh();
+            RefreshForm();
         }
 
+        //adds a competency to the selected staff member
         private void btnAddCompetency_Click(object sender, EventArgs e)
         {
            
@@ -251,14 +260,14 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
         }
 
      
-       
+       //closes the staff form
         private void btnCloseStaffForm_Click(object sender, EventArgs e)
         {
             Close();
         }
 
       
-
+        //removes a competency from the selected user
         private void btnRemoveCompetency_Click(object sender, EventArgs e)
         {
             try
@@ -266,7 +275,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
                 int staffMember = Convert.ToInt32(txtId.Text);
                 int catId = Convert.ToInt32(listCompetencies.SelectedItems[0].SubItems[0].Text);
 
-                _staffBank.deleteStaffCompetency(staffMember, catId);
+                _staffBank.DeleteStaffCompetency(staffMember, catId);
             }
             catch (Exception exception)
             {
@@ -278,11 +287,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             ShowCompetencies();
         }
 
-        private void StaffForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+      //btn reset form
         private void btnReset_Click(object sender, EventArgs e)
         {
             ResetForm();
