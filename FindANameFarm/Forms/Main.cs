@@ -147,5 +147,11 @@ namespace FindANameFarm.Forms
             this.BackgroundImage = Properties.Resources.farm_image__2_;
             
         }
+
+        private void viewCurrentHarvestRequirementsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportHarvestRequirements viewHarvestReport = new ReportHarvestRequirements();
+            FormAllreadyOpen(viewHarvestReport);
+        }
     }
 }

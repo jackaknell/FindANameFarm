@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FindANameFarm.Banks;
+using FindANameFarm.WorkTaskClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,49 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FindANameFarm.Banks;
-using FindANameFarm.WorkTaskClasses;
 
-namespace FindANameFarm.Forms
+namespace FindANameFarm.Forms.Reports
 {
-    public partial class ReportLabourRequirementsForm : Form
+    public partial class ReportHarvestRequirements : Form
     {
 
-        private readonly StaffBank _staffBank = StaffBank.GetInst();
+    
         private readonly WorkTaskBank _workTask = WorkTaskBank.GetInst();
+        private readonly VehicleBank _vehicleBank = VehicleBank.GetInst();
 
-        public ReportLabourRequirementsForm()
+
+        public ReportHarvestRequirements()
         {
             InitializeComponent();
-            ShowStaff(_staffBank.StaffList);
             ShowExistingHarvestTasks();
         }
 
-        public void ShowStaff(List<Staff> staffList)
-        {
-            listStaff.Items.Clear();
-
-            foreach (Staff staff in staffList)
-            {
-                ListViewItem lvItem = new ListViewItem(staff.StaffId.ToString());
-                lvItem.SubItems.Add(staff.FirstName);
-                lvItem.SubItems.Add(staff.SurName);
-                lvItem.SubItems.Add(staff.Gender);
-                lvItem.SubItems.Add(staff.Email);
-                lvItem.SubItems.Add(staff.Role);
-                lvItem.SubItems.Add(staff.Contact);
-                lvItem.SubItems.Add(staff.ImageFile);
-                lvItem.SubItems.Add(staff.Password);
-
-                listStaff.Items.Add(lvItem);
-
-            }
-        }
-
-
         private void ShowExistingHarvestTasks()
         {
-            listWorkTasks.Items.Clear();
+            list.Items.Clear();
             List<WorkTasks> workTaskList = _workTask.WorkTaskList;
 
             foreach (var workTask in workTaskList)
@@ -65,11 +44,9 @@ namespace FindANameFarm.Forms
                 lvItem.SubItems.Add(workTask.FieldId.ToString());
                 lvItem.SubItems.Add(workTask.CropId.ToString());
                 lvItem.SubItems.Add(workTask.TaskStatus);
-                listWorkTasks.Items.Add(lvItem);
+                list.Items.Add(lvItem);
             }
         }
-
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {
