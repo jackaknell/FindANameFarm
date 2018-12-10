@@ -23,17 +23,17 @@ namespace FindANameFarm.Banks
             InstanceCount++;
         }
 
-        //Singleton
+        //Singleton method used.
         public static AuditBank GetInst() => UniqueInst ?? (UniqueInst = new AuditBank());
 
-
+        //Add data to database , not functioning.
         public void AddAuditToList (Audit audit)
         {
             AuditList.Add(audit);
             _metalayer.AddAuditToDatabase(audit);
         }
 
-
+        //Update audit database , not functioning.
         public void UpdateAudit(Audit editAudit)
         {
             for (int i = 0; i < AuditList.Count; i++)
@@ -47,7 +47,7 @@ namespace FindANameFarm.Banks
             }
         }
 
-
+        //refresh connection.
         public void RefreshConnection()
         {
             try

@@ -446,6 +446,13 @@ namespace FindANameFarm.MetaLayer
 
 			return fields;
 		}
+
+        /// <summary>
+        /// Author: Jack
+        /// Date: Oct 2018
+        /// description: Lists new storage entry to the database.
+        /// </summary>
+        /// <returns></returns>
 		public List<Storage> GetStorage()
 		{
 			List<Storage> storage = new List<Storage>();
@@ -476,7 +483,9 @@ namespace FindANameFarm.MetaLayer
 			return storage;
 		}
         /// <summary>
-        /// Jack
+        /// Author: Jack
+        /// Date: Oct 2018
+        /// description: adds a new audit entry to the database.
         /// </summary>
         /// <returns></returns>
 	    public List<Audit> GetAuidt()
@@ -914,7 +923,9 @@ namespace FindANameFarm.MetaLayer
 			_con.CloseConnection();
 		}
         /// <summary>
-        /// Jack
+        /// Author: Jack
+        /// Date: Oct 2018
+        /// description: adds a new storage entry to the database.
         /// </summary>
         /// <param name="newStorage"></param>
 	    public void AddStorageToDatabase(Storage newStorage)
@@ -931,7 +942,9 @@ namespace FindANameFarm.MetaLayer
 	        _con.CloseConnection();
 	    }
         /// <summary>
-        /// Jack
+        ///Author: Jack
+        /// Date: Oct 2018
+        /// description: adds a new audit entry to the database.
         /// </summary>
         /// <param name="newAudit"></param>
 	    public void AddAuditToDatabase(Audit newAudit)
@@ -1034,7 +1047,9 @@ namespace FindANameFarm.MetaLayer
 		}
 
         /// <summary>
-        /// Jack
+        /// Author: Jack
+        /// Date: Oct 2018
+        /// description: edits storage entry to the database.
         /// </summary>
         /// <param name="editStorages"></param>
 	    public void UpdateStorage(Storage editStorages)
@@ -1046,7 +1061,9 @@ namespace FindANameFarm.MetaLayer
 	    }
 
         /// <summary>
-        /// Jack
+        /// Author: Jack
+        /// Date: Oct 2018
+        /// description: edit audit entry to the database.
         /// </summary>
         /// <param name="editAudit"></param>
 	    public void UpdateAudit(Audit editAudit)

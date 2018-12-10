@@ -12,6 +12,10 @@ using System.Windows.Forms;
 
 namespace FindANameFarm.Forms.Reports
 {
+    /// <summary>
+    /// Author: Jack
+    /// Date: Dec 2018
+    /// </summary>
     public partial class ReportHarvestRequirements : Form
     {
 
@@ -26,6 +30,7 @@ namespace FindANameFarm.Forms.Reports
             ShowExistingHarvestTasks();
         }
 
+        //Show harvest tasks
         private void ShowExistingHarvestTasks()
         {
             list.Items.Clear();
@@ -47,7 +52,7 @@ namespace FindANameFarm.Forms.Reports
                 list.Items.Add(lvItem);
             }
         }
-
+        //close the form.
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

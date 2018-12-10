@@ -6,11 +6,10 @@ using FindANameFarm.Banks;
 namespace FindANameFarm.Forms
 {
     /// <summary>
-    /// Jack Anthony-Knell Nov 2018 
-    /// 
+    /// Authoer: Jack
+    /// Date: Nov 2018 
+    /// Description: 
     /// </summary>
-
-
 
     public partial class StorageForm : Form
     {
@@ -22,6 +21,7 @@ namespace FindANameFarm.Forms
             refresh();
         }
 
+        //load of the storage form
       private void StorageForm_Load_1(object sender, EventArgs e)
         {
             listStorage.View = View.Details;
@@ -35,6 +35,7 @@ namespace FindANameFarm.Forms
 
         }
 
+        //Displays the data from the database in the list view.
         private void listStorage_MouseClick(object sender, MouseEventArgs e)
         {
             string storageID = listStorage.SelectedItems[0].SubItems[0].Text;
@@ -50,6 +51,7 @@ namespace FindANameFarm.Forms
             nudTemp.Value = Convert.ToInt32(temp);
         }
 
+        //show the storage.
         public void ShowStorage(List<Storage> storageList)
         {
             listStorage.Items.Clear();
@@ -67,6 +69,7 @@ namespace FindANameFarm.Forms
             }
         }
 
+        ////button that will create a new entry, and merge with the database.
         private void btnCreateStore_Click(object sender, EventArgs e)
         {
             Storage addStorage = new Storage();
@@ -82,15 +85,15 @@ namespace FindANameFarm.Forms
             
         }
 
+        //refresh the connection.
         private void refresh()
         {
             _storageBank.RefreshConnection();
             ShowStorage(_storageBank.StorageList);
             
         }
-        /// <summary>
-        /// 
-        /// </summary>
+        
+        //Reset the forms data displaying.
         private void resetForm()
         {
             txtStoreID.Text = "";
@@ -101,12 +104,12 @@ namespace FindANameFarm.Forms
             nudTemp.Value = 0;
             
         }
-
+        //button will close the form
         private void btncloseStore_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        //button that will update any changes, and merge with the database.
         private void btnUpdateStore_Click(object sender, EventArgs e)
         {
 
@@ -134,7 +137,7 @@ namespace FindANameFarm.Forms
 
             refresh();
         }
-
+        //clear button to clear the form
         private void btnClear_Click(object sender, EventArgs e)
         {
             resetForm();

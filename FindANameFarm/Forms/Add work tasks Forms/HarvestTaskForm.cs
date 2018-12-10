@@ -10,7 +10,11 @@ using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.Forms.Add_work_tasks_Forms
 {
-   
+   /// <summary>
+   /// Author: Jack
+   /// Date: Nov 2018
+   /// Description: harvest task form.
+   /// </summary>
     public partial class HarvestTaskForm : Form
     {
         private readonly FieldBank _field = FieldBank.GetInst();
@@ -29,7 +33,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
 
         }
-
+        //load the form
         private void HarvestTaskForm_Load(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskID.Text);
@@ -40,7 +44,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             ResetForm();
         }
-
+        //dont enable to fields if it is not populated.
         private void txtTaskID_TextChanged(object sender, EventArgs e)
         {
             gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
@@ -48,7 +52,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             btnUpdate.Enabled = !string.IsNullOrEmpty(txtTaskID.Text);
         }
         
-      
+      // show fields
         private void ShowFields()
         {
             if (cbHarvestTaskFieldList != null)
@@ -60,7 +64,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbHarvestTaskFieldList.DisplayMember = "FieldName";
             cbHarvestTaskFieldList.ValueMember = "FieldId";
         }
-
+        //show the staff
         private void ShowStaff()
         {
             if (cbHarvestTaskStaffList != null)
@@ -73,7 +77,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbHarvestTaskStaffList.ValueMember = "StaffId";
         }
 
-        
+        //show the crops
         private void ShowCrop()
         {
             List<Crops> seeds = new List<Crops>();
@@ -92,7 +96,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbHarvestTaskCropList.DisplayMember = "CropName";
             cbHarvestTaskCropList.ValueMember = "CropId";
         }
-
+        //show categories
         private void ShowCategories()
         {
             if (cbVehicleCatList != null)
@@ -108,7 +112,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowVehicle();
             ShowVehicleDriver();
         }
-
+        //show any ecisting harvest tasks
         private void ShowExistingHarvestTasks()
         {
             listExistingHarvestTasks.Items.Clear();
@@ -130,7 +134,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 listExistingHarvestTasks.Items.Add(lvItem);
             }
         }
-
+        // show vehicles
         private void ShowVehicle()
         {
             List<Vehicles> filteredList = new List<Vehicles>();
@@ -169,7 +173,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbHarvestTaskVehicleList.DisplayMember = "VehicleName";
             cbHarvestTaskVehicleList.ValueMember = "VehicleId";
         }
-
+        //show vehicles driver
         private void ShowVehicleDriver()
         {
 
@@ -198,7 +202,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             cbVehicleDriver.ValueMember = "StaffId";
         }
 
-       
+       //show staff on current task
         public void ShowStaffOnTask()
         {
             _workTask.GetWorkTaskStaff(Convert.ToInt32(txtTaskID.Text));
@@ -216,7 +220,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
 
         }
-
+        // show vehicles in task
         private void ShowVehiclesInTask()
         {
             _workTask.GetWorkTaskVehicles(Convert.ToInt32(txtTaskID.Text));
@@ -235,14 +239,14 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
 
         }
-
+        //refresh connection to database.
         private void refresh()
         {
             _workTask.RefreshConnection();
             ShowExistingHarvestTasks();
             ShowCategories();
         }
-
+        //reset form
         private void ResetForm()
         {
 
@@ -259,7 +263,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
         }
 
-
+        //button that will add worker to harevs task, and merge with the database.
         private void btnHarvestTaskAddWorker_Click(object sender, EventArgs e)
         {
 
@@ -286,12 +290,12 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
 
         }
-
+        // show categories.
         private void cbVehicleCatList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowCategories();
         }
-
+        ////button that will add any new entry, and merge with the database.
         private void btnVehicleAdd_Click(object sender, EventArgs e)
         {
             TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers
@@ -300,7 +304,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 VehicleId = Convert.ToInt32(cbHarvestTaskVehicleList.SelectedValue),
                 DriverId = Convert.ToInt32(cbVehicleDriver.SelectedValue)
             };
-
+            //checks to see if item is already on task.
             bool alreadyOnTask = _workTask.CurrentVehicleAndDriverList.Any(x => x.VehicleId == taskVehicle.VehicleId && x.DriverId == taskVehicle.DriverId);
 
             if (Convert.ToInt32(cbHarvestTaskVehicleList.SelectedValue) == 0)
@@ -321,7 +325,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
 
         }
-
+        //remove vehicle from the task
         private void txtRemoveVehicleFromTask_Click(object sender, EventArgs e)
         {
             try
@@ -348,7 +352,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             }
 
         }
-
+        //removew the labouer from the task
         private void btnRemoveLabourerFromTask_Click(object sender, EventArgs e)
         {
             try
@@ -387,14 +391,14 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
                 lblTaskStatus.ForeColor = Color.Red;
 
         }
-
+        //close the form
         private void btnCloseHarvestTask_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-    
 
+        //button that will creat an entry, and merge with the database.
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
             WorkTasks addWorkTask = new WorkTasks
@@ -427,7 +431,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             txtTaskID.Text = _workTask.WorkTaskList[taskNumber].TaskId.ToString();
         }
-
+        //button that will update any changes, and merge with the database.
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
             WorkTasks editWorkTask = new WorkTasks
@@ -449,12 +453,12 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
 
             refresh();
         }
-
+        //button eill reset the form
         private void btnResetForm_Click_1(object sender, EventArgs e)
         {
             ResetForm();
         }
-
+        // show the field, staff, crop and category
         private void gbSowingTask_Enter(object sender, EventArgs e)
         {
             ShowFields();
@@ -462,7 +466,7 @@ namespace FindANameFarm.Forms.Add_work_tasks_Forms
             ShowCrop();
             ShowCategories();
         }
-
+        //show a list of existing harvest tasks.
         private void listExistingHarvestTasks_MouseClick(object sender, MouseEventArgs e)
         {
             string id = listExistingHarvestTasks.SelectedItems[0].SubItems[0].Text;
