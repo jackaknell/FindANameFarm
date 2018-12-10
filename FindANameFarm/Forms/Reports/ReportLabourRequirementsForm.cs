@@ -12,6 +12,10 @@ using FindANameFarm.WorkTaskClasses;
 
 namespace FindANameFarm.Forms
 {
+    /// <summary>
+    /// Author: Jack
+    /// Date: Dec 2018
+    /// </summary>
     public partial class ReportLabourRequirementsForm : Form
     {
 
@@ -24,7 +28,7 @@ namespace FindANameFarm.Forms
             ShowStaff(_staffBank.StaffList);
             ShowExistingHarvestTasks();
         }
-
+        //show the staff list
         public void ShowStaff(List<Staff> staffList)
         {
             listStaff.Items.Clear();
@@ -46,7 +50,7 @@ namespace FindANameFarm.Forms
             }
         }
 
-
+        //show the harvest list
         private void ShowExistingHarvestTasks()
         {
             listWorkTasks.Items.Clear();
@@ -68,9 +72,7 @@ namespace FindANameFarm.Forms
                 listWorkTasks.Items.Add(lvItem);
             }
         }
-
-
-
+        //close the form.
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

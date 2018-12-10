@@ -6,6 +6,12 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Forms.Add_Resource_Forms
 {
+
+    /// <summary>
+    /// Author: Jack
+    /// Date: Nov 2018
+    /// Description: Crops form
+    /// </summary>
     public partial class CropForm : Form
     {
         private readonly StorageBank _storage = StorageBank.GetInst();
@@ -18,6 +24,8 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             ShowCrops(_cropsBank.CropsList);
             refresh();
         }
+
+        //Shows storage data from database.
         private void ShowStorage()
         {
             if (cbStorage != null)
@@ -29,6 +37,8 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             cbStorage.DisplayMember = "StorageName";
             cbStorage.ValueMember = "StorageId";
         }
+
+        //Loads storage form with data.
         private void CropForm_Load(object sender, EventArgs e)
         {
             listCrops.View = View.Details;
@@ -39,9 +49,8 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             listCrops.Columns.Add("Crop Stock", 100);
 
         }
-
-     
-
+             
+        //List and show the crops.
         public void ShowCrops(List<Crops> cropsList)
         {
             listCrops.Items.Clear();
@@ -57,7 +66,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
                 listCrops.Items.Add(lvItem);
             }
         }
-
+        //Check the radio button and see if it is a seed or crop.
         private string CheckIfSeed()
         {
             string cropName;
@@ -72,6 +81,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             return cropName;
         }
 
+        //button that will create a new entry, and merge with the database.
         private void btnCreate_Click(object sender, EventArgs e)
         {
                 Crops addCrops = new Crops
@@ -86,6 +96,7 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             refresh();
             ResetForm();
         }
+        //button that will update any changes, and merge with the database.
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -111,12 +122,14 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             refresh();
         }
 
+        //refreshes the connection to the database.
         private void refresh()
         {
             _cropsBank.RefreshConnection();
             ShowCrops(_cropsBank.CropsList);
         }
 
+        //resets the from
         private void ResetForm()
         {
             txtCropId.Text = "";
@@ -124,11 +137,13 @@ namespace FindANameFarm.Forms.Add_Resource_Forms
             
         }
 
+        //Closes the form
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Displays the database contents of storage in the list view.
         private void listCrops_MouseClick(object sender, MouseEventArgs e)
         {
             string CropId = listCrops.SelectedItems[0].SubItems[0].Text;

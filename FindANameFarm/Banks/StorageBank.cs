@@ -7,6 +7,12 @@ using FindANameFarm.MetaLayer;
 
 namespace FindANameFarm.Banks
 {
+
+    /// <summary>
+    /// Author: Jack 
+    /// Date: Nov 2018
+    /// Description: Storage Bank class
+    /// </summary>
     public class StorageBank
     {
         private MaintenanceAndErrorLog _log = MaintenanceAndErrorLog.GetInst();
@@ -23,16 +29,17 @@ namespace FindANameFarm.Banks
             InstanceCount++;
         }
 
-        //Singleton
+        //Singleton method.
         public static StorageBank GetInst() => UniqueInst ?? (UniqueInst = new StorageBank());
 
-        
+        //Adds new storage data to the storage table in database.
         public void AddStorageToList(Storage storage)
         {
             StorageList.Add(storage);
             _metalayer.AddStorageToDatabase(storage);
         }
 
+        //Updates/edits storage entry in database.
         public void UpdateStorage(Storage editStorage)
         {
             for (int i = 0; i < StorageList.Count; i++)
@@ -47,7 +54,7 @@ namespace FindANameFarm.Banks
             }
         }
 
-
+        // refresh connection
         public void RefreshConnection()
         {
             try

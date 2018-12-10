@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace FindANameFarm
 {
+    /// <summary>
+    /// Author: Jack
+    /// Date: Oct 2018
+    /// </summary>
     public class Storage
     {
 
