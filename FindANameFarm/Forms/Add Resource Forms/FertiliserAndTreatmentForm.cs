@@ -1,18 +1,11 @@
-﻿using System;
+﻿using FindANameFarm.Banks;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FindANameFarm.BasicClasses;
-using FindANameFarm.Banks;
 
 namespace FindANameFarm.Forms
 {
-	public partial class FertiliserAndTreatmentForm : Form
+    public partial class FertiliserAndTreatmentForm : Form
 	{
 	    private readonly StorageBank _storage = StorageBank.GetInst();
         private FertTreatBank _fertTreatBank = FertTreatBank.GetInst();

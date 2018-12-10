@@ -1,5 +1,9 @@
 ﻿namespace FindANameFarm.Banks
 {
+    /// <summary>
+    /// Jason November 18
+    /// fertTreat class defines a fertiliser/treatment
+    /// </summary>
     public class FertiliserAndTreatment
     {
         public int FertTreatId { get; set; }

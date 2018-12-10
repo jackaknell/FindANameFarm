@@ -1,16 +1,20 @@
-﻿using System;
+﻿using FindANameFarm.Banks;
+using FindANameFarm.BasicClasses;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FindANameFarm.BasicClasses;
-using FindANameFarm.Banks;
-using System.Diagnostics;
 
 
 namespace FindANameFarm.Forms
 {
-	public partial class FieldsForm : Form
+    /// <summary>
+    /// Jason 
+    /// creates/edits a field
+    /// </summary>
+    public partial class FieldsForm : Form
 	{
 		private FieldBank _fieldBank = FieldBank.GetInst();
+        //constructor
 		public FieldsForm()
 		{
 			InitializeComponent();
@@ -30,7 +34,7 @@ namespace FindANameFarm.Forms
 			listField.Columns.Add("Field Size", 100);
 			listField.Columns.Add("Suitability of Field", 100);
 		}
-
+        //shows the list of fields
 		public void ShowField(List<Fields> fieldList)
 		{
 			listField.Items.Clear();
@@ -59,7 +63,7 @@ namespace FindANameFarm.Forms
 			nudFieldSize.Value = Convert.ToInt32(fSize);
 			txtFieldSuitability.Text = fSuitability;
 		}
-
+        //allows the user to select a field and show its details
 		private void listField_MouseClick(object sender, MouseEventArgs e)
 		{
 			string ID = listField.SelectedItems[0].SubItems[0].Text;
@@ -72,7 +76,7 @@ namespace FindANameFarm.Forms
 			nudFieldSize.Value = Convert.ToInt32(fSize);
 			txtFieldSuitability.Text = fSuitability;
 		}
-
+        //resets the form
 		private void ResetForm()
 		{
 			txtFieldId.Text = "";
@@ -80,7 +84,7 @@ namespace FindANameFarm.Forms
 			nudFieldSize.Value = 0;
 			txtFieldSuitability.Text = "";
 		}
-
+        //refreshes the lists/database and resets the form
 		private void refresh()
 		{
 			_fieldBank.RefreshConnection();
@@ -88,7 +92,7 @@ namespace FindANameFarm.Forms
 
 			ResetForm();
 		}
-
+        //adds a field to the database
 		private void btnFieldCreate_Click(object sender, EventArgs e)
 		{
 			Fields addField = new Fields();
@@ -99,7 +103,7 @@ namespace FindANameFarm.Forms
 			_fieldBank.AddFieldToList(addField);
 			refresh();
 		}
-
+        //updates a field in the database
 		private void btnUpdateField_Click(object sender, EventArgs e)
         {
             try
@@ -119,9 +123,9 @@ namespace FindANameFarm.Forms
                 Console.WriteLine(exception);
             }
 		}
-
+        //closes the form
 		private void btnFieldClose_Click(object sender, EventArgs e) => Close();
-
+        //clears the form
 		private void btnFieldClear_Click(object sender, EventArgs e)
 		{
 			_fieldBank.RefreshConnection();

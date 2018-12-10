@@ -355,6 +355,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// jason 06/11/18
+        /// selects and returns a list of stored fertilisers & treatments
 		/// </summary>
 		/// <returns></returns>
 		public List<FertiliserAndTreatment> GetFertiliserAndTreatment()
@@ -875,6 +876,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// Jason 07/11/18
+        /// adds new fertiliser & treatment to the database
 		/// </summary>
 		/// <param name="newFertTreat"></param>
 		public void AddFertTreatToDataBase(FertiliserAndTreatment newFertTreat)
@@ -999,6 +1001,7 @@ namespace FindANameFarm.MetaLayer
 		}
 		/// <summary>
 		/// Jason 07/11/18
+        /// update the selected fertiliser & treatment
 		/// </summary>
 		/// <param name="updateFertTreat"></param>
 		public void UpdateFertTreat(FertiliserAndTreatment updateFertTreat)
