@@ -7,9 +7,13 @@ namespace FindANameFarm.Forms
 {
     public partial class FertiliserAndTreatmentForm : Form
 	{
+        /// <summary>
+        /// Jason
+        /// creates/edits a fertTreat
+        /// </summary>
 	    private readonly StorageBank _storage = StorageBank.GetInst();
         private FertTreatBank _fertTreatBank = FertTreatBank.GetInst();
-
+        //constructor
 		public FertiliserAndTreatmentForm()
 		{
 			InitializeComponent();
@@ -17,6 +21,7 @@ namespace FindANameFarm.Forms
             ShowStorage();
 			refresh();
 		}
+
 	    private void ShowStorage()
 	    {
 	        if (cbStorage != null)

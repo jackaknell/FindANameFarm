@@ -9,6 +9,10 @@ using System.Drawing;
 
 namespace FindANameFarm.Forms
 {
+	/// <summary>
+	/// Jason, November 2018
+	/// treatment task form
+	/// </summary>
 	public partial class TreatmentTaskForm : Form
 	{
 		private readonly FieldBank _field = FieldBank.GetInst();
@@ -25,7 +29,7 @@ namespace FindANameFarm.Forms
 
 			refresh();
 		}
-
+		//load the form
 		private void TreatmentTaskForm_Load(object sender, EventArgs e)
 		{
 			gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrWhiteSpace(txtTaskId.Text);
@@ -42,14 +46,14 @@ namespace FindANameFarm.Forms
 
 			ResetForm();
 		}
-
+		//don't enable the center section of the form if the rest of the form isn't populated
 		private void txtTaskId_TextChanged(object sender, EventArgs e)
 		{
 			gbTaskVehiclesAndStaff.Enabled = !string.IsNullOrEmpty(txtTaskId.Text);
 
 			btnUpdate.Enabled = !string.IsNullOrEmpty(txtTaskId.Text);
 		}
-
+		
 		private void gbFertTreatTask_Enter(object sender, EventArgs e)
 		{
 			ShowFields();
@@ -57,7 +61,7 @@ namespace FindANameFarm.Forms
 			ShowFertTreat();
 			ShowCategories();
 		}
-
+		//sets up the list view column spacing
 		private void SetUpVehicleTaskViewList()
 		{
 			listTaskVehicles.View = View.Details;
@@ -65,7 +69,7 @@ namespace FindANameFarm.Forms
 			listTaskVehicles.Columns.Add("VehicleName", 100);
 			listTaskVehicles.Columns.Add("Driver", 100);
 		}
-
+		//sets up the list view column spacing
 		private void SetUpStaffListView()
 		{
 			listTaskStaff.View = View.Details;
@@ -74,7 +78,7 @@ namespace FindANameFarm.Forms
 			listTaskStaff.Columns.Add("First Name", 75);
 			listTaskStaff.Columns.Add("Surname", 60);
 		}
-
+		//sets up the list view column spacing
 		private void SetUpFertTreatTaskListView()
 		{
 			listExistingFertTreatTasks.View = View.Details;
@@ -83,7 +87,7 @@ namespace FindANameFarm.Forms
 			listExistingFertTreatTasks.Columns.Add("Task Type", 150);
 			listExistingFertTreatTasks.Columns.Add("Start Date", 150);
 		}		
-
+		//shows the fields
 		private void ShowFields()
 		{
 			if (cbTaskField != null)
@@ -95,7 +99,7 @@ namespace FindANameFarm.Forms
 			cbTaskField.DisplayMember = "FieldName";
 			cbTaskField.ValueMember = "FieldId";
 		}
-
+		//shows the staff
 		private void ShowStaff()
 		{
 			if (cbFertTreatTaskStaffList != null)
@@ -107,7 +111,7 @@ namespace FindANameFarm.Forms
 			cbFertTreatTaskStaffList.DisplayMember = "FirstName";
 			cbFertTreatTaskStaffList.ValueMember = "StaffId";
 		}
-
+		//shows treatments
 		private void ShowFertTreat()
 		{
 			if (cbTaskFertTreat != null)
@@ -119,7 +123,7 @@ namespace FindANameFarm.Forms
 			cbTaskFertTreat.DisplayMember = "FertTreatName";
 			cbTaskFertTreat.ValueMember = "FertTreatId";
 		}
-
+		//shows categories
 		private void ShowCategories()
 		{
 			if (cbVehicleCatList != null)
@@ -134,7 +138,7 @@ namespace FindANameFarm.Forms
 			ShowVehicle();
 			ShowVehicleDriver();
 		}
-
+		//show existing treatments in task
 		private void ShowExistingFertTreatTasks()
 		{
 			listExistingFertTreatTasks.Items.Clear();
@@ -156,7 +160,7 @@ namespace FindANameFarm.Forms
 				listExistingFertTreatTasks.Items.Add(lvItem);
 			}
 		}
-
+		//shows the vehicles
 		private void ShowVehicle()
 		{
 			List<Vehicles> filteredList = new List<Vehicles>();
@@ -190,7 +194,7 @@ namespace FindANameFarm.Forms
 			cbFertTreatTaskVehicleList.DisplayMember = "VehicleName";
 			cbFertTreatTaskVehicleList.ValueMember = "VehicleId";
 		}
-
+		//shows the drivers able to drive the selected vehicle
 		private void ShowVehicleDriver()
 		{
 			List<VehicleAndDriver> filteredList = new List<VehicleAndDriver>();
@@ -216,7 +220,7 @@ namespace FindANameFarm.Forms
 			cbVehicleDriver.DisplayMember = "FirstName";
 			cbVehicleDriver.ValueMember = "StaffId";
 		}
-
+		//shows the staff currently on the task
 		public void ShowStaffOnTask()
 		{
 			_workTask.GetWorkTaskStaff(Convert.ToInt32(txtTaskId.Text));
@@ -233,7 +237,7 @@ namespace FindANameFarm.Forms
 			}
 
 		}
-
+		//show vehicles in the task
 		private void ShowVehiclesInTask()
 		{
 			_workTask.GetWorkTaskVehicles(Convert.ToInt32(txtTaskId.Text));
@@ -252,14 +256,14 @@ namespace FindANameFarm.Forms
 			}
 
 		}
-
+		//refresh connection to the database
 		private void refresh()
 		{
 			_workTask.RefreshConnection();
 			ShowExistingFertTreatTasks();
 			ShowCategories();
 		}
-
+		//reset the form to its original state
 		private void ResetForm()
 		{
 			txtTaskId.Text = "";
@@ -270,7 +274,7 @@ namespace FindANameFarm.Forms
 			nudTaskQuantity.Value = 0;
 			nudTaskDuration.Value = 0;
 		}
-
+		//show a list of the existing treatments tasks
 		private void listExistingFertTreatTasks_MouseClick(object sender, MouseEventArgs e)
 		{
 			string id = listExistingFertTreatTasks.SelectedItems[0].SubItems[0].Text;
@@ -298,7 +302,7 @@ namespace FindANameFarm.Forms
 			ShowVehicle();
 
 		}
-
+		//button to create a task and insert into the database
 		private void btnCreate_Click(object sender, EventArgs e)
 		{
 			WorkTasks addWorkTask = new WorkTasks
@@ -326,7 +330,7 @@ namespace FindANameFarm.Forms
 
 			txtTaskId.Text = _workTask.WorkTaskList[taskNumber].TaskId.ToString();
 		}
-		
+		//updates the selected task id in the database with the new fields
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			WorkTasks editWorkTask = new WorkTasks();
@@ -342,12 +346,12 @@ namespace FindANameFarm.Forms
 
 			refresh();
 		}
-
+		//button to clear the form
 		private void btnClearForm_Click(object sender, EventArgs e)
 		{
 			ResetForm();
 		}
-		
+		//button to add a worker to the task
 		private void btnFertTreatTaskAddWorker_Click(object sender, EventArgs e)
 		{
 			TaskStaff taskStaff = new TaskStaff
@@ -371,7 +375,7 @@ namespace FindANameFarm.Forms
 				MessageBox.Show("Staff Member Already on task");
 			}
 		}
-
+		//button to remove a worker from a task
 		private void btnRemoveLabourerFromTask_Click(object sender, EventArgs e)
 		{
 			try
@@ -393,7 +397,7 @@ namespace FindANameFarm.Forms
 				Console.WriteLine(exception);
 			}
 		}
-
+		//button to remove a vehicle from the task
 		private void btnRemoveVehicleFromTask_Click(object sender, EventArgs e)
 		{
 			try
@@ -417,7 +421,7 @@ namespace FindANameFarm.Forms
 
 			}
 		}
-
+		//button to add a vehicle to the task
 		private void btnVehicleAdd_Click(object sender, EventArgs e)
 		{
 			TaskVehiclesAndDrivers taskVehicle = new TaskVehiclesAndDrivers
@@ -446,14 +450,14 @@ namespace FindANameFarm.Forms
 				MessageBox.Show("Staff Member or vehicle Already on task");
 			}
 		}
-
+		//button to close the form
 		private void btnClose_Click(object sender, EventArgs e) => Close();
-
+		//combo box to set the vehicle categories
 		private void cbVehicleCatList_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			ShowCategories();
 		}
-
+		//combo box to set the status of a task
         private void cbTaskStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbTaskStatus.SelectedIndex == 0)

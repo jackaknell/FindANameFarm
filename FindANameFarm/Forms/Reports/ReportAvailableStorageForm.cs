@@ -6,7 +6,10 @@ using FindANameFarm.Banks;
 
 namespace FindANameFarm.Forms
 {
-
+	/// <summary>
+	/// jason, Dec 2018
+	/// report to show the available storage and what the planned usage is
+	/// </summary>
 	public partial class ReportAvailableStorageForm : Form
 	{
 	    private readonly StorageBank _storage = StorageBank.GetInst();
@@ -17,7 +20,7 @@ namespace FindANameFarm.Forms
         }
 
     
-
+		//displays the storage in the listview
 	    public void ShowStorage(List<Storage> storageList)
 	    {
 	        listAvailableStorage.Items.Clear();
@@ -37,7 +40,7 @@ namespace FindANameFarm.Forms
 	    }
 
 
-
+		//puts th list view information into the relevant box
         private void listAvailableStorage_MouseClick_1(object sender, MouseEventArgs e)
         {
             string storageID = listAvailableStorage.SelectedItems[0].SubItems[0].Text;
@@ -54,7 +57,7 @@ namespace FindANameFarm.Forms
             txtStoring.Text = storing;
 
         }
-
+		//loads the form and sets column sizes
         private void ReportAvailableStorageForm_Load_1(object sender, EventArgs e)
         {
             listAvailableStorage.View = View.Details;
